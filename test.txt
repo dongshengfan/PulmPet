@@ -1,0 +1,34 @@
+class Settings {
+
+    constructor() {
+        this.currentLevel = null;
+        this.levels = [];
+    }
+
+    get Level() {
+        return this.currentLevel;
+    }
+
+    initialize() {
+        //читаем данные из json, используем Promise
+        this.levels.push(new Level(2, 3));
+        this.levels.push(new Level(4, 5));
+    }
+}
+
+class Level {
+    constructor(beeSpeed, distance) {
+        this.distance = distance;
+        this.beeSpeed = beeSpeed;
+    }
+
+    get BeeSpeed() {
+        return this.beeSpeed;
+    }
+
+    get Distance() {
+        return this.distance;
+    }
+}
+
+export let settings = new Settings();

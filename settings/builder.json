@@ -1,0 +1,17 @@
+{
+  "excludeScenes": [],
+  "includeAnySDK": false,
+  "includeSdk": [
+    "anysdk"
+  ],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.FIR.PalmPet",
+  "startScene": "af71c8f0-511b-42a4-8d42-acb898bfb334",
+  "title": "PalmPet",
+  "webOrientation": "auto"
+}
