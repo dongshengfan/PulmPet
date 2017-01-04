@@ -1,5 +1,2 @@
 export * from './models/animal';
-export { Graph } from './graph/graph';
-
-export class AnimalBehaviour { 
-}
+export * from './graph/graph';

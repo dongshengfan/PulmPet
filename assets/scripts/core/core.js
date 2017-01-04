@@ -1,4 +1,4 @@
-import { AnimalBehaviour, Animal, Graph, Elephant} from './animal-behaviour/animal-behaviour';
+import {Animal, Graph, Elephant, Lion, Zebra, Mouse, Hyena} from './animal-behaviour/animal-behaviour';
 
-var a = new Elephant();
+var a = new Hyena();
 cc.log(a);
