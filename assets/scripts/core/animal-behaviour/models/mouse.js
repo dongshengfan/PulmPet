@@ -1,3 +1,7 @@
-export class Mouse { 
-    constructor() { }
+import { Animal } from './animal';
+
+export class Mouse extends Animal { 
+    constructor() { 
+        super();
+    }
 }
