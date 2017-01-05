@@ -1,4 +1,3 @@
-import { Animal } from '../models/models';
 import { State } from './states/state'
 
 /**
@@ -9,13 +8,6 @@ import { State } from './states/state'
  */
 export class StateMachine { 
     /**
-     * Модель животного 
-     * @type {Animal}
-     * @memberOf StateMachine
-     */
-    _model;
-
-    /**
      * Текущее состояние
      * @type {State}
      * @memberOf StateMachine
@@ -24,24 +16,22 @@ export class StateMachine {
 
     /**
      * Creates an instance of StateMachine.
-     *
-     * @param {Animal} model модель животного
+     * @param {State} state стартовое состояние
      * @memberOf StateMachine
      */
-    constructor(model) {
-        this._model = model;
+    constructor(state) {
+        this._state = state;
     }
-
 
     /**
      * Запуск state machine
-     *
      * @memberOf StateMachine
      */
     run() {
         //TODO заменить на условие попадания в состояние "Смерть"
         while (true) { 
-            
+            this._state.run();
+            this._state = this._state.getNextState();
         }
     }
 }
