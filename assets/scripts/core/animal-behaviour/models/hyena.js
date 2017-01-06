@@ -1,3 +1,7 @@
-export class Hyena { 
-    constructor() { }
+import { Animal } from './animal';
+
+export class Hyena extends Animal { 
+    constructor() { 
+        super();
+    }
 }
