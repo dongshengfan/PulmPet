@@ -1,7 +1,7 @@
 import { State } from './states/state'
 
 /**
- * Управляющий элемент вероятностного автомата
+ * Управляющий элемент автомата
  * 
  * @export
  * @class StateMachine
@@ -28,10 +28,12 @@ export class StateMachine {
      * @memberOf StateMachine
      */
     run() {
-        //TODO заменить на условие попадания в состояние "Смерть"
         while (true) { 
             this._state.run();
-            this._state = this._state.getNextState();
+            if (this._state.isEndPoint()) { 
+                break;
+            }
+            this._state = this._state.getNextState();    
         }
     }
 }

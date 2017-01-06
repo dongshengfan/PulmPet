@@ -31,16 +31,25 @@ export class State {
     _routeEngine;
 
     /**
+     * Флаг заключительного состояния
+     * @type {Boolean}
+     * @memberOf State
+     */
+    _isEndPoint;
+    
+    /**
      * Creates an instance of State.
      * @param {String} name имя состояния
      * @param {Animal} model модель животного
      * @param {RouteEngine} routeEngine обработчик маршрутов между состояниями
+     * @param {Boolean} isEndPoint флаг заключительного состояния
      * @memberOf State
      */
-    constructor(name, model, routeEngine = null) {
+    constructor(name, model, routeEngine = null, isEndPoint = false) {
         this._name = name;
         this._model = model;
         this._routeEngine = routeEngine;
+        this._isEndPoint = isEndPoint;
     }
 
     /**
@@ -54,17 +63,27 @@ export class State {
     }
 
     /**
-     * Получение следущего состояния согласно установленным в обработчике маршрутов 
-     * @returns {State|null}
+     * Получение следущего состояния согласно установленным в обработчике маршрутов.
+     * Возвращает текущее состояние при невозможности перехода.
+     * @returns {State}
      * @memberOf State
      */
     getNextState() {
         if (!this._routeEngine) {
-            return null;
+            return this;
         }
 
         var route = this._routeEngine.getRoute();
-        return route ? route.getState() : null;
+        return route ? route.getState() : this;
+    }
+
+    /**
+     * Возвращает значение флага конечного состояния
+     * @returns {Boolean}
+     * @memberOf State
+     */
+    isEndPoint() { 
+        return this._isEndPoint;
     }
 
     /**
@@ -88,8 +107,6 @@ export class State {
 
     /**
      * Запуск состояния
-     *
-     * @param {Animal} model модель животного
      * @memberOf State
      */
     run() { 

@@ -35,7 +35,7 @@ export class PatternState extends State {
      * @param {Array<State>} states включаемые в композит состояния
      * @memberOf PatternState
      */
-    constructor(name, model, routeEngine, states = []) {
+    constructor(name, model, routeEngine = null, states = []) {
         super(name, model, routeEngine);
         this._states = states;
     }   

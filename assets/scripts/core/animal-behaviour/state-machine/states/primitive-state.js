@@ -18,9 +18,19 @@ export class PrimitiveState extends State {
      * @param {String} name имя состояния
      * @param {Animal} model модель животного
      * @param {RouteEngine} routeEngine обработчик маршрутов между состояниями
+     * @param {Boolean} isEndPoint флаг заключительного состояния
      * @memberOf PrimitiveState
      */
-    constructor(name, model, routeEngine = null) {
-        super(name, model, routeEngine);
+    constructor(name, model, routeEngine = null, isEndPoint = false) {
+        super(name, model, routeEngine, isEndPoint);
+    }
+
+    /**
+     * Запуск состояния
+     * TODO удалить
+     * @memberOf PrimitiveState
+     */
+    run() { 
+        cc.log(this._name);
     }
 }
