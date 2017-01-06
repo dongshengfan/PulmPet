@@ -1,0 +1,59 @@
+export class Map{
+    constructor(world) {
+        this.world=world;
+        this.init();
+    }
+    init(){
+        this.obstacleLayer=this.world.getLayer('bar');
+        this.worldSize=this.world.getMapSize();
+        this.worldTileSize=this.world.getTileSize();
+        this.sizeMap=this.sizeMaps();
+    }
+    /**
+     * Возвращает размер карты в пикселх
+     */
+    sizeMaps(){
+        let sizeX= (this.worldSize.width-2)*  (this.worldTileSize.width);
+        let sizeY= (this.worldSize.height-2)*  (this.worldTileSize.height);
+
+        return new cc.Size(sizeX,sizeY);
+    }
+    /**
+     * Возвращает положение координат пикселя к координатам в тайлах
+     * @param { cc.v2 } posInPixel 
+     * @returns {  cc.p } cc.p(x,y) 
+     */
+    getTilePos(posInPixel) {
+        var x = Math.floor(posInPixel.x /  this.worldTileSize.width);
+        var y = Math.floor((this.sizeMap.height-posInPixel.y) / this.worldTileSize.height);
+     //   console.log(posInPixel.y);
+      //     console.log( y);
+        return cc.p(x, y);
+    }
+    getMapPos(tile){
+        var x=tile.x*this.worldTileSize.width;
+        var y=this.sizeMap.height-(tile.y*this.worldTileSize.height);
+        return cc.v2(x,y);
+    }   
+    /**
+     * Возвращает номер барьера по GID, если вернуло 0 значит этот тайл не с этого(уровень барьера) уровня
+     * 
+     */
+    getAmountBarriier(gid){
+      //  console.log(gid);
+      //  console.log(this.obstacleLayer.getTileGIDAt(gid.x,gid.y));
+      
+        return this.obstacleLayer.getTileGIDAt(gid.x,gid.y);    
+        
+    }
+
+    chek(pos){
+        if(this.getAmountBarriier(pos)===0){
+            return true;
+        }
+        return false
+        
+    }
+
+}
+
