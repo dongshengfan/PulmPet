@@ -1,3 +1,5 @@
+
+export * from './components-animal/components-animal';
 export * from './elephant'; 
 export * from './lion';
 export * from './zebra';
