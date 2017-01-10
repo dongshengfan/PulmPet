@@ -1,5 +1,4 @@
-
-import { Memory } from './components-animal';
+import { Memory, CirculatorySystem, SightSystem } from './components-animal';
 /**
  * Класс мозг
  * 
@@ -8,12 +7,27 @@ import { Memory } from './components-animal';
  */
 export class Brain{
     /**
-     * Память мозга
+     * Память животного
      * 
-     * 
+     * @type {Memory}
      * @memberOf Brain
      */
-    myMemory;
+    memory;
+    /**
+     * Кровиносная система
+     * 
+     * @type {CirculatorySystem} класс кровиносной системы
+     * @memberOf Brain
+     */
+    circulatorySystem;
+    /**
+     * Система зрения
+     * 
+     * @type {SightSystem} класс зрительной системы
+     * @memberOf Brain
+     */
+    sightSystem;
+
     /**
      * Creates an instance of Brain.
      * 
@@ -21,23 +35,10 @@ export class Brain{
      * @memberOf Brain
      */
     constructor () {
-        this.myMemory=new Memory();
+  /*      this.memory=new Memory();
+        this.circulatorySystem=new CirculatorySystem();
+        this.sightSystem=new SightSystem();*/
     }
-    /**
-     * Осознает что надо искать воду и предпринимает некоторые действия
-     * 
-     * @returns {cc.Vec2|null} тайлд с водой или false
-     * 
-     * @memberOf Brain
-     */
-    needWater(){
-        this.myMemory.findWater();
-    }
-    needGrass(){
-    
-    }
-    needVictim(){
-
-    }
+ 
 
 }

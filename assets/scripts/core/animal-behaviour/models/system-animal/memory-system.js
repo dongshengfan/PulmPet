@@ -1,16 +1,17 @@
 /**
- * Класс память
+ * Класс памяти животного
  * 
  * @export
- * @class Memory
+ * @class MemorySystem
  */
-export class Memory{
+export class MemorySystem{
     /**
      * Количество тайлдов с водой которое может помнить животное
      * 
      * @type {Number} целое число
      * @memberOf Memory
      */
+    
     amountWaterPointsRemember;
     /**
      * Количество тайлдов с травой которое может помнить животное
@@ -62,21 +63,8 @@ export class Memory{
      * @memberOf Memory
      */
     arrPointsPredator;
-    /**
-     * Область которую витид животное
-     * 
-     * @type {cc.Vec2[]} массив тайлдов
-     * @memberOf Memory
-     */
-    arrSee;
 
-    /**
-     * Позиция в которой находится животное по мнению мозгов
-     * 
-     * @type {cc.Vec2} 
-     * @memberOf Memory
-     */
-    position;
+
 
     /**
      * Creates an instance of Memory.
@@ -87,61 +75,56 @@ export class Memory{
     constructor() {
     
     }
-    /**
-     * Мозг устанавливает позицию в которой находится животное по его мнению
-     * 
-     * @param {cc.Vec2} pos
-     * 
-     * @memberOf Memory
-     */
-    setPosition(pos){
-        this.position=pos;
-    }
+    
     /**
      * Ищет в чертогах разума где последний раз он видел воду и возвращает ближайшую точку если найдет
      * 
+     * @param {cc.Vec2} pos позиция в которой находится животное по мнению мозгов
      * @returns {cc.Vec2} тайлд с водой
      * 
      * @memberOf Memory
      */
-    findWater(){
-        return this._inMemory(this.arrPointsWater);
+    findWater(pos){
+        return this._inMemory(this.arrPointsWater,pos);
     }
     /**
      * Ищет в чертогах разума где последний раз он видел траву и возвращает ближайшую точку если найдет
      * 
+     * @param {cc.Vec2} pos позиция в которой находится животное по мнению мозгов
      * @returns {cc.Vec2} тайлд с травой
      * 
      * @memberOf Memory
      */
-    findGrass(){
-        return this._inMemory(this.arrPointsGrass);
+    findGrass(pos){
+        return this._inMemory(this.arrPointsGrass,pos);
     }
     /**
-     * Ищет в чертогах разума где последний раз он жертву и возвращает ближайшую точку если найдет
+     * Ищет в чертогах разума где последний раз он видел жертву и возвращает ближайшую точку если найдет
      * 
+     * @param {cc.Vec2} pos позиция в которой находится животное по мнению мозгов
      * @returns {cc.Vec2} тайлд места положения
      * 
      * @memberOf Memory
      */
-    findVictim(){
-        return this._inMemory(this.arrPointsVictim);
+    findVictim(pos){
+        return this._inMemory(this.arrPointsVictim,pos);
     }
     
     /**
      * Копается в памяти вспоминая о ближайшем
      * 
      * @param {cc.Vec2[]} mas массив векторов позиций
+     * @param {cc.Vec2} pos точка где находится сейчас животное
      * @returns {cc.Vec2|null} найденную точку
      * 
      * @memberOf Memory
      */
-    _inMemory(mas){
+    _inMemory(mas,pos){
         let maxDistance=Number.MAX_VALUE;
         let targetPoint=null;
         let dictance=0;
         mas.forEach((point)=>{
-            dictance=this._distance(point);
+            dictance=this._distance(point,pos);
             if(dictance<maxDistance){
                 maxDistance=distance;
                 targetPoint=point;
@@ -153,12 +136,14 @@ export class Memory{
      * Оценивает расстояние от своего положения до точки
      * 
      * @param {cc.Vec2} point точка до куда
-     * @returns {Number}
+     * @param {cc.Vec2} pos точка откуда
+     * @returns {Number} длинна расстояния между точками
      * 
      * @memberOf Memory
      */
-    _distance(point){
-        return cc.pDistance(this.position,point);
+    _distance(point,pos){
+        return cc.pDistance(pos,point);
     }
     
 }
+

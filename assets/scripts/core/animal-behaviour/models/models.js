@@ -1,6 +1,5 @@
-
-export * from './components-animal/components-animal';
-export * from './elephant'; 
+export * from './system-animal/export-system';
+export * from './elephant';
 export * from './lion';
 export * from './zebra';
 export * from './mouse';
