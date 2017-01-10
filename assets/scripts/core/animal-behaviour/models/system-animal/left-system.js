@@ -34,20 +34,7 @@ export class LeftSystem{
      * @memberOf Animal
      */
     percentageStamina;
-    /**
-     * Процент сытости животного
-     * 
-     * @type {Number} процент
-     * @memberOf Animal
-     */
-    percentageSatiety;
-    /**
-     * Процент обезвоживания животного
-     * 
-     * @type {Number} процент 
-     * @memberOf Animal
-     */
-    percentageDehydration;
+    
     /**
      * Текущий вес животного
      * 

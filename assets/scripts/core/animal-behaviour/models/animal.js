@@ -1,4 +1,4 @@
-import { MemorySystem, SightSystem, CirculatorySystem, HearingSystem, IdentificationSystem } from './models';
+import { MemorySystem, SightSystem, CirculatorySystem, HearingSystem, IdentificationSystem, FoodSystem } from './models';
 /**
  * Класс животное
  * 
@@ -50,7 +50,13 @@ export class Animal {
      * @memberOf Animal
      */
     identification;
-
+    /**
+     * Система питания
+     * 
+     * @type {FoodSystem} Класс системы питания 
+     * @memberOf Animal
+     */
+    food;
     
     /**
      * Creates an instance of Animal.
@@ -58,12 +64,45 @@ export class Animal {
      * 
      * @memberOf Animal
      */
-    constructor(){             
+    constructor(){
         this.memory=new MemorySystem();
         this.sight=new SightSystem();
         this.circulatory=new CirculatorySystem();
         this.hearing=new HearingSystem();
-        this.identification=new IdentificationSystem();
+      //  this.identification=new IdentificationSystem();
+        this.food=new FoodSystem();
+
     }
+    /**
+     * Возвращает значение шкалы возраста у животного
+     * 
+     * @returns {Number} процент прожитой жизни
+     * 
+     * @memberOf Animal
+     */
+    getValueScaleAge(){
+        return this.identification.analysisAge();
+    }       
+    /**
+     * Возвращает значение шкалы обезвоживания
+     * 
+     * @returns {Number}
+     * 
+     * @memberOf Animal
+     */
+    getValueScaleWater(){
+        return this.food.analysisWater();
+    }
+    /**
+     * Возвращает значение шкалы сытости. 
+     * 
+     * @returns {Number}
+     * 
+     * @memberOf Animal
+     */
+    getValueScaleEater(){
+        return this.food.analysisEater();
+    }
+
 }
 

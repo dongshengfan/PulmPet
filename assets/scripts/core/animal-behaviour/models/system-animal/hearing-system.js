@@ -5,5 +5,5 @@
  * @class HearingSystem
  */
 export class HearingSystem{
-
+    
 }
