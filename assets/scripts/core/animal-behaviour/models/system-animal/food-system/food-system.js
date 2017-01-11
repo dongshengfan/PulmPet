@@ -1,11 +1,11 @@
 /**
  * Класс пищеварительной системы
- * 
+ * {Количество единиц воды,количество единиц еды,коли}
  * @export
  * @class FoodSystem
  */
 export class FoodSystem{
- 
+
     /**
      * Минимальнодопустимое количество воды в организме
      * 
@@ -49,13 +49,6 @@ export class FoodSystem{
      */
     currentAmountEater;
 
-    /**
-     * Массив жертв
-     * 
-     * @type {Number[]} массив id животных
-     * @memberOf FoodSystem
-     */
-    arrVictims;
 
     /**
      * Процент сытости животного
@@ -82,6 +75,9 @@ export class FoodSystem{
     analysisWater(){
         return this.scaleDehydration=(this.currentAmountWater*100)/(this.normalAmountWater-this.minAmountWater);
     }
+  
+
+
     /**
      * Анализирует состояние сытости. Чем вышезначение тем меньше хочется кушать
      * 
@@ -92,6 +88,7 @@ export class FoodSystem{
     analysisEater(){
         return this.scaleSatiety=(this.currentAmountEater*100)/(this.normalAmountEater-this.minAmountEater);
     }
+
     /**
      * Анализирует систему питания
      * 
@@ -102,7 +99,7 @@ export class FoodSystem{
         this.analysisEater();
         this.analysisWater();
     }
-   
+    
     /**
      * Инициализация параметров системы питания
      * 

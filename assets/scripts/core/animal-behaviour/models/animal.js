@@ -1,11 +1,13 @@
-import { MemorySystem, CirculatorySystem, IdentificationSystem, FoodSystem, SensesSystem, MuscularSystem, RespiratorySystem } from './models';
+
+import {IdentificationSystem, MuscularSystem, MemorySystem, FoodSystem} from './system-animal/export-system';
+
 /**
  * Класс животное
  * 
  * @export
  * @class Animal
  */
-export class Animal {      
+export class Animal { 
 
     /**
      * Позиция в которой находится животное фактически
@@ -72,6 +74,8 @@ export class Animal {
      */
     respiratory;
     
+
+
     /**
      * Creates an instance of Animal.
      * 
@@ -79,14 +83,70 @@ export class Animal {
      * @memberOf Animal
      */
     constructor(){
-        this.memory=new MemorySystem();      
-        this.circulatory=new CirculatorySystem();        
-        this.food=new FoodSystem();
+        //this.memory=new MemorySystem();      
+       // this.circulatory=new CirculatorySystem();        
+       // this.food=new FoodSystem();
         this.identification=new IdentificationSystem();
         this.muscular=new MuscularSystem();
-        this.senses=new SensesSystem();
-        this.respiratory=new RespiratorySystem();   //   
+      //  this.senses=new SensesSystem();
+       
     }
+
+
+    /**
+     * Возраст воздействует на другие параметры 
+     * 
+     * @param {Number} value значение на сколько процентов изменился возраст
+     * 
+     * @memberOf Animal
+     */
+    ageActs(value){
+        
+        this.identification.setScaleAge(1*value);
+        this.muscular.setScaleSpeed(-1*value);
+        this.identification.setScaleTimeToSleep(1*value);
+        this.muscular.setScaleWeight(1*value);
+    }
+
+    /**
+     * Вес воздействует на другие параметры
+     * 
+     * @param {Number} value значение на сколько процентов изменился вес
+     * 
+     * @memberOf Animal
+     */
+    weightActs(value){
+        this.muscular.setScaleWeight(1*value);
+        this.identification.setScaleTimeToSleep(1*value);
+        this.muscular.setScaleSpeed(-1*value);
+    }
+
+    /**
+     * Время сна воздействует на другие параметры
+     * 
+     * @param {Number} value значение на сколько процентов изменилось время сна
+     * 
+     * @memberOf Animal
+     */
+    timeToSleepActs(value){
+        this.identification.setScaleTimeToSleep(1*value);
+        this.muscular.setScaleSpeed(1*value);
+        this.muscular.setScaleWeight(1*value);
+    }
+
+    /**
+     * Скорость воздействует на другие параметры
+     * 
+     * @param {Number} value значение на сколько процентов изменилась скорость 
+     * 
+     * @memberOf Animal
+     */
+    speedActs(value){
+        this.muscular.setScaleSpeed(1*value);
+        this.muscular.setScaleWeight(-1*value);
+    }
+
+
 
     /**
      * Возвращает значение шкалы возраста у животного
@@ -117,6 +177,34 @@ export class Animal {
      */
     getValueScaleEater(){
         return this.food.analysisEater();
+    }
+    /**
+     * Возвращает значение шкалы продолжительности сна
+     * 
+     * @returns {Number}
+     * 
+     * @memberOf Animal
+     */
+    getValueScaleTimeToSleep(){
+        return this.identification.analysisTimeToSleep();
+    }
+    /**
+     * Возвращает значение шкалы скорости
+     * 
+     * 
+     * @memberOf Animal
+     */
+    getValueScaleSpeed(){
+        return this.muscular.analysisSpeed();
+    }
+    /**
+     * Возвращает значение шкалы веса.
+     * 
+     * 
+     * @memberOf Animal
+     */
+    getValueScaleWeight(){
+        return this.muscular.analysisWeight();
     }
 
 }
