@@ -19,7 +19,13 @@ export class IdentificationSystem{
      * @memberOf IdentificationSystem
      */
     isPredator;
-
+    /**
+     * Продолжительность сна животного
+     * 
+     * @type {Number} число в секундах
+     * @memberOf Animal
+     */
+    timeToSleep;
 
     /**
      * Текущий возраст животного
@@ -45,7 +51,7 @@ export class IdentificationSystem{
     
 
     /**
-     * Шкала возраста. Отражает уровень агрессии по 100 бальной шкале. Чем больше тем старее животное.
+     * Шкала возраста. Отражает уровень возвраста по 100 бальной шкале. Чем больше тем старее животное.
      * 
      * @type {Number} значение возраста в процентах 
      * @memberOf IdentificationSystem

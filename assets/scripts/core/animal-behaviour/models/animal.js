@@ -1,4 +1,4 @@
-import { MemorySystem, SightSystem, CirculatorySystem, HearingSystem, IdentificationSystem, FoodSystem } from './models';
+import { MemorySystem, CirculatorySystem, IdentificationSystem, FoodSystem, SensesSystem, MuscularSystem, RespiratorySystem } from './models';
 /**
  * Класс животное
  * 
@@ -14,6 +14,13 @@ export class Animal {
      * @memberOf Animal
      */
     currentPosition;
+    /**
+     * Цель для движения
+     * 
+     * @type {cc.Vec2}
+     * @memberOf Animal
+     */
+    targetPosition;
 
     /**
      * Система памяти животного
@@ -23,26 +30,12 @@ export class Animal {
      */
     memory;
     /**
-     * Система зрения животного
+     * Сердечнососудистая система 
      * 
-     * @type {SightSystem} Класс системы зрения
-     * @memberOf Animal
-     */
-    sight;
-    /**
-     * Система кровообращения
-     * 
-     * @type {CirculatorySystem} Класс системы кровообращения
+     * @type {CirculatorySystem} Класс сердечнососудистой системы
      * @memberOf Animal
      */
     circulatory;
-    /**
-     * Система слуха
-     * 
-     * @type {HearingSystem} Класс системы слуха
-     * @memberOf Animal
-     */
-    hearing;
     /**
      * Система идентификации животного
      * 
@@ -51,12 +44,33 @@ export class Animal {
      */
     identification;
     /**
-     * Система питания
+     * Система пищеварения
      * 
-     * @type {FoodSystem} Класс системы питания 
+     * @type {FoodSystem} Класс системы пищеварения 
      * @memberOf Animal
      */
     food;
+    /**
+     * Система органов чувств
+     * 
+     * @type {SensesSystem} Класс органов чувств
+     * @memberOf Animal
+     */
+    senses;
+    /**
+     * Опорно-двигательная система/аппарат
+     * 
+     * @type {MuscularSystem} Класс опорно-двигательного аппарата
+     * @memberOf Animal
+     */
+    muscular;
+    /**
+     * Дыхательная система
+     * 
+     * @type {RespiratorySystem} Класс дыхательной системы
+     * @memberOf Animal
+     */
+    respiratory;
     
     /**
      * Creates an instance of Animal.
@@ -65,14 +79,15 @@ export class Animal {
      * @memberOf Animal
      */
     constructor(){
-        this.memory=new MemorySystem();
-        this.sight=new SightSystem();
-        this.circulatory=new CirculatorySystem();
-        this.hearing=new HearingSystem();
-      //  this.identification=new IdentificationSystem();
+        this.memory=new MemorySystem();      
+        this.circulatory=new CirculatorySystem();        
         this.food=new FoodSystem();
-
+        this.identification=new IdentificationSystem();
+        this.muscular=new MuscularSystem();
+        this.senses=new SensesSystem();
+        this.respiratory=new RespiratorySystem();   //   
     }
+
     /**
      * Возвращает значение шкалы возраста у животного
      * 
