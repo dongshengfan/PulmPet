@@ -1,66 +1,85 @@
+import {Systems} from '../systems';
 /**
  * Класс опорно-двигательной системы
  * {Скорость передвижения, вес}
  * @export
  * @class MuscularSystem
  */
-export class MuscularSystem{
+export class MuscularSystem extends Systems{
+    
     /**
-     * Текущая скорость передвижения животного
-     * 
-     * @type {Number} 0.0
-     * @memberOf MuscularSystem
+     * @typedef Speed
+     * @type {Object} 
+     * @property {number} current текущая скорость
+     * @property {number} min минимальная скорость
+     * @property {number} max максимальная скорость
+     * @property {number} scale шкала скорости в процентах
+     */   
+    /**
+     * Скорость передвижения
+     * @type {Speed} объект скорости
      */
-    currentSpeed;
+    _speed;
     /**
-     * Максимальная скорость передвижения животного
+     * @typedef Weight
+     * @type {Object} 
+     * @property {number} current текущий вес
+     * @property {number} min минимальный вес
+     * @property {number} max максимальный вес
+     * @property {number} scale шкала веса в процентах
+     */   
+    /**
+     * Скорость передвижения
+     * @type {Weight} объект веса
      * 
-     * @type {Number} 0.0
-     * @memberOf MuscularSystem
      */
-    _maxSpeed;
+    _weight;
+
     /**
-     * Минимальная скорость передвижения животного
-     * 
-     * @type {Number} 0.0
-     * @memberOf MuscularSystem
-     */
-    _minSpeed;
-    /**
-     * Текущий вес животного
-     * 
-     * @type {Number} вес 0.0
-     * @memberOf MuscularSystem
-     */
-    currentWeight;
-    /**
-     * Максимальный вес животного
-     * 
-     * @type {Number} вес 0.0
-     * @memberOf MuscularSystem
-     */
-    _maxWeight;
-    /**
-     * Минимальный вес животного
-     * 
-     * @type {Number} вес 0.0
-     * @memberOf MuscularSystem
-     */
-    _minWeight;
-    /**
-     * Шкала скорости. Чем выше значение тем выше истощение организма
-     * 
-     * @type {Number}
-     * @memberOf MuscularSystem
-     */
-    scaleSpeed;
-    /**
-     * Шкала веса. Чем выше значение тем ниже скорость, выше давление, 
+     * Приватная есть в которой состоит данная система . Для вляния надругих подписчиков
      * 
      * 
      * @memberOf MuscularSystem
      */
-    scaleWeight;
+    _miniNet;
+    constructor() {
+        super();
+        this._speed={
+            current:0,
+            min:0,
+            max:0,
+            scale:0
+        };
+        this._weight={
+            current:0,
+            min:0,
+            max:0,
+            scale:0
+        }
+    }
+   
+    /**
+     * Обновление системы на какую то часть от обновления другой системы  
+     * 
+     * @param {number} value
+     * 
+     * @memberOf MuscularSystem
+     */
+    update(value){
+
+    }
+    /**
+     * Публикует в своем сектанском круге свои изменения
+     * 
+     * @param {number} message
+     * 
+     * @memberOf MuscularSystem
+     */
+    publisher(message) {
+        this._miniNet.publisher(message);
+    }
+
+
     /**
      * Анализирует систему . Производит расчет шкал по имеющимся параметрам
      * 
@@ -68,16 +87,11 @@ export class MuscularSystem{
      * @memberOf MuscularSystem
      */
     analysisSystem(){
-        this.analysisSpeed();
-        this.analysisWeight();
+        this._speed.scale=this._getPercentageInScale(this._speed.current,this._speed.max,this._speed.min);
+        this._weight.scale=this._getPercentageInScale(this._weight.current,this._weight.max,this._weight.min);      
     }    
-    analysisSpeed(){
-        return this.scaleSpeed=this._getScale(this.currentSpeed,this._maxSpeed,this._minSpeed);
-    }
-    analysisWeight(){
-        return this.scaleWeight=this._getScale(this.currentWeight,this._maxWeight,this._minWeight);
-    }
-
+    
+//Ждут предназначения
     /**
      * Устанавливает знащение шкалы скорости. Чев вышзначение тем быстрея движется животноеи вышенекоторые другие показатели
      * 
@@ -86,13 +100,13 @@ export class MuscularSystem{
      * @memberOf MuscularSystem
      */
     setScaleSpeed(value){
-        let rez=this.scaleSpeed+value;
+        let rez=this._speed.scale+value;
         if(rez<=100&&rez>=0){
-            this.scaleSpeed+=value;
+            this._speed.scale+=value;
         }
-        this.updatePropertyScaleSpeed();
+        this._speed.current=this._getCurrentValueOnScale(this._speed.scale,this._speed.max,this._speed.min);
+   
     }
-
     /**
      * Устанавливает значениешкалы весаю Чем выше тем меньше скорость животного
      * 
@@ -101,34 +115,15 @@ export class MuscularSystem{
      * @memberOf MuscularSystem
      */
     setScaleWeight(value){
-        let rez=this.scaleWeight+value;
+        let rez=this._weight.scale+value;
         if(rez>=0){
-        this.scaleWeight+=value;
+        this._weight.scale+=value;
         }
+        this._weight.current=this._getCurrentValueOnScale(this._weight.scale,this._weight.max,this._weight.min);
         this.updatePropertyScaleWeight();
     }
 
-    updatePropertyScaleSpeed(){
-        this.currentSpeed=(((this._maxSpeed-this._minSpeed)/100)*this.scaleSpeed)+this._minSpeed;
-    }
-    updatePropertyScaleWeight(){
-        this.currentWeight=(((this._maxWeight-this._minWeight)/100)*this.scaleWeight)+this._minWeight;
-
-    }
-
-    /**
-     * Считате процент шкал
-     * 
-     * @param {Number} current текущее значение
-     * @param {Number} max максимальное значение
-     * @param {Number} min минимальное значение
-     * @returns {Number}
-     * 
-     * @memberOf MuscularSystem
-     */
-    _getScale(current,max,min){
-        return ((current-min)*100)/(max-min);
-    }
+    ///Надо что-то с этим сделать)
 
     /**
      * Инициализация
@@ -141,13 +136,14 @@ export class MuscularSystem{
      * @memberOf MuscularSystem
      */
     init(maxSpeed,minSpeed,maxWeight,minWeight){
-        this._maxSpeed=maxSpeed;
-        this._minSpeed=minSpeed;
-        this._maxWeight=maxWeight;
-        this._minWeight=minWeight;
+        this._speed.max=maxSpeed;
+        this._speed.min=minSpeed;
+        this._weight.max=maxWeight;
+        this._weight.min=minWeight;
 
-        this.currentSpeed=(maxSpeed-minSpeed)/2;
-        this.currentWeight=minWeight;
+        this._speed.current=(maxSpeed-minSpeed)/2;
+        this._weight.current=minWeight;
         this.analysisSystem();
+        
     }
 }

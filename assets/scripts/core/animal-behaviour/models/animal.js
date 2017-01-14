@@ -1,5 +1,5 @@
 
-import {IdentificationSystem, MuscularSystem, MemorySystem, FoodSystem} from './system-animal/export-system';
+import {IdentificationSystem, MuscularSystem, MemorySystem, FoodSystem, Mediator} from './system-animal/export-system';
 
 /**
  * Класс животное
@@ -74,7 +74,13 @@ export class Animal {
      */
     respiratory;
     
-
+    /**
+     * Посредник в общении систем 
+     * 
+     * @type {Mediator}
+     * @memberOf Animal
+     */
+    mediator;
 
     /**
      * Creates an instance of Animal.
@@ -88,6 +94,8 @@ export class Animal {
        // this.food=new FoodSystem();
         this.identification=new IdentificationSystem();
         this.muscular=new MuscularSystem();
+        this.mediator=new Mediator();
+        this.mediator.register(this.muscular);
       //  this.senses=new SensesSystem();
        
     }
@@ -195,7 +203,7 @@ export class Animal {
      * @memberOf Animal
      */
     getValueScaleSpeed(){
-        return this.muscular.analysisSpeed();
+      //  return this.muscular.analysisSpeed();
     }
     /**
      * Возвращает значение шкалы веса.
@@ -204,7 +212,7 @@ export class Animal {
      * @memberOf Animal
      */
     getValueScaleWeight(){
-        return this.muscular.analysisWeight();
+      //  return this.muscular.analysisWeight();
     }
 
 }
