@@ -12,7 +12,13 @@ export class Systems{
      * @memberOf Systems
      */
     percentageImpact; 
-
+    /**
+     * Приватная cеть в которой состоит данная система . Для влияния на других подписчиков
+     * 
+     * 
+     * @memberOf Systems
+     */
+    _miniNet;
     /**
      * Отдает процент прогресса на основе интервала и текущего значения
      * 
@@ -38,5 +44,26 @@ export class Systems{
      */
     _getCurrentValueOnScale(scale,max,min){
         return (((max-min)/100)*scale)+min;
+    }
+    /**
+     * Обновление системы на какую то часть от обновления другой системы  
+     *  
+     * @param {number} value дельта изменения какого-то параметра какой-то системы 
+     * 
+     * @memberOf Systems
+     */
+    _update(value){
+        
+    }
+    /**
+     * Публикует в своем сектанском круге свои изменения
+     * 
+     * @param {number} message дельта изменения того или иного параметра
+     * 
+     * @memberOf Systems
+     */
+    _publisher(message){
+        console.log(this);
+        this._miniNet.publisher(message,this);
     }
 }

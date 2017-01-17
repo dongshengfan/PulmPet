@@ -35,13 +35,7 @@ export class MuscularSystem extends Systems{
      */
     _weight;
 
-    /**
-     * Приватная есть в которой состоит данная система . Для вляния надругих подписчиков
-     * 
-     * 
-     * @memberOf MuscularSystem
-     */
-    _miniNet;
+    
     constructor() {
         super();
         this._speed={
@@ -58,26 +52,7 @@ export class MuscularSystem extends Systems{
         }
     }
    
-    /**
-     * Обновление системы на какую то часть от обновления другой системы  
-     * 
-     * @param {number} value
-     * 
-     * @memberOf MuscularSystem
-     */
-    update(value){
-
-    }
-    /**
-     * Публикует в своем сектанском круге свои изменения
-     * 
-     * @param {number} message
-     * 
-     * @memberOf MuscularSystem
-     */
-    publisher(message) {
-        this._miniNet.publisher(message);
-    }
+    
 
 
     /**

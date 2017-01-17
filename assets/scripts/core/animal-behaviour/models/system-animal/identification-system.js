@@ -1,10 +1,11 @@
+import {Systems} from './systems';
 /**
  * Класс системы идентификации животного. 
  * {ИД,Время сна, возвраст, разделение на хищьник/жертва}
  * @export
  * @class IdentificationSystem
  */
-export class IdentificationSystem{
+export class IdentificationSystem extends Systems{
     /**
      * Айди животного
      * 

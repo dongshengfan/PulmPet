@@ -38,7 +38,8 @@ export class Mediator {
     publisher(message,from) {     
         this._miniNet.forEach((item)=>{ 
             if(item!=from){
-                item.update(message);      
+                console.log(item);
+                item._update(message);      
             } 
         });            
     }

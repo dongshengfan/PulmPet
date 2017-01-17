@@ -2,6 +2,7 @@ import {Animal, Graph, Elephant, Lion, Zebra, Mouse, Hyena} from './animal-behav
 
 var animal = new Elephant();
 var a=animal;
+animal.muscular._publisher(2);  
 /*console.log(a);
 animal.scaleAgeActs(1);
 var b=animal;

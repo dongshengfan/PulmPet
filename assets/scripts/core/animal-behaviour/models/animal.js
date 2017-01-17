@@ -89,14 +89,15 @@ export class Animal {
      * @memberOf Animal
      */
     constructor(){
-        //this.memory=new MemorySystem();      
-       // this.circulatory=new CirculatorySystem();        
-       // this.food=new FoodSystem();
+      //this.memory=new MemorySystem();      
+     // this.circulatory=new CirculatorySystem();        
+     // this.food=new FoodSystem();
         this.identification=new IdentificationSystem();
         this.muscular=new MuscularSystem();
         this.mediator=new Mediator();
         this.mediator.register(this.muscular);
-      //  this.senses=new SensesSystem();
+     // this.mediator.register(this.identification);
+     // this.senses=new SensesSystem();
        
     }
 
