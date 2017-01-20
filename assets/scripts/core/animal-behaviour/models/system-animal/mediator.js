@@ -6,7 +6,7 @@
  */
 export class Mediator {
     /**
-     * Круг общения медиатора))
+     * Круг общения медиатора
      * 
      * @type {Array}  
      * @memberOf Mediator
