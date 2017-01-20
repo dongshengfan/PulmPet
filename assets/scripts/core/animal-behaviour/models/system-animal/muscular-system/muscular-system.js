@@ -29,7 +29,7 @@ export class MuscularSystem extends Systems{
      * @property {number} scale шкала веса в процентах
      */   
     /**
-     * Скорость передвижения
+     * Вес животного
      * @type {Weight} объект веса
      * 
      */
@@ -52,21 +52,38 @@ export class MuscularSystem extends Systems{
         }
     }
    
+    _update(value){
+        let procSpeed=this.percentageImpact*value;
+        let pred=this._speed.scale;
+        this._setScaleSpeed(procSpeed);
+        this._publisher(this._speed.scale-pred);
+
+        let procWeight=this.percentageImpact*value;
+        pred=this._weight.scale;
+        this._setScaleWeight(procWeight);
+        this._publisher(this._weight.scale-pred);
+    }
+
     
 
-
     /**
-     * Анализирует систему . Производит расчет шкал по имеющимся параметрам
+     * Анализирует систему . Производит расчет шкал по имеющимся параметрам. Применяется только после изменения какихто конкретных параметров
      * 
      * 
      * @memberOf MuscularSystem
      */
-    analysisSystem(){
+    _analysisSystem(){
+        let pred=this._speed.scale;
         this._speed.scale=this._getPercentageInScale(this._speed.current,this._speed.max,this._speed.min);
-        this._weight.scale=this._getPercentageInScale(this._weight.current,this._weight.max,this._weight.min);      
+        this._publisher(this._speed.scale-pred);
+
+        pred=this._weight.scale;
+        this._weight.scale=this._getPercentageInScale(this._weight.current,this._weight.max,this._weight.min);     
+        this._publisher(this._weight.scale-pred);
+
     }    
     
-//Ждут предназначения
+
     /**
      * Устанавливает знащение шкалы скорости. Чев вышзначение тем быстрея движется животноеи вышенекоторые другие показатели
      * 
@@ -74,7 +91,7 @@ export class MuscularSystem extends Systems{
      * 
      * @memberOf MuscularSystem
      */
-    setScaleSpeed(value){
+    _setScaleSpeed(value){
         let rez=this._speed.scale+value;
         if(rez<=100&&rez>=0){
             this._speed.scale+=value;
@@ -89,36 +106,12 @@ export class MuscularSystem extends Systems{
      * 
      * @memberOf MuscularSystem
      */
-    setScaleWeight(value){
+    _setScaleWeight(value){
         let rez=this._weight.scale+value;
         if(rez>=0){
         this._weight.scale+=value;
         }
         this._weight.current=this._getCurrentValueOnScale(this._weight.scale,this._weight.max,this._weight.min);
-        this.updatePropertyScaleWeight();
     }
 
-    ///Надо что-то с этим сделать)
-
-    /**
-     * Инициализация
-     * 
-     * @param {_maxSpeed} maxSpeed максимальная скорость
-     * @param {Number} minSpeed минимальная скорость
-     * @param {Number} maxWeight максимальный вес
-     * @param {Number} minWeight минимальный вес
-     * 
-     * @memberOf MuscularSystem
-     */
-    init(maxSpeed,minSpeed,maxWeight,minWeight){
-        this._speed.max=maxSpeed;
-        this._speed.min=minSpeed;
-        this._weight.max=maxWeight;
-        this._weight.min=minWeight;
-
-        this._speed.current=(maxSpeed-minSpeed)/2;
-        this._weight.current=minWeight;
-        this.analysisSystem();
-        
-    }
 }

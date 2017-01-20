@@ -1,145 +1,106 @@
+import { Systems } from '../systems';
 /**
  * Класс сердечнососудистая системы
  * {Давление,Седцебиение}
  * @export
  * @class CirculatorySystem
  */
-export class CirculatorySystem{
+export class CirculatorySystem extends Systems{
+ 
+  
     /**
-     * Давление животного
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    currentPressure;
+     * @typedef Pressure
+     * @type {Object} 
+     * @property {number} current текущее давление
+     * @property {number} min минимальное давление
+     * @property {number} max максимальное давление
+     * @property {number} scale шкала давления в процентах
+     */   
     /**
-     * Максимально-допустимое значение давления для этого живоного
-     * 
-     * @type {Number} 
-     * @memberOf CirculatorySystem
+     * Давление кровиностной системы
+     * @type {Pressure} объект скорости
      */
-    maxPressure;
+    _pressure;
     /**
-     * Минимально-допустимое значение давления
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    minPressure;
-    /**
-     * Нормальное давление для этого животного.
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    normPressure;
+     * @typedef Heartbeat
+     * @type {Object} 
+     * @property {number} current текущее сердцебиение
+     * @property {number} min минимальное сердцебиение
+     * @property {number} max максимальное сердцебиение
+     * @property {number} scale шкала сердцебиения в процентах
+     */   
     /**
      * Сердцебиение
+     * @type {Heartbeat} объект веса
      * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
      */
-    currentHeartbeat;
-    /**
-     * Максимально допустимое сердцебиение
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    maxHeartbeat;
-    /**
-     * Минимально-допустимое сердцебиение
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    minHeartbeat;
-    /**
-     * Нормальное сердцебиение
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    normHeartbeat;
-    /**
-     * Шкала состояния давления. Чем выше тем хуже чувствует себя животное.
-     * 
-     * @type {Number}
-     * @memberOf CirculatorySystem
-     */
-    scalePressure;
-    /**
-     * Шкала состояния сердцебиения. Чем выше по процентам тем хуже чувствует себя животное.
-     * 
-     * 
-     * @memberOf CirculatorySystem
-     */
-    scaleHeartbeat;
+    _heartbeat;
 
     /**
-     * Анализирует систему в целом
+     * Creates an instance of CirculatorySystem.
      * 
      * 
      * @memberOf CirculatorySystem
      */
-    analysisSystem(){
-        this.analysisHeartbeat();
-        this.analysisPressure();
+    constructor(){
+        super();
+        this._pressure={
+            current:0,
+            min:0,
+            max:0,
+            scale:0
+        };
+        this._heartbeat={
+            current:0,
+            min:0,
+            max:0,
+            scale:0
+        };
+    }
+
+    _update(value){
+        let procSpeed=this.percentageImpact*value;
+        let pred=this._pressure.scale;
+        this._setScalePressure(procSpeed);
+        this._publisher(this._pressure.scale-pred);
+        let procWeight=this.percentageImpact*value;
+        pred=this._heartbeat.scale;
+        this._setScaleHeartbeat(procWeight);
+        this._publisher(this._heartbeat.scale-pred);
     }
     /**
-     * Анализирует давление
+     * Анализирует систему . Производит расчет шкал по имеющимся параметрам
      * 
-     * @returns {Number} Значение шкалы давления чем выше те выше отклонение от нормы
      * 
      * @memberOf CirculatorySystem
      */
-    analysisPressure(){
-        let raz=this.normPressure-this.currentPressure;
-        if(raz<0){
-            this.scalePressure=this._getScale(-1*raz,this.maxPressure,this.normPressure);
-        }else if(raz>0){
-            this.scalePressure=this._getScale(raz,this.normPressure,this.minPressure);
-        }else{
-            this.scalePressure=0;
+    _analysisSystem(){
+        let pred=this._pressure.scale;
+        this._pressure.scale=this._getPercentageInScale(this._pressure.current,this._pressure.max,this._pressure.min);
+        this._publisher(this._pressure.scale-pred);
+
+        pred=this._heartbeat.scale;
+        this._heartbeat.scale=this._getPercentageInScale(this._heartbeat.current,this._heartbeat.max,this._heartbeat.min);     
+         this._publisher(this._heartbeat.scale-pred);
+    }    
+    
+
+    _setScalePressure(value){
+        let rez=this._pressure.scale+value;
+        if(rez<=100&&rez>=0){
+            this._pressure.scale+=value;
         }
-        return this.scalePressure;
+        this._pressure.current=this._getCurrentValueOnScale(this._pressure.scale,this._pressure.max,this._pressure.min);
+   
     }
-    /**
-     * Анализирует сердцебиение
-     * 
-     * @returns {Number} значение сердцебиения по 100 бальной шкале
-     * 
-     * @memberOf CirculatorySystem
-     */
-    analysisHeartbeat(){
-        let raz=this.normHeartbeat-this.currentHeartbeat;
-        if(raz<0){
-            this.scaleHeartbeat=this._getScale(-1*raz,this.maxHeartbeat,this.normHeartbeat);
-        }else if(raz>0){
-            this.scaleHeartbeat=this._getScale(raz,this.normHeartbeat,this.minHeartbeat);
-        }else{
-            this.scaleHeartbeat=0;
+
+    _setScaleHeartbeat(value){
+        let rez=this._heartbeat.scale+value;
+        if(rez>=0){
+        this._heartbeat.scale+=value;
         }
-        return this.scaleHeartbeat;
-
-    }
-    /**
-     * Считате процент шкал
-     * 
-     * @param {Number} current текущее значение
-     * @param {Number} max максимальное значение
-     * @param {Number} min минимальное значение
-     * @returns {Number}
-     * 
-     * @memberOf CirculatorySystem
-     */
-    _getScale(current,max,min){
-        return (current*100)/(max-min);
-    }
-
-
-    init(){
-
+        this._heartbeat.current=this._getCurrentValueOnScale(this._heartbeat.scale,this._heartbeat.max,this._heartbeat.min);
+      
     }
 
 }

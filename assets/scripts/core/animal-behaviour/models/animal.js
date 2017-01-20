@@ -1,5 +1,5 @@
 
-import {IdentificationSystem, MuscularSystem, MemorySystem, FoodSystem, Mediator} from './system-animal/export-system';
+import { MuscularSystem, CirculatorySystem, Mediator} from './system-animal/export-system';
 
 /**
  * Класс животное
@@ -39,40 +39,13 @@ export class Animal {
      */
     circulatory;
     /**
-     * Система идентификации животного
-     * 
-     * @type {IdentificationSystem} Класс системы идентификации
-     * @memberOf Animal
-     */
-    identification;
-    /**
-     * Система пищеварения
-     * 
-     * @type {FoodSystem} Класс системы пищеварения 
-     * @memberOf Animal
-     */
-    food;
-    /**
-     * Система органов чувств
-     * 
-     * @type {SensesSystem} Класс органов чувств
-     * @memberOf Animal
-     */
-    senses;
-    /**
      * Опорно-двигательная система/аппарат
      * 
      * @type {MuscularSystem} Класс опорно-двигательного аппарата
      * @memberOf Animal
      */
     muscular;
-    /**
-     * Дыхательная система
-     * 
-     * @type {RespiratorySystem} Класс дыхательной системы
-     * @memberOf Animal
-     */
-    respiratory;
+
     
     /**
      * Посредник в общении систем 
@@ -89,18 +62,32 @@ export class Animal {
      * @memberOf Animal
      */
     constructor(){
-      //this.memory=new MemorySystem();      
-     // this.circulatory=new CirculatorySystem();        
-     // this.food=new FoodSystem();
-        this.identification=new IdentificationSystem();
+        this.circulatory=new CirculatorySystem();
+        this.circulatory.percentageImpact=0.1;
         this.muscular=new MuscularSystem();
+        this.muscular.percentageImpact=0.1;
         this.mediator=new Mediator();
+        //регистрируем системы жизнеобеспечения
         this.mediator.register(this.muscular);
-     // this.mediator.register(this.identification);
-     // this.senses=new SensesSystem();
+        this.mediator.register(this.circulatory);
+
        
     }
+    /*
+    lifeM(){
+        this.muscular.analysisSystem();
 
+    }
+    lifeC(){
+        this.circulatory.analysisSystem();
+    }
+    */
+
+
+
+
+
+//Методы для состояний
 
     /**
      * Возраст воздействует на другие параметры 
@@ -153,67 +140,6 @@ export class Animal {
     speedActs(value){
         this.muscular.setScaleSpeed(1*value);
         this.muscular.setScaleWeight(-1*value);
-    }
-
-
-
-    /**
-     * Возвращает значение шкалы возраста у животного
-     * 
-     * @returns {Number} процент прожитой жизни
-     * 
-     * @memberOf Animal
-     */
-    getValueScaleAge(){
-        return this.identification.analysisAge();
-    }       
-    /**
-     * Возвращает значение шкалы обезвоживания
-     * 
-     * @returns {Number}
-     * 
-     * @memberOf Animal
-     */
-    getValueScaleWater(){
-        return this.food.analysisWater();
-    }
-    /**
-     * Возвращает значение шкалы сытости. 
-     * 
-     * @returns {Number}
-     * 
-     * @memberOf Animal
-     */
-    getValueScaleEater(){
-        return this.food.analysisEater();
-    }
-    /**
-     * Возвращает значение шкалы продолжительности сна
-     * 
-     * @returns {Number}
-     * 
-     * @memberOf Animal
-     */
-    getValueScaleTimeToSleep(){
-        return this.identification.analysisTimeToSleep();
-    }
-    /**
-     * Возвращает значение шкалы скорости
-     * 
-     * 
-     * @memberOf Animal
-     */
-    getValueScaleSpeed(){
-      //  return this.muscular.analysisSpeed();
-    }
-    /**
-     * Возвращает значение шкалы веса.
-     * 
-     * 
-     * @memberOf Animal
-     */
-    getValueScaleWeight(){
-      //  return this.muscular.analysisWeight();
     }
 
 }

@@ -1,8 +1,9 @@
 import {Animal, Graph, Elephant, Lion, Zebra, Mouse, Hyena} from './animal-behaviour/animal-behaviour';
 
 var animal = new Elephant();
-var a=animal;
-animal.muscular._publisher(2);  
+
+//animal.circulatory._update(0.01);
+animal.muscular._update(300);
 /*console.log(a);
 animal.scaleAgeActs(1);
 var b=animal;

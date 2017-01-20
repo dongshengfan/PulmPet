@@ -1,12 +1,12 @@
 /**
  * Класс отец систем
- * 
+ * {Состояние системы в целом, впечатлительность системы}
  * @export
  * @class Systems
  */
 export class Systems{
     /**
-     * Процент влияния системы
+     * Процент влияния системы или впечатлительность системы
      * 
      * @type {number} процент не болше 100 не меньше 0
      * @memberOf Systems
@@ -19,6 +19,33 @@ export class Systems{
      * @memberOf Systems
      */
     _miniNet;
+    /**
+     * @typedef System
+     * @type {Object} 
+     * @property {number} current текущее едениц состояния
+     * @property {number} min минимальное количество единиц состояния
+     * @property {number} max максимальное количество единиц состояния
+     * @property {number} scale шкала состояния
+     */   
+    /**
+     * состояние системы в целом
+     * @type {System} объект скорости
+     */
+    _system;
+
+    constructor(){
+        this._system={
+            current:0,
+            min:0,
+            max:0,
+            scale:0
+        }
+    }
+
+ 
+
+
+
     /**
      * Отдает процент прогресса на основе интервала и текущего значения
      * 
@@ -62,8 +89,7 @@ export class Systems{
      * 
      * @memberOf Systems
      */
-    _publisher(message){
-        console.log(this);
+    _publisher(message){     
         this._miniNet.publisher(message,this);
     }
 }

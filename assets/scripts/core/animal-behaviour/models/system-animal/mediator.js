@@ -12,7 +12,16 @@ export class Mediator {
      * @memberOf Mediator
      */
     _miniNet;
+    /**
+     * Величина не читаемого изменения или пропускная величина сообщения для передачи
+     * 
+     * @type {number}
+     * @memberOf Mediator
+     */
+    _eps;
     constructor() {
+        this.i=0;
+        this._eps=0.000001;
         this._miniNet = [];
     }
     /**
@@ -35,13 +44,24 @@ export class Mediator {
      * 
      * @memberOf Mediator
      */
-    publisher(message,from) {     
-        this._miniNet.forEach((item)=>{ 
-            if(item!=from){
-                console.log(item);
-                item._update(message);      
-            } 
-        });            
+    publisher(message,from) {   
+        this.i++;
+        if(this.i<1000){ 
+            console.log("----"); 
+            console.log(from);
+            console.log("->");
+
+            if(message>this._eps){
+                this._miniNet.forEach((item)=>{ 
+                    if(item!=from){
+
+                        console.log(item);
+
+                        item._update(message);      
+                    } 
+                });    
+            }        
+        }
     }
     
 }
