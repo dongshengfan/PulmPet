@@ -3,5 +3,5 @@ export * from './circulatory-system/circulatory-system';
 export * from './food-system/food-system';
 export * from './muscular-system/muscular-system';
 export * from './senses-system/senses-system';
-export * from './mediator';
-
+export * from './speech-system/speech-system';
+export * from './reproduction-system/reproduction-system';

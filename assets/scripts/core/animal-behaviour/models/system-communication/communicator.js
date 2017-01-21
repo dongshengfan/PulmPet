@@ -43,7 +43,6 @@ class Communicator {
      * @memberOf Communicator
      */
     publish(event, params) {
-        this.regis
         var links = this._netLinks[event];
         if (links) {
             links.forEach((link) => link(params));

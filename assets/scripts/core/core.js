@@ -1,51 +1,21 @@
 //import {Animal, Graph, Elephant, Lion, Zebra, Mouse, Hyena} from './animal-behaviour/animal-behaviour';
 
-import { Communicator, CommunicationEvents as Events, EventSystemBuilder } from './animal-behaviour/animal-behaviour';
+import { Communicator, CommunicationEvents as Events, EventSystemBuilder, SpeechSystem, ReproductionSystem }
+    from './animal-behaviour/animal-behaviour';
 
-class System1 { 
-    onEnduranceIncrease(param) { 
-        console.log(param);
-    }
-    onAgeIncrease(param) { 
-        console.log(param);
-    }
-}
-
-class System2 { 
-    onEnduranceIncrease(param) { 
-        console.log(param);
-    }
-    onAgeIncrease(param) { 
-        console.log(param);
-    }
-}
-var system1 = new System1();
-var system2 = new System2(); 
-var eventSystemBuilder1= new EventSystemBuilder();
+var speech = new SpeechSystem();
+var reproduction = new ReproductionSystem();
 var eventSystemBuilder2 = new EventSystemBuilder();
 
-var communicator1 = eventSystemBuilder1.add(Events.endurance.decrease, {
-    system: system1,
-    link: system1.onEnduranceIncrease
+var communicator2 = eventSystemBuilder2.add(Events.endurance.increase, {
+    system: speech,
+    link: speech.onEnduranceIncrease
+}).add(Events.age.increase, {
+    system: reproduction,
+    link: reproduction.onAgeIncrease
 }).build();
 
-var communicator2 = eventSystemBuilder2.addAll(Events.endurance.increase, [{
-    system: system1,
-    link: system1.onEnduranceIncrease
-}, {
-    system: system2,
-    link: system2.onEnduranceIncrease
-}]).addAll(Events.age.increase, [{
-    system: system1,
-    link: system1.onAgeIncrease
-}, {
-    system: system2,
-    link: system2.onAgeIncrease    
-}]).build();
-
-cc.log(communicator1);
-cc.log(communicator2);
-
+communicator2.publish(Events.endurance.increase, 'test');
 /*class Test { 
     increase(params) { 
         cc.log(params);

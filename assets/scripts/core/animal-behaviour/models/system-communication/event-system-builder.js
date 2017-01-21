@@ -33,9 +33,10 @@ class EventSystemBuilder {
         return this._communicator;
     }
 
-    _addLink(event, param) { 
-        //param.system.setCommunicator(this._communicator);
-        this._communicator.register(event, param.link);
+    _addLink(event, param) {
+        var {system, link} = param;
+        system.setCommunicator(this._communicator);
+        this._communicator.register(event, link.bind(system));
     }
 }
 

@@ -1,9 +1,42 @@
+import { Communicator, EventSystemBuilder } from '../system-communication/system-communication';
+
 /**
- * Класс отец систем
- * {Состояние системы в целом, впечатлительность системы}
+ * Абстрактный класс для систем животного отец систем
  * @export
- * @class Systems
+ * @class System
  */
+class System { 
+    /**
+     * @type {Communicator}
+     */
+    _communicator;
+
+    constructor() { 
+
+    }
+
+    /**
+     *
+     * @param {Communicator} communicator 
+     * @memberOf System
+     */
+    setCommunicator(communicator) { 
+        this._communicator = communicator;
+    }
+
+    /**
+     * 
+     * @param {EventSystemBuilder} event
+     * @param {any} param
+     * @memberOf System
+     */
+    trigger(event, params) { 
+        this._communicator.publish(event, params);
+    }
+}
+
+export { System };
+
 export class Systems{
     /**
      * Процент влияния системы или впечатлительность системы
