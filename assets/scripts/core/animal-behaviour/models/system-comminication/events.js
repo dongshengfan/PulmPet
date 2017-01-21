@@ -9,11 +9,11 @@ const CommunicationEvents = {
         /**
          * понижение
          */
-        decrease: 1,
+        decrease: 0,
         /**
          * повышение
          */
-        increase: 2
+        increase: 1
     }
 };
 

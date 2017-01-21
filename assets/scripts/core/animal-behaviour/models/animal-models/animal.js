@@ -1,5 +1,5 @@
 
-import { MuscularSystem, CirculatorySystem, Mediator} from './system-animal/export-system';
+//import { MuscularSystem, CirculatorySystem, Mediator} from './system-animal/export-system';
 
 /**
  * Класс животное
@@ -69,10 +69,12 @@ export class Animal {
         this.mediator=new Mediator();
         //регистрируем системы жизнеобеспечения
         this.mediator.register(this.muscular);
-        this.mediator.register(this.circulatory);
-
-       
+        this.mediator.register(this.circulatory); 
     }
+
+
+
+    //todo перенести 
     /*
     lifeM(){
         this.muscular.analysisSystem();
@@ -82,11 +84,6 @@ export class Animal {
         this.circulatory.analysisSystem();
     }
     */
-
-
-
-
-
 //Методы для состояний
 
     /**
@@ -96,13 +93,13 @@ export class Animal {
      * 
      * @memberOf Animal
      */
-    ageActs(value){
+   /* ageActs(value){
         
         this.identification.setScaleAge(1*value);
         this.muscular.setScaleSpeed(-1*value);
         this.identification.setScaleTimeToSleep(1*value);
         this.muscular.setScaleWeight(1*value);
-    }
+}*/
 
     /**
      * Вес воздействует на другие параметры
@@ -111,11 +108,11 @@ export class Animal {
      * 
      * @memberOf Animal
      */
-    weightActs(value){
+   /* weightActs(value){
         this.muscular.setScaleWeight(1*value);
         this.identification.setScaleTimeToSleep(1*value);
         this.muscular.setScaleSpeed(-1*value);
-    }
+}*/
 
     /**
      * Время сна воздействует на другие параметры
@@ -124,11 +121,11 @@ export class Animal {
      * 
      * @memberOf Animal
      */
-    timeToSleepActs(value){
+   /* timeToSleepActs(value){
         this.identification.setScaleTimeToSleep(1*value);
         this.muscular.setScaleSpeed(1*value);
         this.muscular.setScaleWeight(1*value);
-    }
+}*/
 
     /**
      * Скорость воздействует на другие параметры
@@ -137,10 +134,10 @@ export class Animal {
      * 
      * @memberOf Animal
      */
-    speedActs(value){
+   /* speedActs(value){
         this.muscular.setScaleSpeed(1*value);
         this.muscular.setScaleWeight(-1*value);
-    }
+}*/
 
 }
 
