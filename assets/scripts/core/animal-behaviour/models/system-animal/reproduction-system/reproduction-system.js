@@ -1,4 +1,4 @@
-import { System } from '../systems';
+import { System } from '../system';
 import { CommunicationEvents as Events } from '../../system-communication/events';
 
 class ReproductionSystem extends System {

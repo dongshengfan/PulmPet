@@ -1,11 +1,11 @@
-import {Systems} from '../systems';
+import { System } from '../system';
 /**
  * Класс опорно-двигательной системы
  * {Скорость передвижения, вес}
  * @export
  * @class MuscularSystem
  */
-export class MuscularSystem extends Systems{
+export class MuscularSystem extends System{
     
     /**
      * @typedef Speed
@@ -52,7 +52,7 @@ export class MuscularSystem extends Systems{
         }
     }
    
-    _update(value){
+   /* _update(value){
         let procSpeed=this.percentageImpact*value;
         let pred=this._speed.scale;
         this._setScaleSpeed(procSpeed);
@@ -62,7 +62,7 @@ export class MuscularSystem extends Systems{
         pred=this._weight.scale;
         this._setScaleWeight(procWeight);
         this._publisher(this._weight.scale-pred);
-    }
+    }*/
 
     
 
@@ -72,7 +72,7 @@ export class MuscularSystem extends Systems{
      * 
      * @memberOf MuscularSystem
      */
-    _analysisSystem(){
+   /* _analysisSystem(){
         let pred=this._speed.scale;
         this._speed.scale=this._getPercentageInScale(this._speed.current,this._speed.max,this._speed.min);
         this._publisher(this._speed.scale-pred);
@@ -81,37 +81,29 @@ export class MuscularSystem extends Systems{
         this._weight.scale=this._getPercentageInScale(this._weight.current,this._weight.max,this._weight.min);     
         this._publisher(this._weight.scale-pred);
 
-    }    
+    }    */
     
 
     /**
      * Устанавливает знащение шкалы скорости. Чев вышзначение тем быстрея движется животноеи вышенекоторые другие показатели
      * 
-     * @param {Number} value
+     * @param {number} value
      * 
      * @memberOf MuscularSystem
      */
     _setScaleSpeed(value){
-        let rez=this._speed.scale+value;
-        if(rez<=100&&rez>=0){
-            this._speed.scale+=value;
-        }
-        this._speed.current=this._getCurrentValueOnScale(this._speed.scale,this._speed.max,this._speed.min);
+        this._addScaleValue(this._speed,value);
    
     }
     /**
      * Устанавливает значениешкалы весаю Чем выше тем меньше скорость животного
      * 
-     * @param {any} value
+     * @param {number} value
      * 
      * @memberOf MuscularSystem
      */
     _setScaleWeight(value){
-        let rez=this._weight.scale+value;
-        if(rez>=0){
-        this._weight.scale+=value;
-        }
-        this._weight.current=this._getCurrentValueOnScale(this._weight.scale,this._weight.max,this._weight.min);
+        this._addScaleValue(this._weight,value);
     }
 
 }

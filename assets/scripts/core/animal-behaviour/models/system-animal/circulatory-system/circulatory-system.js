@@ -1,11 +1,11 @@
-import { Systems } from '../systems';
+import { System } from '../system';
 /**
  * Класс сердечнососудистая системы
  * {Давление,Седцебиение}
  * @export
  * @class CirculatorySystem
  */
-export class CirculatorySystem extends Systems{
+export class CirculatorySystem extends System{
  
   
     /**
@@ -58,7 +58,7 @@ export class CirculatorySystem extends Systems{
         };
     }
 
-    _update(value){
+   /* _update(value){
         let procSpeed=this.percentageImpact*value;
         let pred=this._pressure.scale;
         this._setScalePressure(procSpeed);
@@ -67,14 +67,14 @@ export class CirculatorySystem extends Systems{
         pred=this._heartbeat.scale;
         this._setScaleHeartbeat(procWeight);
         this._publisher(this._heartbeat.scale-pred);
-    }
+    }*/
     /**
      * Анализирует систему . Производит расчет шкал по имеющимся параметрам
      * 
      * 
      * @memberOf CirculatorySystem
      */
-    _analysisSystem(){
+  /*  _analysisSystem(){
         let pred=this._pressure.scale;
         this._pressure.scale=this._getPercentageInScale(this._pressure.current,this._pressure.max,this._pressure.min);
         this._publisher(this._pressure.scale-pred);
@@ -82,25 +82,28 @@ export class CirculatorySystem extends Systems{
         pred=this._heartbeat.scale;
         this._heartbeat.scale=this._getPercentageInScale(this._heartbeat.current,this._heartbeat.max,this._heartbeat.min);     
          this._publisher(this._heartbeat.scale-pred);
-    }    
+    }   */ 
     
 
+    /**
+     * Устанавливает знащение шкалы давления. Чев выше значение тем быстрея стареет животное и ...
+     * 
+     * @param {number} value дельта какого-либо изменения
+     * 
+     * @memberOf CirculatorySystem
+     */
     _setScalePressure(value){
-        let rez=this._pressure.scale+value;
-        if(rez<=100&&rez>=0){
-            this._pressure.scale+=value;
-        }
-        this._pressure.current=this._getCurrentValueOnScale(this._pressure.scale,this._pressure.max,this._pressure.min);
-   
+        this._addScaleValue(this._pressure,value);     
     }
 
+    /**
+     * Устанавливает знащение шкалы сердцебиения. Чев выше значение тем быстрея происходит обмен веществ и снижается показатель сытости и ...
+     * 
+     * @param {number} value
+     * 
+     * @memberOf CirculatorySystem
+     */
     _setScaleHeartbeat(value){
-        let rez=this._heartbeat.scale+value;
-        if(rez>=0){
-        this._heartbeat.scale+=value;
-        }
-        this._heartbeat.current=this._getCurrentValueOnScale(this._heartbeat.scale,this._heartbeat.max,this._heartbeat.min);
-      
+        this._addScaleValue(this._heartbeat,value);        
     }
-
 }
