@@ -19,12 +19,23 @@ class EventSystemBuilder {
         this._communicator = new Communicator();
     }
 
-    add(event, link) { 
-        
+    add(event, param) {
+        this._addLink(event, param);
+        return this;
+    }
+
+    addAll(event, params) { 
+        params.forEach((param) => this._addLink(event, param));
+        return this;
     }
 
     build() { 
         return this._communicator;
+    }
+
+    _addLink(event, param) { 
+        //param.system.setCommunicator(this._communicator);
+        this._communicator.register(event, param.link);
     }
 }
 

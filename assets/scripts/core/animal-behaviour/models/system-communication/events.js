@@ -14,6 +14,15 @@ const CommunicationEvents = {
          * повышение
          */
         increase: 1
+    },
+    /**
+     * возраст
+     */
+    age: {
+        /**
+         * старение
+         */
+        increase: 2
     }
 };
 
