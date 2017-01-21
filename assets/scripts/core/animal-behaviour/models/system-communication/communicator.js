@@ -1,4 +1,4 @@
-import { CommunicationEvents } from '../system-comminication/events';
+import { CommunicationEvents as events} from './events';
 
 /**
  * Класс централизует сообщения между системами, упрощает их общение между собой

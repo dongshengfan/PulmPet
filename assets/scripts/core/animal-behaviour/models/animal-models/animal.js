@@ -1,5 +1,5 @@
 
-//import { MuscularSystem, CirculatorySystem, Mediator} from './system-animal/export-system';
+import { MuscularSystem, CirculatorySystem, Mediator} from '../system-animal/system-animal';
 
 /**
  * Класс животное

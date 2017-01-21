@@ -1,5 +1,5 @@
 import { Communicator } from './communicator';
-import { CommunicationEvents as Events } from './events';
+import { CommunicationEvents as events } from './events';
 
 /**
  * Класс-строитель коммуникации систем определенного животного 

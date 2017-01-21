@@ -1,8 +1,6 @@
 //import {Animal, Graph, Elephant, Lion, Zebra, Mouse, Hyena} from './animal-behaviour/animal-behaviour';
 
-import { Communicator } from './animal-behaviour/models/system-comminication/communicator';
-import { CommunicationEvents as Events } from './animal-behaviour/models/system-comminication/events';
-import { EventSystemBuilder } from './animal-behaviour/models/system-comminication/event-system-builder';
+import { Communicator, CommunicationEvents as events, EventSystemBuilder } from './animal-behaviour/animal-behaviour';
 
 class System1 { 
     onEnduranceIncrease(param) { 
