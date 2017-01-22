@@ -1,4 +1,6 @@
 import { System } from '../system';
+import { SystemScale } from '../../system-scales/system-scale';
+
 /**
  * Класс опорно-двигательной системы
  * {Скорость передвижения, вес}
@@ -17,7 +19,7 @@ export class MuscularSystem extends System{
      */   
     /**
      * Скорость передвижения
-     * @type {Speed} объект скорости
+     * @type {SystemScale} объект скорости
      */
     _speed;
     /**
@@ -30,7 +32,7 @@ export class MuscularSystem extends System{
      */   
     /**
      * Вес животного
-     * @type {Weight} объект веса
+     * @type {SystemScale} объект веса
      * 
      */
     _weight;
@@ -38,20 +40,15 @@ export class MuscularSystem extends System{
     
     constructor() {
         super();
-        this._speed={
-            current:0,
-            min:0,
-            max:0,
-            scale:0
-        };
-        this._weight={
-            current:0,
-            min:0,
-            max:0,
-            scale:0
-        }
+        this._speed  = new SystemScale();
+        this._weight = new SystemScale();
     }
    
+    onAgeIncrease(delta) {
+        this._speed.addScaleValue(-delta);
+        this._weight.addScaleValue(delta);
+    }
+
    /* _update(value){
         let procSpeed=this.percentageImpact*value;
         let pred=this._speed.scale;
@@ -85,16 +82,16 @@ export class MuscularSystem extends System{
     
 
     /**
-     * Устанавливает знащение шкалы скорости. Чев вышзначение тем быстрея движется животноеи вышенекоторые другие показатели
+     * Устанавливает значение шкалы скорости. Чев выше значение тем быстрее движется животное и
+     * выше некоторые другие показатели
      * 
      * @param {number} value
      * 
      * @memberOf MuscularSystem
      */
-    _setScaleSpeed(value){
+    /*_setScaleSpeed(value){
         this._addScaleValue(this._speed,value);
-   
-    }
+    }*/
     /**
      * Устанавливает значениешкалы весаю Чем выше тем меньше скорость животного
      * 
@@ -102,8 +99,7 @@ export class MuscularSystem extends System{
      * 
      * @memberOf MuscularSystem
      */
-    _setScaleWeight(value){
+    /*_setScaleWeight(value){
         this._addScaleValue(this._weight,value);
-    }
-
+    }*/
 }

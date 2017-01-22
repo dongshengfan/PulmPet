@@ -3,6 +3,8 @@
 import { Communicator, CommunicationEvents as Events, EventSystemBuilder, SpeechSystem, ReproductionSystem }
     from './animal-behaviour/animal-behaviour';
 
+import { SystemFunctionFactory, SystemFactoryTypes } from './animal-behaviour/models/system-functions/system-function-factory';
+
 var speech = new SpeechSystem();
 var reproduction = new ReproductionSystem();
 var eventSystemBuilder2 = new EventSystemBuilder();
@@ -15,24 +17,14 @@ var communicator2 = eventSystemBuilder2.add(Events.endurance.increase, {
     link: reproduction.onAgeIncrease
 }).build();
 
-communicator2.publish(Events.endurance.increase, 'test');
-/*class Test { 
-    increase(params) { 
-        cc.log(params);
-    }
-}
+//communicator2.publish(Events.endurance.increase, 'test');
 
-class Test1 { 
-    increase1(params) { 
-        cc.log(params);
-    }
-}
+//cc.log(speech._getPercentageInScale(20, -20, 40));
 
-var test = new Test();
-var test1 = new Test1();
-var communicator = new Communicator();
-communicator.register(Events.endurance.increase, test.increase);
-communicator.register(Events.endurance.increase, test1.increase1);
-
-communicator.publish(Events.endurance.increase, 'parameters');
-communicator.publish(Events.endurance.decrease, 'none');*/
+var factory = new SystemFunctionFactory();
+var lineSystemFunction = factory.create(SystemFactoryTypes.line, {
+    coefficient: 4
+});
+cc.log(lineSystemFunction.calculate({
+    value: 2
+}));

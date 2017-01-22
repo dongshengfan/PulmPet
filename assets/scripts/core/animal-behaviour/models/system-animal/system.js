@@ -1,4 +1,5 @@
 import { Communicator, EventSystemBuilder } from '../system-communication/system-communication';
+import { SystemScale } from '../../system-scales/system-scale';
 
 /**
  * Абстрактный класс для систем животного отец систем
@@ -22,18 +23,13 @@ class System {
      */   
     /**
      * Состояние системы в целом
-     * @type {sysState} объект состояния
+     * @type {SystemScale} объект состояния
      * @memberOf System
      */
     _systemState;
 
     constructor() { 
-        this._systemState={
-            current:0,
-            min:0,
-            max:0,
-            scale:0
-        };
+        this._systemState = new SystemScale();
     }
 
     /**
@@ -54,51 +50,7 @@ class System {
     trigger(event, params) { 
         this._communicator.publish(event, params);
     }
-
-    /**
-     * Отдает процент прогресса на основе интервала и текущего значения
-     * 
-     * @param {number} current текущее значение
-     * @param {number} max максимальное значение
-     * @param {number} min минимальное значение
-     * @returns {number} процент
-     * 
-     * @memberOf System
-     */
-    _getPercentageInScale(current,max,min){
-        return ((current-min)*100)/(max-min);
-    }
-    /**
-     * Отдает текущее значение по прогрессу и интервалу
-     * 
-     * @param {number} scale прогресс
-     * @param {number} max максимальное значение
-     * @param {number} min минимальное значение
-     * @returns {number} текущее значение
-     * 
-     * @memberOf System
-     */
-    _getCurrentValueOnScale(scale,max,min){
-        return (((max-min)/100)*scale)+min;
-    }
-    /**
-     * Добавляет к шкале параметра какое-то значение и производит перерасчет текущего значения этого параметра
-     * 
-     * @param {Object} param объект-параметр системы
-     * @param {number} value дельта изменеия чего-либо
-     * 
-     * @memberOf System
-     */
-    _addScaleValue(param,value){
-        let rez=param.scale+value;
-        if(rez<=100&&rez>=0){
-            param.scale+=value;
-        }
-        param.current=this._getCurrentValueOnScale(param.scale,param.max,param.min);
-    }
 }
-
-
 
 export { System };
 
