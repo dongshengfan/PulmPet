@@ -2,7 +2,7 @@ import { LineSystemFunction } from './line-system-function';
 /**
  * enum типов фабрик функций
  */
-const SystemFactoryTypes = {
+const SystemFunctionTypes = {
     line: 0
 }
 
@@ -21,8 +21,7 @@ class SystemFunctionFactory {
 
     constructor() { 
         this._factories = {};
-        this._factories[SystemFactoryTypes.line] = LineSystemFunction;
-        
+        this._factories[SystemFunctionTypes.line] = LineSystemFunction;
     }
 
     /**
@@ -34,9 +33,9 @@ class SystemFunctionFactory {
      * 
      * @memberOf SystemFunctionFactory
      */
-    create(systemFactoryType, params) { 
-        return new this._factories[systemFactoryType](params);
+    create(systemFunctionType, params) { 
+        return new this._factories[systemFunctionType](params);
     }
 }
 
-export { SystemFactoryTypes, SystemFunctionFactory }
+export { SystemFunctionTypes, SystemFunctionFactory }

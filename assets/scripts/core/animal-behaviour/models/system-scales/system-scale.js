@@ -1,4 +1,4 @@
-import { SystemFactoryTypes, SystemFunctionFactory, SystemFunction} from '../system-functions/export-system-functions';
+import { SystemFunctionTypes, SystemFunctionFactory, SystemFunction} from '../system-functions/export-system-functions';
 
 /**
  * Класс обертка для параметров систем
@@ -46,7 +46,7 @@ class SystemScale {
         this.getPercentageInScale();
 
         this._systemFunction = new SystemFunctionFactory()
-            .create(systemFactoryType || SystemFactoryTypes.line);
+            .create(systemFactoryType || SystemFunctionTypes.line);
     }
 
     /**
