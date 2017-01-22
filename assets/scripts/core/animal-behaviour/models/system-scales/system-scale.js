@@ -39,14 +39,15 @@ class SystemScale {
      */
     _systemFunction;
 
-    constructor(params, systemFactoryType) {
-        this.current = params.current || 0;
-        this.min = params.min || 0;
-        this.max = params.max || 0;
-        this.getPercentageInScale();
-
-        this._systemFunction = new SystemFunctionFactory()
-            .create(systemFactoryType || SystemFunctionTypes.line);
+    constructor(params) {
+        if (params) {
+            this.current = params.current || 0;
+            this.min = params.min || 0;
+            this.max = params.max || 0;
+            this.getPercentageInScale();
+        }
+            
+        this._systemFunction = params.systemFunction;
     }
 
     /**

@@ -24,18 +24,11 @@ class MuscularSystem extends System{
     _weight;
 
     
-    constructor() {
+    constructor(speed, weight) {
         super();
-        this._speed  = new SystemScale();
-        this._weight = new SystemScale();
+        this._speed  = speed;
+        this._weight = weight;
     }
-   
-    onAgeIncrease(delta) {
-        this._speed.addScaleValue(-delta);
-        this._weight.addScaleValue(delta);
-    }
-
-  
 }
 
 export { MuscularSystem };

@@ -19,9 +19,21 @@ class SystemFunctionFactory {
      */
     _factories;
 
+    static _instance;
+
     constructor() { 
         this._factories = {};
         this._factories[SystemFunctionTypes.line] = LineSystemFunction;
+    }
+
+    /**
+     * @returns {SystemFunctionFactory}
+     */
+    static instance() { 
+        if (!this._instance) { 
+            this._instance = new SystemFunctionFactory();
+        }
+        return this._instance;
     }
 
     /**

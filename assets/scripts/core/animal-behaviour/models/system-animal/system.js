@@ -42,6 +42,12 @@ class System {
     trigger(event, params) { 
         this._communicator.publish(event, params);
     }
+
+    onSpeedIncrease(delta) { 
+    }
+
+    onWeightIncrease(delta) {
+    }
 }
 
 export { System };

@@ -2,7 +2,7 @@ import { LionFactory, MouseFactory } from './animal-factories/export-animal-fact
 /**
  * enum типов фабрик животных
  */
-const animalFactoryTypes = {
+const AnimalTypes = {
     lion: 0,
     mouse: 1
 }
@@ -18,15 +18,13 @@ class AnimalFactory {
 
     constructor() { 
         this._factories = {};
-        this._factories[animalFactoryTypes.lion] = LionFactory;
-        this._factories[animalFactoryTypes.mouse] = MouseFactory;
-        
+        this._factories[AnimalTypes.lion] = LionFactory;
+        this._factories[AnimalTypes.mouse] = MouseFactory;
     }
 
-    
-    create(animalFactoryType, params) { 
-        return new this._factories[animalFactoryType](params);
+    create(animalType, params) { 
+        return new this._factories[animalType](params).create();
     }
 }
 
-export { AnimalFactory };
+export { AnimalFactory, AnimalTypes };

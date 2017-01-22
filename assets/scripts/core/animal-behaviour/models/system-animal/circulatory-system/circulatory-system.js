@@ -27,10 +27,10 @@ class CirculatorySystem extends System{
      * 
      * @memberOf CirculatorySystem
      */
-    constructor(){
+    constructor(pressure, heartbeat){
         super();
-        this._pressure=new SystemScale();
-        this._heartbeat= new SystemScale();
+        this._pressure = pressure;
+        this._heartbeat = heartbeat;
     }
     
 }
