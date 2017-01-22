@@ -5,6 +5,12 @@ import { SystemFunction } from './system-function';
  * @class SystemFunction
  */
 class LineSystemFunction extends SystemFunction { 
+    /**
+     * Коэффицент 
+     * 
+     * @type {number}
+     * @memberOf LineSystemFunction
+     */
     _coefficient;
 
     constructor(params) {
@@ -14,6 +20,14 @@ class LineSystemFunction extends SystemFunction {
         }    
     }
 
+    /**
+     * 
+     * 
+     * @param {any} params
+     * @returns
+     * 
+     * @memberOf LineSystemFunction
+     */
     calculate(params) { 
         return this._coefficient * params.value;
     }

@@ -8,19 +8,11 @@ import { SystemScale } from '../system-scales/export-system-scales';
  */
 class System { 
     /**
+     * Коммуникатор для общения с другими системами
      * @type {Communicator}
      */
     _communicator;
-
-
-    /**
-     * @typedef sysState
-     * @type {Object} 
-     * @property {number} current текущие еденицы состояния
-     * @property {number} min минимальное количество единиц состояния
-     * @property {number} max максимальное количество единиц состояния
-     * @property {number} scale шкала состояния
-     */   
+   
     /**
      * Состояние системы в целом
      * @type {SystemScale} объект состояния
@@ -33,7 +25,7 @@ class System {
     }
 
     /**
-     *
+     * Устанавливает системе коммуникатор
      * @param {Communicator} communicator 
      * @memberOf System
      */

@@ -1,18 +1,39 @@
 import { SystemFactoryTypes, SystemFunctionFactory, SystemFunction} from '../system-functions/export-system-functions';
 
 /**
- * 
+ * Класс обертка для параметров систем
  * @export
  * @class SystemScale
  */
 class SystemScale { 
+    /**
+     * Текущее значение параметра
+     * @type {number}  
+     * @memberOf SystemScale
+     */
     current;
+    /**
+     * Минимальное значение которое может принимать current текущее значение
+     * @type {number}
+     * @memberOf SystemScale
+     */
     min;
+    /**
+     * Максимальное значение которое может принимать current текущее значение
+     * @type {number} 
+     * @memberOf SystemScale
+     */
     max;
+    /**
+     * Процент положения параметра на интервале допустимых значений
+     * @type {number} процент
+     * @memberOf SystemScale
+     */
     scale;
 
     
     /**
+     * Система функций для расчета
      * @type {SystemFunction}
      * @memberOf SystemScale
      */
@@ -22,14 +43,14 @@ class SystemScale {
         this.current = params.current || 0;
         this.min = params.min || 0;
         this.max = params.max || 0;
-        this.scale = params.scale || 0;
-        
+        this.getPercentageInScale();
+
         this._systemFunction = new SystemFunctionFactory()
             .create(systemFactoryType || SystemFactoryTypes.line);
     }
 
     /**
-     * Отдает процент прогресса на основе интервала и текущего значения
+     * Считает процент прогресса на основе интервала и текущего значения
      * @memberOf SystemScale
      */
     getPercentageInScale() {
@@ -37,7 +58,7 @@ class SystemScale {
     }
     
     /**
-     * Отдает текущее значение по прогрессу и интервалу
+     * Считает текущее значение по прогрессу и интервалу
      * @memberOf SystemScale
      */
     getCurrentValueOnScale() {
@@ -46,8 +67,8 @@ class SystemScale {
 
     /**
      * Добавляет к шкале параметра какое-то значение и производит перерасчет текущего значения этого параметра
-     * @param {number} delta дельта изменеия чего-либо
-     * @memberOf System
+     * @param {number} delta дельта изменеия процента какого-либо параметра
+     * @memberOf SystemScale
      */
     addScaleValue(delta) {
         let rez = this.scale + this._systemFunction.calculate(delta);
