@@ -1,5 +1,5 @@
 
-import { MuscularSystem, CirculatorySystem, Mediator} from '../system-animal/system-animal';
+import { MuscularSystem, CirculatorySystem} from '../system-animal/export-system-animal';
 
 /**
  * Класс животное
@@ -7,7 +7,7 @@ import { MuscularSystem, CirculatorySystem, Mediator} from '../system-animal/sys
  * @export
  * @class Animal
  */
-export class Animal { 
+class Animal { 
 
     /**
      * Позиция в которой находится животное фактически
@@ -47,13 +47,7 @@ export class Animal {
     muscular;
 
     
-    /**
-     * Посредник в общении систем 
-     * 
-     * @type {Mediator}
-     * @memberOf Animal
-     */
-    mediator;
+    
 
     /**
      * Creates an instance of Animal.
@@ -62,14 +56,14 @@ export class Animal {
      * @memberOf Animal
      */
     constructor(){
-        this.circulatory=new CirculatorySystem();
-        this.circulatory.percentageImpact=0.1;
-        this.muscular=new MuscularSystem();
-        this.muscular.percentageImpact=0.1;
-        this.mediator=new Mediator();
+        //this.circulatory=new CirculatorySystem();
+        //this.circulatory.percentageImpact=0.1;
+        //this.muscular=new MuscularSystem();
+        //this.muscular.percentageImpact=0.1;
+        //this.mediator=new Mediator();
         //регистрируем системы жизнеобеспечения
-        this.mediator.register(this.muscular);
-        this.mediator.register(this.circulatory); 
+        //this.mediator.register(this.muscular);
+        //this.mediator.register(this.circulatory); 
     }
 
 
@@ -141,3 +135,4 @@ export class Animal {
 
 }
 
+export { Animal };

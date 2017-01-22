@@ -1,5 +1,5 @@
-import { Communicator, EventSystemBuilder } from '../system-communication/system-communication';
-import { SystemScale } from '../../system-scales/system-scale';
+import { Communicator, EventSystemBuilder } from '../system-communication/export-system-communication';
+import { SystemScale } from '../system-scales/export-system-scales';
 
 /**
  * Абстрактный класс для систем животного отец систем
@@ -29,7 +29,7 @@ class System {
     _systemState;
 
     constructor() { 
-        this._systemState = new SystemScale();
+ //       this._systemState = new SystemScale();
     }
 
     /**

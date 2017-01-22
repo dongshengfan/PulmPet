@@ -1,5 +1,5 @@
 import { System } from '../system';
-import { CommunicationEvents as Events } from '../../system-communication/events';
+import { CommunicationEvents as Events } from '../../system-communication/export-system-communication';
 
 class SpeechSystem extends System {
     constructor() { 

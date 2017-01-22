@@ -1,2 +1,3 @@
-export * from './hearing-system/hearing-system';
-export * from './sight-system/sight-system';
+export * from './senses-system';
+export * from './hearing-system/export-hearing-system';
+export * from './sight-system/export-sight-system';

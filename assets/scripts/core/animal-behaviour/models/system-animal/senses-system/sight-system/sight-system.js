@@ -4,7 +4,9 @@
  * @export
  * @class SightSystem
  */
-export class SightSystem{
+ class SightSystem{
     
     
 }
+
+export { SightSystem };

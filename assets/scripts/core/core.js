@@ -1,9 +1,8 @@
 //import {Animal, Graph, Elephant, Lion, Zebra, Mouse, Hyena} from './animal-behaviour/animal-behaviour';
 
-import { Communicator, CommunicationEvents as Events, EventSystemBuilder, SpeechSystem, ReproductionSystem }
-    from './animal-behaviour/animal-behaviour';
+import { Communicator, CommunicationEvents as Events, EventSystemBuilder, SpeechSystem, ReproductionSystem, SystemFunctionFactory, SystemFactoryTypes } from './animal-behaviour/export-animal-behaviour';
 
-import { SystemFunctionFactory, SystemFactoryTypes } from './animal-behaviour/models/system-functions/system-function-factory';
+
 
 var speech = new SpeechSystem();
 var reproduction = new ReproductionSystem();

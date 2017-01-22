@@ -1,11 +1,12 @@
 import { System } from '../system';
+import { SystemScale } from '../../system-scales/export-system-scales';
 /**
  * Класс сердечнососудистая системы
  * {Давление,Седцебиение}
  * @export
  * @class CirculatorySystem
  */
-export class CirculatorySystem extends System{
+class CirculatorySystem extends System{
  
   
     /**
@@ -107,3 +108,5 @@ export class CirculatorySystem extends System{
         this._addScaleValue(this._heartbeat,value);        
     }
 }
+ 
+ export { CirculatorySystem };

@@ -1,5 +1,4 @@
-import { SystemFactoryTypes, SystemFunctionFactory} from '../system-functions/system-function-factory';
-import { SystemFunction } from '../system-functions/system-function';
+import { SystemFactoryTypes, SystemFunctionFactory, SystemFunction} from '../system-functions/export-system-functions';
 
 /**
  * 
@@ -24,7 +23,7 @@ class SystemScale {
         this.min = params.min || 0;
         this.max = params.max || 0;
         this.scale = params.scale || 0;
-
+        
         this._systemFunction = new SystemFunctionFactory()
             .create(systemFactoryType || SystemFactoryTypes.line);
     }

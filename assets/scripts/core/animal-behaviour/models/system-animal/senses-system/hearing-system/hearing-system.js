@@ -4,6 +4,8 @@
  * @export
  * @class HearingSystem
  */
-export class HearingSystem{
+class HearingSystem{
     
 }
+
+export { HearingSystem };

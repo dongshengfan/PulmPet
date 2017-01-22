@@ -1,5 +1,5 @@
 import { System } from '../system';
-import { SystemScale } from '../../system-scales/system-scale';
+import { SystemScale } from '../../system-scales/export-system-scales';
 
 /**
  * Класс опорно-двигательной системы
@@ -7,7 +7,7 @@ import { SystemScale } from '../../system-scales/system-scale';
  * @export
  * @class MuscularSystem
  */
-export class MuscularSystem extends System{
+class MuscularSystem extends System{
     
     /**
      * @typedef Speed
@@ -103,3 +103,5 @@ export class MuscularSystem extends System{
         this._addScaleValue(this._weight,value);
     }*/
 }
+
+export { MuscularSystem };

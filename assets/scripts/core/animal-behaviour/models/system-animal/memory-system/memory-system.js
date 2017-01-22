@@ -4,7 +4,7 @@
  * @export
  * @class MemorySystem
  */
-export class MemorySystem{
+class MemorySystem{
     /**
      * Количество тайлдов с водой которое может помнить животное
      * 
@@ -147,3 +147,4 @@ export class MemorySystem{
     
 }
 
+export { MemorySystem };

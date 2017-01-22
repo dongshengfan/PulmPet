@@ -4,7 +4,7 @@
  * @export
  * @class FoodSystem
  */
-export class FoodSystem{
+class FoodSystem{
 
     /**
      * Минимальнодопустимое количество воды в организме
@@ -123,3 +123,5 @@ export class FoodSystem{
 
 
 }
+
+export { FoodSystem };
