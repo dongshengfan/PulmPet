@@ -1,14 +1,12 @@
-import { AnimalFactory } from './animal-factory';
+
 
 /**
  * Абстрактная фабрика мышей
  * 
  * @class MouseFactory
- * @extends {AnimalFactory}
  */
-class MouseFactory extends AnimalFactory{
+class MouseFactory {
     constructor(){
-        super();
         
     }
 }

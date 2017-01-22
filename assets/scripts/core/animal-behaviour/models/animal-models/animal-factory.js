@@ -1,4 +1,4 @@
-import { LionFactory, MouseFactory } from './animal-factory/export-animal-factory';
+import { LionFactory, MouseFactory } from './animal-factories/export-animal-factory';
 /**
  * enum типов фабрик животных
  */
