@@ -1,8 +1,8 @@
 import { SystemFunction } from './system-function';
 /**
- * Абстрактный класс функций
+ * Класс линейных функций
  * @export
- * @class SystemFunction
+ * @class LineSystemFunction
  */
 class LineSystemFunction extends SystemFunction { 
     /**
