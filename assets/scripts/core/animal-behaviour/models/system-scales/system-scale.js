@@ -37,9 +37,9 @@ class SystemScale {
      * @type {SystemFunction}
      * @memberOf SystemScale
      */
-    _systemFunction;
+    _systemFunctions;
 
-    constructor(params) {
+    constructor(params, functions) {
         if (params) {
             this.current = params.current || 0;
             this.min = params.min || 0;
@@ -47,7 +47,7 @@ class SystemScale {
             this.getPercentageInScale();
         }
             
-        this._systemFunction = params.systemFunction;
+        this._systemFunctions = functions;
     }
 
     /**
@@ -69,10 +69,12 @@ class SystemScale {
     /**
      * Добавляет к шкале параметра какое-то значение и производит перерасчет текущего значения этого параметра
      * @param {number} delta дельта изменеия процента какого-либо параметра
+     * @param {SystemFunctionTypes}
      * @memberOf SystemScale
      */
-    addScaleValue(delta) {
-        let rez = this.scale + this._systemFunction.calculate(delta);
+    addScaleValue(delta, functionType) {
+        let systemFunction = this._systemFunctions[functionType];
+        let rez = this.scale + systemFunction.calculate(delta);
         if(rez <= 100 && rez >= 0){
             this.scale = rez;
             this.getCurrentValueOnScale();

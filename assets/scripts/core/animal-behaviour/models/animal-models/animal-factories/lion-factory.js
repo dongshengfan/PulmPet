@@ -66,13 +66,16 @@ class LionFactory  {
         //создание функций зависимостей параметров
         var speedLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params),
             weightLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params);
+        
+        var speedFunctions = {};
+        speedFunctions[SystemFunctionTypes.line] = speedLineFunction;
+
+        var weightFunctions = {};
+        weightFunctions[SystemFunctionTypes.line] = weightLineFunction;
 
         //создание шкал
-        var speed = new SystemScale({
-            systemFunction: speedLineFunction
-        }), weight = new SystemScale({
-            systemFunction: weightLineFunction
-        });
+        var speed = new SystemScale(params, speedFunctions),
+            weight = new SystemScale(params, weightFunctions);
         
         return new MuscularSystem(speed, weight);
     }
@@ -86,12 +89,15 @@ class LionFactory  {
         var pressureLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params),
             heartbeatLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params);
 
+        var pressureFunctions = {};
+        pressureFunctions[SystemFunctionTypes.line] = pressureLineFunction;
+
+        var heartbeatFunctions = {};
+        heartbeatFunctions[SystemFunctionTypes.line] = heartbeatLineFunction;
+
         //создание шкал
-        var pressure = new SystemScale({
-            systemFunction: pressureLineFunction
-        }), heartbeat = new SystemScale({
-            systemFunction: heartbeatLineFunction
-        });
+        var pressure = new SystemScale(params, pressureFunctions),
+            heartbeat = new SystemScale(params, heartbeatFunctions);
         
         return new CirculatorySystem(pressure, heartbeat);
     }
