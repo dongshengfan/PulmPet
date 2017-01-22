@@ -47,7 +47,7 @@ class SystemScale {
             this.getPercentageInScale();
         }
             
-        this._systemFunctions = functions;
+        this._systemFunctions = functions || {};
     }
 
     /**
@@ -79,6 +79,10 @@ class SystemScale {
             this.scale = rez;
             this.getCurrentValueOnScale();
         }
+    }
+
+    addFunction(functionType, functionInstance) { 
+        this._systemFunctions[functionType] = functionInstance;
     }
 }
 

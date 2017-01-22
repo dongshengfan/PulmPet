@@ -1,8 +1,8 @@
 import { Animal } from '../animal';
 import { CommunicationEvents as Events, EventSystemBuilder } from               '../../system-communication/export-system-communication';
 import { MuscularSystem, CirculatorySystem } from '../../system-animal/export-system-animal';
-import { SystemScale } from '../../system-scales/export-system-scales';
-import { LineSystemFunction, SystemFunctionFactory, SystemFunctionTypes } from '../../system-functions/export-system-functions';
+import { SystemScale, SystemScaleBuilder } from '../../system-scales/export-system-scales';
+import { LineSystemFunction, SystemFunctionTypes } from '../../system-functions/export-system-functions';
 
 /**
  * Абстрактная фабрика львов
@@ -15,15 +15,7 @@ class LionFactory  {
      */
     _lion;
     
-    /**
-     * @type {SystemFunctionFactory}
-     * @memberOf LionFactory
-     */
-    _functionsFactory;
-
     constructor(params) {
-        this._functionsFactory = SystemFunctionFactory.instance();
-
         var muscularSystem = this._createMuscularSystem(params),
             circulatorySystem = this._createCirculatorySystem(params);
         
@@ -63,21 +55,20 @@ class LionFactory  {
      * @memberOf LionFactory
      */
     _createMuscularSystem(params) {
-        //создание функций зависимостей параметров
-        var speedLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params),
-            weightLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params);
+        var speedBuilder  = new SystemScaleBuilder(params);
+        var weightBuilder = new SystemScaleBuilder(params);
         
-        var speedFunctions = {};
-        speedFunctions[SystemFunctionTypes.line] = speedLineFunction;
+        speedBuilder.addFunction({
+            type: SystemFunctionTypes.line,
+            params: params
+        });
 
-        var weightFunctions = {};
-        weightFunctions[SystemFunctionTypes.line] = weightLineFunction;
-
-        //создание шкал
-        var speed = new SystemScale(params, speedFunctions),
-            weight = new SystemScale(params, weightFunctions);
-        
-        return new MuscularSystem(speed, weight);
+        weightBuilder.addFunction({
+            type: SystemFunctionTypes.line,
+            params: params
+        });
+       
+        return new MuscularSystem(speedBuilder.build(), weightBuilder.build());
     }
 
     /**
@@ -85,21 +76,20 @@ class LionFactory  {
      * @memberOf LionFactory
      */
     _createCirculatorySystem(params) {
-        //создание функций зависимостей параметров
-        var pressureLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params),
-            heartbeatLineFunction = this._functionsFactory.create(SystemFunctionTypes.line, params);
-
-        var pressureFunctions = {};
-        pressureFunctions[SystemFunctionTypes.line] = pressureLineFunction;
-
-        var heartbeatFunctions = {};
-        heartbeatFunctions[SystemFunctionTypes.line] = heartbeatLineFunction;
-
-        //создание шкал
-        var pressure = new SystemScale(params, pressureFunctions),
-            heartbeat = new SystemScale(params, heartbeatFunctions);
+        var pressureBuilder  = new SystemScaleBuilder(params);
+        var heartbeatBuilder = new SystemScaleBuilder(params);
         
-        return new CirculatorySystem(pressure, heartbeat);
+        pressureBuilder.addFunction({
+            type: SystemFunctionTypes.line,
+            params: params
+        });
+
+        heartbeatBuilder.addFunction({
+            type: SystemFunctionTypes.line,
+            params: params
+        });
+       
+        return new CirculatorySystem(pressureBuilder.build(), heartbeatBuilder.build());
     }
 }
 
