@@ -21,6 +21,8 @@ var params = {
                     type: SystemFunctionTypes.line,
                     params: {
                         //параметры функций
+                        coefficient: 40,
+                        free: 99
                     }
                 }
             ]
@@ -28,6 +30,16 @@ var params = {
         circulatory: {
             scale: {
                 //здесь настройки шкал
+                heartbeat: {
+                    current: 20,
+                    max: 90,
+                    min: 10,
+                },
+                pressure: {
+                    current: 120,
+                    max: 290,
+                    min: 70,
+                }
             },
             functions: [
                 //здесь настройки функций
@@ -35,12 +47,17 @@ var params = {
                     type: SystemFunctionTypes.line,
                     params: {
                         //параметры функций
+                        coefficient: 4,
+                        free: 9
                     }
                 },
                 {
-                    type: SystemFunctionTypes.parabolic,
+                    type: SystemFunctionTypes.quadratic,
                     params: {
                         //параметры функций
+                        coefficientA: 8,
+                        coefficientB: 2,
+                        free: 0
                     }
                 }
             ]

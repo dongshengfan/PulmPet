@@ -2,7 +2,7 @@ import { Animal } from '../animal';
 import { CommunicationEvents as Events, EventSystemBuilder } from               '../../system-communication/export-system-communication';
 import { MuscularSystem, CirculatorySystem } from '../../system-animal/export-system-animal';
 import { SystemScale, SystemScaleBuilder } from '../../system-scales/export-system-scales';
-import { LineSystemFunction, SystemFunctionTypes } from '../../system-functions/export-system-functions';
+import { LineSystemFunction, QuadraticSystemFunction, SystemFunctionTypes } from '../../system-functions/export-system-functions';
 
 /**
  * Абстрактная фабрика львов
@@ -80,7 +80,6 @@ class LionFactory  {
         var heartbeatBuilder = new SystemScaleBuilder(params.scale.heartbeat);
 
         pressureBuilder.addFunction(params.functions[0]);
-
         heartbeatBuilder.addFunction(params.functions[1]);
        
         return new CirculatorySystem(pressureBuilder.build(), heartbeatBuilder.build());
