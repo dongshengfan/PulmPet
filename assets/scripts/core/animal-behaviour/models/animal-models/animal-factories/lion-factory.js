@@ -16,12 +16,12 @@ class LionFactory  {
     _lion;
     
     constructor(params) {
-        var muscularSystem = this._createMuscularSystem(params),
-            circulatorySystem = this._createCirculatorySystem(params);
+        var muscularSystem = this._createMuscularSystem(params.systems.muscular),
+            circulatorySystem = this._createCirculatorySystem(params.systems.circulatory);
         
         var communicator = this._createCommunicator(muscularSystem, circulatorySystem); 
 
-        this._lion = new Animal(params, {
+        this._lion = new Animal(params.animal, {
             muscular: muscularSystem,
             circulatory: circulatorySystem
         }, communicator);
@@ -76,9 +76,9 @@ class LionFactory  {
      * @memberOf LionFactory
      */
     _createCirculatorySystem(params) {
-        var pressureBuilder  = new SystemScaleBuilder(params);
-        var heartbeatBuilder = new SystemScaleBuilder(params);
-        
+        var pressureBuilder  = new SystemScaleBuilder(params.scale.pressure);
+        var heartbeatBuilder = new SystemScaleBuilder(params.scale.heartbeat);
+
         pressureBuilder.addFunction({
             type: SystemFunctionTypes.line,
             params: params

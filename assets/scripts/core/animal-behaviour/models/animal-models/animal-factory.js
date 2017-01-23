@@ -16,10 +16,22 @@ class AnimalFactory {
     
     _factories;
 
+    static _instance;
+
     constructor() { 
         this._factories = {};
         this._factories[AnimalTypes.lion] = LionFactory;
         this._factories[AnimalTypes.mouse] = MouseFactory;
+    }
+
+    /**
+     * @returns {AnimalFactory}
+     */
+    static instance() { 
+        if (!this._instance) { 
+            this._instance = new AnimalFactory();
+        }
+        return this._instance;
     }
 
     create(animalType, params) { 

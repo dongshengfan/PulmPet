@@ -30,6 +30,11 @@ class SystemScaleBuilder {
         return this;
     }
 
+    addAllFunctions(functions) { 
+        functions.forEach((functionParam) => this.addFunction(functionParam));
+        return this;
+    }
+
     /**
      * 
      * @returns {SystemScale} 
