@@ -79,15 +79,9 @@ class LionFactory  {
         var pressureBuilder  = new SystemScaleBuilder(params.scale.pressure);
         var heartbeatBuilder = new SystemScaleBuilder(params.scale.heartbeat);
 
-        pressureBuilder.addFunction({
-            type: SystemFunctionTypes.line,
-            params: params
-        });
+        pressureBuilder.addFunction(params.functions[0]);
 
-        heartbeatBuilder.addFunction({
-            type: SystemFunctionTypes.line,
-            params: params
-        });
+        heartbeatBuilder.addFunction(params.functions[1]);
        
         return new CirculatorySystem(pressureBuilder.build(), heartbeatBuilder.build());
     }

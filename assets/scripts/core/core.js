@@ -36,6 +36,12 @@ var params = {
                     params: {
                         //параметры функций
                     }
+                },
+                {
+                    type: SystemFunctionTypes.parabolic,
+                    params: {
+                        //параметры функций
+                    }
                 }
             ]
         }

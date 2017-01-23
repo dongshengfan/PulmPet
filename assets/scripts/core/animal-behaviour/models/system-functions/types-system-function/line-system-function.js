@@ -1,4 +1,4 @@
-import { SystemFunction } from './system-function';
+import { SystemFunction } from '../system-function';
 /**
  * Класс линейных функций
  * @export
