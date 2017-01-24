@@ -40,7 +40,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_id": "4e597318-13ef-490b-a065-41ec1601229f",
+    "_id": "ccf02430-c1b5-40af-a5e2-b0eb1464d621",
     "autoReleaseAssets": false
   },
   {
@@ -1199,7 +1199,7 @@
     "_originalHeight": 0
   },
   {
-    "__type__": "59298GwDK9NnoC3e3DcuD6e",
+    "__type__": "56986HX9SVPm5HSCnIK0LNi",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1213,7 +1213,7 @@
     "sizeBox": 150,
     "naprav": 0,
     "eps": 1,
-    "intevalDovoda": 0.001,
+    "intevalDovoda": 0.01,
     "stepDovoda": 8,
     "alfaBox": 30
   },
