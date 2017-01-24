@@ -25,29 +25,32 @@ var TouchDragger = cc.Class({
     onLoad: function () {
         this._setPos();
         this.node.opacity = 160;
-        this.node.on(cc.Node.EventType.TOUCH_START, function() {            
+        this.node.on(cc.Node.EventType.TOUCH_START, ()=> {            
             this.opacity = 255;
-
         }, this.node);
 
-        this.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
-            this.opacity = 255;            
-            var delta = event.touch.getDelta(); 
-
-            this.getComponent(TouchDragger)._setNapravlenie(delta);
-            this.getComponent(TouchDragger)._movePos(delta);     
-            this.getComponent(TouchDragger)._checkPosBox();
-            
-            if (this.getComponent(TouchDragger).propagate)
-                event.stopPropagation();
-
-        }, this.node);
+        this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove.bind(this));
        
        
         this.node.on(cc.Node.EventType.TOUCH_END, function() {
             this.getComponent(TouchDragger)._endSwipe()
             
         }, this.node);
+    },
+    onTouchMove:function(event){
+         this.opacity = 255;       
+            console.log(this);
+            console.log(this.node);
+            console.log(event);
+                
+            var delta = event.touch.getDelta(),
+            touchDragger = this.getComponent(TouchDragger);
+          //  touchDragger._setNapravlenie(delta);
+           this._setNapravlenie(delta);
+            touchDragger._movePos(delta);     
+            touchDragger._checkPosBox();            
+            if (touchDragger.propagate)
+                event.stopPropagation();
     },
     /**Проверяет не зашеллибокс за грани доступного, ели зашел то ровняет его */
     _checkPosBox:function(){
