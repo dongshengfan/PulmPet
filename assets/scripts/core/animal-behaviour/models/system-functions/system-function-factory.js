@@ -1,9 +1,10 @@
-import { LineSystemFunction } from './line-system-function';
+import { LineSystemFunction, QuadraticSystemFunction } from './types-system-function/export-types-system-function';
 /**
  * enum типов фабрик функций
  */
 const SystemFunctionTypes = {
-    line: 0
+    line: 0,    
+    quadratic: 1
 }
 
 /**
@@ -24,6 +25,7 @@ class SystemFunctionFactory {
     constructor() { 
         this._factories = {};
         this._factories[SystemFunctionTypes.line] = LineSystemFunction;
+        this._factories[SystemFunctionTypes.quadratic] = QuadraticSystemFunction;
     }
 
     /**

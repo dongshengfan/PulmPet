@@ -1,4 +1,4 @@
-import { SystemFunction } from './system-function';
+import { SystemFunction } from '../system-function';
 /**
  * Класс линейных функций
  * @export
@@ -12,11 +12,18 @@ class LineSystemFunction extends SystemFunction {
      * @memberOf LineSystemFunction
      */
     _coefficient;
-
+    /**
+     * Свободный коэффицент
+     * 
+     * @type {number}
+     * @memberOf LineSystemFunction
+     */
+    _free;
     constructor(params) {
         super(params);
         if (params) {
-            this._coefficient = params.coefficient || 2;
+            this._coefficient = params.coefficient || 0.5;
+            this._free = params.free || 0;
         }    
     }
 
@@ -29,7 +36,7 @@ class LineSystemFunction extends SystemFunction {
      * @memberOf LineSystemFunction
      */
     calculate(params) { 
-        return this._coefficient * params.value;
+        return this._coefficient * params.value + this._free;
     }
 }
 
