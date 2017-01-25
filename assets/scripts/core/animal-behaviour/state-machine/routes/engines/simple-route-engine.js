@@ -16,8 +16,8 @@ export class SimpleRouteEngine extends RouteEngine {
      * @param {Array<Route>} [routes=[]] возможные маршруты в рамках группы
      * @memberOf SimpleRouteEngine
      */
-    constructor(model, routes = [], nextEngine = null) {  
-        super(model, routes, nextEngine);
+    constructor(routes = [], nextEngine = null) {  
+        super(routes, nextEngine);
     }
 
     /**

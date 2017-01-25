@@ -1,5 +1,5 @@
 import { Route } from '../routes/route';
-import { Animal } from '../../models/models';
+import { Animal } from '../../models/export-models';
 import { RouteEngine } from '../routes/engines/route-engine';
 
 /**
@@ -93,6 +93,7 @@ export class State {
      */
     setRouteEngine(routeEngine) { 
         this._routeEngine = routeEngine;
+        this._routeEngine.setModel(this._model);
     }
 
     /**

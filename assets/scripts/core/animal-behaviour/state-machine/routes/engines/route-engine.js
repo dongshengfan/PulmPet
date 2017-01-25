@@ -36,7 +36,7 @@ export class RouteEngine {
      * @param {Array<Route>} [routes=[]] возможные маршруты в рамках группы
      * @memberOf RouteEngine
      */
-    constructor(model, routes = [], nextEngine = null) { 
+    constructor(routes = [], nextEngine = null) { 
         this._model = model;
         this._routes = routes;
         this._nextEngine = nextEngine;
@@ -68,6 +68,15 @@ export class RouteEngine {
         this._nextEngine = engine;
     }
     
+    /**
+     * Установка модели животного
+     * @param {Animal} animal
+     * @memberOf RouteEngine
+     */
+    setModel(animal) { 
+
+    }
+
     /**
      * Обработка установленных в цепочку групп с маршрутами
      * @returns {Route|null}
