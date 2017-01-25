@@ -1,3 +1,4 @@
+import { Animal } from './animal'
 import { LionFactory, MouseFactory } from './animal-factories/export-animal-factory';
 /**
  * enum типов фабрик животных
@@ -34,7 +35,10 @@ class AnimalFactory {
         return this._instance;
     }
 
-    create(animalType, params) { 
+    /**
+     * @returns {Animal}
+     */
+    create(animalType, params) {
         return new this._factories[animalType](params).create();
     }
 }

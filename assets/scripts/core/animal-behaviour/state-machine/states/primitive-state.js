@@ -21,7 +21,7 @@ export class PrimitiveState extends State {
      * @param {Boolean} isEndPoint флаг заключительного состояния
      * @memberOf PrimitiveState
      */
-    constructor(name, model, routeEngine = null, isEndPoint = false) {
+    constructor(name, model, isEndPoint = false, routeEngine = null) {
         super(name, model, routeEngine, isEndPoint);
     }
 

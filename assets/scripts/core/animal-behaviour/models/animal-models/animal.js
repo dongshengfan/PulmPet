@@ -53,6 +53,7 @@ class Animal {
      */
     _communicator;
     
+    _stateMachine;
 
     /**
      * Creates an instance of Animal.
@@ -62,6 +63,14 @@ class Animal {
         this._muscular = systems.muscular;
         this._circulatory = systems.circulatory;
         this._communicator = communicator;
+    }
+
+    setStateMachine(stateMachine) { 
+        this._stateMachine = stateMachine;
+    }
+
+    run() {
+        this._stateMachine.run();
     }
 }
 

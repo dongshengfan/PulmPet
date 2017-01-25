@@ -37,7 +37,6 @@ export class RouteEngine {
      * @memberOf RouteEngine
      */
     constructor(routes = [], nextEngine = null) { 
-        this._model = model;
         this._routes = routes;
         this._nextEngine = nextEngine;
     }

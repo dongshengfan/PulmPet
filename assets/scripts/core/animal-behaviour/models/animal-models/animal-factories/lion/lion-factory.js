@@ -3,6 +3,7 @@ import { CommunicationEvents as Events, EventSystemBuilder } from '../../../syst
 import { MuscularSystem, CirculatorySystem } from '../../../system-animal/export-system-animal';
 import { SystemScale, SystemScaleBuilder } from '../../../system-scales/export-system-scales';
 import { LineSystemFunction, SystemFunctionTypes } from '../../../system-functions/export-system-functions';
+import { LionStateFactory } from './lion-states-factory';
 
 /**
  * Абстрактная фабрика львов
@@ -27,8 +28,8 @@ class LionFactory  {
         }, communicator);
     }
 
-    create() { 
-        return this._lion;
+    create() {
+        return new LionStateFactory(this._lion).create();
     }
 
     /**
