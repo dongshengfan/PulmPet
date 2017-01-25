@@ -1,5 +1,6 @@
 import { Animal } from './animal'
-import { LionFactory, MouseFactory } from './animal-factories/export-animal-factory';
+import { LionFactory } from './lion/factories/lion-factory';
+import { MouseFactory } from './mouse/factories/mouse-factory';
 /**
  * enum типов фабрик животных
  */
