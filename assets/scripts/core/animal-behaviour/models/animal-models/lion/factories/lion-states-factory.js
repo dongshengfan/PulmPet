@@ -1,5 +1,9 @@
 import { Animal } from '../../animal';
-import { PrimitiveState, StateMachine, SimpleRouteEngine, Route, State } from '../../../../state-machine/export';
+import { SimpleRouteEngine } from '../../../../state-machine/routes/engines/simple-route-engine';
+import { Route }  from '../../../../state-machine/routes/route';
+import { PrimitiveState, State, PatternState } from '../../../../state-machine/states/export-states';
+import { StateMachine } from '../../../../state-machine/state-machine';
+
 
 class LionStateFactory {
     _animal;
@@ -25,10 +29,12 @@ class LionStateFactory {
      * @memberOf LionStateFactory
      */
     _createStates() { 
+        cc.log(new PrimitiveState('state1', this._animal));
+
         return {
             state1: new PrimitiveState('state1', this._animal),
             state2: new PrimitiveState('state2', this._animal),
-            state3: new PrimitiveState('state3', this._animal, true),
+            state3: new PrimitiveState('state3', this._animal, true)
         }
     }
 
