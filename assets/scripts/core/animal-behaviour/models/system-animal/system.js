@@ -20,8 +20,8 @@ class System {
      */
     _systemState;
 
-    constructor() { 
- //       this._systemState = new SystemScale();
+    constructor(systemState) { 
+          this._systemState = systemState;
     }
 
     /**
@@ -34,7 +34,7 @@ class System {
     }
 
     /**
-     * 
+     * Публикация изменения в системе
      * @param {EventSystemBuilder} event
      * @param {any} param
      * @memberOf System
@@ -43,11 +43,31 @@ class System {
         this._communicator.publish(event, params);
     }
 
+    
     onSpeedIncrease(delta) { 
     }
-
+   
+    onSpeedDecrease(delta) { 
+    }
+   
     onWeightIncrease(delta) {
     }
+   
+    onWeightDecrease(delta) {
+    }
+
+    onPressureIncrease(delta) {
+    }
+  
+    onPressureDecrease(delta) {   
+    }
+    
+    onHeartbeatIncrease(delta) {
+    }
+   
+    onHeartbeatDecrease(delta) {
+    }
+
 }
 
 export { System };

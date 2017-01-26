@@ -1,5 +1,6 @@
 import { System } from '../system';
 import { SystemScale } from '../../system-scales/export-system-scales';
+import { SystemFunctionTypes } from '../../system-functions/export-system-functions';
 
 /**
  * Класс опорно-двигательной системы
@@ -24,11 +25,40 @@ class MuscularSystem extends System{
     _weight;
 
     
-    constructor(speed, weight) {
-        super();
+    constructor(state, speed, weight) {
+        super(state);
         this._speed  = speed;
         this._weight = weight;
     }
+
+    onPressureIncrease(delta) {
+        this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
+        this._speed.addScaleValue(-delta, SystemFunctionTypes.line);
+        this._systemState.addScaleValue(-delta, SystemFunctionTypes.line);
+    }
+
+    onPressureDecrease(delta) {  
+        this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
+        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
+        this._systemState.addScaleValue(delta, SystemFunctionTypes.line);
+    }
+
+    onHeartbeatIncrease(delta) {
+        this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
+        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
+        this._systemState.addScaleValue(-delta, SystemFunctionTypes.line);
+    }
+    
+    onHeartbeatDecrease(delta) {
+        this._weight.addScaleValue(delta, SystemFunctionTypes.line);
+        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
+        this._systemState.addScaleValue(delta, SystemFunctionTypes.line);
+    }
+
+    
+
+
+
 }
 
 export { MuscularSystem };

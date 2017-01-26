@@ -42,13 +42,35 @@ class LionFactory  {
     _createCommunicator(muscularSystem, circulatorySystem) { 
         var eventSystemBuilder = new EventSystemBuilder();
 
-        return eventSystemBuilder.add(Events.speed.increase, {
-            system: circulatorySystem,
-            link: circulatorySystem.onSpeedIncrease
-        }).add(Events.weight.increase, {
+        return eventSystemBuilder
+
+        .add(Events.weight.increase, {
             system: circulatorySystem,
             link: circulatorySystem.onWeightIncrease
-        }).build();
+        })
+        .add(Events.weight.decrease, {
+            system: circulatorySystem,
+            link: circulatorySystem.onWeightDecrease
+        })
+
+        .add(Events.heartbeat.increase, {
+            system: muscularSystem,
+            link: muscularSystem.onHeartbeatIncrease
+        })
+        .add(Events.heartbeat.decrease, {
+            system: muscularSystem,
+            link: muscularSystem.onHeartbeatDecrease
+        })
+        .add(Events.pressure.increase, {
+            system: muscularSystem,
+            link: muscularSystem.onPressureIncrease
+        })
+        .add(Events.pressure.decrease, {
+            system: muscularSystem,
+            link: muscularSystem.onPressureDecrease
+        })
+
+        .build();
     }
 
     /**
@@ -56,14 +78,20 @@ class LionFactory  {
      * @memberOf LionFactory
      */
     _createMuscularSystem(params) {
-        var {speed, weight} = params.scales;
+        var {state, speed, weight} = params.scales;
         var speedBuilder  = new SystemScaleBuilder(speed.params);
         var weightBuilder = new SystemScaleBuilder(weight.params);
-        
+        var systemState = new SystemScaleBuilder(state.params);  
+
+        systemState.addAllFunctions(state.functions); 
         speedBuilder.addAllFunctions(speed.functions);
-        weightBuilder.addAllFunctions(weight.functions);
+        weightBuilder.addAllFunctions(weight.functions);       
        
-        return new MuscularSystem(speedBuilder.build(), weightBuilder.build());
+        return new MuscularSystem(
+            systemState.build(),
+            speedBuilder.build(),
+            weightBuilder.build()
+        );
     }
 
     /**
@@ -71,14 +99,20 @@ class LionFactory  {
      * @memberOf LionFactory
      */
     _createCirculatorySystem(params) {
-        var {pressure, heartbeat} = params.scales;
+        var {state, pressure, heartbeat} = params.scales;
         var pressureBuilder  = new SystemScaleBuilder(pressure.params);
         var heartbeatBuilder = new SystemScaleBuilder(heartbeat.params);
+        var systemState = new SystemScaleBuilder(state.params);  
 
+        systemState.addAllFunctions(state.functions); 
         pressureBuilder.addAllFunctions(pressure.functions);
         heartbeatBuilder.addAllFunctions(heartbeat.functions);
        
-        return new CirculatorySystem(pressureBuilder.build(), heartbeatBuilder.build());
+        return new CirculatorySystem(
+            systemState.build(),
+            pressureBuilder.build(),
+            heartbeatBuilder.build()
+        );
     }
 }
 
