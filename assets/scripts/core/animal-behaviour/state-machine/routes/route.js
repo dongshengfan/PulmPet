@@ -1,4 +1,4 @@
-import { State } from '../states/state';
+import { State } from '../states/export-states';
 
 /**
  * Инкапсуляция следующего состояния для перехода и его условия

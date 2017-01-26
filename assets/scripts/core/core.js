@@ -6,4 +6,3 @@ import { PrimitiveState, StateMachine, Animal, SimpleRouteEngine, Route } from '
 var animalFactory = AnimalFactory.instance();
 var lion = animalFactory.create(AnimalTypes.lion, lionParams);
 lion.run();
-cc.log('end');

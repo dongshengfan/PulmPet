@@ -1,7 +1,6 @@
-import { State } from './state';
-import { Route } from '../routes/route';
-import { Animal } from '../../models/export-models';
-import { RouteEngine } from '../routes/engines/route-engine';
+import { State } from '../state';
+import { Route, RouteEngine } from '../../routes/export-routes';
+import { Animal } from '../../../models/export-models';
 
 /**
  * Класс-композит для сложных состояний.
