@@ -1,6 +1,6 @@
 import { State } from '../state';
-import { Route, RouteEngine } from '../../routes/export-routes';
-import { Animal } from '../../../models/export-models';
+//import { Route, RouteEngine } from '../../routes/export-routes';
+//import { Animal } from '../../../models/export-models';
 
 /**
  * Класс-примитив для одиночных простых состояний.
@@ -31,6 +31,6 @@ export class PrimitiveState extends State {
      * @memberOf PrimitiveState
      */
     run() { 
-        cc.log(this._name);
+        //cc.log(this._name);
     }
 }

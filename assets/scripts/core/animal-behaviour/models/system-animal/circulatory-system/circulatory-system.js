@@ -1,6 +1,6 @@
 import { System } from '../system';
 import { SystemScale } from '../../system-scales/export-system-scales';
-import { SystemFunctionTypes } from '../../system-functions/export-system-functions';
+import { SystemFunctionTypes } from '../../system-functions/system-function-factory';
 
 /**
  * Класс сердечнососудистая системы
@@ -64,7 +64,14 @@ class CirculatorySystem extends System{
     }
 
 
-    
+    changePressure(delta){
+        this._pressure.addScaleValue(delta,SystemFunctionTypes.line);
+       // this.trigger();
+    }
+    changeHeartbeat(delta){
+        this._heartbeat.addScaleValue(delta,SystemFunctionTypes.line);
+       // this.trigger();
+    }
     
 }
  

@@ -1,6 +1,6 @@
 import { System } from '../system';
 import { SystemScale } from '../../system-scales/export-system-scales';
-import { SystemFunctionTypes } from '../../system-functions/export-system-functions';
+import { SystemFunctionTypes } from '../../system-functions/system-function-factory';
 
 /**
  * Класс опорно-двигательной системы
@@ -56,7 +56,15 @@ class MuscularSystem extends System{
     }
 
     
-
+    changeSpeed(delta){
+        this._speed.addScaleValue(delta,SystemFunctionTypes.line);
+      //  this.trigger();
+    }
+    changeWeight(delta){
+        this._weight.addScaleValue(delta,SystemFunctionTypes.line);
+      //  this.trigger();
+    }
+    
 
 
 }
