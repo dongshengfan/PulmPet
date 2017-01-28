@@ -36,7 +36,7 @@ class LineSystemFunction extends SystemFunction {
      * @memberOf LineSystemFunction
      */
     calculate(params) { 
-        return this._coefficient * params.value + this._free;
+        return this._coefficient * params + this._free;
     }
 }
 

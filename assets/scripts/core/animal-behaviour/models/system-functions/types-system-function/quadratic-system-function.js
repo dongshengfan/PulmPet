@@ -44,7 +44,7 @@ class QuadraticSystemFunction extends SystemFunction {
      * @memberOf QuadraticSystemFunction
      */
     calculate(params) { 
-        return this._coefficientA * (params.value ** 2) + this._coefficientB * params.value + this._free;
+        return this._coefficientA * (params** 2) + this._coefficientB * params + this._free;
     }
 }
 

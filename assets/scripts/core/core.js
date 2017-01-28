@@ -6,3 +6,4 @@ import { AnimalFactory, AnimalTypes, lionParams } from './animal-behaviour/expor
 var animalFactory = AnimalFactory.instance();
 var lion = animalFactory.create(AnimalTypes.lion, lionParams);
 lion.run();
+console.log(lion);

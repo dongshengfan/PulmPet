@@ -1,7 +1,7 @@
 import { System } from '../system';
 import { SystemScale } from '../../system-scales/export-system-scales';
 import { SystemFunctionTypes } from '../../system-functions/system-function-factory';
-
+import { CommunicationEvents as events } from '../../system-communication/events';
 /**
  * Класс опорно-двигательной системы
  * {Скорость передвижения, вес}
@@ -58,11 +58,11 @@ class MuscularSystem extends System{
     
     changeSpeed(delta){
         this._speed.addScaleValue(delta,SystemFunctionTypes.line);
-      //  this.trigger();
+        this.verificationMark(delta)? this.trigger(events.speed.increase,delta):this.trigger(events.speed.decrease,delta);
     }
     changeWeight(delta){
         this._weight.addScaleValue(delta,SystemFunctionTypes.line);
-      //  this.trigger();
+        this.verificationMark(delta)? this.trigger(events.weight.increase,delta):this.trigger(events.weight.decrease,delta);
     }
     
 

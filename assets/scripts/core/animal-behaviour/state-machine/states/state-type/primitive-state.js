@@ -31,6 +31,7 @@ export class PrimitiveState extends State {
      * @memberOf PrimitiveState
      */
     run() { 
+        throw new Error('No implementation status...');
         //cc.log(this._name);
     }
 }

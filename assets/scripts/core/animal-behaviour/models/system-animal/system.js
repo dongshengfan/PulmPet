@@ -44,6 +44,23 @@ class System {
     }
 
     
+    /**
+     * Проверяет знак пришедшей дельты изменения
+     * 
+     * @param {number} delta
+     * @returns {boolean} 
+     * 
+     * @memberOf System
+     */
+    verificationMark(delta){
+        if(delta>0){ 
+            return true;
+        }else if(delta<0){
+            return false;
+        }
+        throw new Error('Change delta on zero...');
+    }
+    
     onSpeedIncrease(delta) { 
     }
    
