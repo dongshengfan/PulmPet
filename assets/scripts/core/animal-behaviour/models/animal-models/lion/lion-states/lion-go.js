@@ -1,7 +1,7 @@
 import { PrimitiveState } from '../../../../state-machine/states/export-states';
 import { Animal } from '../../animal';
 
-export class Stand extends PrimitiveState{
+export class Go extends PrimitiveState{
     /**
      * @type {Animal}
      * @memberOf Stand
@@ -13,13 +13,13 @@ export class Stand extends PrimitiveState{
         
     }
     run(){
-        cc.log('стою');
-        this._model._circulatory.changeHeartbeat(-0.7);
-        this._model._circulatory.changePressure(-0.2);
-        this._model._muscular.changeSpeed(0.5);
-        this._model._muscular.changeWeight(0.7);
+        cc.log('иду');
+        this._model._circulatory.changeHeartbeat(0.1);
+        this._model._circulatory.changePressure(0.01);
+        this._model._muscular.changeSpeed(-0.1);
+        this._model._muscular.changeWeight(-0.1);
         
-        
-    }
 
+    }
+    
 }

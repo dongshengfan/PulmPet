@@ -60,6 +60,14 @@ class System {
         }
         throw new Error('Change delta on zero...');
     }
+
+    /**
+     * Анализирует показатели системы выводя вердикт о состоянии 
+     * 
+     * @memberOf System
+     */
+    analyzeSystem(){
+    }
     
     onSpeedIncrease(delta) { 
     }

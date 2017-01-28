@@ -30,41 +30,59 @@ class MuscularSystem extends System{
         this._speed  = speed;
         this._weight = weight;
     }
-
+    
     onPressureIncrease(delta) {
         this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(-delta, SystemFunctionTypes.line);
-        this._systemState.addScaleValue(-delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
     }
 
     onPressureDecrease(delta) {  
         this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(delta, SystemFunctionTypes.line);
-        this._systemState.addScaleValue(delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
     }
 
     onHeartbeatIncrease(delta) {
         this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(delta, SystemFunctionTypes.line);
-        this._systemState.addScaleValue(-delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
     }
     
     onHeartbeatDecrease(delta) {
         this._weight.addScaleValue(delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(delta, SystemFunctionTypes.line);
-        this._systemState.addScaleValue(delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
     }
 
     
     changeSpeed(delta){
         this._speed.addScaleValue(delta,SystemFunctionTypes.line);
+        this.analyzeSystem();   
         this.verificationMark(delta)? this.trigger(events.speed.increase,delta):this.trigger(events.speed.decrease,delta);
     }
     changeWeight(delta){
-        this._weight.addScaleValue(delta,SystemFunctionTypes.line);
+        this._weight.addScaleValue(delta,SystemFunctionTypes.line); 
+        this.analyzeSystem();
         this.verificationMark(delta)? this.trigger(events.weight.increase,delta):this.trigger(events.weight.decrease,delta);
     }
     
+     
+    /**
+     * Анализирует показатели системы выводя вердикт о состоянии
+     * 
+     * @memberOf MuscularSystem
+     */
+    analyzeSystem(){
+        this._systemState.analyze([
+            {
+                scale: 100-this._weight.scale
+            },
+            { 
+                scale: this._speed.scale
+            }
+        ]);
+    }
 
 
 }

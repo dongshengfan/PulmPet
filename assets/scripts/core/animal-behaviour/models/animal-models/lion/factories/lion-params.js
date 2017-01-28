@@ -5,7 +5,7 @@ import { SystemFunctionTypes } from '../../../system-functions/export-system-fun
  ********/
 const stateMuscular={
     params: {
-        current: 100,
+        current: 99,
         min: 0,
         max: 100,
     },
@@ -29,7 +29,7 @@ const stateMuscular={
 
 const speed = {
     params: {
-        current: 5,
+        current: 10,
         min: 0,
         max: 10,
     },
@@ -53,8 +53,8 @@ const speed = {
 
 const weight = {
     params: {
-        current: 5,
-        min: 0,
+        current: 1,
+        min: 1,
         max: 10,
     },
     functions: [
@@ -77,7 +77,7 @@ const weight = {
 
 const stateCirculatory={
     params: {
-        current: 100,
+        current: 99,
         min: 0,
         max: 100,
     },
@@ -100,7 +100,7 @@ const stateCirculatory={
 };
 const pressure = {
     params: {
-        current: 5,
+        current: 1,
         min: 0,
         max: 10,
     },
@@ -124,7 +124,7 @@ const pressure = {
 
 const heartbeat = {
     params: {
-        current: 5,
+        current: 1,
         min: 0,
         max: 10,
     },

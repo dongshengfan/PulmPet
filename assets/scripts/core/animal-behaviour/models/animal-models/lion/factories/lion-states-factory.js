@@ -3,7 +3,7 @@ import { SimpleRouteEngine } from '../../../../state-machine/routes/engines/simp
 import { Route }  from '../../../../state-machine/routes/route';
 import { State, PatternState,PrimitiveState } from '../../../../state-machine/states/export-states';
 import { StateMachine } from '../../../../state-machine/state-machine';
-import { Stand, Sleep } from '../lion-states/export-lion-states';
+import { Stand, Sleep, Go, Run } from '../lion-states/export-lion-states';
 
 class LionStateFactory {
     _animal;
@@ -33,7 +33,8 @@ class LionStateFactory {
         return {
             state1: new Stand('state1', this._animal),
             state2: new Sleep('state2', this._animal),
-            state3: new Stand('state3', this._animal, true)
+            state3: new Run('state3',this._animal),
+            state4: new Go('state3', this._animal, true)
         }
     }
 
@@ -53,6 +54,13 @@ class LionStateFactory {
         states.state2.setRouteEngine(new SimpleRouteEngine([
             new Route(states.state3, (model) => { 
                 cc.log(3);
+                return true;
+            })
+        ]));
+        
+        states.state3.setRouteEngine(new SimpleRouteEngine([
+            new Route(states.state4, (model) => { 
+                cc.log(4);
                 return true;
             })
         ]));

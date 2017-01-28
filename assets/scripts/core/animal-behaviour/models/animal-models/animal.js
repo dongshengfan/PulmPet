@@ -72,6 +72,8 @@ class Animal {
     run() {
         this._stateMachine.run();
     }
+
+    
 }
 
 export { Animal };

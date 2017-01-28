@@ -84,6 +84,22 @@ class SystemScale {
     addFunction(functionType, functionInstance) { 
         this._systemFunctions[functionType] = functionInstance;
     }
+
+    /**
+     * 
+     * 
+     * @param {Array} params оценки шкал системы
+     * 
+     * @memberOf SystemScale
+     */
+    analyze(params){
+        let rez=0;
+        params.forEach((param)=>{
+            rez += param.scale;
+        });
+        this.scale=rez/params.length;
+        this.getCurrentValueOnScale();
+    }
 }
 
 export { SystemScale };

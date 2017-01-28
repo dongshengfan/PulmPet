@@ -37,41 +37,63 @@ class CirculatorySystem extends System{
     }
 
     onWeightIncrease(delta) {
-        this._systemState.addScaleValue(-delta, SystemFunctionTypes.line);
         this._pressure.addScaleValue(delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(-delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
     }
     
     onWeightDecrease(delta) {
-        this._systemState.addScaleValue(delta, SystemFunctionTypes.line);
         this._pressure.addScaleValue(-delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
 
     }
 
     onSpeedIncrease(delta) { 
-        this._systemState.addScaleValue(-delta, SystemFunctionTypes.line);
         this._pressure.addScaleValue(delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
 
     }
     
     onSpeedDecrease(delta) { 
-        this._systemState.addScaleValue(delta, SystemFunctionTypes.line);
         this._pressure.addScaleValue(-delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(-delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
 
     }
+    
+
 
 
     changePressure(delta){
         this._pressure.addScaleValue(delta,SystemFunctionTypes.line);
-        this.verificationMark(delta)? this.trigger(events.pressure.increase,delta):this.trigger(events.pressure.decrease,delta);         
+        this.analyzeSystem();
+        this.verificationMark(delta)? this.trigger(events.pressure.increase,delta):this.trigger(events.pressure.decrease,delta);
+
     }
 
     changeHeartbeat(delta){
         this._heartbeat.addScaleValue(delta,SystemFunctionTypes.line);
+        this.analyzeSystem();
         this.verificationMark(delta)? this.trigger(events.heartbeat.increase,delta):this.trigger(events.heartbeat.decrease,delta); 
+    }
+
+    /**
+     * Анализирует показатели системы выводя вердикт о состоянии
+     * 
+     * 
+     * @memberOf CirculatorySystem
+     */
+    analyzeSystem(){        
+        this._systemState.analyze([
+            {
+                scale: 100-this._heartbeat.scale
+            },
+            { 
+                scale: 100-this._pressure.scale
+            }
+        ]);
     }
     
 }
