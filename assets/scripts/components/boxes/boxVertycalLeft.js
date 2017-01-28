@@ -40,20 +40,20 @@ var TouchDragger2 = cc.Class({
 
     /**Проверяет не зашеллибокс за грани доступного, ели зашел то ровняет его */
     _checkBoxPosition: function () {
-        if (this.node.x < this._endPos.x - this.increments || this.node.x > this._startPos.x + this.increments)
+        if (this.node.x > this._endPos.x + this.increments || this.node.x < this._startPos.x - this.increments)
             this._endSwipe();
         return this;
     },
 
     /**Движение бокса */
     _moveBox: function (delta) {
-        let plus = this._endPos.x - this.increments - this.eps;
-        let minus = this._startPos.x + this.increments + this.eps;
+        let plus = this._endPos.x + this.increments + this.eps;
+        let minus = this._startPos.x - this.increments - this.eps;
         let prirost = this.node.x + delta.x;
 
-        if (plus < prirost && minus > prirost) {
+        if (plus > prirost && minus < prirost) {
             //борится с тримером            
-            if (this.node.x < (this._endPos.x + this.increments) && delta.x < 0) {
+            if (this.node.x > (this._endPos.x - this.increments) && delta.x > 0) {
 
             }
             else {
@@ -90,7 +90,7 @@ var TouchDragger2 = cc.Class({
 
     /**Определяет направление движения для случая горизонтального  бокса*/
     _setMovement: function (delta) {
-        this.direction = delta.x > 0 ? Movement.toClose : Movement.toOpen;
+        this.direction = delta.x > 0 ? Movement.toOpen : Movement.toClose;
         return this;
     },
 
@@ -100,14 +100,14 @@ var TouchDragger2 = cc.Class({
         let bar = children[0].children[0];
         let canvas = this._getCanvas(this.node);
         bar.height = canvas.height;
-        this._startPos = cc.v2(canvas.width, this.node.y);
-        this._endPos = cc.v2(canvas.width - bar.width,this.node.y);
+        this._startPos = cc.v2(0, this.node.y);
+        this._endPos = cc.v2(0 + bar.width,this.node.y);
         this._amountPix = Math.abs(this._endPos.x - this._startPos.x);
     },
 
     /**Работа с прозрачностью бокса */
     _opacityNode: function () {
-        let opasity = this.opacityBox + (((255 - this.opacityBox) * (this._startPos.x - this.node.x)) / this._amountPix);
+        let opasity = this.opacityBox + (((255 - this.opacityBox) * (this.node.x-this._startPos.x)) / this._amountPix);
         if (opasity > 255) {
             opasity = 255;
         }

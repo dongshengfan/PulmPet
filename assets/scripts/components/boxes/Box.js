@@ -41,7 +41,7 @@ var Box = cc.Class({
     },
     _getCanvas: function (node){
  
-        if(node.parent.name ===""){     
+        if(node.name ==="Canvas"){     
             return node; 
         }
        return this._getCanvas(node.parent);
