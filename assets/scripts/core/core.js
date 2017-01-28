@@ -1,6 +1,6 @@
-import { Communicator, CommunicationEvents as Events, EventSystemBuilder, SpeechSystem, ReproductionSystem, SystemFunctionFactory, SystemFunctionTypes, AnimalFactory, AnimalTypes, lionParams } from './animal-behaviour/export-animal-behaviour';
+/*import { Communicator, CommunicationEvents as Events, EventSystemBuilder, SpeechSystem, ReproductionSystem, SystemFunctionFactory, SystemFunctionTypes, AnimalFactory, AnimalTypes, lionParams } from './animal-behaviour/export-animal-behaviour';*/
 
-import { PrimitiveState, StateMachine, Animal, SimpleRouteEngine, Route } from './animal-behaviour/export-animal-behaviour'
+import { AnimalFactory, AnimalTypes, lionParams } from './animal-behaviour/export-animal-behaviour'
 
 
 var animalFactory = AnimalFactory.instance();

@@ -1,5 +1,5 @@
-import { Route, RouteEngine } from '../routes/export-routes';
-import { Animal } from '../../models/export-models';
+//import { Route, RouteEngine } from '../routes/export-routes';
+//import { Animal } from '../../models/export-models';
 
 /**
  * Базовый класс для всех состояний вероятностного автомата

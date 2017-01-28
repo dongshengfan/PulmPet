@@ -1,8 +1,8 @@
-import { PrimitiveState } from '../../../../state-machine/states/state-type/primitive-state';
+import { PrimitiveState } from '../../../../state-machine/states/export-states';
 
-export default class Stand extends PrimitiveState{
-    constructor(name, model, isEndPoint = false) {
-        super(name,model,isEndPoint,null);
+export class Stand extends PrimitiveState{
+    constructor(name, model, isEndPoint = false, routeEngine = null) {
+        super(name, model, isEndPoint, routeEngine);
     }
     run(){
         let model=this._model;
