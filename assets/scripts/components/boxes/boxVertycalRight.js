@@ -1,9 +1,15 @@
 import { Box, Movement } from './box';
 
-var TouchDragger2 = cc.Class({
+var boxRight = cc.Class({
     extends: Box,
 
-    properties: {
+    /**
+     * Действия на страт
+     * 
+     * @param {any} event
+     */
+    onTouchStart(event) {
+
     },
 
     /**
@@ -11,19 +17,9 @@ var TouchDragger2 = cc.Class({
      * 
      * @param {Event} event
      */
-    onTouchMove: function (event) {
+    onTouchMove(event) {
         var delta = event.touch.getDelta();
         this._setMovement(delta)._moveBox(delta)._checkBoxPosition();
-
-    },
-
-    /**
-     * Действия на страт
-     * 
-     * @param {any} event
-     */
-    onTouchStart: function (event) {
-
     },
 
     /**
@@ -31,29 +27,36 @@ var TouchDragger2 = cc.Class({
      * 
      * @param {any} event
      */
-    onTouchEnd: function (event) {
-        this._endSwipe();
+    onTouchEnd(event) {
+        this._endSwipeX();
+        this._refocus();
     },
 
-
-
-
-    /**Проверяет не зашеллибокс за грани доступного, ели зашел то ровняет его */
-    _checkBoxPosition: function () {
-        if (this.node.x < this._endPos.x - this.increments || this.node.x > this._startPos.x + this.increments)
-            this._endSwipe();
+    /**
+     * Проверяет не зашел ли бокс за грани доступного, еcли зашел то ровняет его
+     * 
+     * @returns this
+     */
+    _checkBoxPosition() {
+        if (this.node.x < this._endPos.x - this._increments || this.node.x > this._startPos.x + this._increments)
+            this._endSwipeX();
         return this;
     },
 
-    /**Движение бокса */
-    _moveBox: function (delta) {
-        let plus = this._endPos.x - this.increments - this.eps;
-        let minus = this._startPos.x + this.increments + this.eps;
+    /**
+     * Движение бокса
+     * 
+     * @param {cc.Vec2} delta
+     * @returns this
+     */
+    _moveBox(delta) {
+        let plus = this._endPos.x - this._increments - this._eps;
+        let minus = this._startPos.x + this._increments + this._eps;
         let prirost = this.node.x + delta.x;
 
         if (plus < prirost && minus > prirost) {
             //борится с тримером            
-            if (this.node.x < (this._endPos.x + this.increments) && delta.x < 0) {
+            if (this.node.x < (this._endPos.x + this._increments) && delta.x < 0) {
 
             }
             else {
@@ -61,52 +64,41 @@ var TouchDragger2 = cc.Class({
             }
 
         } else {
-            this._endSwipe();
+            this._endSwipeX();
         }
         return this;
     },
 
-    /**Выполняет проверку и завершает движение бокса */
-    _endSwipe: function () {
-        this.direction === Movement.toClose ? this._bring(this._startPos) : this._bring(this._endPos);
-    },
-
-    /**доводит окошко до нужного состояния */
-
-    _bring: function (coord) {
-        let callBack = () => {
-            if (this.node.x > coord.x - this.increments - this.eps && this.node.x < coord.x + this.increments + this.eps) {
-                this.node.x = coord.x;
-                this.unschedule(callBack);
-            }
-            if (coord.x > this.node.x) {
-                this.node.x += this.increments;
-            } else {
-                this.node.x -= this.increments;
-            }
-        }
-        this.schedule(callBack, this.intevalIncrements);
-    },
-
-    /**Определяет направление движения для случая горизонтального  бокса*/
-    _setMovement: function (delta) {
-        this.direction = delta.x > 0 ? Movement.toClose : Movement.toOpen;
+    /**
+     * Определяет направление движения для случая горизонтального  бокса
+     * 
+     * @param {cc.Vec2} delta
+     * @returns this
+     */
+    _setMovement(delta) {
+        this._direction = delta.x > 0 ? Movement.toClose : Movement.toOpen;
         return this;
     },
 
-    /**Устанавливает начальные позиции и производит вычисление длинны */
-    _setPosition: function () {
+    /**
+     * Устанавливает начальные позиции и производит вычисление длинны
+     */
+    _settings() {
         let children = this.node.children;
         let bar = children[0].children[0];
         let canvas = this._getCanvas(this.node);
+        let sizeBoxY = this._getSizeBox(canvas.height);
+        this.node.y = sizeBoxY / 2 + this.indentLeft;
         bar.height = canvas.height;
         this._startPos = cc.v2(canvas.width, this.node.y);
-        this._endPos = cc.v2(canvas.width - bar.width,this.node.y);
+        this._endPos = cc.v2(canvas.width - bar.width, this.node.y);
         this._amountPix = Math.abs(this._endPos.x - this._startPos.x);
     },
 
-    /**Работа с прозрачностью бокса */
-    _opacityNode: function () {
+    /**
+     * Работа с прозрачностью бокса
+     */
+    _opacityNode() {
         let opasity = this.opacityBox + (((255 - this.opacityBox) * (this._startPos.x - this.node.x)) / this._amountPix);
         if (opasity > 255) {
             opasity = 255;
@@ -114,5 +106,5 @@ var TouchDragger2 = cc.Class({
         this.node.opacity = opasity;
     },
 
-
 });
+export { boxRight };
