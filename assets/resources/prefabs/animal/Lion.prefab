@@ -158,7 +158,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "f8a792ec-8284-432c-bd1b-75851a090e23"
     },
     "fileId": "406a6sjziFPN6xnt9pRO0pP",
     "sync": false
@@ -239,7 +239,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "f8a792ec-8284-432c-bd1b-75851a090e23"
     },
     "fileId": "0b358NGUPdDKaaDgWkqqkkP",
     "sync": false
@@ -320,7 +320,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "f8a792ec-8284-432c-bd1b-75851a090e23"
     },
     "fileId": "94ec6pk3g5PlZbdYTpxT8uI",
     "sync": false
@@ -476,7 +476,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "f8a792ec-8284-432c-bd1b-75851a090e23"
     },
     "fileId": "fa6295ZlyFOW4L9yinJJNoA",
     "sync": false
@@ -508,15 +508,6 @@
     "_atlas": null
   },
   {
-    "__type__": "bca5fj60v9Cfa7/ahqv79xY",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true
-  },
-  {
     "__type__": "cc.Animation",
     "_name": "",
     "_objFlags": 0,
@@ -543,12 +534,21 @@
     "preload": false
   },
   {
+    "__type__": "70ec49XL5BEVJUefNw7Ls7n",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "f8a792ec-8284-432c-bd1b-75851a090e23"
     },
     "fileId": "35a7ex8RaVOVbFHl3Sbx5rH",
     "sync": false

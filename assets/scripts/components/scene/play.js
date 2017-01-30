@@ -3,10 +3,8 @@ cc.Class({
     extends: cc.Component,
     
     properties: {
-        arr:{
-            default: [],
-            type:cc.Prefab
-        },
+        textState:cc.Label,
+        
         
     },
 
@@ -14,6 +12,9 @@ cc.Class({
         
     },
 
+    setText(str){
+        this.textState.string=str;
+    },
     
 
 

@@ -178,7 +178,7 @@ var FactoryAnimalPrefab = cc.Class({
         let content = this._getNode(this.node,this.content);
         this._target.parent=content; 
         this._target.position=cc.v2(pos.x,pos.y);
-        this._target.getComponent('controllerAnimalPrefab').create();
+        this._target.getComponent('controllerAnimal').create();
         this.node.destroy();
     },    
 
