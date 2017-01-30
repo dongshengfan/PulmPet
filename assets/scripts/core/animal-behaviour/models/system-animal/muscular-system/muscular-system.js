@@ -59,12 +59,12 @@ class MuscularSystem extends System{
     changeSpeed(delta){
         this._speed.addScaleValue(delta,SystemFunctionTypes.line);
         this.analyzeSystem();   
-        this.verificationMark(delta)? this.trigger(events.speed.increase,delta):this.trigger(events.speed.decrease,delta);
+        this.trigger(events.speed,delta,true);
     }
     changeWeight(delta){
         this._weight.addScaleValue(delta,SystemFunctionTypes.line); 
         this.analyzeSystem();
-        this.verificationMark(delta)? this.trigger(events.weight.increase,delta):this.trigger(events.weight.decrease,delta);
+        this.trigger(events.weight,delta,true);
     }
     
      

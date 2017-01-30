@@ -69,14 +69,14 @@ class CirculatorySystem extends System{
     changePressure(delta){
         this._pressure.addScaleValue(delta,SystemFunctionTypes.line);
         this.analyzeSystem();
-        this.verificationMark(delta)? this.trigger(events.pressure.increase,delta):this.trigger(events.pressure.decrease,delta);
+        this.trigger(events.pressure,delta,true);
 
     }
 
     changeHeartbeat(delta){
         this._heartbeat.addScaleValue(delta,SystemFunctionTypes.line);
         this.analyzeSystem();
-        this.verificationMark(delta)? this.trigger(events.heartbeat.increase,delta):this.trigger(events.heartbeat.decrease,delta); 
+        this.trigger(events.heartbeat,delta,true); 
     }
 
     /**

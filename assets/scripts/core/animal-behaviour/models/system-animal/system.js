@@ -39,27 +39,13 @@ class System {
      * @param {any} param
      * @memberOf System
      */
-    trigger(event, params) { 
+    trigger(event, params,autoComplete=false) {
+        if(autoComplete){
+            event= Math.sign(params)?event.increase:event.decrease; 
+        }
         this._communicator.publish(event, params);
     }
 
-    
-    /**
-     * Проверяет знак пришедшей дельты изменения
-     * 
-     * @param {number} delta
-     * @returns {boolean} 
-     * 
-     * @memberOf System
-     */
-    verificationMark(delta){
-        if(delta>0){ 
-            return true;
-        }else if(delta<0){
-            return false;
-        }
-        throw new Error('Change delta on zero...');
-    }
 
     /**
      * Анализирует показатели системы выводя вердикт о состоянии 

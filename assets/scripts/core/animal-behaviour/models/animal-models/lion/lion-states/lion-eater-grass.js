@@ -1,10 +1,10 @@
 import { PrimitiveState } from '../../../../state-machine/states/export-states';
 import { Animal } from '../../animal';
 
-export class LionStand extends PrimitiveState{
+export class LionEaterGrass extends PrimitiveState{
     /**
      * @type {Animal}
-     * @memberOf Stand
+     * @memberOf EaterGrass
      */
     _model;
     
@@ -13,13 +13,13 @@ export class LionStand extends PrimitiveState{
         
     }
     run(){
-        cc.log('стою');
-        this._model._circulatory.changeHeartbeat(-0.7);
-        this._model._circulatory.changePressure(-0.2);
-        this._model._muscular.changeSpeed(0.5);
-        this._model._muscular.changeWeight(0.7);
+        cc.log('ем траву');
+        this._model._circulatory.changeHeartbeat(0.5);
+        this._model._circulatory.changePressure(0.2);
+        this._model._muscular.changeSpeed(-0.4);
+        this._model._muscular.changeWeight(-0.5);
         
-        
-    }
 
+    }
+    
 }

@@ -1,7 +1,7 @@
 import { PrimitiveState } from '../../../../state-machine/states/export-states';
 import { Animal } from '../../animal';
 
-export class Go extends PrimitiveState{
+export class LionGo extends PrimitiveState{
     /**
      * @type {Animal}
      * @memberOf Stand

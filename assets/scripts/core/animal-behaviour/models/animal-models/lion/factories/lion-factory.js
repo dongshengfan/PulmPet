@@ -41,40 +41,64 @@ class LionFactory  {
      */
     _createCommunicator(muscularSystem, circulatorySystem) { 
         var eventSystemBuilder = new EventSystemBuilder();
+        this._onCirculatorySystem(eventSystemBuilder,circulatorySystem)
+        ._onMuscularSystem(eventSystemBuilder,muscularSystem);
 
-        return eventSystemBuilder
-
-        .add(Events.weight.increase, {
-            system: circulatorySystem,
-            link: circulatorySystem.onWeightIncrease
-        })
-        .add(Events.weight.decrease, {
-            system: circulatorySystem,
-            link: circulatorySystem.onWeightDecrease
-        })
-
-        .add(Events.heartbeat.increase, {
-            system: muscularSystem,
-            link: muscularSystem.onHeartbeatIncrease
-        })
-        .add(Events.heartbeat.decrease, {
-            system: muscularSystem,
-            link: muscularSystem.onHeartbeatDecrease
-        })
-        .add(Events.pressure.increase, {
-            system: muscularSystem,
-            link: muscularSystem.onPressureIncrease
-        })
-        .add(Events.pressure.decrease, {
-            system: muscularSystem,
-            link: muscularSystem.onPressureDecrease
-        })
-
-        .build();
+        return eventSystemBuilder.build();
     }
 
     /**
-     * Сборка опорно-двигательной системы
+     * Заполнение на что откликается кровиностная система
+     * 
+     * @param {EventSystemBuilder} event
+     * @param {CirculatorySystem} system
+     * @returns this
+     * 
+     * @memberOf LionFactory
+     */
+    _onCirculatorySystem(event,system){
+        event.add(Events.weight.increase, {
+            system: system,
+            link: system.onWeightIncrease
+        })
+        .add(Events.weight.decrease, {
+            system: system,
+            link: system.onWeightDecrease
+        });
+        return this;
+    }
+
+    /**
+     * Заполнение на что откликается опорнодвигательная система
+     * 
+     * @param {EventSystemBuilder} event 
+     * @param {MuscularSystem} system
+     * @returns this
+     * 
+     * @memberOf LionFactory
+     */
+    _onMuscularSystem(event,system){
+        event.add(Events.heartbeat.increase, {
+            system: system,
+            link: system.onHeartbeatIncrease
+        })
+        .add(Events.heartbeat.decrease, {
+            system: system,
+            link: system.onHeartbeatDecrease
+        })
+        .add(Events.pressure.increase, {
+            system: system,
+            link: system.onPressureIncrease
+        })
+        .add(Events.pressure.decrease, {
+            system: system,
+            link: system.onPressureDecrease
+        });
+        return this;
+    }
+
+    /**
+     * Сборка опорнодвигательной системы
      * @memberOf LionFactory
      */
     _createMuscularSystem(params) {

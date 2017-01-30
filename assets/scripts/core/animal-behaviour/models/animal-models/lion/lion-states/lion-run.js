@@ -1,10 +1,10 @@
 import { PrimitiveState } from '../../../../state-machine/states/export-states';
 import { Animal } from '../../animal';
 
-export class Run extends PrimitiveState{
+export class LionRun extends PrimitiveState{
     /**
      * @type {Animal}
-     * @memberOf Stand
+     * @memberOf Run
      */
     _model;
     
