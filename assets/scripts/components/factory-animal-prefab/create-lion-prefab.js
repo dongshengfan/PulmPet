@@ -5,7 +5,7 @@ var CreateLionPrefab = cc.Class({
     
     properties: { 
         puthToPrefab:'prefabs/animal/Lion',//путь от папки resource до необходимого префаба
-        
+        //возможно тут укажимкакие ресурсы надокуда пробрость но не сейчас
     },
  
 });

@@ -35,10 +35,7 @@ var FactoryAnimalPrefab = cc.Class({
         let pointTouch=event.touch._startPoint;
         this._createPrefab(this.puthToPrefab,pointTouch); 
         //Закрываем бокс животных  
-        this._closeBox(event);         
-        //Начинаем подгружать животному ресурсы
-        this._loadAudio();
-        this._loadAnimation();        
+        this._closeBox(event);                
     },
 
     /**
@@ -71,7 +68,6 @@ var FactoryAnimalPrefab = cc.Class({
             this._runDestroyAnimal();
         }        
     },
-
  
     /**
      * Закрывает бокс с животными
@@ -169,6 +165,7 @@ var FactoryAnimalPrefab = cc.Class({
      * Запуск процесса удаления животного
      */
     _runDestroyAnimal(){
+        this.basket.getComponent('controllerBasket').onReactionToAnimal();
         this._target.destroy();
         this.node.destroy();
     },
@@ -183,16 +180,7 @@ var FactoryAnimalPrefab = cc.Class({
         this._target.position=cc.v2(pos.x,pos.y);
         this._target.getComponent('controllerAnimalPrefab').create();
         this.node.destroy();
-    },
-
-    _loadAnimation(){
-
-    },
-
-    _loadAudio(){
-
-    },
-    
+    },    
 
     /**
      * Первоначальная настройка фабрики
