@@ -18,14 +18,18 @@ export class LionEaterMeat extends PrimitiveState {
      * @memberOf LionEaterMeat
      */
     run() {
-        return new Promise((resolve, reject) => {
-            cc.log('ем мясо');
-            this._model._circulatory.changeHeartbeat(0.5);
-            this._model._circulatory.changePressure(0.2);
-            this._model._muscular.changeSpeed(-0.4);
-            this._model._muscular.changeWeight(-0.5);
-            setTimeout(() => { resolve(); }, 4000);
+        let resolveFn, rejectFn;
+        let promise = new Promise((resolve, reject) => {
+            resolveFn = resolve;
+            rejectFn = reject;
         });
+        cc.log('ем мясо');
+        this._model._circulatory.changeHeartbeat(0.5);
+        this._model._circulatory.changePressure(0.2);
+        this._model._muscular.changeSpeed(-0.4);
+        this._model._muscular.changeWeight(-0.5);
+        setTimeout(() => { resolveFn(); }, 4000);
+        return promise;
     }
 
 }

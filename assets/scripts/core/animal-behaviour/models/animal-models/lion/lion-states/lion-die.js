@@ -18,10 +18,20 @@ export class LionDie extends PrimitiveState {
      * @memberOf LionDie
      */
     run() {
-        return new Promise((resolve, reject) => {
-            cc.log('умер');
-            setTimeout(() => { resolve(); }, 4000);
+        let resolveFn, rejectFn;
+        let promise = new Promise((resolve, reject) => {
+            resolveFn = resolve;
+            rejectFn = reject;
         });
+
+
+        cc.log('умер');
+
+
+
+        setTimeout(() => { resolveFn(); }, 4000);
+        return promise;
+
     }
 
 }

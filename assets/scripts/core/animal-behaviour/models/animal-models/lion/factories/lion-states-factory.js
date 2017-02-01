@@ -64,7 +64,7 @@ class LionStateFactory {
                 return true;
             })
         ], new SimpleRouteEngine([
-            new Route(states.state1, (model) => {
+            new Route(states.start, (model) => {
                 return true;
             })
         ])));

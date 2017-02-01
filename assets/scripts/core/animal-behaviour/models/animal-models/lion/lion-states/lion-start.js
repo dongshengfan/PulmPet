@@ -18,16 +18,20 @@ export class LionStart extends PrimitiveState {
      * @memberOf LionStart
      */
     run() {
-        return new Promise((resolve, reject) => {
-            cc.log('Начал жить');
-
-            this._model._circulatory.changeHeartbeat(0.001);
-            this._model._circulatory.changePressure(0.001);
-            this._model._muscular.changeSpeed(0.001);
-            this._model._muscular.changeWeight(0.001);
-
-            setTimeout(() => { resolve(); }, 4000);
+        let resolveFn, rejectFn;
+        let promise = new Promise((resolve, reject) => {
+            resolveFn = resolve;
+            rejectFn = reject;
         });
+        cc.log('Начал жить');
+
+        this._model._circulatory.changeHeartbeat(0.001);
+        this._model._circulatory.changePressure(0.001);
+        this._model._muscular.changeSpeed(0.001);
+        this._model._muscular.changeWeight(0.001);
+
+        setTimeout(() => { resolveFn(); }, 4000);
+        return promise;
 
     }
 

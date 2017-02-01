@@ -18,14 +18,18 @@ export class LionGo extends PrimitiveState {
      * @memberOf LionGo
      */
     run() {
-        return new Promise((resolve, reject) => {
-            cc.log('иду');
-            this._model._circulatory.changeHeartbeat(0.1);
-            this._model._circulatory.changePressure(0.01);
-            this._model._muscular.changeSpeed(-0.1);
-            this._model._muscular.changeWeight(-0.1);
-            setTimeout(() => { resolve(); }, 4000);
+        let resolveFn, rejectFn;
+        let promise = new Promise((resolve, reject) => {
+            resolveFn = resolve;
+            rejectFn = reject;
         });
+        cc.log('иду');
+        this._model._circulatory.changeHeartbeat(0.1);
+        this._model._circulatory.changePressure(0.01);
+        this._model._muscular.changeSpeed(-0.1);
+        this._model._muscular.changeWeight(-0.1);
+        setTimeout(() => { resolveFn(); }, 4000);
+        return promise;
 
     }
 

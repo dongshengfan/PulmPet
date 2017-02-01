@@ -1,6 +1,6 @@
 import { System } from '../system';
 import { SystemScale } from '../../system-scales/export-system-scales';
-import { SystemFunctionTypes } from '../../system-functions/system-function-factory';
+import { SystemFunctionTypes } from '../../system-functions/system-function-types';
 import { CommunicationEvents as events } from '../../system-communication/events';
 /**
  * Класс сердечнососудистая системы
