@@ -4,18 +4,18 @@ import { SystemFunction } from '../system-function';
  * @export
  * @class LineSystemFunction
  */
-class LineSystemFunction extends SystemFunction { 
+class LineSystemFunction extends SystemFunction {
     /**
      * Коэффицент 
      * 
-     * @type {number}
+     * @type {Number}
      * @memberOf LineSystemFunction
      */
     _coefficient;
     /**
      * Свободный коэффицент
      * 
-     * @type {number}
+     * @type {Number}
      * @memberOf LineSystemFunction
      */
     _free;
@@ -24,18 +24,18 @@ class LineSystemFunction extends SystemFunction {
         if (params) {
             this._coefficient = params.coefficient || 0.5;
             this._free = params.free || 0;
-        }    
+        }
     }
 
     /**
      * 
      * 
-     * @param {any} params
-     * @returns
+     * @param {Number} params
+     * @returns {Number}
      * 
      * @memberOf LineSystemFunction
      */
-    calculate(params) { 
+    calculate(params) {
         return this._coefficient * params + this._free;
     }
 }

@@ -8,7 +8,7 @@ import { RouteEngine } from './route-engine';
  * @class SimpleRouteEngine
  * @extends {RouteEngine}
  */
-export class SimpleRouteEngine extends RouteEngine { 
+export class SimpleRouteEngine extends RouteEngine {
     /**
      * Creates an instance of RouteEngine.
      * @param {Animal} model модель животного-владельца текущей группы
@@ -16,7 +16,7 @@ export class SimpleRouteEngine extends RouteEngine {
      * @param {Array<Route>} [routes=[]] возможные маршруты в рамках группы
      * @memberOf SimpleRouteEngine
      */
-    constructor(routes = [], nextEngine = null) {  
+    constructor(routes = [], nextEngine = null) {
         super(routes, nextEngine);
     }
 
@@ -26,6 +26,6 @@ export class SimpleRouteEngine extends RouteEngine {
      */
     getRoute() {
         var routes = this._routes.filter((route) => route.isAvailable(this._model));
-        return routes.length > 0 ? this._routes[0] : this._nextRouteEngine();  
+        return routes.length > 0 ? this._routes[0] : this._nextRouteEngine();
     }
 }

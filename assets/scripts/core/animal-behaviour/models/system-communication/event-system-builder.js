@@ -7,7 +7,7 @@ import { CommunicationEvents as events } from './events';
  * @class EventSystemBuilder
  */
 class EventSystemBuilder {
-    
+
     /**
      * Коммуникатор общения между системами
      * @type {Communicator}
@@ -15,16 +15,16 @@ class EventSystemBuilder {
      */
     _communicator;
 
-    constructor() { 
+    constructor() {
         this._communicator = new Communicator();
     }
 
     /**
      * 
      * 
-     * @param {any} event
-     * @param {any} param
-     * @returns
+     * @param {CommunicationEvents} event
+     * @param {Number} param
+     * @returns {this}
      * 
      * @memberOf EventSystemBuilder
      */
@@ -36,13 +36,13 @@ class EventSystemBuilder {
     /**
      * 
      * 
-     * @param {any} event
-     * @param {any} params
-     * @returns
+     * @param {CommunicationEvents} event
+     * @param {Number} params
+     * @returns {this}
      * 
      * @memberOf EventSystemBuilder
      */
-    addAll(event, params) { 
+    addAll(event, params) {
         params.forEach((param) => this._addLink(event, param));
         return this;
     }
@@ -50,19 +50,19 @@ class EventSystemBuilder {
     /**
      * 
      * 
-     * @returns
+     * @returns {Communicator}
      * 
      * @memberOf EventSystemBuilder
      */
-    build() { 
+    build() {
         return this._communicator;
     }
 
     /**
      * 
      * 
-     * @param {any} event
-     * @param {any} param
+     * @param {CommunicationEvents} event
+     * @param {JSON} param
      * 
      * @memberOf EventSystemBuilder
      */

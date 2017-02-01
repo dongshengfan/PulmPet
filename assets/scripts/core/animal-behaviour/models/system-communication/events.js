@@ -76,7 +76,7 @@ const CommunicationEvents = {
          */
         increase: 10
     },
-    
+
 };
 
 export { CommunicationEvents };

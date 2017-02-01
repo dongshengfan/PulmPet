@@ -6,7 +6,7 @@ import { SystemScale } from './system-scale';
  * @export
  * @class SystemScaleBuilder
  */
-class SystemScaleBuilder { 
+class SystemScaleBuilder {
     /**
      * @type {SystemScale}
      * @memberOf SystemScaleBuilder
@@ -16,10 +16,10 @@ class SystemScaleBuilder {
     /**
      * @type {SystemFunctionFactory}
      * @memberOf SystemScaleBuilder
-     */  
+     */
     _functionFactory;
 
-    constructor(params) { 
+    constructor(params) {
         this._scale = new SystemScale(params);
         this._functionFactory = SystemFunctionFactory.instance();
     }
@@ -30,7 +30,7 @@ class SystemScaleBuilder {
         return this;
     }
 
-    addAllFunctions(functions) { 
+    addAllFunctions(functions) {
         functions.forEach((functionParam) => this.addFunction(functionParam));
         return this;
     }
@@ -40,7 +40,7 @@ class SystemScaleBuilder {
      * @returns {SystemScale} 
      * @memberOf SystemScaleBuilder
      */
-    build() { 
+    build() {
         return this._scale;
     }
 }

@@ -8,15 +8,15 @@ import { CommunicationEvents as events } from '../../system-communication/events
  * @export
  * @class MuscularSystem
  */
-class MuscularSystem extends System{
-    
-    
+class MuscularSystem extends System {
+
+
     /**
      * Скорость передвижения
      * @type {SystemScale} объект скорости
      */
     _speed;
-      
+
     /**
      * Вес животного
      * @type {SystemScale} объект веса
@@ -24,20 +24,20 @@ class MuscularSystem extends System{
      */
     _weight;
 
-    
+
     constructor(state, speed, weight) {
         super(state);
-        this._speed  = speed;
+        this._speed = speed;
         this._weight = weight;
     }
-    
+
     onPressureIncrease(delta) {
         this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(-delta, SystemFunctionTypes.line);
         this.analyzeSystem();
     }
 
-    onPressureDecrease(delta) {  
+    onPressureDecrease(delta) {
         this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
@@ -48,37 +48,37 @@ class MuscularSystem extends System{
         this._speed.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
     }
-    
+
     onHeartbeatDecrease(delta) {
         this._weight.addScaleValue(delta, SystemFunctionTypes.line);
         this._speed.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
     }
 
-    
-    changeSpeed(delta){
-        this._speed.addScaleValue(delta,SystemFunctionTypes.line);
-        this.analyzeSystem();   
-        this.trigger(events.speed,delta,true);
-    }
-    changeWeight(delta){
-        this._weight.addScaleValue(delta,SystemFunctionTypes.line); 
+
+    changeSpeed(delta) {
+        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
-        this.trigger(events.weight,delta,true);
+        this.trigger(events.speed, delta, true);
     }
-    
-     
+    changeWeight(delta) {
+        this._weight.addScaleValue(delta, SystemFunctionTypes.line);
+        this.analyzeSystem();
+        this.trigger(events.weight, delta, true);
+    }
+
+
     /**
      * Анализирует показатели системы выводя вердикт о состоянии
      * 
      * @memberOf MuscularSystem
      */
-    analyzeSystem(){
+    analyzeSystem() {
         this._systemState.analyze([
             {
-                scale: 100-this._weight.scale
+                scale: 100 - this._weight.scale
             },
-            { 
+            {
                 scale: this._speed.scale
             }
         ]);

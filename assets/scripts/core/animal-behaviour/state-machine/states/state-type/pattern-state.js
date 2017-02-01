@@ -11,7 +11,7 @@ import { State } from '../state';
  * @class PatternState
  * @extends {State}
  */
-export class PatternState extends State { 
+export class PatternState extends State {
     /**
      * Массив cостояний композита
      * @type {Array<State>}
@@ -26,18 +26,18 @@ export class PatternState extends State {
      */
     _state;
 
-     /**
-     * Creates an instance of PatternState.
-     * @param {String} name имя состояния
-     * @param {Animal} model модель животного
-     * @param {RouteEngine} routeEngine обработчик маршрутов между состояниями
-     * @param {Array<State>} states включаемые в композит состояния
-     * @memberOf PatternState
-     */
+    /**
+    * Creates an instance of PatternState.
+    * @param {String} name имя состояния
+    * @param {Animal} model модель животного
+    * @param {RouteEngine} routeEngine обработчик маршрутов между состояниями
+    * @param {Array<State>} states включаемые в композит состояния
+    * @memberOf PatternState
+    */
     constructor(name, model, routeEngine = null, states = []) {
         super(name, model, routeEngine);
         this._states = states;
-    }   
+    }
 
     /**
      * Добавление нового состояния в композит.
@@ -53,9 +53,9 @@ export class PatternState extends State {
      * @param {Animal} model модель животного
      * @memberOf State
      */
-    run(model) { 
+    run(model) {
         var state = this._states[0];
-        
+
         while (state) {
             this._state = state;
             state.run(model);
@@ -68,7 +68,7 @@ export class PatternState extends State {
      * @memberOf PatternState
      */
     getName() {
-        if (!this._state) { 
+        if (!this._state) {
             throw new Error('Current state not initialized...');
         }
         return this._state.getName();

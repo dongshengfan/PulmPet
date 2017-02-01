@@ -4,25 +4,25 @@ import { SystemFunction } from '../system-function';
  * @export
  * @class QuadraticSystemFunction
  */
-class QuadraticSystemFunction extends SystemFunction { 
+class QuadraticSystemFunction extends SystemFunction {
     /**
      * Коэффицент при главном члене 
      * 
-     * @type {number}
+     * @type {Number}
      * @memberOf QuadraticSystemFunction
      */
     _coefficientA;
     /**
      * Коэффицент B урванения Ax^2+Bx+C=0
      * 
-     * @type {number}
+     * @type {Number}
      * @memberOf QuadraticSystemFunction
      */
     _coefficientB;
     /**
      * Свободный коэффицент
      * 
-     * @type {number}
+     * @type {Number}
      * @memberOf QuadraticSystemFunction
      */
     _free;
@@ -32,19 +32,19 @@ class QuadraticSystemFunction extends SystemFunction {
             this._coefficientA = params.coefficientA || 1;
             this._coefficientB = params.coefficientB || 0;
             this._free = params.free || 0;
-        }    
+        }
     }
 
     /**
      * 
      * 
-     * @param {any} params
-     * @returns
+     * @param {Number} params
+     * @returns {Number}
      * 
      * @memberOf QuadraticSystemFunction
      */
-    calculate(params) { 
-        return this._coefficientA * (params** 2) + this._coefficientB * params + this._free;
+    calculate(params) {
+        return this._coefficientA * (params ** 2) + this._coefficientB * params + this._free;
     }
 }
 

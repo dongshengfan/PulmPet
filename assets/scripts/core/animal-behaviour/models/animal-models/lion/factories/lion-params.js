@@ -3,7 +3,7 @@ import { SystemFunctionTypes } from '../../../system-functions/export-system-fun
 /*********
  * Scales
  ********/
-const stateMuscular={
+const stateMuscular = {
     params: {
         current: 99,
         min: 0,
@@ -75,7 +75,7 @@ const weight = {
     ]
 };
 
-const stateCirculatory={
+const stateCirculatory = {
     params: {
         current: 99,
         min: 0,
@@ -178,4 +178,4 @@ const params = {
     }
 };
 
-export { params as lionParams};
+export { params as lionParams };

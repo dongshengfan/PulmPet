@@ -1,12 +1,5 @@
 import { LineSystemFunction, QuadraticSystemFunction } from './types-system-function/export-types-system-function';
-/**
- * enum типов фабрик функций
- */
-const SystemFunctionTypes = {
-    line: 0,    
-    quadratic: 1
-}
-
+import { SystemFunctionTypes } from './system-function-types';
 /**
  * Фабрика функций для расчетов
  * 
@@ -15,14 +8,14 @@ const SystemFunctionTypes = {
 class SystemFunctionFactory {
     /**
      *  
-     * @type {Array}
+     * @type {Array<SystemFunction>}
      * @memberOf SystemFunctionFactory
      */
     _factories;
 
     static _instance;
 
-    constructor() { 
+    constructor() {
         this._factories = {};
         this._factories[SystemFunctionTypes.line] = LineSystemFunction;
         this._factories[SystemFunctionTypes.quadratic] = QuadraticSystemFunction;
@@ -31,8 +24,8 @@ class SystemFunctionFactory {
     /**
      * @returns {SystemFunctionFactory}
      */
-    static instance() { 
-        if (!this._instance) { 
+    static instance() {
+        if (!this._instance) {
             this._instance = new SystemFunctionFactory();
         }
         return this._instance;
@@ -41,15 +34,15 @@ class SystemFunctionFactory {
     /**
      * 
      * 
-     * @param {any} systemFactoryType
-     * @param {any} params
-     * @returns
+     * @param {SystemFunctionTypes} systemFactoryType
+     * @param {JSON} params
+     * @returns {SystemFunction}
      * 
      * @memberOf SystemFunctionFactory
      */
-    create(systemFunctionType, params) { 
+    create(systemFunctionType, params) {
         return new this._factories[systemFunctionType](params);
     }
 }
 
-export { SystemFunctionTypes, SystemFunctionFactory }
+export { SystemFunctionFactory }

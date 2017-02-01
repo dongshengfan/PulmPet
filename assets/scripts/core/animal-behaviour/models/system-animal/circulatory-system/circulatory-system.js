@@ -9,14 +9,14 @@ import { CommunicationEvents as events } from '../../system-communication/events
  * @class CirculatorySystem
  * @extends {System}
  */
-class CirculatorySystem extends System{
- 
+class CirculatorySystem extends System {
+
     /**
      * Давление кровиностной системы
      * @type {SystemScale} объект давления
      */
     _pressure;
-     
+
     /**
      * Сердцебиение
      * @type {SystemScale} объект cердцебиения
@@ -30,7 +30,7 @@ class CirculatorySystem extends System{
      * 
      * @memberOf CirculatorySystem
      */
-    constructor(state, pressure, heartbeat){
+    constructor(state, pressure, heartbeat) {
         super(state);
         this._pressure = pressure;
         this._heartbeat = heartbeat;
@@ -41,7 +41,7 @@ class CirculatorySystem extends System{
         this._heartbeat.addScaleValue(-delta, SystemFunctionTypes.line);
         this.analyzeSystem();
     }
-    
+
     onWeightDecrease(delta) {
         this._pressure.addScaleValue(-delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(delta, SystemFunctionTypes.line);
@@ -49,34 +49,34 @@ class CirculatorySystem extends System{
 
     }
 
-    onSpeedIncrease(delta) { 
+    onSpeedIncrease(delta) {
         this._pressure.addScaleValue(delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
 
     }
-    
-    onSpeedDecrease(delta) { 
+
+    onSpeedDecrease(delta) {
         this._pressure.addScaleValue(-delta, SystemFunctionTypes.line);
         this._heartbeat.addScaleValue(-delta, SystemFunctionTypes.line);
         this.analyzeSystem();
 
     }
-    
 
 
 
-    changePressure(delta){
-        this._pressure.addScaleValue(delta,SystemFunctionTypes.line);
+
+    changePressure(delta) {
+        this._pressure.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
-        this.trigger(events.pressure,delta,true);
+        this.trigger(events.pressure, delta, true);
 
     }
 
-    changeHeartbeat(delta){
-        this._heartbeat.addScaleValue(delta,SystemFunctionTypes.line);
+    changeHeartbeat(delta) {
+        this._heartbeat.addScaleValue(delta, SystemFunctionTypes.line);
         this.analyzeSystem();
-        this.trigger(events.heartbeat,delta,true); 
+        this.trigger(events.heartbeat, delta, true);
     }
 
     /**
@@ -85,17 +85,17 @@ class CirculatorySystem extends System{
      * 
      * @memberOf CirculatorySystem
      */
-    analyzeSystem(){        
+    analyzeSystem() {
         this._systemState.analyze([
             {
-                scale: 100-this._heartbeat.scale
+                scale: 100 - this._heartbeat.scale
             },
-            { 
-                scale: 100-this._pressure.scale
+            {
+                scale: 100 - this._pressure.scale
             }
         ]);
     }
-    
+
 }
- 
- export { CirculatorySystem };
+
+export { CirculatorySystem };

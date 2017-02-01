@@ -1,4 +1,4 @@
-import { CommunicationEvents as events} from './events';
+import { CommunicationEvents as events } from './events';
 
 /**
  * Класс централизует сообщения между системами, упрощает их общение между собой
@@ -9,7 +9,7 @@ class Communicator {
 
     /**
      * Круг общения комуникатора
-     * @type {Object}  
+     * @type {Array<CommunicationEvents>}  
      * @memberOf Communicator
      */
     _netLinks;
@@ -18,7 +18,7 @@ class Communicator {
      * Creates an instance of Communicator.
      * @memberOf Communicator
      */
-    constructor() { 
+    constructor() {
         this._netLinks = {};
     }
 
@@ -31,7 +31,7 @@ class Communicator {
     register(event, link) {
         if (this._netLinks[event]) {
             this._netLinks[event].push(link);
-        } else { 
+        } else {
             this._netLinks[event] = [link];
         }
     }
@@ -39,7 +39,7 @@ class Communicator {
     /**
      * Оповещение имеющихся связей по приходящему событию
      * @param {CommunicationEvents} event приходящие событие
-     * @param {any} params передаваемые связям параметры 
+     * @param {Number} params передаваемые связям параметры 
      * @memberOf Communicator
      */
     publish(event, params) {

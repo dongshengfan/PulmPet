@@ -7,6 +7,10 @@ import { StateMachine } from '../../../../state-machine/state-machine';
 import { LionGo, LionRun, LionSleep, LionStand, LionDie, LionDrink, LionEaterGrass, LionEaterMeat, LionStart } from '../lion-states/export-lion-states';
 
 class LionStateFactory {
+    /**
+     * @type {Animal}
+     * @memberOf LionStateFactory
+     */
     _animal;
 
     constructor(animal) {
@@ -26,44 +30,46 @@ class LionStateFactory {
 
     /**
      * 
-     * @returns
+     * @returns {Array<State>}
      * @memberOf LionStateFactory
      */
     _createStates() {
         return {
-            state1: new LionStart('start',this._animal),
+            start: new LionStart('start', this._animal),
             stand: new LionStand('stand', this._animal),
             sleep: new LionSleep('sleep', this._animal),
             run: new LionRun('run', this._animal),
             go: new LionGo('go', this._animal),
-            eaterMeat: new LionEaterMeat('eaterMeat',this._animal),
-            eaterGrass: new LionEaterGrass('eaterGrass',this.animal),
-            drink: new LionDrink('drink',this.animal),
-            die: new LionDie('die',this.animal,true)
+            eaterMeat: new LionEaterMeat('eaterMeat', this._animal),
+            eaterGrass: new LionEaterGrass('eaterGrass', this.animal),
+            drink: new LionDrink('drink', this.animal),
+            die: new LionDie('die', this.animal, true)
         }
     }
 
     /**
-     * @param {any} states
+     * @param {Array<State>} states
      * @returns {State}
      * @memberOf LionStateFactory
      */
     _createRoutes(states) {
-        states.state1.setRouteEngine(new ProbabilityRouteEngine([
+        //Что животное будет делать после стартовог состояния 
+        states.start.setRouteEngine(new ProbabilityRouteEngine([
             new Route(states.stand, (model, probability) => {
                 cc.log(probability);
-                return true;                
+                return true;
             }),
             new Route(states.sleep, (model, probability) => {
                 cc.log(probability);
                 return true;
             })
-        ],new SimpleRouteEngine([
+        ], new SimpleRouteEngine([
             new Route(states.state1, (model) => {
-                return true;                
+                return true;
             })
         ])));
 
+        //Что животное будет делать после состояния стоять
         states.stand.setRouteEngine(new ProbabilityRouteEngine([
             new Route(states.sleep, (model, probability) => {
                 cc.log(probability);
@@ -71,6 +77,7 @@ class LionStateFactory {
             })
         ]));
 
+        //Что животное будет делать после состояния спать
         states.sleep.setRouteEngine(new ProbabilityRouteEngine([
             new Route(states.die, (model, probability) => {
                 cc.log(probability);
@@ -78,7 +85,7 @@ class LionStateFactory {
             })
         ]));
 
-        return states.state1;
+        return states.start;
     }
 }
 

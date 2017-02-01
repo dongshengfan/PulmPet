@@ -10,8 +10,8 @@ import { State } from '../state';
  * @class PrimitiveState
  * @extends {State}
  */
-export class PrimitiveState extends State { 
-    
+export class PrimitiveState extends State {
+
     /**
      * Creates an instance of PrimitiveState.
      * @param {String} name имя состояния
@@ -22,7 +22,7 @@ export class PrimitiveState extends State {
      */
     constructor(name, model, isEndPoint = false, routeEngine = null) {
         super(name, model, routeEngine, isEndPoint);
-        
+
     }
 
     /**
@@ -30,7 +30,7 @@ export class PrimitiveState extends State {
      * TODO удалить
      * @memberOf PrimitiveState
      */
-    run() { 
+    run() {
         throw new Error('No implementation status...');
         //cc.log(this._name);
     }

@@ -6,13 +6,13 @@ import { SystemScale } from '../system-scales/export-system-scales';
  * @export
  * @class System
  */
-class System { 
+class System {
     /**
      * Коммуникатор для общения с другими системами
      * @type {Communicator}
      */
     _communicator;
-   
+
     /**
      * Состояние системы в целом
      * @type {SystemScale} объект состояния
@@ -20,8 +20,8 @@ class System {
      */
     _systemState;
 
-    constructor(systemState) { 
-          this._systemState = systemState;
+    constructor(systemState) {
+        this._systemState = systemState;
     }
 
     /**
@@ -29,19 +29,22 @@ class System {
      * @param {Communicator} communicator 
      * @memberOf System
      */
-    setCommunicator(communicator) { 
+    setCommunicator(communicator) {
         this._communicator = communicator;
     }
 
     /**
      * Публикация изменения в системе
+     * 
      * @param {EventSystemBuilder} event
-     * @param {any} param
+     * @param {Number} params
+     * @param {Boolean} [autoComplete=false]
+     * 
      * @memberOf System
      */
-    trigger(event, params,autoComplete=false) {
-        if(autoComplete){
-            event= Math.sign(params)?event.increase:event.decrease; 
+    trigger(event, params, autoComplete = false) {
+        if (autoComplete) {
+            event = Math.sign(params) ? event.increase : event.decrease;
         }
         this._communicator.publish(event, params);
     }
@@ -52,30 +55,30 @@ class System {
      * 
      * @memberOf System
      */
-    analyzeSystem(){
+    analyzeSystem() {
     }
-    
-    onSpeedIncrease(delta) { 
+
+    onSpeedIncrease(delta) {
     }
-   
-    onSpeedDecrease(delta) { 
+
+    onSpeedDecrease(delta) {
     }
-   
+
     onWeightIncrease(delta) {
     }
-   
+
     onWeightDecrease(delta) {
     }
 
     onPressureIncrease(delta) {
     }
-  
-    onPressureDecrease(delta) {   
+
+    onPressureDecrease(delta) {
     }
-    
+
     onHeartbeatIncrease(delta) {
     }
-   
+
     onHeartbeatDecrease(delta) {
     }
 

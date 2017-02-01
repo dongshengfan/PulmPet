@@ -20,7 +20,7 @@ export class Route {
      * @memberOf Route
      */
     _availability
-    
+
     /**
      * Creates an instance of Route.
      * @param {State} state следующее состояние для перехода
@@ -39,15 +39,15 @@ export class Route {
      * @returns {State|null}
      * @memberOf Route
      */
-    isAvailable(model, probability = 1.0) { 
-        return (this._availability && this._availability(model, probability))? this._state : null; 
+    isAvailable(model, probability = 1.0) {
+        return (this._availability && this._availability(model, probability)) ? this._state : null;
     }
- 
+
     /**
      * Получение заданного для перехода состояния
      * @returns {State}
      */
-    getState() { 
+    getState() {
         return this._state;
     }
 }
