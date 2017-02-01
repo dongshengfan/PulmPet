@@ -13,12 +13,16 @@ export class LionStart extends PrimitiveState{
         
     }
     run(){
-        cc.log('Начал жить');
-        this._model._circulatory.changeHeartbeat(0.001);
-        this._model._circulatory.changePressure(0.001);
-        this._model._muscular.changeSpeed(0.001);
-        this._model._muscular.changeWeight(0.001);
-        
+        return new Promise((resolve, reject) => {
+            cc.log('Начал жить');
+            
+            this._model._circulatory.changeHeartbeat(0.001);
+            this._model._circulatory.changePressure(0.001);
+            this._model._muscular.changeSpeed(0.001);
+            this._model._muscular.changeWeight(0.001);
+
+            setTimeout(()=>{resolve();},4000);    
+        });
 
     }
     

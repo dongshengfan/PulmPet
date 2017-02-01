@@ -27,13 +27,14 @@ export class StateMachine {
      * Запуск state machine
      * @memberOf StateMachine
      */
-    run() {
-        while (true) { 
-            this._state.run();
-            if (this._state.isEndPoint()) { 
-                break;
-            }
-            this._state = this._state.getNextState();    
-        }
+    run() {        
+        this._state.run().then(()=>{             
+            if (!this._state.isEndPoint()) { 
+                this._state = this._state.getNextState(); 
+                this.run(); 
+            }               
+        },()=>{
+            throw new Error('Error in state... (StateMachine)');
+        }); 
     }
 }

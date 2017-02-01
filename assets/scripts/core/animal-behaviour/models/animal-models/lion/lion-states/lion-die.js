@@ -13,9 +13,10 @@ export class LionDie extends PrimitiveState{
         
     }
     run(){
-        cc.log('умер');
-       //this._model._circulatory.changeHeartbeat(-90);   
-
+       return new Promise((resolve, reject) => {
+            cc.log('умер');
+            setTimeout(()=>{resolve();},4000);    
+        });    
     }
     
 }

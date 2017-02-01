@@ -12,13 +12,15 @@ export class LionRun extends PrimitiveState{
         super(name, model, isEndPoint, routeEngine);
         
     }
-    run(){
-        cc.log('бегу');
-        this._model._circulatory.changeHeartbeat(0.5);
-        this._model._circulatory.changePressure(0.2);
-        this._model._muscular.changeSpeed(-0.4);
-        this._model._muscular.changeWeight(-0.5);
-        
+    run(){        
+        return new Promise((resolve, reject) => {
+            cc.log('бегу');
+            this._model._circulatory.changeHeartbeat(0.5);
+            this._model._circulatory.changePressure(0.2);
+            this._model._muscular.changeSpeed(-0.4);
+            this._model._muscular.changeWeight(-0.5);
+            setTimeout(()=>{resolve();},4000);    
+        });
 
     }
     

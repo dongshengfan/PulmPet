@@ -32,14 +32,14 @@ class LionStateFactory {
     _createStates() {
         return {
             state1: new LionStart('start',this._animal),
-            state2: new LionStand('stand', this._animal),
-            state3: new LionSleep('sleep', this._animal),
+            stand: new LionStand('stand', this._animal),
+            sleep: new LionSleep('sleep', this._animal),
             run: new LionRun('run', this._animal),
             go: new LionGo('go', this._animal),
             eaterMeat: new LionEaterMeat('eaterMeat',this._animal),
             eaterGrass: new LionEaterGrass('eaterGrass',this.animal),
             drink: new LionDrink('drink',this.animal),
-            state4: new LionDie('die',this.animal,true)
+            die: new LionDie('die',this.animal,true)
         }
     }
 
@@ -50,11 +50,11 @@ class LionStateFactory {
      */
     _createRoutes(states) {
         states.state1.setRouteEngine(new ProbabilityRouteEngine([
-            new Route(states.state2, (model, probability) => {
+            new Route(states.stand, (model, probability) => {
                 cc.log(probability);
                 return true;                
             }),
-            new Route(states.state3, (model, probability) => {
+            new Route(states.sleep, (model, probability) => {
                 cc.log(probability);
                 return true;
             })
@@ -64,15 +64,15 @@ class LionStateFactory {
             })
         ])));
 
-        states.state2.setRouteEngine(new ProbabilityRouteEngine([
-            new Route(states.state3, (model, probability) => {
+        states.stand.setRouteEngine(new ProbabilityRouteEngine([
+            new Route(states.sleep, (model, probability) => {
                 cc.log(probability);
                 return true;
             })
         ]));
 
-        states.state3.setRouteEngine(new ProbabilityRouteEngine([
-            new Route(states.state4, (model, probability) => {
+        states.sleep.setRouteEngine(new ProbabilityRouteEngine([
+            new Route(states.die, (model, probability) => {
                 cc.log(probability);
                 return true;
             })

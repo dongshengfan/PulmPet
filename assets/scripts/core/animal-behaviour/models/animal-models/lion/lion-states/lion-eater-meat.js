@@ -13,13 +13,14 @@ export class LionEaterMeat extends PrimitiveState{
         
     }
     run(){
-        cc.log('ем мясо');
-        this._model._circulatory.changeHeartbeat(0.5);
-        this._model._circulatory.changePressure(0.2);
-        this._model._muscular.changeSpeed(-0.4);
-        this._model._muscular.changeWeight(-0.5);
-        
-
+        return new Promise((resolve, reject) => {
+            cc.log('ем мясо');
+            this._model._circulatory.changeHeartbeat(0.5);
+            this._model._circulatory.changePressure(0.2);
+            this._model._muscular.changeSpeed(-0.4);
+            this._model._muscular.changeWeight(-0.5);  
+            setTimeout(()=>{resolve();},4000);    
+        });
     }
     
 }
