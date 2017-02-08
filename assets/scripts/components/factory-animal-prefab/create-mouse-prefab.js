@@ -1,6 +1,6 @@
 import { FactoryAnimalPrefab } from './factory-animal-prefab';
 
-var CreateLionPrefab = cc.Class({
+var CreateMousePrefab = cc.Class({
     extends: FactoryAnimalPrefab,
     
     properties: { 

@@ -2,7 +2,7 @@
  * Осуществляет работу с корзиной,
  * Анимации, частицы и прочее
  */
-cc.Class({
+var ControllerBasket=cc.Class({
     extends: cc.Component,
     
     onLoad(){

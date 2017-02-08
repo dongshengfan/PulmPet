@@ -1,4 +1,4 @@
-cc.Class({
+var ControllerAnimal=cc.Class({
     extends:cc.Component,
     
     properties: { 

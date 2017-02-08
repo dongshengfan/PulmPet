@@ -1,6 +1,6 @@
 import { Box, Movement } from './box';
 
-var boxLeft = cc.Class({
+var BoxLeft = cc.Class({
     extends: Box,
 
     /**
@@ -106,4 +106,4 @@ var boxLeft = cc.Class({
     },
 
 });
-export { boxLeft };
+export { BoxLeft };
