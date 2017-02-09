@@ -1,5 +1,6 @@
 export * from './animal-factory';
 export * from './animal';
+export * from './animal-types';
 
 /** LION */
 export * from './lion/factories/lion-factory';

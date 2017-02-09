@@ -1,5 +1,5 @@
 
-import { MuscularSystem, CirculatorySystem} from '../system-animal/export-system-animal';
+import { MuscularSystem, CirculatorySystem } from '../system-animal/export-system-animal';
 import { Communicator } from '../system-communication/export-system-communication';
 
 /**
@@ -8,7 +8,7 @@ import { Communicator } from '../system-communication/export-system-communicatio
  * @export
  * @class Animal
  */
-class Animal { 
+class Animal {
 
     /**
      * Позиция в которой находится животное фактически
@@ -31,7 +31,7 @@ class Animal {
      * @type {MemorySystem} Класс системы памяти
      * @memberOf Animal
      */
-    memory;
+    _memory;
     /**
      * Сердечнососудистая система 
      * 
@@ -48,11 +48,17 @@ class Animal {
     _muscular;
 
     /** 
-     * @param {Communicator} params
+     * @param {Communicator}
      * @memberOf Animal
      */
     _communicator;
-    
+
+
+    /**
+     * 
+     * @param {StateMachine}
+     * @memberOf Animal
+     */
     _stateMachine;
 
     /**
@@ -65,13 +71,15 @@ class Animal {
         this._communicator = communicator;
     }
 
-    setStateMachine(stateMachine) { 
+    setStateMachine(stateMachine) {
         this._stateMachine = stateMachine;
     }
 
     run() {
         this._stateMachine.run();
     }
+
+
 }
 
 export { Animal };

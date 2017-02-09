@@ -21,14 +21,14 @@ export class RouteEngine {
      * @memberOf RouteEngine
      */
     _nextEngine;
-    
+
     /**
      * Модель животного-владельца текущей группы
      * @type {Animal}
      * @memberOf RouteEngine
      */
     _model;
-    
+
     /**
      * Creates an instance of RouteEngine.
      * @param {Animal} model модель животного-владельца текущей группы
@@ -36,7 +36,7 @@ export class RouteEngine {
      * @param {Array<Route>} [routes=[]] возможные маршруты в рамках группы
      * @memberOf RouteEngine
      */
-    constructor(routes = [], nextEngine = null) { 
+    constructor(routes = [], nextEngine = null) {
         this._routes = routes;
         this._nextEngine = nextEngine;
     }
@@ -66,13 +66,13 @@ export class RouteEngine {
     setNextEngine(engine) {
         this._nextEngine = engine;
     }
-    
+
     /**
      * Установка модели животного
      * @param {Animal} animal
      * @memberOf RouteEngine
      */
-    setModel(animal) { 
+    setModel(animal) {
 
     }
 
@@ -82,7 +82,7 @@ export class RouteEngine {
      * @memberOf RouteEngine
      */
     _nextRouteEngine() {
-        if (this._nextEngine) { 
+        if (this._nextEngine) {
             return this._nextEngine.getRoute();
         }
         return null;

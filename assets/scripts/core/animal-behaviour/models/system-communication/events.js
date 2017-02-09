@@ -3,7 +3,7 @@
  */
 const CommunicationEvents = {
     /**
-     * выносливость
+     * выносливость ()
      */
     endurance: {
         /**
@@ -16,7 +16,7 @@ const CommunicationEvents = {
         increase: 1
     },
     /**
-     * возраст
+     * возраст ()
      */
     age: {
         /**
@@ -25,7 +25,7 @@ const CommunicationEvents = {
         increase: 2
     },
     /**
-     * скорость
+     * скорость (Опорнодвигательная система)
      */
     speed: {
         /**
@@ -38,7 +38,7 @@ const CommunicationEvents = {
         increase: 4
     },
     /**
-     * вес
+     * вес (Опорнодвигательная система)
      */
     weight: {
         /**
@@ -51,7 +51,7 @@ const CommunicationEvents = {
         increase: 6
     },
     /**
-     * давление
+     * давление (Кровиностная система)
      */
     pressure: {
         /**
@@ -64,7 +64,7 @@ const CommunicationEvents = {
         increase: 8
     },
     /**
-     * сердцебиение
+     * сердцебиение (Кровиностная система)
      */
     heartbeat: {
         /**
@@ -76,7 +76,7 @@ const CommunicationEvents = {
          */
         increase: 10
     },
-    
+
 };
 
 export { CommunicationEvents };

@@ -1,5 +1,5 @@
-import { Route, RouteEngine } from '../routes/export-routes';
-import { Animal } from '../../models/export-models';
+//import { Route, RouteEngine } from '../routes/export-routes';
+//import { Animal } from '../../models/export-models';
 
 /**
  * Базовый класс для всех состояний вероятностного автомата
@@ -19,7 +19,7 @@ export class State {
      * Модель животного
      * @type {Animal}
      * @memberOf State
-     */ 
+     */
     _model;
 
     /**
@@ -35,7 +35,7 @@ export class State {
      * @memberOf State
      */
     _isEndPoint;
-    
+
     /**
      * Creates an instance of State.
      * @param {String} name имя состояния
@@ -57,7 +57,7 @@ export class State {
      * @returns {String}
      * @memberOf State
      */
-    getName() { 
+    getName() {
         return this._name;
     }
 
@@ -81,7 +81,7 @@ export class State {
      * @returns {Boolean}
      * @memberOf State
      */
-    isEndPoint() { 
+    isEndPoint() {
         return this._isEndPoint;
     }
 
@@ -90,7 +90,7 @@ export class State {
      * @param {RouteEngine} routeEngine обработчик маршрутов между состояниями
      * @memberOf State
      */
-    setRouteEngine(routeEngine) { 
+    setRouteEngine(routeEngine) {
         this._routeEngine = routeEngine;
         this._routeEngine.setModel(this._model);
     }
@@ -109,7 +109,7 @@ export class State {
      * Запуск состояния
      * @memberOf State
      */
-    run() { 
+    run() {
         throw new Error('Not implemented yet...');
     }
 }

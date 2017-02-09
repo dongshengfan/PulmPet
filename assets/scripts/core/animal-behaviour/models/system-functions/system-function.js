@@ -3,15 +3,15 @@
  * @export
  * @class SystemFunction
  */
-class SystemFunction { 
+class SystemFunction {
     /**
      * Дефолтная функция 
-     * @param {any} params
-     * @returns
+     * @param {Number} params
+     * @returns {Number}
      * 
      * @memberOf SystemFunction
      */
-    calculate(params) { 
+    calculate(params) {
         return params.value;
     }
 }

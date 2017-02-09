@@ -3,9 +3,33 @@ import { SystemFunctionTypes } from '../../../system-functions/export-system-fun
 /*********
  * Scales
  ********/
+const stateMuscular = {
+    params: {
+        current: 99,
+        min: 0,
+        max: 100,
+    },
+    functions: [
+        {
+            type: SystemFunctionTypes.line,
+            params: {
+                coefficient: 2,
+                free: 1
+            }
+        },
+        {
+            type: SystemFunctionTypes.quadratic,
+            params: {
+                coefficient: 2,
+                free: 1
+            }
+        }
+    ]
+};
+
 const speed = {
     params: {
-        current: 5,
+        current: 10,
         min: 0,
         max: 10,
     },
@@ -13,40 +37,110 @@ const speed = {
         {
             type: SystemFunctionTypes.line,
             params: {
-                coefficient: 22
+                coefficient: 2,
+                free: 1
+            }
+        },
+        {
+            type: SystemFunctionTypes.quadratic,
+            params: {
+                coefficient: 2,
+                free: 1
             }
         }
     ]
 };
 
 const weight = {
-    params: {},
+    params: {
+        current: 1,
+        min: 1,
+        max: 10,
+    },
     functions: [
         {
             type: SystemFunctionTypes.line,
             params: {
+                coefficient: 2,
+                free: 1
+            }
+        },
+        {
+            type: SystemFunctionTypes.quadratic,
+            params: {
+                coefficient: 2,
+                free: 1
             }
         }
     ]
 };
 
-const pressure = {
-    params: {},
+const stateCirculatory = {
+    params: {
+        current: 99,
+        min: 0,
+        max: 100,
+    },
     functions: [
         {
             type: SystemFunctionTypes.line,
             params: {
+                coefficient: 2,
+                free: 1
+            }
+        },
+        {
+            type: SystemFunctionTypes.quadratic,
+            params: {
+                coefficient: 2,
+                free: 1
+            }
+        }
+    ]
+};
+const pressure = {
+    params: {
+        current: 1,
+        min: 0,
+        max: 10,
+    },
+    functions: [
+        {
+            type: SystemFunctionTypes.line,
+            params: {
+                coefficient: 2,
+                free: 1
+            }
+        },
+        {
+            type: SystemFunctionTypes.quadratic,
+            params: {
+                coefficient: 2,
+                free: 1
             }
         }
     ]
 };
 
 const heartbeat = {
-    params: {},
+    params: {
+        current: 1,
+        min: 0,
+        max: 10,
+    },
     functions: [
         {
             type: SystemFunctionTypes.line,
             params: {
+                coefficient: 2,
+                free: 1
+            }
+        },
+        {
+            type: SystemFunctionTypes.quadratic,
+            params: {
+                coefficient: 2,
+                free: 1
             }
         }
     ]
@@ -57,6 +151,7 @@ const heartbeat = {
  ********/
 const muscular = {
     scales: {
+        state: stateMuscular,
         speed: speed,
         weight: weight
     }
@@ -64,10 +159,12 @@ const muscular = {
 
 const circulatory = {
     scales: {
+        state: stateCirculatory,
         pressure: pressure,
         heartbeat: heartbeat
     }
 }
+
 
 /******
  * Params
@@ -81,4 +178,4 @@ const params = {
     }
 };
 
-export { params as lionParams};
+export { params as lionParams };

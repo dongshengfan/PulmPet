@@ -6,7 +6,7 @@ import { State } from './states/state'
  * @export
  * @class StateMachine
  */
-export class StateMachine { 
+export class StateMachine {
     /**
      * Текущее состояние
      * @type {State}
@@ -28,12 +28,13 @@ export class StateMachine {
      * @memberOf StateMachine
      */
     run() {
-        while (true) { 
-            this._state.run();
-            if (this._state.isEndPoint()) { 
-                break;
+        this._state.run().then(() => {
+            if (!this._state.isEndPoint()) {
+                this._state = this._state.getNextState();
+                this.run();
             }
-            this._state = this._state.getNextState();    
-        }
+        }, () => {
+            throw new Error('Error in state... (StateMachine)');
+        });
     }
 }

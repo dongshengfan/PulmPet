@@ -1,6 +1,6 @@
 import { State } from '../state';
-import { Route, RouteEngine } from '../../routes/export-routes';
-import { Animal } from '../../../models/export-models';
+//import { Route, RouteEngine } from '../../routes/export-routes';
+//import { Animal } from '../../../models/export-models';
 
 /**
  * Класс-примитив для одиночных простых состояний.
@@ -10,8 +10,8 @@ import { Animal } from '../../../models/export-models';
  * @class PrimitiveState
  * @extends {State}
  */
-export class PrimitiveState extends State { 
-    
+export class PrimitiveState extends State {
+
     /**
      * Creates an instance of PrimitiveState.
      * @param {String} name имя состояния
@@ -22,7 +22,7 @@ export class PrimitiveState extends State {
      */
     constructor(name, model, isEndPoint = false, routeEngine = null) {
         super(name, model, routeEngine, isEndPoint);
-        
+
     }
 
     /**
@@ -30,7 +30,8 @@ export class PrimitiveState extends State {
      * TODO удалить
      * @memberOf PrimitiveState
      */
-    run() { 
-        cc.log(this._name);
+    run() {
+        throw new Error('No implementation status...');
+        //cc.log(this._name);
     }
 }

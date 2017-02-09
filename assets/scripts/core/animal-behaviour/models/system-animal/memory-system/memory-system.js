@@ -4,36 +4,36 @@
  * @export
  * @class MemorySystem
  */
-class MemorySystem{
+class MemorySystem {
     /**
      * Количество тайлдов с водой которое может помнить животное
      * 
      * @type {Number} целое число
      * @memberOf Memory
      */
-    
-    amountWaterPointsRemember;
+
+    _amountWaterPointsRemember;
     /**
      * Количество тайлдов с травой которое может помнить животное
      * 
      * @type {Number} целое число
      * @memberOf Memory
      */
-    amountGrassPointsRemember;
+    _amountGrassPointsRemember;
     /**
      * Количество тайлдов с животными которых может помнить животное
      * 
      * @type {Number} целое число
      * @memberOf Memory
      */
-    amountVictimPointsRemember;
+    _amountVictimPointsRemember;
     /**
      * Количество тайлдов с хищниками которых может помнить животное
      * 
      * @type {Number} целое число
      * @memberOf Memory
      */
-    amountPredatorPointsRemember;
+    _amountPredatorPointsRemember;
 
     /**
      * Массив тайлдов с водой о которых помнит животное
@@ -73,9 +73,9 @@ class MemorySystem{
      * @memberOf Memory
      */
     constructor() {
-    
+
     }
-    
+
     /**
      * Ищет в чертогах разума где последний раз он видел воду и возвращает ближайшую точку если найдет
      * 
@@ -84,8 +84,8 @@ class MemorySystem{
      * 
      * @memberOf Memory
      */
-    findWater(pos){
-        return this._inMemory(this.arrPointsWater,pos);
+    findWater(pos) {
+        return this._inMemory(this.arrPointsWater, pos);
     }
     /**
      * Ищет в чертогах разума где последний раз он видел траву и возвращает ближайшую точку если найдет
@@ -95,8 +95,8 @@ class MemorySystem{
      * 
      * @memberOf Memory
      */
-    findGrass(pos){
-        return this._inMemory(this.arrPointsGrass,pos);
+    findGrass(pos) {
+        return this._inMemory(this.arrPointsGrass, pos);
     }
     /**
      * Ищет в чертогах разума где последний раз он видел жертву и возвращает ближайшую точку если найдет
@@ -106,10 +106,10 @@ class MemorySystem{
      * 
      * @memberOf Memory
      */
-    findVictim(pos){
-        return this._inMemory(this.arrPointsVictim,pos);
+    findVictim(pos) {
+        return this._inMemory(this.arrPointsVictim, pos);
     }
-    
+
     /**
      * Копается в памяти вспоминая о ближайшем
      * 
@@ -119,15 +119,15 @@ class MemorySystem{
      * 
      * @memberOf Memory
      */
-    _inMemory(mas,pos){
-        let maxDistance=Number.MAX_VALUE;
-        let targetPoint=null;
-        let dictance=0;
-        mas.forEach((point)=>{
-            dictance=this._distance(point,pos);
-            if(dictance<maxDistance){
-                maxDistance=distance;
-                targetPoint=point;
+    _inMemory(mas, pos) {
+        let maxDistance = Number.MAX_VALUE;
+        let targetPoint = null;
+        let dictance = 0;
+        mas.forEach((point) => {
+            dictance = this._distance(point, pos);
+            if (dictance < maxDistance) {
+                maxDistance = distance;
+                targetPoint = point;
             }
         });
         return targetPoint;
@@ -141,10 +141,10 @@ class MemorySystem{
      * 
      * @memberOf Memory
      */
-    _distance(point,pos){
-        return cc.pDistance(pos,point);
+    _distance(point, pos) {
+        return cc.pDistance(pos, point);
     }
-    
+
 }
 
 export { MemorySystem };
