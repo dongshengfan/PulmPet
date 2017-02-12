@@ -1,8 +1,8 @@
 import { Communicator } from './communicator';
-import { CommunicationEvents as events } from './events';
+import { SystemFunctionFactory } from '../system-functions/system-function-factory';
 
 /**
- * Класс-строитель коммуникации систем определенного животного 
+ * Класс-строитель коммуникации систем определенного животного
  * @export
  * @class EventSystemBuilder
  */
@@ -15,17 +15,20 @@ class EventSystemBuilder {
      */
     _communicator;
 
+    _factoryFunction;
+
     constructor() {
         this._communicator = new Communicator();
+        this._factoryFunction = SystemFunctionFactory.instance();
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {CommunicationEvents} event
      * @param {Number} param
      * @returns {this}
-     * 
+     *
      * @memberOf EventSystemBuilder
      */
     add(event, param) {
@@ -34,12 +37,12 @@ class EventSystemBuilder {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {CommunicationEvents} event
      * @param {Number} params
      * @returns {this}
-     * 
+     *
      * @memberOf EventSystemBuilder
      */
     addAll(event, params) {
@@ -48,10 +51,10 @@ class EventSystemBuilder {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @returns {Communicator}
-     * 
+     *
      * @memberOf EventSystemBuilder
      */
     build() {
@@ -59,17 +62,21 @@ class EventSystemBuilder {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {CommunicationEvents} event
      * @param {JSON} param
-     * 
+     *
      * @memberOf EventSystemBuilder
      */
     _addLink(event, param) {
-        var {system, link} = param;
-        system.setCommunicator(this._communicator);
-        this._communicator.register(event, link.bind(system));
+        var {scale, type, functions, params} = param;
+        this._factoryFunction.create(functions, params);
+        this._communicator.register(event, {
+            scale: scale,
+            act: type,
+            function: this._factoryFunction.create(functions, params)
+        });
     }
 }
 

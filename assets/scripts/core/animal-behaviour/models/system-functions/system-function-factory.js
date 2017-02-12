@@ -2,12 +2,12 @@ import { LineSystemFunction, QuadraticSystemFunction } from './types-system-func
 import { SystemFunctionTypes } from './system-function-types';
 /**
  * Фабрика функций для расчетов
- * 
+ *
  * @class SystemFunctionFactory
  */
 class SystemFunctionFactory {
     /**
-     *  
+     *
      * @type {Array<SystemFunction>}
      * @memberOf SystemFunctionFactory
      */
@@ -32,12 +32,12 @@ class SystemFunctionFactory {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {SystemFunctionTypes} systemFactoryType
      * @param {JSON} params
      * @returns {SystemFunction}
-     * 
+     *
      * @memberOf SystemFunctionFactory
      */
     create(systemFunctionType, params) {

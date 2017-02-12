@@ -1,20 +1,18 @@
-import { PrimitiveState } from '../../../../state-machine/states/export-states';
-import { Animal } from '../../animal';
+/**
+ * Created by shaba on 13.02.2017.
+ */
+import { PrimitiveState } from '../states/export-states';
 
-export class LionGo extends PrimitiveState {
-    /**
-     * @type {Animal}
-     * @memberOf Stand
-     */
-    _model;
+export class StateGo extends PrimitiveState {
 
-    constructor(name, model, isEndPoint = false, routeEngine = null) {
-        super(name, model, isEndPoint, routeEngine);
+
+    constructor(model, isEndPoint = false, routeEngine = null) {
+        super("Go", model, isEndPoint, routeEngine);
 
     }
     /**
      * @returns {Promise}
-     * 
+     *
      * @memberOf LionGo
      */
     run() {
@@ -28,7 +26,7 @@ export class LionGo extends PrimitiveState {
         this._model._circulatory.changePressure(0.01);
         this._model._muscular.changeSpeed(-0.1);
         this._model._muscular.changeWeight(-0.1);
-        setTimeout(() => { resolveFn(); }, 4000);
+        setTimeout(() => { resolveFn(); }, 3000);
         return promise;
 
     }

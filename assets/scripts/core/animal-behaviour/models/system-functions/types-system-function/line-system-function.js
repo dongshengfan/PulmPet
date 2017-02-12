@@ -6,19 +6,20 @@ import { SystemFunction } from '../system-function';
  */
 class LineSystemFunction extends SystemFunction {
     /**
-     * Коэффицент 
-     * 
+     * Коэффицент
+     *
      * @type {Number}
      * @memberOf LineSystemFunction
      */
     _coefficient;
     /**
      * Свободный коэффицент
-     * 
+     *
      * @type {Number}
      * @memberOf LineSystemFunction
      */
     _free;
+
     constructor(params) {
         super(params);
         if (params) {
@@ -28,11 +29,11 @@ class LineSystemFunction extends SystemFunction {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {Number} params
      * @returns {Number}
-     * 
+     *
      * @memberOf LineSystemFunction
      */
     calculate(params) {

@@ -1,15 +1,9 @@
-import { PrimitiveState } from '../../../../state-machine/states/export-states';
-import { Animal } from '../../animal';
+import { PrimitiveState } from '../states/export-states';
 
 export class LionStart extends PrimitiveState {
-    /**
-     * @type {Animal}
-     * @memberOf Start
-     */
-    _model;
 
-    constructor(name, model, isEndPoint = false, routeEngine = null) {
-        super(name, model, isEndPoint, routeEngine);
+    constructor( model, isEndPoint = false, routeEngine = null) {
+        super("LionStart", model, isEndPoint, routeEngine);
 
     }
     /**

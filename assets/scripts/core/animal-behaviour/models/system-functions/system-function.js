@@ -5,10 +5,10 @@
  */
 class SystemFunction {
     /**
-     * Дефолтная функция 
+     * Дефолтная функция
      * @param {Number} params
      * @returns {Number}
-     * 
+     *
      * @memberOf SystemFunction
      */
     calculate(params) {

@@ -6,26 +6,27 @@ import { SystemFunction } from '../system-function';
  */
 class QuadraticSystemFunction extends SystemFunction {
     /**
-     * Коэффицент при главном члене 
-     * 
+     * Коэффицент при главном члене
+     *
      * @type {Number}
      * @memberOf QuadraticSystemFunction
      */
     _coefficientA;
     /**
      * Коэффицент B урванения Ax^2+Bx+C=0
-     * 
+     *
      * @type {Number}
      * @memberOf QuadraticSystemFunction
      */
     _coefficientB;
     /**
      * Свободный коэффицент
-     * 
+     *
      * @type {Number}
      * @memberOf QuadraticSystemFunction
      */
     _free;
+
     constructor(params) {
         super(params);
         if (params) {
@@ -36,11 +37,11 @@ class QuadraticSystemFunction extends SystemFunction {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {Number} params
      * @returns {Number}
-     * 
+     *
      * @memberOf QuadraticSystemFunction
      */
     calculate(params) {

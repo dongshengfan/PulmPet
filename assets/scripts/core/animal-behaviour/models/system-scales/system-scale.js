@@ -1,5 +1,3 @@
-import { SystemFunctionTypes, SystemFunctionFactory, SystemFunction } from '../system-functions/export-system-functions';
-
 /**
  * Класс обертка для параметров систем
  * @export
@@ -8,7 +6,7 @@ import { SystemFunctionTypes, SystemFunctionFactory, SystemFunction } from '../s
 class SystemScale {
     /**
      * Текущее значение параметра
-     * @type {Number}  
+     * @type {Number}
      * @memberOf SystemScale
      */
     current;
@@ -20,7 +18,7 @@ class SystemScale {
     _min;
     /**
      * Максимальное значение которое может принимать current текущее значение
-     * @type {Number} 
+     * @type {Number}
      * @memberOf SystemScale
      */
     _max;
@@ -31,23 +29,43 @@ class SystemScale {
      */
     scale;
 
-
     /**
-     * Система функций для расчета
-     * @type {SystemFunction}
-     * @memberOf SystemScale
+     * Коммуникатор для общения с другими системами
+     * @type {Communicator}
      */
-    _systemFunctions;
+    _communicator;
 
-    constructor(params, functions) {
+    constructor(params) {
+
         if (params) {
             this.current = params.current || 0;
             this._min = params.min || 0;
             this._max = params.max || 0;
             this.getPercentageInScale();
         }
+    }
 
-        this._systemFunctions = functions || {};
+    /**
+     * Добавляет марикровку на событие для шкалы
+     * @param event
+     */
+    addEvent(event) {
+        this.event = event;
+    }
+
+    /**
+     * Устанавливает системе коммуникатор
+     * @param {Communicator} communicator
+     */
+    setCommunicator(communicator) {
+        this._communicator = communicator;
+    }
+
+    trigger(event, params, autoComplete = false) {
+        if (autoComplete) {
+            event = Math.sign(params) ? event.increase : event.decrease;
+        }
+        this._communicator.publish(event, params);
     }
 
     /**
@@ -67,14 +85,12 @@ class SystemScale {
     }
 
     /**
-     * Добавляет к шкале параметра какое-то значение и производит перерасчет текущего значения этого параметра
-     * @param {Number} delta дельта изменеия процента какого-либо параметра
-     * @param {SystemFunctionTypes} functionType
+     * Изменяет процент шкалы  на дельту
      * @memberOf SystemScale
      */
-    addScaleValue(delta, functionType) {
-        let systemFunction = this._systemFunctions[functionType];
-        let rez = this.scale + systemFunction.calculate(delta);
+    change(delta) {
+        //let systemFunction = this._systemFunctions[functionType];
+        let rez = this.scale + delta;
         if (rez <= 100 && rez >= 0) {
             this.scale = rez;
             this.getCurrentValueOnScale();
@@ -82,22 +98,19 @@ class SystemScale {
     }
 
     /**
-     * 
-     * 
-     * @param {SystemFunctionTypes} functionType
-     * @param {Function} functionInstance
-     * 
-     * @memberOf SystemScale
+     * Производит изменение шкалы и дальнейшее распространение по сети
+     * @param delta
      */
-    addFunction(functionType, functionInstance) {
-        this._systemFunctions[functionType] = functionInstance;
+    recursiveChange(delta) {
+        this.change(delta);
+        this.trigger(this.event, delta, true);
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param {Array<System>} params оценки шкал системы
-     * 
+     *
      * @memberOf SystemScale
      */
     analyze(params) {

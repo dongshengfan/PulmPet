@@ -1,12 +1,6 @@
-import { PrimitiveState } from '../../../../state-machine/states/export-states';
-import { Animal } from '../../animal';
+import { PrimitiveState } from '../states/export-states';
 
-export class LionSleep extends PrimitiveState {
-    /**
-     * @type {Animal}
-     * @memberOf Stand
-     */
-    _model;
+export class LionStand extends PrimitiveState {
 
     constructor(name, model, isEndPoint = false, routeEngine = null) {
         super(name, model, isEndPoint, routeEngine);
@@ -15,7 +9,7 @@ export class LionSleep extends PrimitiveState {
     /**
      * @returns {Promise}
      * 
-     * @memberOf LionSleep
+     * @memberOf LionStand
      */
     run() {
         let resolveFn, rejectFn;
@@ -23,11 +17,11 @@ export class LionSleep extends PrimitiveState {
             resolveFn = resolve;
             rejectFn = reject;
         });
-        cc.log('сплю');
+        cc.log('стою');
         this._model._circulatory.changeHeartbeat(-0.7);
-        this._model._circulatory.changePressure(-0.9);
-        this._model._muscular.changeSpeed(0.9);
-        this._model._muscular.changeWeight(0.8);
+        this._model._circulatory.changePressure(-0.2);
+        this._model._muscular.changeSpeed(0.5);
+        this._model._muscular.changeWeight(0.7);
         setTimeout(() => { resolveFn(); }, 4000);
         return promise;
 

@@ -1,10 +1,7 @@
 export * from './animal-factory';
 export * from './animal';
 export * from './animal-types';
-
-/** LION */
-export * from './lion/factories/lion-factory';
-export * from './lion/factories/lion-params';
-
-/** MOUSE */
-export * from './mouse/factories/mouse-factory';
+export * from './system-animal-types';
+export * from './sceles-animal-types';
+export  * from './state-animal-types';
+export * from './act-types';

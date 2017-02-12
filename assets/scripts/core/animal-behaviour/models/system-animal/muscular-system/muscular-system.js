@@ -1,7 +1,7 @@
 import { System } from '../system';
-import { SystemScale } from '../../system-scales/export-system-scales';
-import { SystemFunctionTypes } from '../../system-functions/system-function-types';
 import { CommunicationEvents as events } from '../../system-communication/events';
+import { ScalesTypes } from '../../animal-models/sceles-animal-types';
+
 /**
  * Класс опорно-двигательной системы
  * {Скорость передвижения, вес}
@@ -9,69 +9,37 @@ import { CommunicationEvents as events } from '../../system-communication/events
  * @class MuscularSystem
  */
 class MuscularSystem extends System {
-
-
     /**
      * Скорость передвижения
-     * @type {SystemScale} объект скорости
      */
     _speed;
 
     /**
      * Вес животного
-     * @type {SystemScale} объект веса
-     * 
      */
     _weight;
 
-
-    constructor(state, speed, weight) {
-        super(state);
-        this._speed = speed;
-        this._weight = weight;
+    constructor(scales) {
+        super(scales[ScalesTypes.stateSystem]);
+        this._speed = scales[ScalesTypes.speed];
+        this._weight = scales[ScalesTypes.weight];
+        this._speed.addEvent(events.speed);
+        this._weight.addEvent(events.weight);
     }
-
-    onPressureIncrease(delta) {
-        this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
-        this._speed.addScaleValue(-delta, SystemFunctionTypes.line);
-        this.analyzeSystem();
-    }
-
-    onPressureDecrease(delta) {
-        this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
-        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
-        this.analyzeSystem();
-    }
-
-    onHeartbeatIncrease(delta) {
-        this._weight.addScaleValue(-delta, SystemFunctionTypes.line);
-        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
-        this.analyzeSystem();
-    }
-
-    onHeartbeatDecrease(delta) {
-        this._weight.addScaleValue(delta, SystemFunctionTypes.line);
-        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
-        this.analyzeSystem();
-    }
-
 
     changeSpeed(delta) {
-        this._speed.addScaleValue(delta, SystemFunctionTypes.line);
+        this._speed.recursiveChange(delta);
         this.analyzeSystem();
-        this.trigger(events.speed, delta, true);
-    }
-    changeWeight(delta) {
-        this._weight.addScaleValue(delta, SystemFunctionTypes.line);
-        this.analyzeSystem();
-        this.trigger(events.weight, delta, true);
+
     }
 
+    changeWeight(delta) {
+        this._weight.recursiveChange(delta);
+        this.analyzeSystem();
+    }
 
     /**
-     * Анализирует показатели системы выводя вердикт о состоянии
-     * 
-     * @memberOf MuscularSystem
+     * Анализирует систему
      */
     analyzeSystem() {
         this._systemState.analyze([
@@ -83,8 +51,6 @@ class MuscularSystem extends System {
             }
         ]);
     }
-
-
 }
 
 export { MuscularSystem };

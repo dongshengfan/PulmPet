@@ -1,12 +1,7 @@
-import { PrimitiveState } from '../../../../state-machine/states/export-states';
-import { Animal } from '../../animal';
+import { PrimitiveState } from '../states/export-states';
 
-export class LionEaterGrass extends PrimitiveState {
-    /**
-     * @type {Animal}
-     * @memberOf EaterGrass
-     */
-    _model;
+export class LionRun extends PrimitiveState {
+
 
     constructor(name, model, isEndPoint = false, routeEngine = null) {
         super(name, model, isEndPoint, routeEngine);
@@ -15,7 +10,7 @@ export class LionEaterGrass extends PrimitiveState {
     /**
      * @returns {Promise}
      * 
-     * @memberOf LionEaterGrass
+     * @memberOf LionRun
      */
     run() {
         let resolveFn, rejectFn;
@@ -23,7 +18,7 @@ export class LionEaterGrass extends PrimitiveState {
             resolveFn = resolve;
             rejectFn = reject;
         });
-        cc.log('ем траву');
+        cc.log('бегу');
         this._model._circulatory.changeHeartbeat(0.5);
         this._model._circulatory.changePressure(0.2);
         this._model._muscular.changeSpeed(-0.4);
