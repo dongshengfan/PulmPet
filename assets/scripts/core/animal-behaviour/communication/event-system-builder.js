@@ -1,5 +1,5 @@
 import { Communicator } from './communicator';
-import { SystemFunctionFactory } from '../system-functions/system-function-factory';
+import { SystemFunctionFactory } from '../../factories/system-function-factory';
 
 /**
  * Класс-строитель коммуникации систем определенного животного
@@ -9,7 +9,7 @@ import { SystemFunctionFactory } from '../system-functions/system-function-facto
 class EventSystemBuilder {
 
     /**
-     * Коммуникатор общения между системами
+     * Коммуникатор общения между шкалами
      * @type {Communicator}
      * @memberOf EventSystemBuilder
      */

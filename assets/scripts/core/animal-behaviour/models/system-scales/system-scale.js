@@ -34,15 +34,22 @@ class SystemScale {
      * @type {Communicator}
      */
     _communicator;
+    /**
+     * Пауза между тем как параметр изменился и тем как он разослал остальным
+     */
 
-    constructor(params) {
+    _responseTime;
+    _name;
+    constructor(params,time) {
 
         if (params) {
+            this._name=params.name;
             this.current = params.current || 0;
             this._min = params.min || 0;
             this._max = params.max || 0;
             this.getPercentageInScale();
         }
+        this._responseTime=time*1000||1000;
     }
 
     /**
@@ -67,7 +74,6 @@ class SystemScale {
         }
         this._communicator.publish(event, params);
     }
-
     /**
      * Считает процент прогресса на основе интервала и текущего значения
      * @memberOf SystemScale
@@ -103,7 +109,7 @@ class SystemScale {
      */
     recursiveChange(delta) {
         this.change(delta);
-        this.trigger(this.event, delta, true);
+        setTimeout(()=>{this.trigger(this.event, delta, true);},this._responseTime);
     }
 
     /**

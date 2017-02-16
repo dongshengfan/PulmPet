@@ -17,7 +17,7 @@ var CircularList = cc.Class({
     },
     createPos() {
         this._lengthBetweenPoints = 2 * Math.PI / this.amountVisible;//Длинна между точками в радианах
-        let currentRadians = 0, x, y;
+        let currentRadians = 0.01, x, y;
         //начинаем с 0 по радианам 
         for (let i = 0; i < this.amountVisible; i++) {
             y = this.radius * Math.sin(currentRadians);
@@ -54,50 +54,6 @@ var CircularList = cc.Class({
      */
     directionfinding(x, y, locX, locY) {
 
-        /* if (Math.abs(x) > Math.abs(y)) {
-             if ((x >= 0 && y >= 0) || (x <= 0 && y >= 0)) {
-                 if (locX > 0) {
-                     //(уменьшение радиана)
-                     this.rotation(-this.convertToRadians(x, y));
-                     
-                 } else {
-                     //(увелечение радиана)
-                     this.rotation(this.convertToRadians(x, y));
-                 }
-             } else if ((x <= 0 && y <= 0) || (x >= 0 && y <= 0)) {
-                 if (locX > 0) {
-                     //(увеличение радиана)
-                     this.rotation(this.convertToRadians(x, y));
-                 } else {
-                     //(уменьшение радиана)
-                     this.rotation(-this.convertToRadians(x, y));
-                 }
-             }else{
-                 cc.log("yflj xnj-njltkfnm");
-             }
-         } else if (Math.abs(x) < Math.abs(y)) {
-             if ((x >= 0 && y >= 0) || (x <= 0 && y >= 0)) {
-                 if (locX > 0) {
-                     //(увелечение радиана)
-                     this.rotation(this.convertToRadians(x, y));
-                 } else {
-                     //(уменьшение радиана)
-                     this.rotation(-this.convertToRadians(x, y));
-                 }
-             } else if ((x <= 0 && y <= 0) || (x >= 0 && y <= 0)) {
-                 if (locX > 0) {
-                     //(уменьшение радиана)
-                     this.rotation(-this.convertToRadians(x, y));
-                 } else {
-                     //(увелечение радиана)
-                     this.rotation(this.convertToRadians(x, y));
-                 }
-             }else{
-                 cc.log("yflj xnj-njltkfnm");
-             }
-         }else{
-             cc.log("Вылипле");
-         }*/
 
          if(locX>0&&locY>0){
             this.obr1(x,y);
@@ -108,7 +64,7 @@ var CircularList = cc.Class({
          }else if(locX>0&&locY<0){
             this.obr4(x,y);
          }else{
-
+            //   this.rotation(0.01);
          }
      
     },
@@ -261,7 +217,7 @@ var CircularList = cc.Class({
             //ничего не делаем если они по 0
         }
     },
- 
+
 
 
     /**

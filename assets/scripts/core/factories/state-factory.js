@@ -1,8 +1,7 @@
 /**
  * Created by shaba on 13.02.2017.
  */
-import { StateTypes } from './state-animal-types';
-import { StateStart,StateGo,StateRun,StateDie } from '../../state-machine/libraryState/export-lion-states';
+import { StateTypes, StateStart, StateGo, StateRun, StateDie } from '../animal-behaviour/export-animal-behaviour';
 
 export class StateFactory {
 

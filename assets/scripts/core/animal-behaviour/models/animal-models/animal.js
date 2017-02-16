@@ -1,6 +1,6 @@
 import { MuscularSystem, CirculatorySystem } from '../system-animal/export-system-animal';
-import { Communicator } from '../system-communication/export-system-communication';
-import { SystemTypes } from './system-animal-types';
+import { Communicator } from '../../communication/export-system-communication';
+import { SystemTypes } from '../../enum-lists/system-animal-types';
 /**
  * Класс животное
  *

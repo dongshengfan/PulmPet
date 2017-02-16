@@ -12,8 +12,8 @@ import {
  * Params
  *****/
 const params = {
-    sensitivitySystem:0.01,
-    timeLive:4,
+    sensitivitySystem:0.002,
+    timeLive:1,
     systems: {
         system: [
             {
@@ -23,7 +23,7 @@ const params = {
                         typeScale: ScalesTypes.stateSystemMuscular,
                         param: {
                             name:'State опорной',
-                            current: 9,
+                            current: 90,
                             min: 0,
                             max: 100
                         }
@@ -32,7 +32,7 @@ const params = {
                         typeScale: ScalesTypes.weight,
                         param: {
                             name:'Вес',
-                            current: 8,
+                            current: 2,
                             min: 0,
                             max: 10
                         }
@@ -41,9 +41,9 @@ const params = {
                         typeScale: ScalesTypes.speed,
                         param: {
                             name:'Скорость',
-                            current: 1,
+                            current: 5,
                             min: 1,
-                            max: 10
+                            max: 100
                         }
                     }
                 ]
@@ -55,7 +55,7 @@ const params = {
                         typeScale: ScalesTypes.stateSystemCirculatory,
                         param: {
                             name:'State кровиностной ',
-                            current: 9,
+                            current: 90,
                             min: 0,
                             max: 100
                         }
@@ -86,26 +86,8 @@ const params = {
                 type: Event.speed.increase,
                 link: [
                     {
-                        scale: ScalesTypes.heartbeat,
-                        type: ActTypes.also,
-                        functions: SystemFunctionTypes.line,
-                        params: {
-                            coefficient: 0.5,
-                            free: 0.1
-                        }
-                    },
-                    {
                         scale: ScalesTypes.pressure,
                         type: ActTypes.also,
-                        functions: SystemFunctionTypes.line,
-                        params: {
-                            coefficient: 0.5,
-                            free: 0.1
-                        }
-                    },
-                    {
-                        scale: ScalesTypes.weight,
-                        type: ActTypes.opposite,
                         functions: SystemFunctionTypes.line,
                         params: {
                             coefficient: 0.5,
@@ -151,15 +133,6 @@ const params = {
                 type: Event.pressure.increase,
                 link: [
                     {
-                        scale: ScalesTypes.heartbeat,
-                        type: ActTypes.opposite,
-                        functions: SystemFunctionTypes.line,
-                        params: {
-                            coefficient: 0.05,
-                            free: 0
-                        }
-                    },
-                    {
                         scale: ScalesTypes.speed,
                         type: ActTypes.opposite,
                         functions: SystemFunctionTypes.line,
@@ -198,15 +171,15 @@ const params = {
                 link: [
                     {
                         type: StateTypes.go,
-                        probability: 0.5
+                        probability: 0.04
                     },
                     {
                         type: StateTypes.run,
-                        probability: 0.7
+                        probability: 0.01
                     },
                     {
                         type: StateTypes.die,
-                        probability: 0.01
+                        probability: 0.9
                     }
                 ]
             },
@@ -215,15 +188,15 @@ const params = {
                 link: [
                     {
                         type: StateTypes.run,
-                        probability: 0.3
+                        probability: 0.03
                     },
                     {
                         type: StateTypes.go,
-                        probability: 0.3
+                        probability: 0.07
                     },
                     {
                         type: StateTypes.die,
-                        probability: 0.3
+                        probability: 0.99
                     }
                 ]
             },
@@ -232,15 +205,15 @@ const params = {
                 link: [
                     {
                         type: StateTypes.die,
-                        probability: 0.6
+                        probability: 0.0002
                     },
                     {
                         type: StateTypes.go,
-                        probability: 0.9
+                        probability: 0.99
                     },
                     {
                         type: StateTypes.run,
-                        probability: 0.1
+                        probability: 0.0001
                     }
                 ]
             }
@@ -248,4 +221,4 @@ const params = {
     }
 };
 
-export { params as lionParams };
+export { params as mouseParams };

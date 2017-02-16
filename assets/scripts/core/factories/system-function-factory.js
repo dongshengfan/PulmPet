@@ -1,5 +1,9 @@
-import { LineSystemFunction, QuadraticSystemFunction } from './types-system-function/export-types-system-function';
-import { SystemFunctionTypes } from './system-function-types';
+import {
+    LineSystemFunction,
+    QuadraticSystemFunction,
+    SystemFunctionTypes
+} from '../animal-behaviour/export-animal-behaviour';
+
 /**
  * Фабрика функций для расчетов
  *

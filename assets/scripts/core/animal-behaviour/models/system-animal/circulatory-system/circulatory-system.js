@@ -1,6 +1,6 @@
 import { System } from '../system';
-import { CommunicationEvents as events } from '../../system-communication/events';
-import { ScalesTypes } from '../../animal-models/sceles-animal-types';
+import { CommunicationEvents as events } from '../../../enum-lists/communication-events-types';
+import { ScalesTypes } from '../../../enum-lists/sceles-animal-types';
 /**
  * Класс сердечнососудистая системы
  * {Давление,Седцебиение}
@@ -24,7 +24,7 @@ class CirculatorySystem extends System {
      * Creates an instance of CirculatorySystem.
      */
     constructor(scales) {
-        super(scales[ScalesTypes.stateSystem]);
+        super(scales[ScalesTypes.stateSystemCirculatory]);
         this._pressure = scales[ScalesTypes.pressure];
         this._heartbeat = scales[ScalesTypes.heartbeat];
         this._pressure.addEvent(events.pressure);

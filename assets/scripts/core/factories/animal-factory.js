@@ -1,15 +1,15 @@
-import { Animal } from './animal'
-import { EventSystemBuilder, CommunicationEvents as Events } from '../system-communication/export-system-communication';
-import { AnimalTypes } from './animal-types';
-import { SimpleRouteEngine } from '../../state-machine/routes/engines/simple-route-engine';
-import { ProbabilityRouteEngine } from '../../state-machine/routes/engines/probability-route-engine';
-import { Route } from '../../state-machine/routes/route';
-import { State } from '../../state-machine/states/export-states';
-import { StateMachine } from '../../state-machine/state-machine';
 import { StateFactory } from './state-factory';
 import { SystemFactory } from './system-factory';
 import { ScaleFactory } from './scale-factory';
-import { StateTypes } from './state-animal-types';
+import {
+    Animal,
+    EventSystemBuilder,
+    AnimalTypes,
+    ProbabilityRouteEngine,
+    Route,
+    StateMachine,
+    StateTypes
+} from '../animal-behaviour/export-animal-behaviour';
 /**
  * Фабрика животных для расчетов
  *
@@ -26,9 +26,6 @@ class AnimalFactory {
     static _instance;
 
     constructor() {
-        //this._factories = {};
-        //this._factories[AnimalTypes.lion] = LionFactory;
-        //this._factories[AnimalTypes.mouse] = MouseFactory;
     }
 
     /**
@@ -51,13 +48,15 @@ class AnimalFactory {
      * @memberOf AnimalFactory
      */
     create(params) {
-        var {systems, states}=params;
+        var {sensitivitySystem,timeLive,systems, states}=params;
         //Создание коммуникатора
         let communicator = new EventSystemBuilder();
         //Создание систем
-        let systemAnimal = this._createSystemAnimal(systems.system, communicator.build());
+        let systemAnimal = this._createSystemAnimal(timeLive,systems.system, communicator.build());
         //Заполение связей коммуникатора
         let communicatorAnimal = this._createCommunicator(systems.eventCommunication, communicator);
+        //настройкачувствительности
+        communicatorAnimal._sensitivity=sensitivitySystem;
         //Создание животного
         this._animal = new Animal(systemAnimal, communicatorAnimal);
         //Создание состояний
@@ -88,7 +87,7 @@ class AnimalFactory {
      * @returns {Array} массив систем
      * @private
      */
-    _createSystemAnimal(system, communicator) {
+    _createSystemAnimal(timeLive,system, communicator) {
         let factorySystem = SystemFactory.instance();
         let factoryScale = ScaleFactory.instance();
         let paramScale = [];
@@ -96,7 +95,7 @@ class AnimalFactory {
         system.forEach((item) => {
             paramScale = [];
             item.scales.forEach((scale) => {
-                paramScale[scale.typeScale] = factoryScale.create(scale.typeScale, scale.param);
+                paramScale[scale.typeScale] = factoryScale.create(scale.typeScale, scale.param,timeLive);
                 paramScale[scale.typeScale].setCommunicator(communicator);
                 communicator.addScale(scale.typeScale, paramScale[scale.typeScale]);
             });
@@ -120,10 +119,9 @@ class AnimalFactory {
             let massStates = [];
             item.link.forEach((state) => {
                 massStates.push(new Route(paramState[state.type], (model, probability) => {
-                    cc.log(probability);
-                    cc.log(state.probability);
+
                     if (state.probability > probability) {
-                        cc.log(true);
+
                         return true;
                     } else {
                         return false;

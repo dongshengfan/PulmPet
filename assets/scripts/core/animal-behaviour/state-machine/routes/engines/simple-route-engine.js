@@ -26,6 +26,6 @@ export class SimpleRouteEngine extends RouteEngine {
      */
     getRoute() {
         var routes = this._routes.filter((route) => route.isAvailable(this._model));
-        return routes.length > 0 ? this._routes[0] : this._nextRouteEngine();
+        return routes.length > 0 ? routes[0] : this._nextRouteEngine();
     }
 }

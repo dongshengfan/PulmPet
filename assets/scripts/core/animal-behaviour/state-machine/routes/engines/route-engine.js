@@ -73,7 +73,7 @@ export class RouteEngine {
      * @memberOf RouteEngine
      */
     setModel(animal) {
-
+        this._model=animal;
     }
 
     /**

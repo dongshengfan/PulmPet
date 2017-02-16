@@ -1,8 +1,12 @@
 /**
  * Created by shabanov on 12.02.2017.
  */
-import { SystemTypes } from './system-animal-types';
-import { CirculatorySystem, MemorySystem, MuscularSystem } from '../system-animal/export-system-animal';
+import {
+    SystemTypes,
+    CirculatorySystem,
+    MemorySystem,
+    MuscularSystem
+} from '../animal-behaviour/export-animal-behaviour';
 
 export class SystemFactory {
 

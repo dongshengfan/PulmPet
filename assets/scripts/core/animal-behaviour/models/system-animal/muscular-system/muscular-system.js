@@ -1,6 +1,6 @@
 import { System } from '../system';
-import { CommunicationEvents as events } from '../../system-communication/events';
-import { ScalesTypes } from '../../animal-models/sceles-animal-types';
+import { CommunicationEvents as events } from '../../../enum-lists/communication-events-types';
+import { ScalesTypes } from '../../../enum-lists/sceles-animal-types';
 
 /**
  * Класс опорно-двигательной системы
@@ -20,7 +20,7 @@ class MuscularSystem extends System {
     _weight;
 
     constructor(scales) {
-        super(scales[ScalesTypes.stateSystem]);
+        super(scales[ScalesTypes.stateSystemMuscular]);
         this._speed = scales[ScalesTypes.speed];
         this._weight = scales[ScalesTypes.weight];
         this._speed.addEvent(events.speed);

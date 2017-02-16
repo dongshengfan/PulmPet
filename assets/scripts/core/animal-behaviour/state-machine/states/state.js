@@ -67,7 +67,7 @@ export class State {
      * @returns {State}
      * @memberOf State
      */
-    getNextState() {
+        getNextState() {
         if (!this._routeEngine) {
             return this;
         }

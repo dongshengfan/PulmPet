@@ -2,7 +2,7 @@ import { RouteEngine } from './route-engine';
 
 /**
  * Инкапсуляция логики выбора маршрута для перехода в следующее состояние.
- * При подсчете возможности перехода по маршруту вероятность не учитывается
+ * При подсчете возможности перехода по маршруту вероятность учитывается
  * 
  * @export
  * @class ProbabilityRouteEngine
@@ -27,6 +27,6 @@ export class ProbabilityRouteEngine extends RouteEngine {
     getRoute() {
         var probability = Math.random();
         var routes = this._routes.filter((route) => route.isAvailable(this._model, probability));
-        return routes.length > 0 ? this._routes[0] : this._nextRouteEngine();
+        return routes.length > 0 ? routes[0] : this._nextRouteEngine();
     }
 }

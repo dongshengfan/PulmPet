@@ -1,8 +1,7 @@
 /**
  * Created by shaba on 12.02.2017.
  */
-import { ScalesTypes } from './sceles-animal-types';
-import { SystemScale } from '../system-scales/export-system-scales';
+import { ScalesTypes, SystemScale } from '../animal-behaviour/export-animal-behaviour';
 
 export class ScaleFactory {
 
@@ -12,9 +11,10 @@ export class ScaleFactory {
 
     constructor() {
         this._factories = [];
-        this._factories[ScalesTypes.stateSystem] = SystemScale;
+        this._factories[ScalesTypes.stateSystemCirculatory] = SystemScale;
         this._factories[ScalesTypes.heartbeat] = SystemScale;
         this._factories[ScalesTypes.pressure] = SystemScale;
+        this._factories[ScalesTypes.stateSystemMuscular] = SystemScale;
         this._factories[ScalesTypes.speed] = SystemScale;
         this._factories[ScalesTypes.weight] = SystemScale;
     }
@@ -29,7 +29,7 @@ export class ScaleFactory {
         return this._instance;
     }
 
-    create(typeScale, params) {
-        return new this._factories[typeScale](params);
+    create(typeScale, params,time) {
+        return new this._factories[typeScale](params,time);
     }
 }

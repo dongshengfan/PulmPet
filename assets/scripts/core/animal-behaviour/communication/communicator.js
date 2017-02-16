@@ -1,5 +1,5 @@
 
-import { ActTypes } from '../animal-models/act-types';
+import { ActTypes } from '../enum-lists/export-enum-lists';
 /**
  * Класс централизует сообщения между системами, упрощает их общение между собой
  * @export
@@ -15,7 +15,7 @@ class Communicator {
     _netLinks;
 
     _mapScale;
-
+    _sensitivity;
     /**
      * Creates an instance of Communicator.
      * @memberOf Communicator
@@ -23,6 +23,7 @@ class Communicator {
     constructor() {
         this._netLinks = {};
         this._mapScale = [];
+        this._sensitivity=0;
     }
 
     /**
@@ -64,7 +65,11 @@ class Communicator {
         if (links) {
             links.forEach((link) => {
                 let scale = this.getScale(link.scale);
-                link.act === ActTypes.also ? scale.change(link.function.calculate(params)) : scale.change(-link.function.calculate(params));
+                let delta=link.function.calculate(params);
+               
+                if(Math.abs(delta)>this._sensitivity) {
+                    link.act === ActTypes.also ? scale.recursiveChange(delta) : scale.recursiveChange(-delta);
+                }
             });
         }
     }
