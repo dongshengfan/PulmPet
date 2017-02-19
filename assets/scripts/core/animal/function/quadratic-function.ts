@@ -2,12 +2,18 @@
  * Created by FIRCorp on 19.02.2017.
  */
 namespace Animal.Function {
-    export class LineFunction implements SystemFunction {
+    export class QuadraticFunction implements SystemFunction {
         /**
-         * Коэффицент
+         * Коэффицент А уравнения Ax^2+Bx+C=0
          * @type {Number}
          */
-        _coefficient: number;
+        _coefficientA: number;
+
+        /**
+         * Коэффицент B уравнения Ax^2+Bx+C=0
+         * @type {Number}
+         */
+        _coefficientB: number;
 
         /**
          * Свободный коэффицент
@@ -20,8 +26,9 @@ namespace Animal.Function {
          * @param params массив параметров функции
          */
         constructor(params: number[]) {
-            this._coefficient = params[0] || 0;
-            this._free = params[1] || 0;
+            this._coefficientA = params[0] || 0;
+            this._coefficientB = params[1] || 0;
+            this._free = params[2] || 0;
         }
 
         /**
@@ -30,7 +37,7 @@ namespace Animal.Function {
          * @returns {number} результат
          */
         calculate(param: number): number {
-            return this._coefficient * param + this._free;
+            return this._coefficientA * (param ** 2) + this._coefficientB * param + this._free;
         }
     }
 }
