@@ -2,10 +2,6 @@
  * Created by FIRCorp on 19.02.2017.
  */
 
-let fun=new Animal.Function.LineFunction([100]);
-let ob: {max: number} = {
-    max: 1
-};
-
-let sc = new Animal.Scale.SystemScale(ob);
+let factory=Animal.Scale.Factory.ScaleFactory.instance();
+let sc = factory.create(0,{max:90});
 console.log(sc);
