@@ -3,10 +3,10 @@
  */
 namespace Animal.Function.Factory {
     /**
-     * enum типов фабрик функций
+     * Типы фабрик функций
      */
     export enum FunctionTypes{
-        line = 0,
+        line,
         quadratic
     }
 }

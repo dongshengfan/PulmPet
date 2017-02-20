@@ -2,7 +2,10 @@
  * Created by FIRCorp on 19.02.2017.
  */
 namespace Animal.Function {
-    export class QuadraticFunction implements SystemFunction {
+    /**
+     * Квадратичная функция
+     */
+    export class QuadraticFunction implements IFunction {
         /**
          * Коэффицент А уравнения Ax^2+Bx+C=0
          * @type {Number}
@@ -33,7 +36,7 @@ namespace Animal.Function {
 
         /**
          * Вычисляет функцию
-         * @param param дельта
+         * @param param переменная
          * @returns {number} результат
          */
         calculate(param: number): number {

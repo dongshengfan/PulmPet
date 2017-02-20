@@ -2,15 +2,18 @@
  * Created by FIRCorp on 20.02.2017.
  */
 namespace Animal.Function.Factory {
+    /**
+     * Фабрика функций
+     */
     export class FunctionFactory {
         /**
          * Массив различных конструкторов функций
-         * @type {Array<SystemFunction>}
+         * @type {Array<IFunction>}
          */
         _factories: any[];
 
         /**
-         * Экземпляр этого фабрики
+         * Экземпляр этой фабрики
          */
         static _instance: FunctionFactory;
 
@@ -27,7 +30,7 @@ namespace Animal.Function.Factory {
          * Создание фабрики
          * @returns {FunctionFactory}
          */
-        static instance() {
+        static instance(): FunctionFactory {
             if (!this._instance) {
                 this._instance = new FunctionFactory();
             }
@@ -39,7 +42,7 @@ namespace Animal.Function.Factory {
          * @param type тип функции
          * @param system конструктор функции
          */
-        add(type: FunctionTypes, system: any) {
+        add(type: FunctionTypes, system: any): void {
             this._factories[type] = system;
         }
 
@@ -48,7 +51,7 @@ namespace Animal.Function.Factory {
          * @param functionType тип функции
          * @param params параметры функции
          */
-        create(functionType: FunctionTypes, params: any) {
+        create(functionType: FunctionTypes, params: any): any {
             return new this._factories[functionType](params);
         }
     }

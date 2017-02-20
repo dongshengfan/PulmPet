@@ -2,7 +2,10 @@
  * Created by FIRCorp on 19.02.2017.
  */
 namespace Animal.Function {
-    export class LineFunction implements SystemFunction {
+    /**
+     * Линейная функция
+     */
+    export class LineFunction implements IFunction {
         /**
          * Коэффицент
          * @type {Number}
@@ -26,7 +29,7 @@ namespace Animal.Function {
 
         /**
          * Вычисляет функцию
-         * @param param дельта
+         * @param param переменная
          * @returns {number} результат
          */
         calculate(param: number): number {
