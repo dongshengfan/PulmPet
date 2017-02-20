@@ -25,7 +25,7 @@ namespace Animal.Function {
         _free: number;
 
         /**
-         * Constructor of function
+         * Constructor of QuadraticFunction
          * @param params массив параметров функции
          */
         constructor(params: number[]) {

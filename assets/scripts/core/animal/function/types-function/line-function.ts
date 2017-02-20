@@ -19,7 +19,7 @@ namespace Animal.Function {
         _free: number;
 
         /**
-         * Constructor of function
+         * Constructor of LineFunction
          * @param params массив параметров функции
          */
         constructor(params: number[]) {

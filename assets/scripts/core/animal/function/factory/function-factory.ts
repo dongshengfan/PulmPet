@@ -14,6 +14,7 @@ namespace Animal.Function.Factory {
 
         /**
          * Экземпляр этой фабрики
+         * @type {FunctionFactory}
          */
         static _instance: FunctionFactory;
 
