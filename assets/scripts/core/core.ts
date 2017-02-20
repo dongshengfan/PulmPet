@@ -8,4 +8,5 @@ console.log(fu.free);
 
 let factoryS=Animal.Scale.Factory.ScaleFactory.instance();
 let sc = factoryS.create(0,{max:90});
+sc.max=100;
 console.log(sc);
