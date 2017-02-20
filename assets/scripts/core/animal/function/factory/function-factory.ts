@@ -10,13 +10,13 @@ namespace Animal.Function.Factory {
          * Массив различных конструкторов функций
          * @type {Array<IFunction>}
          */
-        _factories: any[];
+        private _factories: any[];
 
         /**
          * Экземпляр этой фабрики
          * @type {FunctionFactory}
          */
-        static _instance: FunctionFactory;
+        private static _instance: FunctionFactory;
 
         /**
          * Constructor of FunctionFactory

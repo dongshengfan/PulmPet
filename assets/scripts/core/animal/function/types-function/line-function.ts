@@ -10,13 +10,13 @@ namespace Animal.Function {
          * Коэффицент
          * @type {Number}
          */
-        _coefficient: number;
+        private _coefficient: number;
 
         /**
          * Свободный коэффицент
          * @type {Number}
          */
-        _free: number;
+        private _free: number;
 
         /**
          * Constructor of LineFunction
@@ -25,6 +25,22 @@ namespace Animal.Function {
         constructor(params: number[]) {
             this._coefficient = params[0] || 0;
             this._free = params[1] || 0;
+        }
+
+        set coefficient(param:number){
+            this._coefficient=param;
+        }
+
+        set free(param:number){
+            this._free=param;
+        }
+
+        get coefficient(){
+            return this._coefficient;
+        }
+
+        get free(){
+            return this._free;
         }
 
         /**

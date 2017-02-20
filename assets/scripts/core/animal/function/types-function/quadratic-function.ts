@@ -10,19 +10,19 @@ namespace Animal.Function {
          * Коэффицент А уравнения Ax^2+Bx+C=0
          * @type {Number}
          */
-        _coefficientA: number;
+        private _coefficientA: number;
 
         /**
          * Коэффицент B уравнения Ax^2+Bx+C=0
          * @type {Number}
          */
-        _coefficientB: number;
+        private _coefficientB: number;
 
         /**
          * Свободный коэффицент
          * @type {Number}
          */
-        _free: number;
+        private _free: number;
 
         /**
          * Constructor of QuadraticFunction
@@ -32,6 +32,30 @@ namespace Animal.Function {
             this._coefficientA = params[0] || 0;
             this._coefficientB = params[1] || 0;
             this._free = params[2] || 0;
+        }
+
+        set coefficientA(param:number){
+            this._coefficientA=param;
+        }
+
+        set coefficientB(param:number){
+            this._coefficientB=param;
+        }
+
+        set free(param:number){
+            this._free=param;
+        }
+
+        get coefficientA(){
+            return this._coefficientA;
+        }
+
+        get coefficientB(){
+            return this._coefficientB;
+        }
+
+        get free(){
+            return this._free;
         }
 
         /**
