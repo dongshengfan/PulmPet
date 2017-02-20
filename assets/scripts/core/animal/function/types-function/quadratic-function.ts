@@ -34,27 +34,27 @@ namespace Animal.Function {
             this._free = params[2] || 0;
         }
 
-        set coefficientA(param:number){
-            this._coefficientA=param;
+        set coefficientA(param: number) {
+            this._coefficientA = param;
         }
 
-        set coefficientB(param:number){
-            this._coefficientB=param;
+        set coefficientB(param: number) {
+            this._coefficientB = param;
         }
 
-        set free(param:number){
-            this._free=param;
+        set free(param: number) {
+            this._free = param;
         }
 
-        get coefficientA(){
+        get coefficientA() {
             return this._coefficientA;
         }
 
-        get coefficientB(){
+        get coefficientB() {
             return this._coefficientB;
         }
 
-        get free(){
+        get free() {
             return this._free;
         }
 

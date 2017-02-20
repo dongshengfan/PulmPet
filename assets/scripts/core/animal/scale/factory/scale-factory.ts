@@ -8,7 +8,7 @@ namespace Animal.Scale.Factory {
     export class ScaleFactory {
         /**
          * Массив различных конструкторов шкал
-         * @type {Array<IScale>}
+         * @type {AScale[]}
          */
         private _factories: any[];
 
