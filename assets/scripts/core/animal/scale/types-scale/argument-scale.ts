@@ -2,6 +2,8 @@
  * Created by FIRCorp on 20.02.2017.
  */
 namespace Animal.Scale {
+    import EventTypes = Animal.Communication.Factory.EventTypes;
+    import Communicator = Animal.Communication.Communicator;
     /**
      * Шкала аргументов систем (отражает состояние конкретной системы)
      */
@@ -15,7 +17,12 @@ namespace Animal.Scale {
         /**
          * Упрощает общение между шкалами
          */
-        private _communicator: any;
+        private _communicator: Communicator;
+
+        /**
+         * Тип шкалы
+         */
+        _type: EventTypes;
 
         /**
          * Constructor of SystemScale
@@ -27,7 +34,8 @@ namespace Animal.Scale {
             this._min = params.min || 0;
             this._max = params.max || 100;
             this._current = params.current || this._max;
-            this._responseDelay = params.responseDelay || 1000;
+            this._responseDelay = params.responseDelay || 1000
+            this._type = params.type || -1;
             this.getPercentageInScale();
         }
 
@@ -35,7 +43,7 @@ namespace Animal.Scale {
             this._responseDelay = param;
         }
 
-        set communicator(param: any) {
+        set communicator(param: Communicator) {
             this._communicator = param;
         }
 
@@ -48,12 +56,16 @@ namespace Animal.Scale {
         }
 
         /**
-         * Публикует в сети коммуникатора свое событие с какимто параметром
-         * @param event тип события
+         * Публикует в сети коммуникатора свое событие с каким то параметром
          * @param params дельта изменения этой шкалы
          */
-        trigger(event: any, params: number): void {
-            //Дописать
+        trigger(params: number): void {
+            let event = Math.sign(params) ? Animal.Communication.Factory.BehaviorScaleTypes.increase : Animal.Communication.Factory.BehaviorScaleTypes.decrease;
+            let pack = {
+                behavior: event,
+                type: this._type
+            };
+            this.communicator.publish(pack, params);
         }
 
         /**
@@ -61,14 +73,13 @@ namespace Animal.Scale {
          * @param delta дельта на которую необходимо изменить процент данной шкалы
          */
         change(delta: number): void {
-            //Править
             let rez = this.percent + delta;
             if (rez <= 100 && rez >= 0) {
                 this.percent = rez;
                 this.getCurrentValueOnScale();
             }
             setTimeout(() => {
-                this.trigger(0, delta);
+                this.trigger(delta);
             }, this.responseDelay);
         }
     }
