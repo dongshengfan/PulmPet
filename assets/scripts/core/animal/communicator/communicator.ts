@@ -27,8 +27,16 @@ namespace Animal.Communication {
             this._sensitivity = param;
         }
 
-        get sensitivity() {
+        get sensitivity(): number {
             return this._sensitivity;
+        }
+
+        /**
+         * Настраивает коммуникатор
+         * @param params
+         */
+        setting(params: any): void {
+            this.sensitivity = params.sensitivity || 0.1;
         }
 
         /**
@@ -36,7 +44,7 @@ namespace Animal.Communication {
          * @param event событие
          * @param link подписчик которого регистрируют на событие
          */
-        addLink(event: any, link: any) {
+        addLink(event: Animal.Communication.Factory.ParameterScaleTypes, link: any): void {
             if (this._netLinks[event]) {
                 this._netLinks[event].push(link);
             } else {
@@ -49,7 +57,7 @@ namespace Animal.Communication {
          * @param pack пакет события которое происходит
          * @param param дельта изменения
          */
-        publish(pack: any, param: number) {
+        publish(pack: any, param: number): void {
             var links = this._netLinks[pack.type];
             if (links) {
                 links.forEach((link: any) => {

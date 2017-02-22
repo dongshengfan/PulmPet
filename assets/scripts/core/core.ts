@@ -7,48 +7,23 @@ class Create {
 
     }
 
-    createFunctiorn(json: any): any {
-        let factory = Animal.Function.Factory.FunctionFactory.instance();
-        let {functions, params} =json;
-        return factory.create(functions, params);
-    }
-
     createScale(json: any): any {
         let factory = Animal.Scale.Factory.ScaleFactory.instance();
         let {typeScale, type, params}=json;
-        params.type=type;
+        params.type = type;
         return factory.create(typeScale, params);
     }
 
-    getScaleId(type: any, scales: any[]):any {
-        let sc: any;
-        scales.forEach((item) => {
-            if(item._type=== type){
-            sc = item;
-            }
-        });
-        return sc;
-    }
-
     createCommunicator(json: any[], scales: any[]): any {
-        let communicator = new Animal.Communication.Communicator();
-
+        let communicatorBuild = new Animal.Communication.Factory.CommunicatorBuilder(scales);
         json.forEach((item: any) => {
-            let scale: any;
-            item.link.forEach((lin: any) => {
-                scale = this.getScaleId(lin.type, scales);
-                let {type, behavior, functions, params}=lin;
-                let fun = this.createFunctiorn({functions, params});
-                communicator.addLink(item.type, {scale,behavior,fun});
-                scale.communicator=communicator;
-            });
-
+            communicatorBuild.add(item);
         });
-        return communicator;
+        return communicatorBuild.build();
     }
 
     createL(json: any): any {
-        let systems=json.systems;
+        let systems = json.systems;
         let {scales, eventCommunication}=systems;
         //Создаю шкалы
         let masScale: any[] = [];
@@ -60,7 +35,7 @@ class Create {
     }
 }
 
-let lion:any = {
+let lion: any = {
     systems: {
         scales: [
             {
@@ -82,7 +57,7 @@ let lion:any = {
                     current: 8,
                     min: 0,
                     max: 10,
-                    responseDelay:0.1
+                    responseDelay: 0.1
                 }
             }
         ],
@@ -119,10 +94,10 @@ let lion:any = {
     }
 };
 
-let fa=new Create();
-let _animal=fa.createL(lion);
+let fa = new Create();
+let _animal = fa.createL(lion);
 console.log(_animal);
 _animal.publish({
     behavior: Animal.Communication.Factory.BehaviorScaleTypes.increase,
     type: Animal.Communication.Factory.ParameterScaleTypes.speed
-},0.7);
+}, 0.8);

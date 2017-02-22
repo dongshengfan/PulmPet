@@ -41,12 +41,20 @@ namespace Animal.Scale {
             this._communicator = param;
         }
 
-        get responseDelay() {
+        set type(param: Animal.Communication.Factory.ParameterScaleTypes) {
+            this._type = param;
+        }
+
+        get responseDelay(): number {
             return this._responseDelay;
         }
 
-        get communicator() {
+        get communicator(): Animal.Communication.Communicator {
             return this._communicator;
+        }
+
+        get type(): Animal.Communication.Factory.ParameterScaleTypes {
+            return this._type;
         }
 
         /**

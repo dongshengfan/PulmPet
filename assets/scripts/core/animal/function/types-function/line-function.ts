@@ -35,11 +35,11 @@ namespace Animal.Function {
             this._free = param;
         }
 
-        get coefficient() {
+        get coefficient(): number {
             return this._coefficient;
         }
 
-        get free() {
+        get free(): number {
             return this._free;
         }
 

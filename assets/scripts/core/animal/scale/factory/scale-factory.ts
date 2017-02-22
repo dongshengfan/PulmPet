@@ -43,7 +43,7 @@ namespace Animal.Scale.Factory {
          * @param type тип шкалы
          * @param system конструктор шкалы
          */
-        add(type: ScaleTypes, system: any): void {
+        add(type: ScaleTypes, system: AScale): void {
             this._factories[type] = system;
         }
 
