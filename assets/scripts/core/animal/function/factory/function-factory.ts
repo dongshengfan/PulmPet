@@ -43,7 +43,7 @@ namespace Animal.Function.Factory {
          * @param type тип функции
          * @param system конструктор функции
          */
-        add(type: FunctionTypes, system: any): void {
+        add(type: FunctionTypes, system: IFunction): void {
             this._factories[type] = system;
         }
 
@@ -51,8 +51,9 @@ namespace Animal.Function.Factory {
          * Создание функции по типу
          * @param functionType тип функции
          * @param params параметры функции
+         * @return {IFunction}
          */
-        create(functionType: FunctionTypes, params: any): any {
+        create(functionType: FunctionTypes, params: any): IFunction {
             return new this._factories[functionType](params);
         }
     }

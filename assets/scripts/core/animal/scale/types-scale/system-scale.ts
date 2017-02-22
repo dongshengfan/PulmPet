@@ -8,7 +8,7 @@ namespace Animal.Scale {
     export class SystemScale extends AScale {
         /**
          * Constructor of SystemScale
-         * @param params
+         * @param params {Object}
          */
         constructor(params: any) {
             super();
@@ -16,20 +16,19 @@ namespace Animal.Scale {
             this._min = params.min || 0;
             this._max = params.max || 100;
             this._current = params.current || this._max;
+            this._type = params.type || 0;
             this.getPercentageInScale();
         }
 
         /**
          * Оценивает состояние по состоянию шкал системы
-         * @param params оценки шкал систем
+         * @param params {Object[]} оценки шкал систем
          */
         analysis(params: any[]): void {
-            //Переписать
             let rez = 0;
             params.forEach((param) => {
                 rez += param.percent;
             });
-            //Среднее
             this.percent = rez / params.length;
             this.getCurrentValueOnScale();
         }

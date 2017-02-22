@@ -1,17 +1,17 @@
 /**
  * Created by FIRCorp on 21.02.2017.
  */
-namespace Animal.Communication.Factory{
+namespace Animal.Communication.Factory {
     /**
-     * Типы событий шкал
+     * Типы параметра
      */
-    export enum EventTypes{
+    export enum ParameterScaleTypes{
         speed,
         weight
     }
 
     /**
-     * Типы поведения шкалы
+     * Типы поведения параметра
      */
     export enum BehaviorScaleTypes{
         increase,

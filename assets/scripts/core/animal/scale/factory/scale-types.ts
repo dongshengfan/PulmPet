@@ -3,7 +3,7 @@
  */
 namespace Animal.Scale.Factory {
     /**
-     * Типы фабрик шкалл
+     * Типы шкал
      */
     export enum ScaleTypes{
         system,

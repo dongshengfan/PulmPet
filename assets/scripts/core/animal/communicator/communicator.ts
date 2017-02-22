@@ -10,24 +10,24 @@ namespace Animal.Communication {
          * Внутрення сеть
          * @type {ArgumentScale[]}
          */
-        _netLinks: any[];
+        private _netLinks: any[];
 
         /**
          * Пропускной порог изменения шкалы для распространения подписчикам
          * @type {number}
          */
-        _sensitivity: number;
+        private _sensitivity: number;
 
         constructor() {
             this._netLinks = [];
-            this._sensitivity=1;
+            this._sensitivity = 0.1;
         }
 
-        set sensitivity(param:number){
-            this._sensitivity=param;
+        set sensitivity(param: number) {
+            this._sensitivity = param;
         }
 
-        get sensitivity(){
+        get sensitivity() {
             return this._sensitivity;
         }
 
@@ -55,7 +55,7 @@ namespace Animal.Communication {
                 links.forEach((link: any) => {
                     let delta = link.fun.calculate(param);
                     if (Math.abs(delta) > this._sensitivity) {
-                        delta= pack.behavior===link.behavior? delta:-delta;
+                        delta = pack.behavior === link.behavior ? delta : -delta;
                         link.scale.change(delta);
                     }
                 });

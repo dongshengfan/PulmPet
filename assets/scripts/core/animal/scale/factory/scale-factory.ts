@@ -51,8 +51,9 @@ namespace Animal.Scale.Factory {
          * Создание шкалы по типу
          * @param functionType тип шкалы
          * @param params параметры шкалы
+         * @return {AScale}
          */
-        create(functionType: ScaleTypes, params: any): any {
+        create(functionType: ScaleTypes, params: any): AScale {
             return new this._factories[functionType](params);
         }
     }

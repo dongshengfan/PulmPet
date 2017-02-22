@@ -2,8 +2,6 @@
  * Created by FIRCorp on 20.02.2017.
  */
 namespace Animal.Scale {
-    import EventTypes = Animal.Communication.Factory.EventTypes;
-    import Communicator = Animal.Communication.Communicator;
     /**
      * Шкала аргументов систем (отражает состояние конкретной системы)
      */
@@ -16,13 +14,9 @@ namespace Animal.Scale {
 
         /**
          * Упрощает общение между шкалами
+         * @type {Communicator}
          */
-        private _communicator: Communicator;
-
-        /**
-         * Тип шкалы
-         */
-        _type: EventTypes;
+        private _communicator: Animal.Communication.Communicator;
 
         /**
          * Constructor of SystemScale
@@ -35,7 +29,7 @@ namespace Animal.Scale {
             this._max = params.max || 100;
             this._current = params.current || this._max;
             this._responseDelay = params.responseDelay || 1000
-            this._type = params.type || -1;
+            this._type = params.type || 0;
             this.getPercentageInScale();
         }
 
@@ -43,7 +37,7 @@ namespace Animal.Scale {
             this._responseDelay = param;
         }
 
-        set communicator(param: Communicator) {
+        set communicator(param: Animal.Communication.Communicator) {
             this._communicator = param;
         }
 
@@ -56,7 +50,7 @@ namespace Animal.Scale {
         }
 
         /**
-         * Публикует в сети коммуникатора свое событие с каким то параметром
+         * Публикует в сети коммуникатора свое событие с каким-то параметром
          * @param params дельта изменения этой шкалы
          */
         trigger(params: number): void {

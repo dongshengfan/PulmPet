@@ -36,6 +36,12 @@ namespace Animal.Scale {
          */
         protected _percent: number;
 
+        /**
+         * Тип параметра за который ответственна шкала
+         * @type {ParameterScaleTypes}
+         */
+        protected _type: Animal.Communication.Factory.ParameterScaleTypes;
+
         set name(param: string) {
             this._name = param;
         }
@@ -60,23 +66,23 @@ namespace Animal.Scale {
             this.getCurrentValueOnScale()
         }
 
-        get name() {
+        get name(): string {
             return this._name;
         }
 
-        get min() {
+        get min(): number {
             return this._min;
         }
 
-        get max() {
+        get max(): number {
             return this._max;
         }
 
-        get current() {
+        get current(): number {
             return this._current;
         }
 
-        get percent() {
+        get percent(): number {
             return this._percent;
         }
 

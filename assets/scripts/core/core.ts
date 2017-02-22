@@ -1,10 +1,6 @@
-import ScaleTypes = Animal.Scale.Factory.ScaleTypes;
-import IFunction = Animal.Function.IFunction;
 /**
  * Created by FIRCorp on 19.02.2017.
  */
-
-
 
 class Create {
     constructor() {
@@ -38,13 +34,13 @@ class Create {
         let communicator = new Animal.Communication.Communicator();
 
         json.forEach((item: any) => {
-            item.type;//тип параметра
             let scale: any;
             item.link.forEach((lin: any) => {
                 scale = this.getScaleId(lin.type, scales);
                 let {type, behavior, functions, params}=lin;
                 let fun = this.createFunctiorn({functions, params});
                 communicator.addLink(item.type, {scale,behavior,fun});
+                scale.communicator=communicator;
             });
 
         });
@@ -69,47 +65,47 @@ let lion:any = {
         scales: [
             {
                 typeScale: Animal.Scale.Factory.ScaleTypes.argument,
-                type: Animal.Communication.Factory.EventTypes.speed,
+                type: Animal.Communication.Factory.ParameterScaleTypes.speed,
                 params: {
                     name: 'State опорной',
                     current: 9,
                     min: 0,
                     max: 100,
-                    responseDelay: 2,
+                    responseDelay: 0.12,
                 }
             },
             {
                 typeScale: Animal.Scale.Factory.ScaleTypes.argument,
-                type: Animal.Communication.Factory.EventTypes.weight,
+                type: Animal.Communication.Factory.ParameterScaleTypes.weight,
                 params: {
                     name: 'Вес',
                     current: 8,
                     min: 0,
                     max: 10,
-                    responseDelay:4
+                    responseDelay:0.1
                 }
             }
         ],
         eventCommunication: [
             {
-                type: Animal.Communication.Factory.EventTypes.speed,
+                type: Animal.Communication.Factory.ParameterScaleTypes.speed,
                 link: [
                     {
-                        type: Animal.Communication.Factory.EventTypes.weight,
+                        type: Animal.Communication.Factory.ParameterScaleTypes.weight,
                         behavior: Animal.Communication.Factory.BehaviorScaleTypes.increase,
                         functions: Animal.Function.Factory.FunctionTypes.line,
                         params: [
                             0.5,
-                            0.1
+                            0.18
                         ]
                     }
                 ],
             },
             {
-                type: Animal.Communication.Factory.EventTypes.weight,
+                type: Animal.Communication.Factory.ParameterScaleTypes.weight,
                 link: [
                     {
-                        type: Animal.Communication.Factory.EventTypes.speed,
+                        type: Animal.Communication.Factory.ParameterScaleTypes.speed,
                         behavior: Animal.Communication.Factory.BehaviorScaleTypes.decrease,
                         functions: Animal.Function.Factory.FunctionTypes.line,
                         params: [
@@ -126,3 +122,7 @@ let lion:any = {
 let fa=new Create();
 let _animal=fa.createL(lion);
 console.log(_animal);
+_animal.publish({
+    behavior: Animal.Communication.Factory.BehaviorScaleTypes.increase,
+    type: Animal.Communication.Factory.ParameterScaleTypes.speed
+},0.7);
