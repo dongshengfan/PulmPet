@@ -66,6 +66,10 @@ namespace Animal.Scale {
             this.getCurrentValueOnScale()
         }
 
+        set type(param: Animal.Communication.Factory.ParameterScaleTypes) {
+            this._type = param;
+        }
+
         get name(): string {
             return this._name;
         }
@@ -84,6 +88,10 @@ namespace Animal.Scale {
 
         get percent(): number {
             return this._percent;
+        }
+
+        get type(): Animal.Communication.Factory.ParameterScaleTypes {
+            return this._type;
         }
 
         /**

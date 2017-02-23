@@ -8,7 +8,7 @@ namespace Animal.Function.Factory {
     export class FunctionFactory {
         /**
          * Массив различных конструкторов функций
-         * @type {Array<IFunction>}
+         * @type {IFunction[]}
          */
         private _factories: any[];
 
@@ -53,7 +53,7 @@ namespace Animal.Function.Factory {
          * @param params параметры функции
          * @return {IFunction}
          */
-        create(functionType: FunctionTypes, params: any): IFunction {
+        create(functionType: FunctionTypes, params: any[]): IFunction {
             return new this._factories[functionType](params);
         }
     }

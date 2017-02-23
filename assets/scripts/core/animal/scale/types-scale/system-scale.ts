@@ -22,9 +22,9 @@ namespace Animal.Scale {
 
         /**
          * Оценивает состояние по состоянию шкал системы
-         * @param params {Object[]} оценки шкал систем
+         * @param params {ArgumentScale[]} оценки шкал систем
          */
-        analysis(params: any[]): void {
+        analysis(params: Animal.Scale.ArgumentScale[]): void {
             let rez = 0;
             params.forEach((param) => {
                 rez += param.percent;
