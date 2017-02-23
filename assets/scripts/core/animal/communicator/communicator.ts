@@ -7,7 +7,7 @@ namespace Animal.Communication {
      */
     export class Communicator {
         /**
-         * Внутрення сеть
+         * Внутренняя сеть
          * @type {ArgumentScale[]}
          */
         private _netLinks: any[];
@@ -53,7 +53,7 @@ namespace Animal.Communication {
         }
 
         /**
-         * Публикует событие в сети шкалл
+         * Публикует событие в сети шкал
          * @param pack пакет события которое происходит
          * @param param дельта изменения
          */

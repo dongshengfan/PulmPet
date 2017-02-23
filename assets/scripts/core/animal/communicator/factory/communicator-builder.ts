@@ -5,7 +5,7 @@ namespace Animal.Communication.Factory {
     /**
      * Строитель коммуникатора
      */
-    export class CommunicatorBuilder {
+    export class CommunicatorBuilder implements IBuilder {
         /**
          * Коммуникатор
          * @type {Communicator}
