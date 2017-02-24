@@ -13,4 +13,15 @@ namespace Animal.Function {
          */
         calculate(param: number): number;
     }
+
+    /**
+     * Интерфейс конструктора функций
+     */
+    export interface IFunctionConstructor {
+        /**
+         * Constructor of functions
+         * @param params массив параметров функции
+         */
+        new(params: number[]): IFunction;
+    }
 }
