@@ -40,7 +40,7 @@ namespace Animal.Scale {
          * Тип параметра за который ответственна шкала
          * @type {ParameterScaleTypes}
          */
-        protected _type: Animal.Communication.Factory.ParameterScaleTypes;
+        protected _type: Animal.Scale.Factory.ParameterScaleTypes;
 
         set name(param: string) {
             this._name = param;
@@ -66,7 +66,7 @@ namespace Animal.Scale {
             this.getCurrentValueOnScale()
         }
 
-        set type(param: Animal.Communication.Factory.ParameterScaleTypes) {
+        set type(param: Animal.Scale.Factory.ParameterScaleTypes) {
             this._type = param;
         }
 
@@ -90,7 +90,7 @@ namespace Animal.Scale {
             return this._percent;
         }
 
-        get type(): Animal.Communication.Factory.ParameterScaleTypes {
+        get type(): Animal.Scale.Factory.ParameterScaleTypes {
             return this._type;
         }
 

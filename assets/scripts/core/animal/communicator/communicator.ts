@@ -44,7 +44,7 @@ namespace Animal.Communication {
          * @param event событие
          * @param link подписчик которого регистрируют на событие
          */
-        addLink(event: Animal.Communication.Factory.ParameterScaleTypes, link: any): void {
+        addLink(event: Animal.Scale.Factory.ParameterScaleTypes, link: any): void {
             if (this._netLinks[event]) {
                 this._netLinks[event].push(link);
             } else {

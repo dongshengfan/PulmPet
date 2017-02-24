@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Scale {
+namespace Animal.Scale.TypeScale {
     /**
      * Шкала аргументов систем (отражает состояние конкретной системы)
      */

@@ -64,7 +64,7 @@ namespace Animal.Communication.Factory {
          * @returns {Animal.Scale.AScale} щкала
          * @private
          */
-        private _getScale(type: ParameterScaleTypes): any {
+        private _getScale(type: Animal.Scale.Factory.ParameterScaleTypes): any {
             let scale: Animal.Scale.AScale;
             this._scales.forEach((item: any) => {
                 if (item.type === type) {

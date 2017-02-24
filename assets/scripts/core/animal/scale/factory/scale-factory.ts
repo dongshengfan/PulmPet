@@ -23,8 +23,8 @@ namespace Animal.Scale.Factory {
          */
         constructor() {
             this._factories = [];
-            this._factories[ScaleTypes.system] = SystemScale;
-            this._factories[ScaleTypes.argument] = ArgumentScale;
+            this._factories[ScaleTypes.system] = Animal.Scale.TypeScale.SystemScale;
+            this._factories[ScaleTypes.argument] = Animal.Scale.TypeScale.ArgumentScale;
         }
 
         /**
