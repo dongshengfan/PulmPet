@@ -26,8 +26,8 @@ namespace Animals {
          * @param params массив систем
          */
         constructor(params: any[]) {
-            this.muscular = params[Animals.Systems.Factorys.SystemTypes.muscular];
-            this.circulatory = params[Animals.Systems.Factorys.SystemTypes.circulatory];
+            this.muscular = params[Animals.Systems.SystemTypes.muscular];
+            this.circulatory = params[Animals.Systems.SystemTypes.circulatory];
         }
 
         set muscular(param: Animals.Systems.TypeSystems.Muscular) {

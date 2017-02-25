@@ -8,19 +8,19 @@ class Create {
     }
 
     createSystem(type: any, params: any[]): any {
-        let factory = Animals.Systems.Factorys.SystemFactory.instance();
+        let factory = Animals.Systems.Factories.SystemFactory.instance();
         return factory.create(type, params);
     }
 
     createScale(json: any): any {
-        let factory = Animals.Scales.Factorys.ScaleFactory.instance();
+        let factory = Animals.Scales.Factories.ScaleFactory.instance();
         let {typeScale, type, params}=json;
         params.type = type;
         return factory.create(typeScale, params);
     }
 
     createCommunicator(json: any[], scales: any[]): any {
-        let communicatorBuild = new Animals.Communications.Factorys.CommunicatorBuilder(scales);
+        let communicatorBuild = new Animals.Communications.Builders.CommunicatorBuilder(scales);
         json.forEach((item: any) => {
             communicatorBuild.add(item);
         });
@@ -58,11 +58,11 @@ class Create {
 let lion: any = {
     systems: [
         {
-            type: Animals.Systems.Factorys.SystemTypes.muscular,
+            type: Animals.Systems.SystemTypes.muscular,
             scalesType: [
-                {type: Animals.Scales.Factorys.ParameterScaleTypes.speed},
-                {type: Animals.Scales.Factorys.ParameterScaleTypes.speed},
-                {type:Animals.Scales.Factorys.ParameterScaleTypes.weight}
+                {type: Animals.Scales.ParameterScaleTypes.speed},
+                {type: Animals.Scales.ParameterScaleTypes.speed},
+                {type:Animals.Scales.ParameterScaleTypes.weight}
             ],
         },
        /* {
@@ -75,8 +75,8 @@ let lion: any = {
     ],
     scales: [
         {
-            typeScale: Animals.Scales.Factorys.ScaleTypes.argument,
-            type: Animals.Scales.Factorys.ParameterScaleTypes.heartbeat,
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.heartbeat,
             params: {
                 name: 'Сердцебиение',
                 current: 9,
@@ -86,8 +86,8 @@ let lion: any = {
             }
         },
         {
-            typeScale: Animals.Scales.Factorys.ScaleTypes.argument,
-            type: Animals.Scales.Factorys.ParameterScaleTypes.pressure,
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.pressure,
             params: {
                 name: 'Давление',
                 current: 8,
@@ -97,8 +97,8 @@ let lion: any = {
             }
         },
         {
-            typeScale: Animals.Scales.Factorys.ScaleTypes.argument,
-            type: Animals.Scales.Factorys.ParameterScaleTypes.speed,
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.speed,
             params: {
                 name: 'Скорость',
                 current: 9,
@@ -108,8 +108,8 @@ let lion: any = {
             }
         },
         {
-            typeScale: Animals.Scales.Factorys.ScaleTypes.argument,
-            type: Animals.Scales.Factorys.ParameterScaleTypes.weight,
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.weight,
             params: {
                 name: 'Вес',
                 current: 8,
@@ -121,12 +121,12 @@ let lion: any = {
     ],
     communication: [
         {
-            type: Animals.Scales.Factorys.ParameterScaleTypes.speed,
+            type: Animals.Scales.ParameterScaleTypes.speed,
             link: [
                 {
-                    type: Animals.Scales.Factorys.ParameterScaleTypes.weight,
-                    behavior: Animals.Communications.Factorys.BehaviorScaleTypes.increase,
-                    functions: Animals.Functions.Factorys.FunctionTypes.line,
+                    type: Animals.Scales.ParameterScaleTypes.weight,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
                     params: [
                         0.5,
                         0.18
@@ -135,12 +135,12 @@ let lion: any = {
             ],
         },
         {
-            type: Animals.Scales.Factorys.ParameterScaleTypes.weight,
+            type: Animals.Scales.ParameterScaleTypes.weight,
             link: [
                 {
-                    type: Animals.Scales.Factorys.ParameterScaleTypes.speed,
-                    behavior: Animals.Communications.Factorys.BehaviorScaleTypes.decrease,
-                    functions: Animals.Functions.Factorys.FunctionTypes.line,
+                    type: Animals.Scales.ParameterScaleTypes.speed,
+                    behavior: Animals.Communications.BehaviorScaleTypes.decrease,
+                    functions: Animals.Functions.FunctionTypes.line,
                     params: [
                         0.5,
                         0.1

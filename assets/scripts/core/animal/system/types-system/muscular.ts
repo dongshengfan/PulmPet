@@ -29,9 +29,9 @@ namespace Animals.Systems.TypeSystems {
          * @param scales объект шкал
          */
         constructor(scales: any) {
-            this.state = scales[Animals.Scales.Factorys.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
-            this.speed = scales[Animals.Scales.Factorys.ParameterScaleTypes.speed];
-            this.weight = scales[Animals.Scales.Factorys.ParameterScaleTypes.weight];
+            this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
+            this.speed = scales[Animals.Scales.ParameterScaleTypes.speed];
+            this.weight = scales[Animals.Scales.ParameterScaleTypes.weight];
         }
 
         set speed(param: Animals.Scales.TypeScales.ArgumentScale) {

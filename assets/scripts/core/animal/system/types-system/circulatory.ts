@@ -29,10 +29,10 @@ namespace Animals.Systems.TypeSystems {
          * @param scales объект шкалл
          */
         constructor(scales: any) {
-            this.state = scales[Animals.Scales.Factorys.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
+            this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
             ;
-            this.heartbeat = scales[Animals.Scales.Factorys.ParameterScaleTypes.heartbeat];
-            this.pressure = scales[Animals.Scales.Factorys.ParameterScaleTypes.pressure];
+            this.heartbeat = scales[Animals.Scales.ParameterScaleTypes.heartbeat];
+            this.pressure = scales[Animals.Scales.ParameterScaleTypes.pressure];
         }
 
         set heartbeat(param: Animals.Scales.TypeScales.ArgumentScale) {

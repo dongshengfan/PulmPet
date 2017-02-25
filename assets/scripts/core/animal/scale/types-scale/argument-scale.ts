@@ -54,7 +54,7 @@ namespace Animals.Scales.TypeScales {
          * @param params дельта изменения этой шкалы
          */
         trigger(params: number): void {
-            let event = Math.sign(params) ? Animals.Communications.Factorys.BehaviorScaleTypes.increase : Animals.Communications.Factorys.BehaviorScaleTypes.decrease;
+            let event = Math.sign(params) ? Animals.Communications.BehaviorScaleTypes.increase : Animals.Communications.BehaviorScaleTypes.decrease;
             let pack = {
                 behavior: event,
                 type: this._type

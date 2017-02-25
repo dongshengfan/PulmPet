@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 24.02.2017.
  */
-namespace Animals.Scales.Factorys {
+namespace Animals.Scales {
     /**
      * Типы параметра
      */
