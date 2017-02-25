@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Scale {
+namespace Animals.Scales {
     /**
      * Абстрактный класс шкалы
      */
@@ -40,7 +40,7 @@ namespace Animal.Scale {
          * Тип параметра за который ответственна шкала
          * @type {ParameterScaleTypes}
          */
-        protected _type: Animal.Scale.Factory.ParameterScaleTypes;
+        protected _type: Animals.Scales.Factorys.ParameterScaleTypes;
 
         set name(param: string) {
             this._name = param;
@@ -66,7 +66,7 @@ namespace Animal.Scale {
             this.getCurrentValueOnScale()
         }
 
-        set type(param: Animal.Scale.Factory.ParameterScaleTypes) {
+        set type(param: Animals.Scales.Factorys.ParameterScaleTypes) {
             this._type = param;
         }
 
@@ -90,7 +90,7 @@ namespace Animal.Scale {
             return this._percent;
         }
 
-        get type(): Animal.Scale.Factory.ParameterScaleTypes {
+        get type(): Animals.Scales.Factorys.ParameterScaleTypes {
             return this._type;
         }
 

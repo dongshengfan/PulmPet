@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 24.02.2017.
  */
-namespace Animal.System.TypeSystem {
+namespace Animals.Systems.TypeSystems {
     /**
      * Класс кровиностной системы
      */
@@ -10,43 +10,48 @@ namespace Animal.System.TypeSystem {
          * Субъективное состояние
          * @type {SystemScale}
          */
-        state: Animal.Scale.TypeScale.SystemScale;
+        state: Animals.Scales.TypeScales.SystemScale;
 
         /**
          * Сердцебиение животного
          * @type {ArgumentScale}
          */
-        protected _heartbeat: Animal.Scale.TypeScale.ArgumentScale;
+        protected _heartbeat: Animals.Scales.TypeScales.ArgumentScale;
 
         /**
          * Давление животного
          * @type {ArgumentScale}
          */
-        protected _pressure: Animal.Scale.TypeScale.ArgumentScale;
+        protected _pressure: Animals.Scales.TypeScales.ArgumentScale;
 
         /**
          * Constructor of Muscular
          * @param scales объект шкалл
          */
         constructor(scales: any) {
-            this.state = scales[Animal.Scale.Factory.ParameterScaleTypes.state];
-            this.heartbeat = scales[Animal.Scale.Factory.ParameterScaleTypes.heartbeat];
-            this.pressure = scales[Animal.Scale.Factory.ParameterScaleTypes.pressure];
+            this.state = scales[Animals.Scales.Factorys.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
+            ;
+            this.heartbeat = scales[Animals.Scales.Factorys.ParameterScaleTypes.heartbeat];
+            this.pressure = scales[Animals.Scales.Factorys.ParameterScaleTypes.pressure];
         }
 
-        set heartbeat(param: Animal.Scale.TypeScale.ArgumentScale) {
-            this._heartbeat = param;
+        set heartbeat(param: Animals.Scales.TypeScales.ArgumentScale) {
+            if (param) {
+                this._heartbeat = param;
+            }
         }
 
-        set pressure(param: Animal.Scale.TypeScale.ArgumentScale) {
-            this._pressure = param;
+        set pressure(param: Animals.Scales.TypeScales.ArgumentScale) {
+            if (param) {
+                this._pressure = param;
+            }
         }
 
-        get heartbeat(): Animal.Scale.TypeScale.ArgumentScale {
+        get heartbeat(): Animals.Scales.TypeScales.ArgumentScale {
             return this._heartbeat;
         }
 
-        get pressure(): Animal.Scale.TypeScale.ArgumentScale {
+        get pressure(): Animals.Scales.TypeScales.ArgumentScale {
             return this._pressure;
         }
 

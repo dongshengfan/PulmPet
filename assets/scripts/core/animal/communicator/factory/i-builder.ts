@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 24.02.2017.
  */
-namespace Animal.Communication.Factory {
+namespace Animals.Communications.Factorys {
     export interface IBuilder {
         /**
          * Какое-либо действие

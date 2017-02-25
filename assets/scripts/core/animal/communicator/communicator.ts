@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Communication {
+namespace Animals.Communications {
     /**
      * Класс коммуникатора
      */
@@ -24,7 +24,7 @@ namespace Animal.Communication {
         }
 
         set sensitivity(param: number) {
-            this._sensitivity = param;
+            this._sensitivity = param ? param : 0.1;
         }
 
         get sensitivity(): number {
@@ -44,7 +44,7 @@ namespace Animal.Communication {
          * @param event событие
          * @param link подписчик которого регистрируют на событие
          */
-        addLink(event: Animal.Scale.Factory.ParameterScaleTypes, link: any): void {
+        addLink(event: Animals.Scales.Factorys.ParameterScaleTypes, link: any): void {
             if (this._netLinks[event]) {
                 this._netLinks[event].push(link);
             } else {

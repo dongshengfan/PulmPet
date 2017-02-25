@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 21.02.2017.
  */
-namespace Animal.Communication.Factory {
+namespace Animals.Communications.Factorys {
     /**
      * Типы поведения параметра
      */

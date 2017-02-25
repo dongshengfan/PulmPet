@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Function.Factory {
+namespace Animals.Functions.Factorys {
     /**
      * Фабрика функций
      */
@@ -23,8 +23,8 @@ namespace Animal.Function.Factory {
          */
         constructor() {
             this._factories = [];
-            this._factories[FunctionTypes.line] = Animal.Function.TypeFunction.LineFunction;
-            this._factories[FunctionTypes.quadratic] = Animal.Function.TypeFunction.QuadraticFunction;
+            this._factories[FunctionTypes.line] = Animals.Functions.TypeFunctions.LineFunction;
+            this._factories[FunctionTypes.quadratic] = Animals.Functions.TypeFunctions.QuadraticFunction;
         }
 
         /**

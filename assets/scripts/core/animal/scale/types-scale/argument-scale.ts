@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Scale.TypeScale {
+namespace Animals.Scales.TypeScales {
     /**
      * Шкала аргументов систем (отражает состояние конкретной системы)
      */
@@ -16,7 +16,7 @@ namespace Animal.Scale.TypeScale {
          * Упрощает общение между шкалами
          * @type {Communicator}
          */
-        private _communicator: Animal.Communication.Communicator;
+        private _communicator: Animals.Communications.Communicator;
 
         /**
          * Constructor of SystemScale
@@ -34,10 +34,10 @@ namespace Animal.Scale.TypeScale {
         }
 
         set responseDelay(param: number) {
-            this._responseDelay = param;
+            this._responseDelay = param ? param : 1000;
         }
 
-        set communicator(param: Animal.Communication.Communicator) {
+        set communicator(param: Animals.Communications.Communicator) {
             this._communicator = param;
         }
 
@@ -45,7 +45,7 @@ namespace Animal.Scale.TypeScale {
             return this._responseDelay;
         }
 
-        get communicator(): Animal.Communication.Communicator {
+        get communicator(): Animals.Communications.Communicator {
             return this._communicator;
         }
 
@@ -54,7 +54,7 @@ namespace Animal.Scale.TypeScale {
          * @param params дельта изменения этой шкалы
          */
         trigger(params: number): void {
-            let event = Math.sign(params) ? Animal.Communication.Factory.BehaviorScaleTypes.increase : Animal.Communication.Factory.BehaviorScaleTypes.decrease;
+            let event = Math.sign(params) ? Animals.Communications.Factorys.BehaviorScaleTypes.increase : Animals.Communications.Factorys.BehaviorScaleTypes.decrease;
             let pack = {
                 behavior: event,
                 type: this._type

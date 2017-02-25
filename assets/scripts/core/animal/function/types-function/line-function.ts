@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 19.02.2017.
  */
-namespace Animal.Function.TypeFunction {
+namespace Animals.Functions.TypeFunctions {
     /**
      * Линейная функция
      */
@@ -28,11 +28,11 @@ namespace Animal.Function.TypeFunction {
         }
 
         set coefficient(param: number) {
-            this._coefficient = param;
+            this._coefficient = param ? param : 0;
         }
 
         set free(param: number) {
-            this._free = param;
+            this._free = param ? param : 0;
         }
 
         get coefficient(): number {

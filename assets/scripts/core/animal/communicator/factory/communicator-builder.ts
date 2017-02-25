@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 22.02.2017.
  */
-namespace Animal.Communication.Factory {
+namespace Animals.Communications.Factorys {
     /**
      * Строитель коммуникатора
      */
@@ -16,33 +16,33 @@ namespace Animal.Communication.Factory {
          * Массив шкал этого животного
          * @type {AScale[]}
          */
-        private _scales: Animal.Scale.AScale[];
+        private _scales: Animals.Scales.AScale[];
 
         /**
          * Фабрика функций
          * @type {FunctionFactory}
          */
-        private _factoryFunction: Animal.Function.Factory.FunctionFactory;
+        private _factoryFunction: Animals.Functions.Factorys.FunctionFactory;
 
         /**
          * Constructor of CommunicatorBuilder
          * @param scales {AScale[]}
          */
-        constructor(scales: Animal.Scale.AScale[]) {
+        constructor(scales: Animals.Scales.AScale[]) {
             this._scales = scales;
             this._communicator = new Communicator();
-            this._factoryFunction = Animal.Function.Factory.FunctionFactory.instance();
+            this._factoryFunction = Animals.Functions.Factorys.FunctionFactory.instance();
         }
 
         /**
          * Обработка и подготовка новых подписчиков
          * @param param объект с событием
-         * @returns {Animal.Communication.Factory.CommunicatorBuilder}
+         * @returns {CommunicatorBuilder}
          */
         add(param: any): CommunicatorBuilder {
             param.link.forEach((communication: any) => {
                 let {type, behavior, functions, params}=communication;
-                let scale = this._getScale(type);
+                let scale: any = this._scales[type];
                 let fun = this._createFunction(functions, params);
                 this._communicator.addLink(param.type, {scale, behavior, fun});
                 scale.communicator = this._communicator;
@@ -59,29 +59,13 @@ namespace Animal.Communication.Factory {
         }
 
         /**
-         * Ищет шкалу в массиве шкал для коммуникатора по типу
-         * @param type тип шкалы ддя поиска
-         * @returns {Animal.Scale.AScale} щкала
-         * @private
-         */
-        private _getScale(type: Animal.Scale.Factory.ParameterScaleTypes): any {
-            let scale: Animal.Scale.AScale;
-            this._scales.forEach((item: any) => {
-                if (item.type === type) {
-                    scale = item;
-                }
-            });
-            return scale;
-        }
-
-        /**
          * Создает функцию по типу и параметрам
          * @param type тип функции
          * @param params массив параметров функции
          * @returns {IFunction}
          * @private
          */
-        private _createFunction(type: Animal.Function.Factory.FunctionTypes, params: any[]): Animal.Function.IFunction {
+        private _createFunction(type: Animals.Functions.Factorys.FunctionTypes, params: any[]): Animals.Functions.IFunction {
             return this._factoryFunction.create(type, params);
         }
     }

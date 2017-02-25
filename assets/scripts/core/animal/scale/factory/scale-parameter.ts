@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 24.02.2017.
  */
-namespace Animal.Scale.Factory {
+namespace Animals.Scales.Factorys {
     /**
      * Типы параметра
      */
@@ -10,6 +10,9 @@ namespace Animal.Scale.Factory {
         speed,
         weight,
         heartbeat,
-        pressure
+        pressure,
+        amountPointRememberWater,
+        amountPointRememberGrass,
+        amountPointRememberMeat
     }
 }

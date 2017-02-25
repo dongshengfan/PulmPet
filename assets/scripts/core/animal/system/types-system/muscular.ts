@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 24.02.2017.
  */
-namespace Animal.System.TypeSystem {
+namespace Animals.Systems.TypeSystems {
     /**
      * Класс опорнодвигательной системы
      */
@@ -10,43 +10,47 @@ namespace Animal.System.TypeSystem {
          * Субъективное состояние
          * @type {SystemScale}
          */
-        state: Animal.Scale.TypeScale.SystemScale;
+        state: Animals.Scales.TypeScales.SystemScale;
 
         /**
          * Скорость движения
          * @type {ArgumentScale}
          */
-        protected _speed: Animal.Scale.TypeScale.ArgumentScale;
+        protected _speed: Animals.Scales.TypeScales.ArgumentScale;
 
         /**
          * Вес животного
          * @type {ArgumentScale}
          */
-        protected _weight: Animal.Scale.TypeScale.ArgumentScale;
+        protected _weight: Animals.Scales.TypeScales.ArgumentScale;
 
         /**
          * Constructor of Muscular
-         * @param scales объект шкалл
+         * @param scales объект шкал
          */
         constructor(scales: any) {
-            this.state = scales[Animal.Scale.Factory.ParameterScaleTypes.state];
-            this.speed = scales[Animal.Scale.Factory.ParameterScaleTypes.speed];
-            this.weight = scales[Animal.Scale.Factory.ParameterScaleTypes.weight];
+            this.state = scales[Animals.Scales.Factorys.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
+            this.speed = scales[Animals.Scales.Factorys.ParameterScaleTypes.speed];
+            this.weight = scales[Animals.Scales.Factorys.ParameterScaleTypes.weight];
         }
 
-        set speed(param: Animal.Scale.TypeScale.ArgumentScale) {
-            this._speed = param;
+        set speed(param: Animals.Scales.TypeScales.ArgumentScale) {
+            if (param) {
+                this._speed = param;
+            }
         }
 
-        set weight(param: Animal.Scale.TypeScale.ArgumentScale) {
-            this._weight = param;
+        set weight(param: Animals.Scales.TypeScales.ArgumentScale) {
+            if (param) {
+                this._weight = param;
+            }
         }
 
-        get speed(): Animal.Scale.TypeScale.ArgumentScale {
+        get speed(): Animals.Scales.TypeScales.ArgumentScale {
             return this._speed;
         }
 
-        get weight(): Animal.Scale.TypeScale.ArgumentScale {
+        get weight(): Animals.Scales.TypeScales.ArgumentScale {
             return this._weight;
         }
 

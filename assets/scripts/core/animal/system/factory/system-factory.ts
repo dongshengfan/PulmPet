@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 24.02.2017.
  */
-namespace Animal.System.Factory {
+namespace Animals.Systems.Factorys {
     /**
      * Фабрика систем
      */
@@ -23,8 +23,9 @@ namespace Animal.System.Factory {
          */
         constructor() {
             this._factories = [];
-            this._factories[SystemTypes.muscular] = Animal.System.TypeSystem.Muscular;
-            this._factories[SystemTypes.circulatory] = Animal.System.TypeSystem.Circulatory;
+            this._factories[SystemTypes.muscular] = Animals.Systems.TypeSystems.Muscular;
+            this._factories[SystemTypes.circulatory] = Animals.Systems.TypeSystems.Circulatory;
+            this._factories[SystemTypes.memory]=Animals.Systems.TypeSystems.Memory;
         }
 
         /**
