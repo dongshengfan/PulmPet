@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Scale {
+namespace Animals.Scales.TypeScales {
     /**
      * Системная шкала (Отражает состояние системы в целом)
      */
@@ -22,9 +22,9 @@ namespace Animal.Scale {
 
         /**
          * Оценивает состояние по состоянию шкал системы
-         * @param params {Object[]} оценки шкал систем
+         * @param params {ArgumentScale[]} оценки шкал систем
          */
-        analysis(params: any[]): void {
+        analysis(params: Animals.Scales.TypeScales.ArgumentScale[]): void {
             let rez = 0;
             params.forEach((param) => {
                 rez += param.percent;

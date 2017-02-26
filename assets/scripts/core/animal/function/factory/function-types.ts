@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Function.Factory {
+namespace Animals.Functions{
     /**
      * Типы фабрик функций
      */

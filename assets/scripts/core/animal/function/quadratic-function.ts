@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 19.02.2017.
  */
-namespace Animal.Function {
+namespace Animals.Functions.TypeFunctions {
     /**
      * Квадратичная функция
      */
@@ -35,15 +35,15 @@ namespace Animal.Function {
         }
 
         set coefficientA(param: number) {
-            this._coefficientA = param;
+            this._coefficientA = param ? param : 0;
         }
 
         set coefficientB(param: number) {
-            this._coefficientB = param;
+            this._coefficientB = param ? param : 0;
         }
 
         set free(param: number) {
-            this._free = param;
+            this._free = param ? param : 0;
         }
 
         get coefficientA(): number {

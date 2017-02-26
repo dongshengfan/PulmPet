@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Scale.Factory {
+namespace Animals.Scales.Factories {
     /**
      * Фабрика шкал
      */
@@ -23,8 +23,8 @@ namespace Animal.Scale.Factory {
          */
         constructor() {
             this._factories = [];
-            this._factories[ScaleTypes.system] = SystemScale;
-            this._factories[ScaleTypes.argument] = ArgumentScale;
+            this._factories[ScaleTypes.system] = Animals.Scales.TypeScales.SystemScale;
+            this._factories[ScaleTypes.argument] = Animals.Scales.TypeScales.ArgumentScale;
         }
 
         /**

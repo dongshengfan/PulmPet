@@ -1,103 +1,26 @@
-/**
- * Created by FIRCorp on 19.02.2017.
- */
-
-class Create {
-    constructor() {
-
+(async function () {
+    async function test1() {
+        for (let i = 0; i < 1000000000; i++);
+        return 11;
     }
 
-    createScale(json: any): any {
-        let factory = Animal.Scale.Factory.ScaleFactory.instance();
-        let {typeScale, type, params}=json;
-        params.type = type;
-        return factory.create(typeScale, params);
+    async function test2() {
+        for (let i = 0; i < 1000000000; i++);
+        return 22;
     }
 
-    createCommunicator(json: any[], scales: any[]): any {
-        let communicatorBuild = new Animal.Communication.Factory.CommunicatorBuilder(scales);
-        json.forEach((item: any) => {
-            communicatorBuild.add(item);
-        });
-        return communicatorBuild.build();
+    async function test3() {
+        for (let i = 0; i < 100000000000; i++);
+        return 3333;
     }
 
-    createL(json: any): any {
-        let systems = json.systems;
-        let {scales, eventCommunication}=systems;
-        //Создаю шкалы
-        let masScale: any[] = [];
-        scales.forEach((item: any) => {
-            masScale.push(this.createScale(item));
-        });
+    let res11 = await test1();
+    console.log(res11);
 
-        return this.createCommunicator(eventCommunication, masScale);
-    }
-}
+    test3().then((res) => {console.log(res)});
 
-let lion: any = {
-    systems: {
-        scales: [
-            {
-                typeScale: Animal.Scale.Factory.ScaleTypes.argument,
-                type: Animal.Communication.Factory.ParameterScaleTypes.speed,
-                params: {
-                    name: 'State опорной',
-                    current: 9,
-                    min: 0,
-                    max: 100,
-                    responseDelay: 0.12,
-                }
-            },
-            {
-                typeScale: Animal.Scale.Factory.ScaleTypes.argument,
-                type: Animal.Communication.Factory.ParameterScaleTypes.weight,
-                params: {
-                    name: 'Вес',
-                    current: 8,
-                    min: 0,
-                    max: 10,
-                    responseDelay: 0.1
-                }
-            }
-        ],
-        eventCommunication: [
-            {
-                type: Animal.Communication.Factory.ParameterScaleTypes.speed,
-                link: [
-                    {
-                        type: Animal.Communication.Factory.ParameterScaleTypes.weight,
-                        behavior: Animal.Communication.Factory.BehaviorScaleTypes.increase,
-                        functions: Animal.Function.Factory.FunctionTypes.line,
-                        params: [
-                            0.5,
-                            0.18
-                        ]
-                    }
-                ],
-            },
-            {
-                type: Animal.Communication.Factory.ParameterScaleTypes.weight,
-                link: [
-                    {
-                        type: Animal.Communication.Factory.ParameterScaleTypes.speed,
-                        behavior: Animal.Communication.Factory.BehaviorScaleTypes.decrease,
-                        functions: Animal.Function.Factory.FunctionTypes.line,
-                        params: [
-                            0.5,
-                            0.1
-                        ]
-                    }
-                ],
-            }
-        ],
-    }
-};
+    let res22 = await test2();
+    console.log(res22);
 
-let fa = new Create();
-let _animal = fa.createL(lion);
-console.log(_animal);
-_animal.publish({
-    behavior: Animal.Communication.Factory.BehaviorScaleTypes.increase,
-    type: Animal.Communication.Factory.ParameterScaleTypes.speed
-}, 0.8);
+    console.log(3);
+})();

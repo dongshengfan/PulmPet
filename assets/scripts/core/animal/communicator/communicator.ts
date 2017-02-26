@@ -1,13 +1,13 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animal.Communication {
+namespace Animals.Communications {
     /**
      * Класс коммуникатора
      */
     export class Communicator {
         /**
-         * Внутрення сеть
+         * Внутренняя сеть
          * @type {ArgumentScale[]}
          */
         private _netLinks: any[];
@@ -24,7 +24,7 @@ namespace Animal.Communication {
         }
 
         set sensitivity(param: number) {
-            this._sensitivity = param;
+            this._sensitivity = param ? param : 0.1;
         }
 
         get sensitivity(): number {
@@ -44,7 +44,7 @@ namespace Animal.Communication {
          * @param event событие
          * @param link подписчик которого регистрируют на событие
          */
-        addLink(event: Animal.Communication.Factory.ParameterScaleTypes, link: any): void {
+        addLink(event: Animals.Scales.ParameterScaleTypes, link: any): void {
             if (this._netLinks[event]) {
                 this._netLinks[event].push(link);
             } else {
@@ -53,7 +53,7 @@ namespace Animal.Communication {
         }
 
         /**
-         * Публикует событие в сети шкалл
+         * Публикует событие в сети шкал
          * @param pack пакет события которое происходит
          * @param param дельта изменения
          */
