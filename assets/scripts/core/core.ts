@@ -93,7 +93,7 @@ let lion: any = {
                 current: 8,
                 min: 0,
                 max: 10,
-                responseDelay: 0.1
+                responseDelay: 0.13
             }
         },
         {
