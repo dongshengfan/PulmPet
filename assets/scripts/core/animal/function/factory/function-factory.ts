@@ -23,8 +23,8 @@ namespace Animals.Functions.Factories {
          */
         constructor() {
             this._factories = [];
-            this._factories[FunctionTypes.line] = Animals.Functions.TypeFunctions.LineFunction;
-            this._factories[FunctionTypes.quadratic] = Animals.Functions.TypeFunctions.QuadraticFunction;
+            this._factories[FunctionTypes.line] = LineFunction;
+            this._factories[FunctionTypes.quadratic] = QuadraticFunction;
         }
 
         /**

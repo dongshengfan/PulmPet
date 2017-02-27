@@ -1,19 +1,19 @@
 /**
  * Created by FIRCorp on 19.02.2017.
  */
-namespace Animals.Functions.TypeFunctions {
+namespace Animals.Functions {
     /**
      * Квадратичная функция
      */
     export class QuadraticFunction implements IFunction {
         /**
-         * Коэффицент А уравнения Ax^2+Bx+C=0
+         * Коэффицент А уравнения y = Ax^2+Bx+C
          * @type {Number}
          */
         private _coefficientA: number;
 
         /**
-         * Коэффицент B уравнения Ax^2+Bx+C=0
+         * Коэффицент B уравнения y = Ax^2+Bx+C
          * @type {Number}
          */
         private _coefficientB: number;

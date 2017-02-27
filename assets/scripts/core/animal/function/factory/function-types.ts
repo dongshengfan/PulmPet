@@ -6,7 +6,7 @@ namespace Animals.Functions{
      * Типы фабрик функций
      */
     export enum FunctionTypes{
-        line,
+        line = 1,
         quadratic
     }
 }
