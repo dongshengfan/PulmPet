@@ -4,10 +4,7 @@ var CircularListActionsAnimal=cc.Class({
 
     properties: {
       amountVisible: 3,//количество видимых листов
-
     },
-
-
 });
 
 export {CircularListActionsAnimal};

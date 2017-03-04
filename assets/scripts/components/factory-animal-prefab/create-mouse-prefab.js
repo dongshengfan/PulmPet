@@ -6,8 +6,8 @@ var CreateMousePrefab = cc.Class({
     properties: { 
         puthToPrefab:'prefabs/animal/Mouse',//путь от папки resource до необходимого префаба
         //возможно тут укажимкакие ресурсы надокуда пробрость но не сейчас
+
     },
- 
 
 
 });

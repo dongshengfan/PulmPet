@@ -5,7 +5,6 @@ var BoxRight = cc.Class({
 
     /**
      * Действия на страт
-     * 
      * @param {any} event
      */
     onTouchStart(event) {
@@ -14,38 +13,58 @@ var BoxRight = cc.Class({
 
     /**
      * Действия на движение
-     * 
      * @param {Event} event
      */
     onTouchMove(event) {
         var delta = event.touch.getDelta();
-        this._setMovement(delta)._moveBox(delta)._checkBoxPosition();
+        if (!this._flagBlock) {
+            this._setMovement(delta)._moveBox(delta)._checkBoxPosition();
+        }
     },
 
     /**
-     * Действие на завершение 
-     * 
+     * Действие на завершение
      * @param {any} event
      */
     onTouchEnd(event) {
+        if (!this._flagBlock) {
+            this._flag = true;
+            this._endSwipeX();
+        }
+    },
+
+    /**
+     * Открывает бокс
+     */
+    openBox(){
+        this._direction = Movement.toOpen;
+        this._flag = true;
         this._endSwipeX();
-        this._refocus();
+    },
+
+    /**
+     * Закрывает бокс
+     */
+    closeBox(){
+        this._direction = Movement.toClose;
+        this._flag = true;
+        this._endSwipeX();
     },
 
     /**
      * Проверяет не зашел ли бокс за грани доступного, еcли зашел то ровняет его
-     * 
      * @returns this
      */
     _checkBoxPosition() {
-        if (this.node.x < this._endPos.x - this._increments || this.node.x > this._startPos.x + this._increments)
+        if (this.node.x < this._endPos.x - this._increments || this.node.x > this._startPos.x + this._increments) {
+            this._flag = false;
             this._endSwipeX();
+        }
         return this;
     },
 
     /**
      * Движение бокса
-     * 
      * @param {cc.Vec2} delta
      * @returns this
      */
@@ -64,6 +83,7 @@ var BoxRight = cc.Class({
             }
 
         } else {
+            this._flag = false;
             this._endSwipeX();
         }
         return this;
@@ -71,7 +91,6 @@ var BoxRight = cc.Class({
 
     /**
      * Определяет направление движения для случая горизонтального  бокса
-     * 
      * @param {cc.Vec2} delta
      * @returns this
      */
@@ -84,14 +103,13 @@ var BoxRight = cc.Class({
      * Устанавливает начальные позиции и производит вычисление длинны
      */
     _settings() {
-        let children = this.node.children;
-        let bar = children[0].children[0];
-        let canvas = this._getCanvas(this.node);
+        let bar = this.content;
+        let canvas = cc.director.getWinSizeInPixels();
         let sizeBoxY = this._getSizeBox(canvas.height);
         this.node.y = sizeBoxY / 2 + this.indentLeft;
-        bar.height = canvas.height;
-        this._startPos = cc.v2(canvas.width, this.node.y);
-        this._endPos = cc.v2(canvas.width - bar.width, this.node.y);
+        bar.height = sizeBoxY;
+        this._startPos = cc.v2(this.node.x, this.node.y);
+        this._endPos = cc.v2(this.node.x - bar.width, this.node.y);
         this._amountPix = Math.abs(this._endPos.x - this._startPos.x);
     },
 
@@ -102,9 +120,10 @@ var BoxRight = cc.Class({
         let opasity = this.opacityBox + (((255 - this.opacityBox) * (this._startPos.x - this.node.x)) / this._amountPix);
         if (opasity > 255) {
             opasity = 255;
+        } else if (opasity < this.opacityBox) {
+            opasity = this.opacityBox;
         }
         this.node.opacity = opasity;
     },
-
 });
 export { BoxRight };

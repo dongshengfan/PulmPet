@@ -7,12 +7,12 @@ class Create {
 
     }
 
-    createSystem(type: any, params: any[]): any {
+    static createSystem(type: any, params: any[]): any {
         let factory = Animals.Systems.Factories.SystemFactory.instance();
         return factory.create(type, params);
     }
 
-    createScale(json: any): any {
+    static createScale(json: any): any {
         let factory = Animals.Scales.Factories.ScaleFactory.instance();
         let {typeScale, type, params}=json;
         params.type = type;
@@ -34,7 +34,7 @@ class Create {
         let masSystem: any[] = [];
 
         scales.forEach((item: any) => {
-            masScale[item.type] = this.createScale(item);
+            masScale[item.type] = Create.createScale(item);
         });
 
         systems.forEach((item: any) => {
@@ -42,7 +42,7 @@ class Create {
             item.scalesType.forEach((sc: any) => {
                 mas[sc.type] = masScale[sc.type];
             });
-            masSystem[item.type] = this.createSystem(item.type, mas);
+            masSystem[item.type] = Create.createSystem(item.type, mas);
         });
         let com=this.createCommunicator(communication, masScale);
         console.log(masSystem);

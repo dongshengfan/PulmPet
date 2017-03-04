@@ -14,7 +14,10 @@ var Box = cc.Class({
         _eps: 1,//Эпсилон вычислений
         _intevalIncrements: 0.001,//интервал процедуры движения бокса
         _increments: 8,//шаг приращения бокса
-        
+        _flag: false,//флаг рассылки сообщений
+        _flagBlock: false,//флаг блокировки
+
+        content: cc.Node,//контент над которым необходимо произвести работу
         opacityBox: 30,//Прозрачность бокса 
         indentLeft: 50,//Отступ слева (в px)
         indentRight: 50,//Отступ справа (в px)
@@ -31,8 +34,33 @@ var Box = cc.Class({
     },
 
     /**
+     * Включить блокировку
+     */
+    onBlock(){
+        this._flagBlock = true;
+    },
+
+    /**
+     * Выключить блокировку
+     */
+    offBlock(){
+        this._flagBlock = false;
+    },
+
+    /**
+     * Публикует событие открытие бокса в контроллере
+     */
+    publishEventOpen(){
+    },
+
+    /**
+     * Публикует событие закрыие бокса в контроллере
+     */
+    publishEventClose(){
+    },
+
+    /**
      * Проверяет делает ли он это событие а не кто-то другой по ветке нодов
-     * 
      * @param {Event} event
      */
     getPermissionMove(event) {
@@ -42,22 +70,27 @@ var Box = cc.Class({
     },
 
     /**
-     * Выполняет проверку и завершает движение бокса 
+     * Выполняет проверку и завершает движение бокса по X
      */
     _endSwipeX() {
         this._direction === Movement.toClose ? this._bringX(this._startPos) : this._bringX(this._endPos);
+        if (this._flag) {
+            this._refocus();
+        }
     },
-    
+
     /**
-     * Выполняет проверку и завершает движение бокса 
+     * Выполняет проверку и завершает движение бокса по Y
      */
     _endSwipeY() {
         this._direction === Movement.toClose ? this._bringY(this._startPos) : this._bringY(this._endPos);
+        if (this._flag) {
+            this._refocus();
+        }
     },
 
     /**
      * Доводит окошко до нужного положения по X
-     * 
      * @param {cc.Vec2} coord
      */
     _bringX(coord) {
@@ -77,7 +110,6 @@ var Box = cc.Class({
 
     /**
      * Доводит окошко до нужного положения по Y
-     * 
      * @param {cc.Vec2} coord
      */
     _bringY(coord) {
@@ -96,8 +128,7 @@ var Box = cc.Class({
     },
 
     /**
-     * Возвращает размер бокса относительно пространства на стороне и условий отступов 
-     * 
+     * Возвращает размер бокса относительно пространства на стороне и условий отступов
      * @param {number} space
      * @returns space размер бокса
      */
@@ -106,34 +137,25 @@ var Box = cc.Class({
     },
 
     /**
-     * Получает корень сцены (канвас)
-     * 
-     * @param {сс.Node} node
-     * @returns node корень сцены
-     */
-    _getCanvas(node) {
-        if (node.name === "Canvas") {
-            return node;
-        }
-        return this._getCanvas(node.parent);
-    },
-
-    /**
      * Меняет направление которое необходимо сделать дальше боксу(закрыться или открыться)
      */
     _refocus() {
-        this._direction === Movement.toClose ? this._direction = Movement.toOpen : this._direction = Movement.toClose;
+        if (this._direction === Movement.toClose) {
+            this._direction = Movement.toOpen;
+            this.publishEventClose();
+        } else {
+            this._direction = Movement.toClose;
+            this.publishEventOpen();
+        }
     },
 
     /**
      * Обновляет прозрачность боксов
-     * 
      * @param {any} dt
      */
     update(dt) {
         this._opacityNode();
     },
-
 });
 
 export { Box, Movement };
