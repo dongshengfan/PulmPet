@@ -21,6 +21,7 @@ var BoxCharacteristicsAnimal = cc.Class({
 
     onLoad(){
         this._settings();
+
     },
 
     /**

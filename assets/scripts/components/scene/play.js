@@ -1,3 +1,4 @@
+import { API }from '../../core/api';
 /**
  * Управляет представлнием
  */
@@ -15,6 +16,7 @@ cc.Class({
     },
 
     onLoad() {
+        this.api = API.instance();
         this.boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-create-animal-play');
         this.boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent('box-characteristics-animal-play');
         this.basketAnimal = this.nodeBasketAnimal.getComponent('basket-animal');
@@ -28,10 +30,11 @@ cc.Class({
         this.node.on('startDragAndDropAnimal', this.onStartDragAndDropAnimal.bind(this));
         this.node.on('dragAndDropAnimal', this.onDragAndDropAnimal.bind(this));
         this.node.on('stopDragAndDropAnimal', this.onStopDragAndDropAnimal.bind(this));
-
-        this.node.on('removeAnimal', this.onRemoveAnimal.bind(this));
-        this.node.on('startLifeAnimal', this.onStartLifeAnimal.bind(this));
         this.node.on('motionAnimal', this.onMotionAnimal.bind(this));
+        this.node.on('openMenuAnimal', this.onOpenMenuAnimal.bind(this));
+        this.node.on('closeMenuAnimal', this.onCloseMenuAnimal.bind(this));
+
+        this.node.on('voteAnimal', this.onVoteAnimal.bind(this));
     },
 
     /**
@@ -55,6 +58,7 @@ cc.Class({
     onAnimalCreated(event){
         //Включить корзину и закрыть бокс с животными
         cc.log('создание нового животного');
+        this._targetPuthToModel = event.detail.puthToModel;
         event.detail.animal.parent = this.nodeFieldAnimals;
         event.detail.animal.setPosition(event.detail.point);
         this.boxCreateAnimal.closeBox();
@@ -79,7 +83,7 @@ cc.Class({
     onDragAndDropAnimal(event){
         cc.log('сообщаем корзине положение зверюшки (перетаскивание)');
         let point = cc.v2(event.detail.animal.x, event.detail.animal.y);
-        this.basketAnimal.positionAnimal(point);
+        this.basketAnimal.isAnimalLife(point);
     },
 
     /**
@@ -89,8 +93,16 @@ cc.Class({
         cc.log('определение дальнейших действий с животным (завершение перетаскивание)');
         let point = cc.v2(event.detail.animal.x, event.detail.animal.y);
         if (this.basketAnimal.isAnimalLife(point)) {
+            cc.log('создаем модель животного');
+            let model = this.api.createAnimal(event.detail.puthToModel);
             cc.log('надо вязать с картой и запустить жизнь в зверюшке(завершение перетаскивание)');
-
+            this._nodeTargetAnimal = event.detail.animal.children[0];
+            this._nodeTargetAnimal.parent = this.nodeFieldAnimals;
+            this._nodeTargetAnimal.setPosition(event.detail.animal.x, event.detail.animal.y);
+            this._nodeTargetAnimal.addComponent('controller-animal');
+            this._nodeTargetAnimal.getComponent('controller-animal').settings(model);
+            //Необходимо куда-то добавить животное и как-то запустить  пробросить в контроллер модель животного
+            event.detail.animal.destroy();
         } else {
             cc.log('надо удалить зверюшку(завершение перетаскивание)');
             event.detail.animal.destroy();
@@ -103,27 +115,36 @@ cc.Class({
     },
 
     /**
-     * Удалено животное
-     */
-    onRemoveAnimal(event){
-        //Закрыть корзину
-        cc.log('животное удалено');
-    },
-
-    /**
-     * Животное начинает жить
-     */
-    onStartLifeAnimal(event){
-        //закрыть корзину произвести запускстейт машины
-        cc.log('животное начинает жить');
-    },
-
-    /**
      * Движение животного за ведущим
      */
     onMotionAnimal(event){
-        //обработка событийсживотным вовремядвижения
+        //обработка событий с животным во время движения
         cc.log('двигаюсь за пользователем');
+    },
+
+    /**
+     *
+     * @param event
+     */
+    onOpenMenuAnimal(event){
+        cc.log('Открываю меню животного');
+        //заполняем список характеристик считывая все из коммуникатора
+        let characteristics = event.detail.model;
+        this.boxCharacteristicsAnimal.openBox();
+    },
+
+    /**
+     *
+     * @param event
+     */
+    onCloseMenuAnimal(event){
+        cc.log('Закрываю меню животного');
+        //Отчищаем список характеристик
+        this.boxCharacteristicsAnimal.closeBox();
+    },
+
+    onVoteAnimal(event){
+        cc.log('животное проявило голос');
     },
 
     /**

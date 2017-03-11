@@ -2,12 +2,10 @@ import { FactoryAnimalPrefab } from './factory-animal-prefab';
 
 var CreateLionPrefab = cc.Class({
     extends: FactoryAnimalPrefab,
-    
-    properties: { 
-        puthToPrefab:'prefabs/animal/Lion',//путь от папки resource до необходимого префаба
-        //возможно тут укажимкакие ресурсы надокуда пробрость но не сейчас
 
+    properties: {
+        wayToPrefab:'prefabs/animal/AnimalLion',
+        puthToModel: '',//Путь до модели
+        nameAnimal: '',//Имя животного
     },
-
-
 });

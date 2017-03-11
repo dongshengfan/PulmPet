@@ -10,12 +10,13 @@ var Box = cc.Class({
         _startPos: null,//Стартовая позиция бокса
         _endPos: null,//конечная позиция бокса
         _amountPix: 0,//количество пикселей или какой путь надо пройти
-        _direction: Movement.toClose,//0- закрыться 1- открыться
+        _direction: 1,//0- закрыться 1- открыться
         _eps: 1,//Эпсилон вычислений
-        _intevalIncrements: 0.001,//интервал процедуры движения бокса
+        _intervalIncrements: 0.001,//интервал процедуры движения бокса
         _increments: 8,//шаг приращения бокса
         _flag: false,//флаг рассылки сообщений
         _flagBlock: false,//флаг блокировки
+        _callBack: null,//кол бек для движения бокса, он сбрасывает предыдущее состояние
 
         content: cc.Node,//контент над которым необходимо произвести работу
         opacityBox: 30,//Прозрачность бокса 
@@ -27,6 +28,7 @@ var Box = cc.Class({
      * Осуществляет первоначальную настройку
      */
     onLoad() {
+        this._direction = Movement.toOpen;
         this._settings();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.getPermissionMove.bind(this));
@@ -94,10 +96,11 @@ var Box = cc.Class({
      * @param {cc.Vec2} coord
      */
     _bringX(coord) {
-        let callBack = () => {
+        this.unschedule(this._callBack);
+        this._callBack = () => {
             if (this.node.x > coord.x - this._increments - this._eps && this.node.x < coord.x + this._increments + this._eps) {
                 this.node.x = coord.x;
-                this.unschedule(callBack);
+                this.unschedule(this._callBack);
             }
             if (coord.x > this.node.x) {
                 this.node.x += this._increments;
@@ -105,7 +108,7 @@ var Box = cc.Class({
                 this.node.x -= this._increments;
             }
         }
-        this.schedule(callBack, this._intevalIncrements);
+        this.schedule(this._callBack, this._intervalIncrements);
     },
 
     /**
@@ -113,10 +116,11 @@ var Box = cc.Class({
      * @param {cc.Vec2} coord
      */
     _bringY(coord) {
-        let callBack = () => {
+        this.unschedule(this._callBack);
+        this._callBack = () => {
             if (this.node.y > coord.y - this._increments - this._eps && this.node.y < coord.y + this._increments + this._eps) {
                 this.node.y = coord.y;
-                this.unschedule(callBack);
+                this.unschedule(this._callBack);
             }
             if (coord.y > this.node.y) {
                 this.node.y += this._increments;
@@ -124,7 +128,7 @@ var Box = cc.Class({
                 this.node.y -= this._increments;
             }
         }
-        this.schedule(callBack, this._intevalIncrements);
+        this.schedule(this._callBack, this._intervalIncrements);
     },
 
     /**

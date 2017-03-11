@@ -12,7 +12,6 @@ var BoxCreateAnimal = cc.Class({
     _settings() {
         let bar = this.content;
         let canvas = cc.director.getWinSizeInPixels();
-
         let sizeBoxX = this._getSizeBox(canvas.width);
         this.node.x = sizeBoxX / 2 + this.indentLeft;
         bar.width = sizeBoxX;

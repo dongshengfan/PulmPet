@@ -1,9 +1,3 @@
-const StateBasket = {
-    sleep: 0,
-    job: 1,
-    waiting: 2,
-    anticipation: 3
-};
 
 /**
  * Осуществляет работу с корзиной,
@@ -19,7 +13,6 @@ cc.Class({
     },
 
     onLoad(){
-        this._stateBasket = StateBasket.sleep;
     },
 
     /**
@@ -27,7 +20,6 @@ cc.Class({
      */
     on(){
         this.node.active = true;
-        this._stateBasket = StateBasket.waiting;
         this.jobWithOpacity(240, 1);
     },
 
@@ -35,7 +27,6 @@ cc.Class({
      * Выключение корзины
      */
     off(){
-        this._stateBasket = StateBasket.sleep;
         this.jobWithOpacity(this.opacity,this.time);
     },
 
@@ -74,21 +65,6 @@ cc.Class({
     },
 
     /**
-     * Меняет свое состояние в зависимости от положения животного
-     * @param point
-     */
-    positionAnimal(point) {
-        let distanceX = Math.abs(point.x - this.node.x);
-        let distanceY = Math.abs(point.y - this.node.y);
-        let distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-        if (distance > this.anticipation) {
-            this._stateBasket = StateBasket.waiting;
-        } else {
-            this._stateBasket = StateBasket.anticipation;
-        }
-    },
-
-    /**
      * Проверяет будет ли жить животное или оно выбрашено в корзину
      * @param point
      * @returns {boolean}
@@ -106,10 +82,9 @@ cc.Class({
         let X = point.x > this._leftPointBottom.x && point.x < this._rightPointTop.x;
         let Y = point.y > this._leftPointBottom.y & point.y < this._rightPointTop.y;
         if (X && Y) {
-            this._stateBasket = StateBasket.job;
+
             return false;
         }
-        this._stateBasket = StateBasket.sleep;
         return true;
     }
 });

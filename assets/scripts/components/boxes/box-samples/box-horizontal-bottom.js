@@ -10,7 +10,6 @@ var BoxBottom = cc.Class({
      * @param {any} event
      */
     onTouchStart(event) {
-
     },
 
     /**
@@ -94,7 +93,7 @@ var BoxBottom = cc.Class({
      * @returns this
      */
     _setMovement(delta) {
-        this._direction = delta.y < 0 ? Movement.toClose : Movement.toOpen;
+        this._direction = delta.y <= 0 ? Movement.toClose : Movement.toOpen;
         return this;
     },
 
