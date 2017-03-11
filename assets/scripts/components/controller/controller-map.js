@@ -7,14 +7,17 @@ cc.Class({
     properties: {},
 
     onLoad(){
-         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart.bind(this));
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove.bind(this));
-         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd.bind(this));
+        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd.bind(this));
+    },
+
+    onEvent(event){
+        cc.log(event);
     },
 
     onTouchStart(event){
         cc.log('Начал работу с картой');
-
         event.stopPropagation();
     },
 
@@ -28,4 +31,12 @@ cc.Class({
         event.stopPropagation();
     },
 
+    /**
+     * Движение карты
+     * @param delta
+     */
+    moveMap(delta){
+        this.node.x+=delta.x;
+        this.node.y+=delta.y;
+    }
 });

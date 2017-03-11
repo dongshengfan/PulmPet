@@ -11,16 +11,21 @@ cc.Class({
         nodeBoxCharacteristicsAnimal: cc.Node,//всплывающий бокс с характеристиками животного
         nodeBasketAnimal: cc.Node,//корзина для удаления животного
         nodeFieldAnimals: cc.Node,//поле жизнедеятельности животного
-
+        nodeBoxMap: cc.Node,//бокс с картой
+        nodeMap: cc.Node,//поле карты
         _nodeTargetAnimal: cc.Node,//животное в таргете
+        _pointTargetAnimal: cc.v2,//точка назначения животного в таргете
     },
 
-    onLoad() {
+    onLoad(){
         this.api = API.instance();
+
+        this._pointTargetAnimal = cc.v2(0, 0);//точка назначения животного в таргете
+
         this.boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-create-animal-play');
         this.boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent('box-characteristics-animal-play');
         this.basketAnimal = this.nodeBasketAnimal.getComponent('basket-animal');
-
+        this.controllerMap = this.nodeMap.getComponent('controller-map');
 
         this.node.on('createAnimal', this.onAnimalCreated.bind(this));
         this.node.on('openBoxFromAnimal', this.onOpenBoxFromAnimal.bind(this));
@@ -31,10 +36,12 @@ cc.Class({
         this.node.on('dragAndDropAnimal', this.onDragAndDropAnimal.bind(this));
         this.node.on('stopDragAndDropAnimal', this.onStopDragAndDropAnimal.bind(this));
         this.node.on('motionAnimal', this.onMotionAnimal.bind(this));
+        this.node.on('startMotionAnimal', this.onStartMotionAnimal.bind(this));
+        this.node.on('endMotionAnimal', this.onEndMotionAnimal.bind(this));
         this.node.on('openMenuAnimal', this.onOpenMenuAnimal.bind(this));
         this.node.on('closeMenuAnimal', this.onCloseMenuAnimal.bind(this));
 
-        this.node.on('voteAnimal', this.onVoteAnimal.bind(this));
+        this.node.on('voiceAnimal', this.onVoiceAnimal.bind(this));
     },
 
     /**
@@ -72,6 +79,7 @@ cc.Class({
      */
     onStartDragAndDropAnimal(event){
         cc.log('запуск анимации подвешенности (старт перетаскивания)');
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
     },
 
     /**
@@ -91,6 +99,7 @@ cc.Class({
      */
     onStopDragAndDropAnimal(event){
         cc.log('определение дальнейших действий с животным (завершение перетаскивание)');
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
         let point = cc.v2(event.detail.animal.x, event.detail.animal.y);
         if (this.basketAnimal.isAnimalLife(point)) {
             cc.log('создаем модель животного');
@@ -115,11 +124,36 @@ cc.Class({
     },
 
     /**
+     * Начало движения животного
+     * @param event
+     */
+    onStartMotionAnimal(event){
+        cc.log('начинаю двигаться за пользователем');
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
+        this._pointTargetAnimal = cc.v2(event.detail.startMotionX, event.detail.startMotionY);
+    },
+
+    /**
      * Движение животного за ведущим
      */
     onMotionAnimal(event){
         //обработка событий с животным во время движения
         cc.log('двигаюсь за пользователем');
+        let x = event.detail.deltaMotionX;
+        let y = event.detail.deltaMotionY;
+        this._pointTargetAnimal.x += x;
+        this._pointTargetAnimal.y += y;
+    },
+
+    /**
+     * Окончание движения животного
+     * @param event
+     */
+    onEndMotionAnimal(event){
+        cc.log('заканчиваю двигаться за пользователем');
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
+
+
     },
 
     /**
@@ -143,7 +177,11 @@ cc.Class({
         this.boxCharacteristicsAnimal.closeBox();
     },
 
-    onVoteAnimal(event){
+    /**
+     * Животное издало звук
+     * @param event
+     */
+    onVoiceAnimal(event){
         cc.log('животное проявило голос');
     },
 

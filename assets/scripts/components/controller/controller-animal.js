@@ -28,26 +28,40 @@ cc.Class({
     settings(model){
         this._stateMenuAnimal = StateMenu.close;
         this.nodeManadgerMenu = this.node.children[4];
-        this.nodeManadgerMenu.getComponent('circular-list-actions-animal').radius=this.node.width*1.5;
-        this._model=model;
+        this.nodeManadgerMenu.getComponent('circular-list-actions-animal').radius = this.node.width * 1.5;
+        this._model = model;
     },
 
     _onTouchMove(event){
         var delta = event.touch.getDelta();
+        //Необходимо отправлять модели данные для получения смещения животного в зависимости от его скорости
         this.node.x += delta.x;
         this.node.y += delta.y;
         let myEvent = new cc.Event.EventCustom('motionAnimal', true);
-        myEvent.detail = {};
+        myEvent.detail = {
+            animal: this,
+            deltaMotionX:delta.x,
+            deltaMotionY:delta.y,
+        };
         this.node.dispatchEvent(myEvent);
         event.stopPropagation();
     },
 
     _onTouchStart(event){
+        let myEvent = new cc.Event.EventCustom('startMotionAnimal', true);
+        myEvent.detail = {
+            startMotionX:this.node.x,
+            startMotionY:this.node.y,
+        };
+        this.node.dispatchEvent(myEvent);
         this._pointTouchForMenu = event.getLocation();
         event.stopPropagation();
     },
 
     _onTouchEnd(event){
+        let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
+        myEvent.detail = {};
+        this.node.dispatchEvent(myEvent);
         let point = event.getLocation();
         let X = Math.abs(this._pointTouchForMenu.x - point.x) < this.maxBiasTouch;
         let Y = Math.abs(this._pointTouchForMenu.y - point.y) < this.maxBiasTouch;
@@ -64,11 +78,11 @@ cc.Class({
     _refocusMenu(){
         if (this._stateMenuAnimal === StateMenu.close) {
             this._stateMenuAnimal = StateMenu.open;
-            this.nodeManadgerMenu.active=true;
+            this.nodeManadgerMenu.active = true;
             this._publishOpenMenuAnimal();
         } else {
             this._stateMenuAnimal = StateMenu.close;
-            this.nodeManadgerMenu.active=false;
+            this.nodeManadgerMenu.active = false;
             this._publishCloseMenuAnimal();
         }
     },
@@ -79,7 +93,7 @@ cc.Class({
     _publishOpenMenuAnimal(){
         let myEvent = new cc.Event.EventCustom('openMenuAnimal', true);
         myEvent.detail = {
-            model:this._model,
+            model: this._model,
         };
         this.node.dispatchEvent(myEvent);
     },
@@ -97,7 +111,7 @@ cc.Class({
      * Открыть меню
      */
     openMenu(){
-        this.nodeManadgerMenu.active=true;
+        this.nodeManadgerMenu.active = true;
         this._refocusMenu();
     },
 
@@ -105,7 +119,7 @@ cc.Class({
      * Закрыть меню
      */
     closeMenu(){
-        this.nodeManadgerMenu.active=false;
+        this.nodeManadgerMenu.active = false;
         this._refocusMenu();
     },
 });
