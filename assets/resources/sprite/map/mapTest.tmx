@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="80" tileheight="80" nextobjectid="1">
+ <tileset firstgid="1" name="map" tilewidth="80" tileheight="80" tilecount="300" columns="12">
+  <image source="map.png" width="960" height="2000"/>
+ </tileset>
+ <layer name="soil" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwTZWRgEB1gLESh/HDGQ9XvtHY3uvlCdLIXhO8xMDBwMSLwN4ahGYYjHeNKQ0MxLuid32AYAOcTI8E=
+  </data>
+ </layer>
+ <layer name="water" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhaoAcNE6OWnqAHB1sdiHWBWI2AnsEEiA0/UtxPrHn0CJOhaAepYU2u/YMhTQ5k2NHKfkrMpCQuaRWfAHzHEFc=
+  </data>
+ </layer>
+ <layer name="tree" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAvkGFkYJAFYjlG6pinATVHC4956HZS6gZ0O4lxw0gCksBwkAJiaSqFhyrUHHUKzaO3uwYiHAZr2A9lQI8wHYhykRoAADtkBdQ=
+  </data>
+ </layer>
+ <layer name="obstacle" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBj6QJNx4O0cCDeMJKA2SMOX3u4aiHAYrGE/lAE9wpQeZRIAdwcBbA==
+  </data>
+ </layer>
+</map>
