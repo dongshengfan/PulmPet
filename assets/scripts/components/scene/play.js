@@ -168,6 +168,8 @@ cc.Class({
         //заполняем список характеристик считывая все из коммуникатора
         let characteristics = event.detail.model;
         this.boxCharacteristicsAnimal.openBox();
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
+
     },
 
     /**
@@ -178,6 +180,7 @@ cc.Class({
         cc.log('Закрываю меню животного');
         //Отчищаем список характеристик
         this.boxCharacteristicsAnimal.closeBox();
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
     },
 
     /**
