@@ -28,7 +28,7 @@ namespace Animals.Systems.TypeSystems {
          * Constructor of Muscular
          * @param scales объект шкал
          */
-        constructor(scales: any) {
+        constructor(scales: any[]) {
             this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
             this.speed = scales[Animals.Scales.ParameterScaleTypes.speed];
             this.weight = scales[Animals.Scales.ParameterScaleTypes.weight];

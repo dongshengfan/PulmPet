@@ -17,6 +17,11 @@ namespace Animals {
         private _circulatory: Animals.Systems.TypeSystems.Circulatory;
 
         /**
+         * Навигационная система
+         */
+        private _navigation: Animals.Systems.TypeSystems.Navigation;
+
+        /**
          * Коммуникатор шкал
          */
         private _communicator: Animals.Communications.Communicator;
@@ -28,6 +33,7 @@ namespace Animals {
         constructor(params: any[]) {
             this.muscular = params[Animals.Systems.SystemTypes.muscular];
             this.circulatory = params[Animals.Systems.SystemTypes.circulatory];
+            this.navigation = params[Animals.Systems.SystemTypes.navigation];
         }
 
         set muscular(param: Animals.Systems.TypeSystems.Muscular) {
@@ -39,6 +45,12 @@ namespace Animals {
         set circulatory(param: Animals.Systems.TypeSystems.Circulatory) {
             if (param) {
                 this._circulatory = param;
+            }
+        }
+
+        set navigation(param: Animals.Systems.TypeSystems.Navigation) {
+            if (param) {
+                this._navigation = param;
             }
         }
 

@@ -6,13 +6,18 @@ namespace Animals.Scales {
      * Типы параметра
      */
     export enum ParameterScaleTypes{
-        state,
+        state = 1,
         speed,
         weight,
         heartbeat,
         pressure,
         amountPointRememberWater,
         amountPointRememberGrass,
-        amountPointRememberMeat
+        amountPointRememberMeat,
+        speedSavvy,
+        radiusVision,
+        radiusHearing,
+        radiusSmell,
+        radiusTouch,
     }
 }

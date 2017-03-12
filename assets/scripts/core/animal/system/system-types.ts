@@ -6,8 +6,9 @@ namespace Animals.Systems {
      * Типы систем
      */
     export enum SystemTypes{
-        muscular,
+        muscular = 1,
         circulatory,
-        memory
+        memory,
+        navigation
     }
 }

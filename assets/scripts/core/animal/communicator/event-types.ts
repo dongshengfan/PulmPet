@@ -6,7 +6,7 @@ namespace Animals.Communications {
      * Типы поведения параметра
      */
     export enum BehaviorScaleTypes{
-        increase,
+        increase = 1,
         decrease
     }
 }

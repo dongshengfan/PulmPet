@@ -25,6 +25,7 @@ namespace Animals.Systems.Factories {
             this._factories = [];
             this._factories[SystemTypes.muscular] = Animals.Systems.TypeSystems.Muscular;
             this._factories[SystemTypes.circulatory] = Animals.Systems.TypeSystems.Circulatory;
+            this._factories[SystemTypes.navigation] = Animals.Systems.TypeSystems.Navigation;
         }
 
         /**

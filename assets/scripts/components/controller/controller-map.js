@@ -35,7 +35,8 @@ cc.Class({
      * Движение карты
      * @param delta
      */
-    moveMap(delta){
+    moveMap(delta,point){
+
         this.node.x+=delta.x;
         this.node.y+=delta.y;
     }
