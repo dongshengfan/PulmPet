@@ -1,4 +1,4 @@
-import { API }from '../../core/api';
+import { APICore }from '../../build/build-ts';
 /**
  * Управляет представлнием
  */
@@ -18,8 +18,10 @@ cc.Class({
     },
 
     onLoad(){
-        this.api = API.instance();
+        this.api = APICore.instance();
 
+
+        cc.log(this.api);
         this._pointTargetAnimal = cc.v2(0, 0);//точка назначения животного в таргете
 
         this.boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-create-animal-play');
@@ -66,7 +68,7 @@ cc.Class({
         //Включить корзину и закрыть бокс с животными
         cc.log('создание нового животного');
         this._targetPuthToModel = event.detail.puthToModel;
-        event.detail.animal.parent = this.nodeFieldAnimals;
+        event.detail.animal.parent = this.nodeFieldAnimals.parent;
         event.detail.animal.setPosition(event.detail.point);
         this.boxCreateAnimal.closeBox();
         this.boxCreateAnimal.onBlock();
@@ -100,6 +102,7 @@ cc.Class({
     onStopDragAndDropAnimal(event){
         cc.log('определение дальнейших действий с животным (завершение перетаскивание)');
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
+        event.detail.animal.parent = this.nodeFieldAnimals;
         let point = cc.v2(event.detail.animal.x, event.detail.animal.y);
         if (this.basketAnimal.isAnimalLife(point)) {
             cc.log('создаем модель животного');

@@ -30,6 +30,7 @@ cc.Class({
         this.nodeManadgerMenu = this.node.children[4];
         this.nodeManadgerMenu.getComponent('circular-list-actions-animal').radius = this.node.width * 1.5;
         this._model = model;
+        cc.log(this._model);
     },
 
     _onTouchMove(event){

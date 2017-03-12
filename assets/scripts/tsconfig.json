@@ -5,9 +5,10 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "target": "es6",
+    "target": "es5",
     "outDir": "build",
-    "outFile": "build/build-ts.js"
+    "outFile": "build/build-ts.js",
+    "lib": ["dom", "es2015.promise", "es5"]
   },
   "compileOnSave": true
 }
