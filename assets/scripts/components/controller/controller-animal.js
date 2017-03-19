@@ -11,7 +11,6 @@ cc.Class({
 
         maxBiasTouch: 5,//максимальное смещение тача для открытия меню (px)
         nodeManadgerMenu: cc.Node,//нод меню животного
-
         _stateMenuAnimal: StateMenu.close,//состояние меню
         _pointTouchForMenu: cc.v2,//точка старта тача по животному
     },
@@ -41,8 +40,8 @@ cc.Class({
         let myEvent = new cc.Event.EventCustom('motionAnimal', true);
         myEvent.detail = {
             animal: this,
-            deltaMotionX:delta.x,
-            deltaMotionY:delta.y,
+            deltaMotionX: delta.x,
+            deltaMotionY: delta.y,
         };
         this.node.dispatchEvent(myEvent);
         event.stopPropagation();
@@ -51,8 +50,10 @@ cc.Class({
     _onTouchStart(event){
         let myEvent = new cc.Event.EventCustom('startMotionAnimal', true);
         myEvent.detail = {
-            startMotionX:this.node.x,
-            startMotionY:this.node.y,
+            startMotionX: this.node.x,
+            startMotionY: this.node.y,
+            controller: this,
+            nodeMenu: this.nodeManadgerMenu,
         };
         this.node.dispatchEvent(myEvent);
         this._pointTouchForMenu = event.getLocation();
@@ -95,6 +96,9 @@ cc.Class({
         let myEvent = new cc.Event.EventCustom('openMenuAnimal', true);
         myEvent.detail = {
             model: this._model,
+            nodeMenu: this.nodeManadgerMenu,
+            pointX: this.node.x,
+            pointY: this.node.y,
         };
         this.node.dispatchEvent(myEvent);
     },
@@ -104,7 +108,9 @@ cc.Class({
      */
     _publishCloseMenuAnimal(){
         let myEvent = new cc.Event.EventCustom('closeMenuAnimal', true);
-        myEvent.detail = {};
+        myEvent.detail = {
+            nodeAnimal: this.node,
+        };
         this.node.dispatchEvent(myEvent);
     },
 

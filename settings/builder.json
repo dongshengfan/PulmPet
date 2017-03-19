@@ -1,0 +1,17 @@
+{
+  "excludeScenes": [],
+  "includeAnySDK": false,
+  "includeSdk": [
+    "anysdk"
+  ],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.PulmPet",
+  "startScene": "9c1cc2e0-ac25-477e-bcf3-c16b5bc9fc32",
+  "title": "PulmPet",
+  "webOrientation": "auto"
+}

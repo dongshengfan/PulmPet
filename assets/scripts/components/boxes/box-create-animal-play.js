@@ -24,13 +24,19 @@ var BoxCreateAnimal = cc.Class({
      * Публикует событие открытие бокса в контроллере
      */
     publishEventOpen(){
-        this.node.dispatchEvent(new cc.Event('openBoxFromAnimal', true));
+        let myEvent = new cc.Event.EventCustom('openBoxFromAnimal', true);
+        myEvent.detail = {
+        };
+        this.node.dispatchEvent(myEvent);
     },
 
     /**
      * Публикует событие закрытие бокса в контроллере
      */
     publishEventClose(){
-        this.node.dispatchEvent(new cc.Event('closeBoxFromAnimal', true));
+        let myEvent = new cc.Event.EventCustom('closeBoxFromAnimal', true);
+        myEvent.detail = {
+        };
+        this.node.dispatchEvent(myEvent);
     },
 });

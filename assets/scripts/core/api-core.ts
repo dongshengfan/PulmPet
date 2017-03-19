@@ -12,6 +12,7 @@ class APICore {
      */
     static inst: APICore;
 
+
     /**
      *
      * @returns {APICore}
@@ -28,7 +29,7 @@ class APICore {
      * @param puthToModel
      * @returns {Animal}
      */
-    createAnimal(puthToModel: any): Animals.Animal {
+    createAnimal(putToModel: any): Animals.Animal {
         let factory = Animals.AnimalBuilder.instance();
         return factory.create(lion);
     }

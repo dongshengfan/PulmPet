@@ -9,16 +9,16 @@ let lion: any = {
             scalesType: [
                 {type: Animals.Scales.ParameterScaleTypes.speed},
                 {type: Animals.Scales.ParameterScaleTypes.speed},
-                {type:Animals.Scales.ParameterScaleTypes.weight}
+                {type: Animals.Scales.ParameterScaleTypes.weight}
             ],
         },
-        /* {
-         type: Animals.Systems.Factorys.SystemTypes.circulatory,
-         scalesType: [
-         {type: Animals.Scales.Factorys.ParameterScaleTypes.pressure},
-         {type:Animals.Scales.Factorys.ParameterScaleTypes.heartbeat}
-         ],
-         }*/
+        {
+            type: Animals.Systems.SystemTypes.circulatory,
+            scalesType: [
+                {type: Animals.Scales.ParameterScaleTypes.pressure},
+                {type: Animals.Scales.ParameterScaleTypes.heartbeat}
+            ],
+        }
     ],
     scales: [
         {

@@ -1,4 +1,4 @@
-const Movement = {
+    const Movement = {
     toClose: 0,
     toOpen: 1
 };
@@ -47,18 +47,6 @@ var Box = cc.Class({
      */
     offBlock(){
         this._flagBlock = false;
-    },
-
-    /**
-     * Публикует событие открытие бокса в контроллере
-     */
-    publishEventOpen(){
-    },
-
-    /**
-     * Публикует событие закрыие бокса в контроллере
-     */
-    publishEventClose(){
     },
 
     /**
