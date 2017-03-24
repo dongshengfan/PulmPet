@@ -1,16 +1,23 @@
 {
+  "appKey": "",
+  "appSecret": "",
   "excludeScenes": [],
   "includeAnySDK": false,
   "includeSdk": [
     "anysdk"
   ],
+  "inlineSpriteFrames": true,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
     "portrait": false,
     "upsideDown": false
   },
-  "packageName": "org.cocos2d.PulmPet",
+  "packageName": "org.FIR.PulmPet",
+  "privateKey": "",
+  "renderMode": "0",
   "startScene": "9c1cc2e0-ac25-477e-bcf3-c16b5bc9fc32",
   "title": "PulmPet",
   "webOrientation": "auto"

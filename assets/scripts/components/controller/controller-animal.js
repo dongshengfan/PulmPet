@@ -16,9 +16,9 @@ cc.Class({
     },
 
     onLoad(){
-        this.node.on(cc.Node.EventType.TOUCH_MOVE, this._onTouchMove.bind(this));
-        this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchStart.bind(this));
-        this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEnd.bind(this));
+        this.node.on(cc.Node.EventType.TOUCH_MOVE, this._onTouchMoveAnimal.bind(this));
+        this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchStartAnimal.bind(this));
+        this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEndAnimal.bind(this));
     },
 
     /**
@@ -32,7 +32,7 @@ cc.Class({
         cc.log(this._model);
     },
 
-    _onTouchMove(event){
+    _onTouchMoveAnimal(event){
         var delta = event.touch.getDelta();
         //Необходимо отправлять модели данные для получения смещения животного в зависимости от его скорости
         this.node.x += delta.x;
@@ -47,7 +47,7 @@ cc.Class({
         event.stopPropagation();
     },
 
-    _onTouchStart(event){
+    _onTouchStartAnimal(event){
         let myEvent = new cc.Event.EventCustom('startMotionAnimal', true);
         myEvent.detail = {
             startMotionX: this.node.x,
@@ -60,7 +60,7 @@ cc.Class({
         event.stopPropagation();
     },
 
-    _onTouchEnd(event){
+    _onTouchEndAnimal(event){
         let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
         myEvent.detail = {};
         this.node.dispatchEvent(myEvent);

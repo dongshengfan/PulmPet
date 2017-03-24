@@ -16,7 +16,7 @@ var BoxCreateAnimal = cc.Class({
         this.node.x = sizeBoxX / 2 + this.indentLeft;
         bar.width = sizeBoxX;
         this._startPos = cc.v2(this.node.x, this.node.y);
-        this._endPos = cc.v2(this.node.x, this.node.y + bar.height);
+        this._endPos = cc.v2(this.node.x, this.node.y + bar.height-10);
         this._amountPix = Math.abs(this._endPos.y - this._startPos.y);
     },
 

@@ -32,12 +32,13 @@ cc.Class({
     },
 
     /**
-     * Движение карты
-     * @param delta
+     * Конвентирует точку окна в точку карты
+     * @param pointWindow
+     * @returns {Vec2}
      */
-    moveMap(delta,point){
-
-        this.node.x+=delta.x;
-        this.node.y+=delta.y;
-    }
+    getPointMap(pointWindow){
+        let newX = pointWindow.x - this.node.x;
+        let newY = pointWindow.y - this.node.y;
+        return cc.v2(newX, newY);
+    },
 });

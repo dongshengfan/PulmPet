@@ -16,7 +16,9 @@ cc.Class({
      */
     onTouchStart(event){
         let myEvent = new cc.Event.EventCustom('startDragAndDropAnimal', true);
-        myEvent.detail = {};
+        myEvent.detail = {
+            animal: this.node,
+        };
         this.node.dispatchEvent(myEvent);
         event.stopPropagation();
     },
@@ -29,9 +31,9 @@ cc.Class({
         var delta = event.touch.getDelta();
         this.node.x += delta.x;
         this.node.y += delta.y;
-        let myEvent = new cc    .Event.EventCustom('dragAndDropAnimal', true);
+        let myEvent = new cc.Event.EventCustom('dragAndDropAnimal', true);
         myEvent.detail = {
-            animal: this.node
+            point: {x: this.node.x, y: this.node.y},
         };
         this.node.dispatchEvent(myEvent);
         event.stopPropagation();
@@ -44,9 +46,11 @@ cc.Class({
     onTouchEnd(event){
         let myEvent = new cc.Event.EventCustom('stopDragAndDropAnimal', true);
         myEvent.detail = {
-            animal: this.node
+            point: {x: this.node.x, y: this.node.y},
         };
         this.node.dispatchEvent(myEvent);
+
         event.stopPropagation();
+
     },
 });

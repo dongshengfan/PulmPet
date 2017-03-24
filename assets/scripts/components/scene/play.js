@@ -9,26 +9,27 @@ cc.Class({
         nodeWindow: cc.Node,//окно игры
         nodeBoxCreateAnimal: cc.Node,//всплывающий бокс с животными
         nodeBoxCharacteristicsAnimal: cc.Node,//всплывающий бокс с характеристиками животного
-        nodeBasketAnimal: cc.Node,//корзина для удаления животного
+        nodeBasket: cc.Node,//корзина для удаления животного
         nodeFieldAnimals: cc.Node,//поле жизнедеятельности животного
         nodeBoxMap: cc.Node,//бокс с картой
         nodeMap: cc.Node,//поле карты
-        _nodeTargetMenuAnimal:cc.Node,//нод меню и выбранного животного
-        _nodeTargetAnimal: cc.Node,//животное в таргете
+        _nodeTargetMenuAnimal: cc.Node,//нод меню и выбранного животного
+
+
+        _nodeTargetAnimal: cc.Node,//нод животного в таргете
 
         _pointTargetAnimal: cc.v2,//точка назначения животного в таргете
-        _targetControllerAnimal:cc.Node,//контроллер животным в таргете
+        _targetControllerAnimal: cc.Node,//контроллер животным в таргете
     },
 
     onLoad(){
         this.api = APICore.instance();
 
-        cc.log(this.api);
         this._pointTargetAnimal = cc.v2(0, 0);//точка назначения животного в таргете
 
         this.boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-create-animal-play');
         this.boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent('box-characteristics-animal-play');
-        this.basketAnimal = this.nodeBasketAnimal.getComponent('basket-animal');
+        this.controllerBasket = this.nodeBasket.getComponent('basket-animal');
         this.controllerMap = this.nodeMap.getComponent('controller-map');
 
 
@@ -75,14 +76,14 @@ cc.Class({
         cc.log('создание нового животного');
         this._targetPuthToModel = event.detail.puthToModel;// путь до модели используется при создании модели
         event.detail.animal.parent = this.nodeFieldAnimals.parent;
-        let newX=event.detail.point.x-this.nodeMap.x;
-        let newY=event.detail.point.y-this.nodeMap.y
 
-        event.detail.animal.setPosition(newX,newY);
+        let point = this.controllerMap.getPointMap(event.detail.point);
+        event.detail.animal.setPosition(point.x, point.y);
+
         this.boxCreateAnimal.closeBox();
         this.boxCreateAnimal.onBlock();
-        this.basketAnimal.on();
-
+        this.controllerBasket.on();
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
     },
 
     /**
@@ -91,7 +92,9 @@ cc.Class({
      */
     onStartDragAndDropAnimal(event){
         cc.log('запуск анимации подвешенности (старт перетаскивания)');
-        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
+        this._nodeTargetAnimal = event.detail.animal;
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;//заблокировать движение карты
+
     },
 
     /**
@@ -101,8 +104,9 @@ cc.Class({
      */
     onDragAndDropAnimal(event){
         cc.log('сообщаем корзине положение зверюшки (перетаскивание)');
-        let point = cc.v2(event.detail.animal.x, event.detail.animal.y);
-        this.basketAnimal.isAnimalLife(point);
+
+        let point = this.controllerMap.getPointMap(event.detail.point);
+        this.controllerBasket.setPositionAnimal(point);
     },
 
     /**
@@ -111,31 +115,41 @@ cc.Class({
      */
     onStopDragAndDropAnimal(event){
         cc.log('определение дальнейших действий с животным (завершение перетаскивание)');
-        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
-        event.detail.animal.parent = this.nodeFieldAnimals;
-        let point = cc.v2(event.detail.animal.x, event.detail.animal.y);
+        this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;//разблокировать движение по карте
 
-        if (this.basketAnimal.isAnimalLife(point)) {
+        let point = this.controllerMap.getPointMap(event.detail.point);
+
+        this._nodeTargetAnimal.parent = this.nodeFieldAnimals;
+
+
+        if (this.controllerBasket.isAnimalLife(point)) {
             cc.log('создаем модель животного');
-            let model = this.api.createAnimal(event.detail.puthToModel);
+            let model = this.api.createAnimal(this._targetPuthToModel);
             cc.log('надо вязать с картой и запустить жизнь в зверюшке(завершение перетаскивание)');
-            this._nodeTargetAnimal = event.detail.animal.children[0];
+
             this._nodeTargetAnimal.parent = this.nodeFieldAnimals;
-            this._nodeTargetAnimal.setPosition(event.detail.animal.x, event.detail.animal.y);
+            this._nodeTargetAnimal.setPosition(event.detail.point.x, event.detail.point.y);
+
+            cc.log(this._nodeTargetAnimal);
+            this._nodeTargetAnimal.getComponent('controller-create-animal').destroy();
+            cc.log(this._nodeTargetAnimal);
+
             this._nodeTargetAnimal.addComponent('controller-animal');
             this._nodeTargetAnimal.getComponent('controller-animal').settings(model);
-            //Необходимо куда-то добавить животное и как-то запустить  пробросить в контроллер модель животного
-            event.detail.animal.destroy();
         } else {
             cc.log('надо удалить зверюшку(завершение перетаскивание)');
-            event.detail.animal.destroy();
+            this.controllerBasket.onReactionToAnimalDestroy();
+            this._nodeTargetAnimal.destroy();
+
             cc.log('успешно удалена(завершение перетаскивание)');
         }
 
         cc.log('закрыть корзину(завершение перетаскивание)');
-        this.basketAnimal.off();
+        this.controllerBasket.off();
         cc.log('снять блокировку с бокса с животными(завершение перетаскивание)');
         this.boxCreateAnimal.offBlock();
+
+        this._nodeTargetAnimal=null;
     },
 
     /**
@@ -147,8 +161,8 @@ cc.Class({
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
         this._pointTargetAnimal = cc.v2(event.detail.startMotionX, event.detail.startMotionY);
 
-        this._nodeTargetMenuAnimal=event.detail.nodeMenu;
-        this._targetControllerAnimal=event.detail.controller;
+        this._nodeTargetMenuAnimal = event.detail.nodeMenu;
+        this._targetControllerAnimal = event.detail.controller;
         this._targetControllerAnimal.closeMenu();
     },
 
@@ -174,7 +188,6 @@ cc.Class({
         cc.log('заканчиваю двигаться за пользователем');
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
 
-
     },
 
     /**
@@ -186,11 +199,11 @@ cc.Class({
         //заполняем список характеристик считывая все из коммуникатора
         let characteristics = event.detail.model;
         this.boxCharacteristicsAnimal.openBox();//открыть бокс характеристик
-        this._nodeTargetMenuAnimal=event.detail.nodeMenu;
-        this._nodeTargetMenuAnimal.parent=this.nodeFieldAnimals.parent;
-        let newX=event.detail.pointX-this.nodeMap.x;
-        let newY=event.detail.pointY-this.nodeMap.y
-        this._nodeTargetMenuAnimal.setPosition(newX,newY);
+        this._nodeTargetMenuAnimal = event.detail.nodeMenu;
+        this._nodeTargetMenuAnimal.parent = this.nodeFieldAnimals.parent;
+        let newX = event.detail.pointX - this.nodeMap.x;
+        let newY = event.detail.pointY - this.nodeMap.y;
+        this._nodeTargetMenuAnimal.setPosition(newX, newY);
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;
 
     },
@@ -203,7 +216,7 @@ cc.Class({
         cc.log('Закрываю меню животного');
         //Отчищаем список характеристик
         this.boxCharacteristicsAnimal.closeBox();//зактрыть бокс характеристик
-        this._nodeTargetMenuAnimal.parent=event.detail.nodeAnimal;
+        this._nodeTargetMenuAnimal.parent = event.detail.nodeAnimal;
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;
     },
 

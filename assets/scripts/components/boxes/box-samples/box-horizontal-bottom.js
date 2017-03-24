@@ -70,16 +70,12 @@ var BoxBottom = cc.Class({
      * @returns this
      */
     _moveBox(delta) {
-        let plus = this._endPos.y + this._increments + this._eps;
-        let minus = this._startPos.y - this._increments - this._eps;
+        let plus = this._endPos.y;
+        let minus = this._startPos.y;
         let prirost = this.node.y + delta.y;
         if (plus > prirost && minus < prirost) {
-            //борится с тримером            
-            if (this.node.y > (this._endPos.y - this._increments) && delta.y > 0) {
-            }
-            else {
+            //борится с тримером
                 this.node.y += delta.y;
-            }
         } else {
             this._flag = false;
             this._endSwipeY();

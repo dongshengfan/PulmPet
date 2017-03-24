@@ -1,4 +1,3 @@
-
 /**
  * Осуществляет работу с корзиной,
  * Анимации, частицы и прочее
@@ -8,8 +7,8 @@ cc.Class({
 
     properties: {
         anticipation: 150,//расстояние для принятия состояний взволнованности
-        opacity:10,
-        time:1,
+        opacity: 10,
+        time: 1,
     },
 
     onLoad(){
@@ -27,13 +26,13 @@ cc.Class({
      * Выключение корзины
      */
     off(){
-        this.jobWithOpacity(this.opacity,this.time);
+        this.jobWithOpacity(this.opacity, this.time);
     },
 
     /**
      * Реакция корзины на выброшеное в неё животное
      */
-    _onReactionToAnimal(){
+    onReactionToAnimalDestroy(){
     },
 
     /**
@@ -86,6 +85,14 @@ cc.Class({
             return false;
         }
         return true;
-    }
+    },
+
+    /**
+     * Сообщает корзине позицию животного для принятия решения повыбору действия
+     * @param point
+     */
+    setPositionAnimal(point){
+
+    },
 });
 
