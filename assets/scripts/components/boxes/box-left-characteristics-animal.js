@@ -1,15 +1,17 @@
-import { BoxLeft } from './box-samples/box-vertycal-left';
+import { Box, TypeBox } from './box-samples/box';
 /**
  * Бокс характеристик не предназначен для управление пользователем
  * @type {Function}
  */
 var BoxCharacteristicsAnimal = cc.Class({
-    extends: BoxLeft,
+    extends: Box,
 
     /**
      * Устанавливает начальные позиции и производит вычисление длинны
+     * @private
      */
     _settings() {
+        this._type = TypeBox.left;
         let canvas = cc.director.getWinSizeInPixels();
         let sizeBoxY = this._getSizeBox(canvas.height);
         this.node.y = sizeBoxY / 2 + this.indentRight;
@@ -20,8 +22,7 @@ var BoxCharacteristicsAnimal = cc.Class({
     },
 
     onLoad(){
-        this._settings();
-
+        this._init();
     },
 
     /**
@@ -29,8 +30,7 @@ var BoxCharacteristicsAnimal = cc.Class({
      */
     publishEventOpen(){
         let myEvent = new cc.Event.EventCustom('openBoxFromCharacteristicsAnimal', true);
-        myEvent.detail = {
-        };
+        myEvent.detail = {};
         this.node.dispatchEvent(myEvent);
     },
 
@@ -39,8 +39,15 @@ var BoxCharacteristicsAnimal = cc.Class({
      */
     publishEventClose(){
         let myEvent = new cc.Event.EventCustom('closeBoxFromCharacteristicsAnimal', true);
-        myEvent.detail = {
-        };
+        myEvent.detail = {};
         this.node.dispatchEvent(myEvent);
+    },
+
+    /**
+     * Обновляет прозрачность боксов
+     * @param {any} dt
+     */
+    update(dt) {
+        this._opacityNode(this.node.x - this._startPos.x);
     },
 });

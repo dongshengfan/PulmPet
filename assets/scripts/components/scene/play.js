@@ -27,8 +27,8 @@ cc.Class({
 
         this._pointTargetAnimal = cc.v2(0, 0);//точка назначения животного в таргете
 
-        this.boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-create-animal-play');
-        this.boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent('box-characteristics-animal-play');
+        this.boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-bottom');
+        this.boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent('box-left-characteristics-animal');
         this.controllerBasket = this.nodeBasket.getComponent('basket-animal');
         this.controllerMap = this.nodeMap.getComponent('controller-map');
 
@@ -149,7 +149,7 @@ cc.Class({
         cc.log('снять блокировку с бокса с животными(завершение перетаскивание)');
         this.boxCreateAnimal.offBlock();
 
-        this._nodeTargetAnimal=null;
+        this._nodeTargetAnimal = null;
     },
 
     /**

@@ -1733,7 +1733,7 @@
     "_N$verticalScrollBar": null
   },
   {
-    "__type__": "f6f6aQnoYlH449GtNrtZZWj",
+    "__type__": "bc288QOk8NA7KiRdhwcjGpf",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1742,14 +1742,11 @@
     "_enabled": true,
     "_startPos": null,
     "_endPos": null,
-    "_amountPix": 0,
+    "_type": null,
     "_direction": 1,
-    "_eps": 1,
-    "_intervalIncrements": 0.001,
-    "_increments": 8,
-    "_flag": false,
     "_flagBlock": false,
-    "_callBack": null,
+    "_amountPix": null,
+    "timeBring": 0.2,
     "content": {
       "__id__": 27
     },
@@ -1859,7 +1856,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 29.3
+      "y": 26
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1920,7 +1917,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -68.2
+      "y": -67
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1981,7 +1978,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -2.8999999999999986
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2996,8 +2993,8 @@
     "_alignFlags": 45,
     "_left": 0,
     "_right": 0,
-    "_top": 0,
-    "_bottom": 0,
+    "_top": 2.9000000000000017,
+    "_bottom": -2.9000000000000017,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -3211,7 +3208,7 @@
     "_N$horizontalDirection": 0
   },
   {
-    "__type__": "4d9e83ODS5PBYpVIedIRX8g",
+    "__type__": "0d675Ym1LlPRZmj1pvFpw1a",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -3220,18 +3217,15 @@
     "_enabled": true,
     "_startPos": null,
     "_endPos": null,
-    "_amountPix": 0,
+    "_type": null,
     "_direction": 1,
-    "_eps": 1,
-    "_intervalIncrements": 0.001,
-    "_increments": 8,
-    "_flag": false,
     "_flagBlock": false,
-    "_callBack": null,
+    "_amountPix": null,
+    "timeBring": 0.2,
     "content": {
       "__id__": 53
     },
-    "opacityBox": 200,
+    "opacityBox": 30,
     "indentLeft": 50,
     "indentRight": 50
   },
