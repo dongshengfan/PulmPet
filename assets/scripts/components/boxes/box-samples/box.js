@@ -34,7 +34,7 @@ const TypeBox = {
     left: 3,
 };
 /**
- * Ядро боксов
+ * Zlhj
  * @type {Function}
  */
 var Box = cc.Class({
@@ -46,6 +46,7 @@ var Box = cc.Class({
         _type: null,//состояние типа бокса в котором он работает
         _direction: 1,//0- закрыться 1- открыться
         _flagBlock: false,//флаг блокировки
+        _flagZaprosBlock: false,//флаг о необходиомсти блокировки
         _amountPix: null,//путь для бокса
 
         timeBring: 0.2,//Время довода в секундах
@@ -108,6 +109,7 @@ var Box = cc.Class({
      * Включает блокировку бокса
      */
     onBlock(){
+        this._flagZaprosBlock = true;
         this._flagBlock = true;
     },
 
@@ -115,6 +117,7 @@ var Box = cc.Class({
      * Выключает блокировку бокса
      */
     offBlock(){
+        this._flagZaprosBlock = false;
         this._flagBlock = false;
     },
 
@@ -234,7 +237,7 @@ var Box = cc.Class({
      * @private
      */
     _finishBring(){
-        this._flagBlock = false;
+        if (!this._flagZaprosBlock) this._flagBlock = false;
     },
 
     /**
