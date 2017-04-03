@@ -41,21 +41,9 @@ cc.Class({
     },
 
     /**
-     * Инициализация непосредственно сразу после загрузки сцены.
+     * Инициализация непосредственно сразу после загрузки компонента.
      */
     start(){
-        this._leftPointBottom = {
-            x: this.node.x - this.node.width,
-            y: this.node.y - this.node.height
-        };
-        this._rightPointTop = {
-            x: this.node.x + this.node.width,
-            y: this.node.y + this.node.height
-        };
-        this._centrePointBasket = {
-            x: (this._leftPointBottom.x + this._rightPointTop.x) / 2,
-            y: (this._rightPointTop.y + this._leftPointBottom.y) / 2
-        }
         this._previousStatus = this._stateBasket = StateBasket.active;
     },
 
@@ -63,7 +51,7 @@ cc.Class({
      * Корзина запустилась.
      */
     on(){
-        this.node.active = true;
+        //this.node.active = true;
         this.jobWithOpacity(this.opacityOn, this.time);
     },
 
@@ -131,7 +119,7 @@ cc.Class({
         this.unschedule(this.callBackOpacity);
         this.callBackOpacity = () => {
             if (this.node.opacity === opacity) {
-                if (this.node.opacity < 125) this.node.active = false;
+                //if (this.node.opacity < 125) this.node.active = false;
                 this.unschedule(this.callBackOpacity);
             }
             (opacity > this.node.opacity) ? this.node.opacity += 1 : this.node.opacity -= 2;
@@ -145,6 +133,14 @@ cc.Class({
      * @returns {boolean} true - если животное будет жить
      */
     isAnimalLife(point){
+        this._leftPointBottom = {
+            x: this.node.x - this.node.width,
+            y: this.node.y - this.node.height
+        };
+        this._rightPointTop = {
+            x: this.node.x + this.node.width,
+            y: this.node.y + this.node.height
+        };
         let X = point.x > this._leftPointBottom.x && point.x < this._rightPointTop.x;
         let Y = point.y > this._leftPointBottom.y & point.y < this._rightPointTop.y;
         return !(X && Y);
@@ -156,6 +152,19 @@ cc.Class({
      * @param {cc.Vec2} point точка текущего местонахождения животного
      */
     setPositionAnimal(point){
+        this._leftPointBottom = {
+            x: this.node.x - this.node.width,
+            y: this.node.y - this.node.height
+        };
+        this._rightPointTop = {
+            x: this.node.x + this.node.width,
+            y: this.node.y + this.node.height
+        };
+        this._centrePointBasket = {
+            x: (this._leftPointBottom.x + this._rightPointTop.x) / 2,
+            y: (this._rightPointTop.y + this._leftPointBottom.y) / 2
+        };
+
         let sqrtPoint = Math.sqrt((point.x - this._centrePointBasket.x) ** 2 + (point.y - this._centrePointBasket.y) ** 2);
         let isV = sqrtPoint < this.anticipation;
         (isV) ? this._stateBasket = StateBasket.active : this._stateBasket = StateBasket.sleep;

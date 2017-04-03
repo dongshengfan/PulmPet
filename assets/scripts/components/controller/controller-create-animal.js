@@ -51,6 +51,5 @@ cc.Class({
         this.node.dispatchEvent(myEvent);
 
         event.stopPropagation();
-
     },
 });

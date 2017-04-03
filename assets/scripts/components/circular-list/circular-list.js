@@ -6,7 +6,7 @@ var CircularList = cc.Class({
         _lengthBetweenPoints: 0,//расстояние между элементами
         _currentRadiant: 0,//угол вращения
 
-        radius: 30,//радиус на котором будут крутится все кнопки
+        radius: 140,//радиус на котором будут крутится все кнопки
         amountList: 4,//количество элементов для вращения
         sensitivity: 1,//Чувствителность барабана к движению свайпа по координате
         list: cc.Node,
@@ -16,6 +16,16 @@ var CircularList = cc.Class({
         this.createList();
     },
 
+    /**
+     * Обновить меню
+     */
+    updatePos(){
+        this.rotation(0.1);
+    },
+
+    /**
+     * Первичное создание позиций для кнопок
+     */
     createPos() {
         this._lengthBetweenPoints = 2 * Math.PI / this.amountVisible;//Длинна между точками в радианах
         let currentRadians = 0, x, y;

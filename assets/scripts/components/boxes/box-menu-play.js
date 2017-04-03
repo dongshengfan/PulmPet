@@ -1,9 +1,12 @@
+/**
+ * Created by FIRCorp on 29.03.2017.
+ */
 import { Box, TypeBox } from './box-samples/box';
 /**
  * Бокс характеристик не предназначен для управление пользователем
  * @type {Function}
  */
-var BoxCharacteristicsAnimal = cc.Class({
+var BoxMenuPlay = cc.Class({
     extends: Box,
 
     /**
@@ -12,24 +15,33 @@ var BoxCharacteristicsAnimal = cc.Class({
      */
     _settings() {
         this._type = TypeBox.left;
+        this.timeBring=0.6;
         let canvas = cc.director.getWinSizeInPixels();
         let sizeBoxY = this._getSizeBox(canvas.height);
         this.node.y = sizeBoxY / 2 + this.indentRight;
         this.node.height = sizeBoxY;
         this._startPos = cc.v2(this.node.x, this.node.y);
-        this._endPos = cc.v2(this.node.x + this.node.width, this.node.y);
+        this._endPos = cc.v2(this.node.x + this.node.width - 75, this.node.y);
         this._amountPix = Math.abs(this._endPos.x - this._startPos.x);
     },
 
     onLoad(){
-        this._init();
+
+    },
+
+    /**
+     * Открывает/закрывает бокс
+     * @param event
+     */
+    onClick(event){
+        this._endSwipe();
     },
 
     /**
      * Публикует событие открытие бокса в контроллере
      */
     publishEventOpen(){
-        let myEvent = new cc.Event.EventCustom('openBoxFromCharacteristicsAnimal', true);
+        let myEvent = new cc.Event.EventCustom('openBoxMenuPlay', true);
         myEvent.detail = {};
         this.node.dispatchEvent(myEvent);
     },
@@ -38,10 +50,11 @@ var BoxCharacteristicsAnimal = cc.Class({
      * Публикует событие закрыие бокса в контроллере
      */
     publishEventClose(){
-        let myEvent = new cc.Event.EventCustom('closeBoxFromCharacteristicsAnimal', true);
+        let myEvent = new cc.Event.EventCustom('closeBoxMenuPlay', true);
         myEvent.detail = {};
         this.node.dispatchEvent(myEvent);
     },
+
 
     /**
      * Обновляет прозрачность боксов

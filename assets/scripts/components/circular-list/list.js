@@ -4,7 +4,7 @@ cc.Class({
 
     properties: {
         manager: CircularList,
-        nameEvent: 'voiceAnimal',//Имя событикоторое вызывает эта кнопка
+        nameEvent: 'voiceAnimal',//Имя события которое вызывает эта кнопка
         maxBiasTouch: 5,//максимальное смещение тача для нажатия по элементу меню (px)
         _pointTouchForMenu: cc.v2,//точка старта тача по пункту меню
     },

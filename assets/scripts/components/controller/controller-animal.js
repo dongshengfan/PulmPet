@@ -1,76 +1,99 @@
-const StateMenu = {
-    close: 0,
-    open: 1
-};
-
+/**
+ *
+ */
 cc.Class({
     extends: cc.Component,
 
     properties: {
         _model: null,//модель животного
 
-        maxBiasTouch: 5,//максимальное смещение тача для открытия меню (px)
-        nodeManadgerMenu: cc.Node,//нод меню животного
-        _stateMenuAnimal: StateMenu.close,//состояние меню
+        _maxBiasTouch: 15,//максимальное смещение тача для открытия меню (px)
         _pointTouchForMenu: cc.v2,//точка старта тача по животному
+
+        _isMove: false,//флаг для определения движется ли живоное за пользователем
+        _isOpenMenu: false,//флаг для определения открыто ли меню
     },
 
     onLoad(){
+        this._isOpenMenu = false;
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this._onTouchMoveAnimal.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchStartAnimal.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEndAnimal.bind(this));
     },
 
+
     /**
      * Настраивает доступные действия плюшки для животного и характеристики
      */
     settings(model){
-        this._stateMenuAnimal = StateMenu.close;
-        this.nodeManadgerMenu = this.node.children[4];
-        this.nodeManadgerMenu.getComponent('circular-list-actions-animal').radius = this.node.width * 1.5;
         this._model = model;
-        cc.log(this._model);
     },
 
-    _onTouchMoveAnimal(event){
-        var delta = event.touch.getDelta();
-        //Необходимо отправлять модели данные для получения смещения животного в зависимости от его скорости
-        this.node.x += delta.x;
-        this.node.y += delta.y;
-        let myEvent = new cc.Event.EventCustom('motionAnimal', true);
-        myEvent.detail = {
-            animal: this,
-            deltaMotionX: delta.x,
-            deltaMotionY: delta.y,
-        };
-        this.node.dispatchEvent(myEvent);
-        event.stopPropagation();
-    },
 
+    /**
+     *
+     * @param event
+     * @private
+     */
     _onTouchStartAnimal(event){
         let myEvent = new cc.Event.EventCustom('startMotionAnimal', true);
         myEvent.detail = {
-            startMotionX: this.node.x,
-            startMotionY: this.node.y,
+            startMotion: cc.v2(this.node.x, this.node.y),
             controller: this,
-            nodeMenu: this.nodeManadgerMenu,
         };
-        this.node.dispatchEvent(myEvent);
-        this._pointTouchForMenu = event.getLocation();
+        this.node.dispatchEvent(myEvent);//разослали евент
+        this._isMove = false;//животное не движется за пользователем
+        this._pointTouchForMenu = event.getLocation();//считали точку первого нажатия
         event.stopPropagation();
     },
 
+    /**
+     * Обработчик события движения тача.
+     * @param event
+     * @private
+     */
+    _onTouchMoveAnimal(event){
+        var delta = event.touch.getDelta();
+        if (this._isCheckOnOpenMenu(event.getLocation()) && !this._isOpenMenu) {
+            this._isMove = true;
+            let myEvent = new cc.Event.EventCustom('motionAnimal', true);
+            myEvent.detail = {
+                deltaMotion: delta,
+            };
+            this.node.dispatchEvent(myEvent);
+        }
+        event.stopPropagation();
+    },
+
+    /**
+     * Обработчик события завершения тача
+     * @param event
+     * @private
+     */
     _onTouchEndAnimal(event){
-        let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
-        myEvent.detail = {};
-        this.node.dispatchEvent(myEvent);
-        let point = event.getLocation();
-        let X = Math.abs(this._pointTouchForMenu.x - point.x) < this.maxBiasTouch;
-        let Y = Math.abs(this._pointTouchForMenu.y - point.y) < this.maxBiasTouch;
-        if (X && Y) {
+        if (this._isMove) {
+            let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
+            myEvent.detail = {
+                pointEnd: event.getLocation(),
+            };
+            this.node.dispatchEvent(myEvent);
+            this._isMove = false;
+        } else {
             this._refocusMenu();
         }
         event.stopPropagation();
+    },
+
+    /**
+     * Проверяет открывается меню или нет. Путем сканирования точки тача на выходза пределы от начапльной точки
+     * @param point
+     * @return {boolean}
+     * @private
+     */
+    _isCheckOnOpenMenu(point){
+        let X = Math.abs(this._pointTouchForMenu.x - point.x) > this._maxBiasTouch;
+        let Y = Math.abs(this._pointTouchForMenu.y - point.y) > this._maxBiasTouch;
+        return X || Y;
     },
 
     /**
@@ -78,15 +101,9 @@ cc.Class({
      * @private
      */
     _refocusMenu(){
-        if (this._stateMenuAnimal === StateMenu.close) {
-            this._stateMenuAnimal = StateMenu.open;
-            this.nodeManadgerMenu.active = true;
-            this._publishOpenMenuAnimal();
-        } else {
-            this._stateMenuAnimal = StateMenu.close;
-            this.nodeManadgerMenu.active = false;
-            this._publishCloseMenuAnimal();
-        }
+        this._isOpenMenu = !this._isOpenMenu;
+        (this._isOpenMenu) ? this._publishOpenMenuAnimal() : this._publishCloseMenuAnimal();
+
     },
 
     /**
@@ -95,10 +112,7 @@ cc.Class({
     _publishOpenMenuAnimal(){
         let myEvent = new cc.Event.EventCustom('openMenuAnimal', true);
         myEvent.detail = {
-            model: this._model,
-            nodeMenu: this.nodeManadgerMenu,
-            pointX: this.node.x,
-            pointY: this.node.y,
+            controller: this,
         };
         this.node.dispatchEvent(myEvent);
     },
@@ -109,24 +123,25 @@ cc.Class({
     _publishCloseMenuAnimal(){
         let myEvent = new cc.Event.EventCustom('closeMenuAnimal', true);
         myEvent.detail = {
-            nodeAnimal: this.node,
+            controller: this,
         };
         this.node.dispatchEvent(myEvent);
     },
 
     /**
-     * Открыть меню
+     * Открытие меню
      */
     openMenu(){
-        this.nodeManadgerMenu.active = true;
-        this._refocusMenu();
+        this._isOpenMenu = true;
+        this._publishOpenMenuAnimal();
     },
 
     /**
      * Закрыть меню
      */
     closeMenu(){
-        this.nodeManadgerMenu.active = false;
-        this._refocusMenu();
+        this._isOpenMenu = false;
+        this._publishCloseMenuAnimal();
     },
+
 });

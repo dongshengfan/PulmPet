@@ -13,24 +13,22 @@ var FactoryAnimalPrefab = cc.Class({
      * @param {cc.Event} event
      */
     createAnimal(event) {
-        cc.log(event);
-        let pointTouch = event.getStartLocation();
-        this._createPrefab(pointTouch);
+      //  cc.log(event);
+       // let pointTouch = event.getStartLocation();
+        this._createPrefab();
     },
 
     /**
      * Создает префаб в нужном контенте
-     * @param {cc.Vec2} point точка где создать
      * @see {string} wayToPrefab путь до префаба
      */
-    _createPrefab(point) {
+    _createPrefab() {
         cc.loader.loadRes(this.wayToPrefab, (err, prefab) => {
             this._targetAnimal = cc.instantiate(prefab);
 
             let myEvent = new cc.Event.EventCustom('createAnimal', true);
             myEvent.detail = {
                 animal: this._settingsAnimal(this._targetAnimal),
-                point: point,
                 puthToModel:this.puthToModel,
             };
             this.node.dispatchEvent(myEvent);

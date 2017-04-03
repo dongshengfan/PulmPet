@@ -26,11 +26,14 @@ class APICore {
 
     /**
      *
-     * @param puthToModel
      * @returns {Animal}
+     * @param putToModel
+     * @param id
      */
-    createAnimal(putToModel: any): Animals.Animal {
+    createAnimal(putToModel: any, id: any): Animals.Animal {
         let factory = Animals.AnimalBuilder.instance();
-        return factory.create(lion);
+        let animal = factory.create(lion);
+        animal.id = id;
+        return animal;
     }
 }

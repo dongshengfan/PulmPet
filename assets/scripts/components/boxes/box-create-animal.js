@@ -13,6 +13,7 @@ var BoxCreateAnimal = cc.Class({
      */
     _settings() {
         this._type = TypeBox.bottom;
+        this.timeBring=0.2;
         let bar = this.content;
         let canvas = cc.director.getWinSizeInPixels();
         let sizeBoxX = this._getSizeBox(canvas.width);

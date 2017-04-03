@@ -7,6 +7,11 @@ namespace Animals {
      */
     export class Animal {
         /**
+         * Номер идентификации
+         */
+        private _id: number;
+
+        /**
          * Опорнодвигательная система
          */
         private _muscular: Animals.Systems.TypeSystems.Muscular;
@@ -56,6 +61,14 @@ namespace Animals {
 
         set communicator(param: Animals.Communications.Communicator) {
             this._communicator = param;
+        }
+
+        set id(param: number) {
+            this._id = param;
+        }
+
+        get id() {
+            return this._id;
         }
     }
 }
