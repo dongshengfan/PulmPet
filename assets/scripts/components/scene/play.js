@@ -1,10 +1,14 @@
 import { APICore }from '../../build/build-ts';
 
+/**
+ *
+ * @type {{sleep: number, openMenu: number, openMenuAnimal: number, createAnimal: number, moveMap: number}}
+ */
 const StatGame = {
-    sleep: 0,
-    openMenu: 1,
-    openMenuAnimal: 2,
-    createAnimal: 3,
+    sleep: 0,//бездействие
+    openMenu: 1,//открытие меню игры
+    openMenuAnimal: 2,//открытие меню животного
+    createAnimal: 3,//создание животного
     moveMap: 4,//движение карты пользователем
 };
 
@@ -74,7 +78,10 @@ cc.Class({
 
         this._stateGame = StatGame.sleep;
 
-        this._pointTargetAnimal = cc.v2(0, 0);//точка назначения животного в таргете
+        this._targetSizeWith = 0;//временные размеры ширины животного в таргете. Для сохранения
+        this._targetSizeHeight = 0;//временные размеры высоты животного в таргете. Для сохранения
+
+        this._pointTargetAnimal = cc.v2(0, 0);//точка назначения животного в таргет
         this._targetAnimal = null; //нод животного в таргете
         this._controllerAnimal = null;//контроллер животного (только 1 того что в таргете)
         this._centreWindowPoint = cc.v2(this.node.width / 2, this.node.height / 2);
@@ -223,7 +230,6 @@ cc.Class({
      * @param event
      */
     onStartMotionAnimal(event){
-
         //Закрываю меню иинформацию о животном если переключаюсь на другое животное
         if (this._targetAnimal != null && this._targetAnimal._model.id != event.detail.controller._model.id) {
             this._controllerAnimal.closeMenu();//закрыть меню
@@ -238,6 +244,9 @@ cc.Class({
 
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;//заблокировать карту
 
+        //увеличим поле отклика животного
+        this._targetSizeWith = this._targetAnimal.node.width;
+        this._targetSizeHeight = this._targetAnimal.node.height;
     },
 
     /**
@@ -247,10 +256,15 @@ cc.Class({
     onMotionAnimal(event){
         //обработка событий с животным во время движения
         cc.log('двигаюсь за пользователем');
-        let x = event.detail.deltaMotion.x;
-        let y = event.detail.deltaMotion.y;
-        this._pointTargetAnimal.x += x;
-        this._pointTargetAnimal.y += y;
+        //увеличим поле отклика животного
+        this._targetAnimal.node.width = 2000;
+        this._targetAnimal.node.height = 2000;
+
+        // this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;//заблокировать карту
+        /*  let x = event.detail.deltaMotion.x;
+         let y = event.detail.deltaMotion.y;
+         this._pointTargetAnimal.x += x;
+         this._pointTargetAnimal.y += y;*/
     },
 
     /**
@@ -260,10 +274,15 @@ cc.Class({
     onEndMotionAnimal(event){
         cc.log('заканчиваю двигаться за пользователем');
 
+        //уменьшаем площадь покрытия животного
+        this._targetAnimal.node.width = this._targetSizeWith;
+        this._targetAnimal.node.height = this._targetSizeHeight;
+
         let point = this._controllerMap.getPointMap(event.detail.pointEnd);// конвертируем точку окна к точке карты
         this._pointTargetAnimal = cc.v2(point.x, point.y);// вычисляем точку куда пойдет животное в итоге
+        //сообщаем модели точку до которой необходимо ей дойти
+        this._targetAnimal.moveToPoint(this._pointTargetAnimal);
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true; // Разблокировали карту
-
     },
 
     /**

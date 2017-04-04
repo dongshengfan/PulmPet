@@ -31,7 +31,7 @@ cc.Class({
 
 
     /**
-     *
+     * Обработчик события начала тача
      * @param event
      * @private
      */
@@ -53,6 +53,7 @@ cc.Class({
      * @private
      */
     _onTouchMoveAnimal(event){
+     //   cc.log(event);
         var delta = event.touch.getDelta();
         if (this._isCheckOnOpenMenu(event.getLocation()) && !this._isOpenMenu) {
             this._isMove = true;
@@ -62,7 +63,7 @@ cc.Class({
             };
             this.node.dispatchEvent(myEvent);
         }
-        event.stopPropagation();
+       event.stopPropagation();
     },
 
     /**
@@ -71,6 +72,7 @@ cc.Class({
      * @private
      */
     _onTouchEndAnimal(event){
+       // cc.log(event);
         if (this._isMove) {
             let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
             myEvent.detail = {
@@ -144,4 +146,11 @@ cc.Class({
         this._publishCloseMenuAnimal();
     },
 
+    /**
+     * Сообщает модели до какой точки надо дойти
+     * @param point
+     */
+    moveToPoint(point){
+        this._model.moveToPoint(point);
+    },
 });

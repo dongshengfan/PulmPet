@@ -70,5 +70,13 @@ namespace Animals {
         get id() {
             return this._id;
         }
+
+        /**
+         * Дает команду модели двигаться до точки
+         * @param point тока назначения
+         */
+        moveToPoint(point:cc.Vec2):void{
+
+        }
     }
 }

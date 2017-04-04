@@ -66,7 +66,7 @@ cc.Class({
      * @param event событие которое поймает скрол либо этот скрипт
      */
     onTouchEnd(event) {
-
+  //      cc.log(event);
         if (this._isTouchStart) {
             this._isTouchStart = false;
             let myEvent = new cc.Event.EventCustom('touchEndMoveOnMap', true);
@@ -74,6 +74,7 @@ cc.Class({
             this.node.dispatchEvent(myEvent);
 
         }
+    //    event.stopPropagation();
     },
 
     /**

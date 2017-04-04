@@ -17,7 +17,7 @@ var CircularListActionsAnimal = cc.Class({
         } else if (this.radius < 100) {
             this.radius = 100;
         }
-
+    
         this.updatePos();
     },
 });
