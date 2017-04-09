@@ -1,4 +1,93 @@
-import { APICore }from '../../build/build-ts';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>assets\scripts\components\scene\play.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-elements">Elements</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/CircularList.html">CircularList</a></li>
+                                <li><a href="../classes/CircularListActionsAnimal.html">CircularListActionsAnimal</a></li>
+                                <li><a href="../classes/List.html">List</a></li>
+                                <li><a href="../classes/Play.html">Play</a></li>
+                            </ul>
+                
+                                <ul id="api-elements" class="apis elements">
+                                    <li><a href="../elements/{number}.html">&lt;{number}&gt;</a></li>
+                                </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: assets\scripts\components\scene\play.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import { APICore }from &#x27;../../build/build-ts&#x27;;
 
 /**
  * Состояние игры.
@@ -50,33 +139,33 @@ cc.Class({
     onLoad(){
         this._init();
 
-        this.node.on('createAnimal', this.onAnimalCreated.bind(this));
-        this.node.on('openBoxFromAnimal', this.onOpenBoxFromAnimal.bind(this));
-        this.node.on('closeBoxFromAnimal', this.onCloseBoxFromAnimal.bind(this));
-        this.node.on('openBoxMenuPlay', this.onOpenBoxMenuPlay.bind(this));
-        this.node.on('closeBoxMenuPlay', this.onCloseBoxMenuPlay.bind(this));
+        this.node.on(&#x27;createAnimal&#x27;, this.onAnimalCreated.bind(this));
+        this.node.on(&#x27;openBoxFromAnimal&#x27;, this.onOpenBoxFromAnimal.bind(this));
+        this.node.on(&#x27;closeBoxFromAnimal&#x27;, this.onCloseBoxFromAnimal.bind(this));
+        this.node.on(&#x27;openBoxMenuPlay&#x27;, this.onOpenBoxMenuPlay.bind(this));
+        this.node.on(&#x27;closeBoxMenuPlay&#x27;, this.onCloseBoxMenuPlay.bind(this));
 
-        this.node.on('openBoxFromCharacteristicsAnimal', this.onOpenBoxFromCharacteristicsAnimal.bind(this));
-        this.node.on('closeBoxFromCharacteristicsAnimal', this.onCloseBoxFromCharacteristicsAnimal.bind(this));
-        this.node.on('startDragAndDropAnimal', this.onStartDragAndDropAnimal.bind(this));
-        this.node.on('dragAndDropAnimal', this.onDragAndDropAnimal.bind(this));
-        this.node.on('stopDragAndDropAnimal', this.onStopDragAndDropAnimal.bind(this));
-        this.node.on('motionAnimal', this.onMotionAnimal.bind(this));
-        this.node.on('startMotionAnimal', this.onStartMotionAnimal.bind(this));
-        this.node.on('endMotionAnimal', this.onEndMotionAnimal.bind(this));
-        this.node.on('openMenuAnimal', this.onOpenMenuAnimal.bind(this));
-        this.node.on('closeMenuAnimal', this.onCloseMenuAnimal.bind(this));
+        this.node.on(&#x27;openBoxFromCharacteristicsAnimal&#x27;, this.onOpenBoxFromCharacteristicsAnimal.bind(this));
+        this.node.on(&#x27;closeBoxFromCharacteristicsAnimal&#x27;, this.onCloseBoxFromCharacteristicsAnimal.bind(this));
+        this.node.on(&#x27;startDragAndDropAnimal&#x27;, this.onStartDragAndDropAnimal.bind(this));
+        this.node.on(&#x27;dragAndDropAnimal&#x27;, this.onDragAndDropAnimal.bind(this));
+        this.node.on(&#x27;stopDragAndDropAnimal&#x27;, this.onStopDragAndDropAnimal.bind(this));
+        this.node.on(&#x27;motionAnimal&#x27;, this.onMotionAnimal.bind(this));
+        this.node.on(&#x27;startMotionAnimal&#x27;, this.onStartMotionAnimal.bind(this));
+        this.node.on(&#x27;endMotionAnimal&#x27;, this.onEndMotionAnimal.bind(this));
+        this.node.on(&#x27;openMenuAnimal&#x27;, this.onOpenMenuAnimal.bind(this));
+        this.node.on(&#x27;closeMenuAnimal&#x27;, this.onCloseMenuAnimal.bind(this));
 
-        this.node.on('voiceAnimal', this.onVoiceAnimal.bind(this));
+        this.node.on(&#x27;voiceAnimal&#x27;, this.onVoiceAnimal.bind(this));
 
-        this.node.on('basketActive', this.onBasketActive.bind(this));
-        this.node.on('basketSleep', this.onBasketSleep.bind(this));
-        this.node.on('basketWork', this.onBasketWork.bind(this));
+        this.node.on(&#x27;basketActive&#x27;, this.onBasketActive.bind(this));
+        this.node.on(&#x27;basketSleep&#x27;, this.onBasketSleep.bind(this));
+        this.node.on(&#x27;basketWork&#x27;, this.onBasketWork.bind(this));
 
-        this.node.on('touchOnMap', this.onTouchOnMap.bind(this));
-        this.node.on('touchMoveOnMap', this.onTouchMoveOnMap.bind(this));
-        this.node.on('touchEndMoveOnMap', this.onTouchEndMoveOnMap.bind(this));
-        this.node.on('finishMoveCameraToAnimal', this.onFinishMoveCameraToAnimal.bind(this));
+        this.node.on(&#x27;touchOnMap&#x27;, this.onTouchOnMap.bind(this));
+        this.node.on(&#x27;touchMoveOnMap&#x27;, this.onTouchMoveOnMap.bind(this));
+        this.node.on(&#x27;touchEndMoveOnMap&#x27;, this.onTouchEndMoveOnMap.bind(this));
+        this.node.on(&#x27;finishMoveCameraToAnimal&#x27;, this.onFinishMoveCameraToAnimal.bind(this));
     },
 
     /**
@@ -96,11 +185,11 @@ cc.Class({
         this._targetAnimal = null; //нод животного в таргете
         this._controllerAnimal = null;//контроллер животного (только 1 того что в таргете)
         this._centreWindowPoint = cc.v2(this.node.width / 2, this.node.height / 2);
-        this._controllerCircularMenu = this.nodeMenuAnimal.getComponent('circular-list-actions-animal');
-        this._boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent('box-create-animal');
-        this._boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent('box-characteristics-animal');
-        this._controllerBasket = this.nodeBasket.getComponent('basket-animal');
-        this._controllerMap = this.nodeMap.getComponent('controller-map');
+        this._controllerCircularMenu = this.nodeMenuAnimal.getComponent(&#x27;circular-list-actions-animal&#x27;);
+        this._boxCreateAnimal = this.nodeBoxCreateAnimal.getComponent(&#x27;box-create-animal&#x27;);
+        this._boxCharacteristicsAnimal = this.nodeBoxCharacteristicsAnimal.getComponent(&#x27;box-characteristics-animal&#x27;);
+        this._controllerBasket = this.nodeBasket.getComponent(&#x27;basket-animal&#x27;);
+        this._controllerMap = this.nodeMap.getComponent(&#x27;controller-map&#x27;);
 
     },
 
@@ -111,7 +200,7 @@ cc.Class({
      */
     onCloseBoxFromAnimal(event){
 
-        cc.log('закрылся BoxFromAnimal');
+        cc.log(&#x27;закрылся BoxFromAnimal&#x27;);
         if (this._stateGame != StatGame.createAnimal) {
             this.nodeMaskCreatedAnimal.active = false;
         }
@@ -125,7 +214,7 @@ cc.Class({
      */
     onOpenBoxFromAnimal(event){
 
-        cc.log('открылся BoxFromAnimal');
+        cc.log(&#x27;открылся BoxFromAnimal&#x27;);
         this.nodeMaskCreatedAnimal.active = true;//активировали маску
         this.nodeMaskCreatedAnimal.setPosition(this._centreWindowPoint);
     },
@@ -137,7 +226,7 @@ cc.Class({
      */
     onOpenBoxMenuPlay(event){
 
-        cc.log('открылось меню');
+        cc.log(&#x27;открылось меню&#x27;);
         this.nodeMenu.active = true;
     },
 
@@ -148,7 +237,7 @@ cc.Class({
      */
     onCloseBoxMenuPlay(event){
 
-        cc.log('закрылось меню');
+        cc.log(&#x27;закрылось меню&#x27;);
         this.nodeMenu.active = false;
     },
 
@@ -160,7 +249,7 @@ cc.Class({
      */
     onAnimalCreated(event){
         this._stateGame = StatGame.createAnimal;
-        cc.log('создание нового животного');
+        cc.log(&#x27;создание нового животного&#x27;);
         event.detail.animal.parent = this.nodeFieldAnimals.parent;// подцепить животное к карте
         let point = this._controllerMap.getPointMap(cc.v2(this.node.width / 2, this.node.height / 2));//вычислить координаты на карте
         event.detail.animal.setPosition(point.x, point.y);//Установить координаты животного
@@ -188,7 +277,7 @@ cc.Class({
      */
     onStartDragAndDropAnimal(event){
 
-        cc.log('запуск анимации подвешенности (старт перетаскивания)');
+        cc.log(&#x27;запуск анимации подвешенности (старт перетаскивания)&#x27;);
         this._targetAnimal = event.detail.animal;//Берем нод животного в фокус
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = false;//заблокировать движение карты
 
@@ -203,7 +292,7 @@ cc.Class({
      */
     onDragAndDropAnimal(event){
 
-        cc.log('сообщаем корзине положение зверюшки (перетаскивание)');
+        cc.log(&#x27;сообщаем корзине положение зверюшки (перетаскивание)&#x27;);
         let point = this._controllerMap.getPointWindow(event.detail.point);
         this._controllerBasket.setPositionAnimal(point);
         this.nodeMaskCreatedAnimal.setPosition(point);
@@ -216,7 +305,7 @@ cc.Class({
      */
     onStopDragAndDropAnimal(event){
 
-        cc.log('определение дальнейших действий с животным (завершение перетаскивание)');
+        cc.log(&#x27;определение дальнейших действий с животным (завершение перетаскивание)&#x27;);
         let point = this._controllerMap.getPointWindow(event.detail.point); //Запрашиваем точку в формате координаты окна
 
         if (this._controllerBasket.isAnimalLife(point)) {
@@ -225,8 +314,8 @@ cc.Class({
             let nodeModel = cc.instantiate(this._targetAnimal.children[0]);//создаем нод животного
             nodeModel.parent = this.nodeFieldAnimals;//Вешаем нод животного на нод со всеми животными
             nodeModel.setPosition(event.detail.point.x, event.detail.point.y);//Устанавливаем позицию на карте
-            nodeModel.addComponent('controller-animal');//Добавляем контроллер телу животного
-            nodeModel.getComponent('controller-animal').settings(model);//Настраивам контроллер животного
+            nodeModel.addComponent(&#x27;controller-animal&#x27;);//Добавляем контроллер телу животного
+            nodeModel.getComponent(&#x27;controller-animal&#x27;).settings(model);//Настраивам контроллер животного
             this._controllerBasket.onBadWorkBasket();//Дать команду корзине(не сейчас)
 
         } else {
@@ -251,11 +340,11 @@ cc.Class({
      */
     onStartMotionAnimal(event){
         //Закрываю меню иинформацию о животном если переключаюсь на другое животное
-        if (this._targetAnimal != null && this._targetAnimal._model.id != event.detail.controller._model.id) {
+        if (this._targetAnimal != null &amp;&amp; this._targetAnimal._model.id != event.detail.controller._model.id) {
             this._controllerAnimal.closeMenu();//закрыть меню
         }
 
-        cc.log('начинаю двигаться за пользователем(Начинаю выюор двигаться или открыть меню)');
+        cc.log(&#x27;начинаю двигаться за пользователем(Начинаю выюор двигаться или открыть меню)&#x27;);
         let point = this._controllerMap.getPointMap(event.detail.startMotion);//конвертируем точку окна к точку карты
 
         this._pointTargetAnimal = cc.v2(point.x, point.y);// задаем точку куда надо доставить животне
@@ -276,7 +365,7 @@ cc.Class({
      */
     onMotionAnimal(event){
         //обработка событий с животным во время движения
-        cc.log('двигаюсь за пользователем');
+        cc.log(&#x27;двигаюсь за пользователем&#x27;);
         //увеличим поле отклика животного
         this._targetAnimal.node.width = 2000;
         this._targetAnimal.node.height = 2000;
@@ -289,7 +378,7 @@ cc.Class({
      * @param {cc.Event} event
      */
     onEndMotionAnimal(event){
-        cc.log('заканчиваю двигаться за пользователем');
+        cc.log(&#x27;заканчиваю двигаться за пользователем&#x27;);
 
         //уменьшаем площадь покрытия животного
         this._targetAnimal.node.width = this._targetSizeWith;
@@ -308,7 +397,7 @@ cc.Class({
      * @param {cc.Event} event
      */
     onOpenMenuAnimal(event){
-        cc.log('Открываю меню животного');
+        cc.log(&#x27;Открываю меню животного&#x27;);
         //Центрировать животное
         let point = cc.v2(this._targetAnimal.node.x - this._centreWindowPoint.x, this._targetAnimal.node.y - this._centreWindowPoint.y);
 
@@ -330,7 +419,7 @@ cc.Class({
      */
     onCloseMenuAnimal(event){
 
-        cc.log('Закрываю меню животного');
+        cc.log(&#x27;Закрываю меню животного&#x27;);
         this.nodeMenuAnimal.active = false;
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true;//разблокировать карту
         this._boxCharacteristicsAnimal.closeBox();
@@ -344,7 +433,7 @@ cc.Class({
      * @param {cc.Event} event
      */
     onVoiceAnimal(event){
-        cc.log('животное проявило голос');
+        cc.log(&#x27;животное проявило голос&#x27;);
 
     },
 
@@ -355,7 +444,7 @@ cc.Class({
      */
     onOpenBoxFromCharacteristicsAnimal(event){
 
-        cc.log('открылся BoxFromCharacteristicsAnimal');
+        cc.log(&#x27;открылся BoxFromCharacteristicsAnimal&#x27;);
 
     },
 
@@ -366,7 +455,7 @@ cc.Class({
      */
     onCloseBoxFromCharacteristicsAnimal(event){
 
-        cc.log('закрылся BoxFromCharacteristicsAnimal');
+        cc.log(&#x27;закрылся BoxFromCharacteristicsAnimal&#x27;);
 
     },
 
@@ -377,7 +466,7 @@ cc.Class({
      */
     onBasketActive(event){
 
-        cc.log('корзина проявляет активность');
+        cc.log(&#x27;корзина проявляет активность&#x27;);
 
     },
 
@@ -388,7 +477,7 @@ cc.Class({
      */
     onBasketSleep(event){
 
-        cc.log('корзина спит');
+        cc.log(&#x27;корзина спит&#x27;);
     },
 
     /**
@@ -398,7 +487,7 @@ cc.Class({
      */
     onBasketWork(event){
 
-        cc.log('корзина надеется что вот вот в нее попадет животное');
+        cc.log(&#x27;корзина надеется что вот вот в нее попадет животное&#x27;);
 
     },
 
@@ -409,7 +498,7 @@ cc.Class({
      */
     onTouchOnMap(event){
 
-        cc.log('Начал работу с картой');
+        cc.log(&#x27;Начал работу с картой&#x27;);
 
     },
 
@@ -420,7 +509,7 @@ cc.Class({
      */
     onTouchMoveOnMap(event){
 
-        cc.log('Двигает карту');
+        cc.log(&#x27;Двигает карту&#x27;);
     },
 
     /**
@@ -431,7 +520,7 @@ cc.Class({
     onTouchEndMoveOnMap(event){
 
         if (this._stateGame === StatGame.sleep) {
-            cc.log('завершил работу с картой');
+            cc.log(&#x27;завершил работу с картой&#x27;);
         }
     },
 
@@ -448,3 +537,21 @@ cc.Class({
     },
 
 });
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

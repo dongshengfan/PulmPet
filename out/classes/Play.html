@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Play</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-elements">Elements</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/CircularList.html">CircularList</a></li>
+                                <li><a href="../classes/CircularListActionsAnimal.html">CircularListActionsAnimal</a></li>
+                                <li><a href="../classes/List.html">List</a></li>
+                                <li><a href="../classes/Play.html">Play</a></li>
+                            </ul>
+                
+                                <ul id="api-elements" class="apis elements">
+                                    <li><a href="../elements/{number}.html">&lt;{number}&gt;</a></li>
+                                </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>Play Class</h1>
+<div class="box meta">
+
+
+        <div class="foundat">
+            Defined in: <a href="../files/assets_scripts_components_scene_play.js.html#l21"><code>assets\scripts\components\scene\play.js:21</code></a>
+        </div>
+
+
+</div>
+
+
+<div class="box intro">
+    <p>Управляет представлнием.</p>
+
+</div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method private">
+                                <a href="#method__init">_init</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onAnimalCreated">onAnimalCreated</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onBasketActive">onBasketActive</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onBasketSleep">onBasketSleep</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onBasketWork">onBasketWork</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onCloseBoxFromAnimal">onCloseBoxFromAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onCloseBoxFromCharacteristicsAnimal">onCloseBoxFromCharacteristicsAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onCloseBoxMenuPlay">onCloseBoxMenuPlay</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onCloseMenuAnimal">onCloseMenuAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onDragAndDropAnimal">onDragAndDropAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onEndMotionAnimal">onEndMotionAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onFinishMoveCameraToAnimal">onFinishMoveCameraToAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onLoad">onLoad</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onMotionAnimal">onMotionAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onOpenBoxFromAnimal">onOpenBoxFromAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onOpenBoxFromCharacteristicsAnimal">onOpenBoxFromCharacteristicsAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onOpenBoxMenuPlay">onOpenBoxMenuPlay</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onOpenMenuAnimal">onOpenMenuAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onStartDragAndDropAnimal">onStartDragAndDropAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onStartMotionAnimal">onStartMotionAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onStopDragAndDropAnimal">onStopDragAndDropAnimal</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onTouchEndMoveOnMap">onTouchEndMoveOnMap</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onTouchMoveOnMap">onTouchMoveOnMap</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onTouchOnMap">onTouchOnMap</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_onVoiceAnimal">onVoiceAnimal</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method__init" class="method item private">
+    <h3 class="name"><code>_init</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l82"><code>assets\scripts\components\scene\play.js:82</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Инициализация данных.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_onAnimalCreated" class="method item">
+    <h3 class="name"><code>onAnimalCreated</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l155"><code>assets\scripts\components\scene\play.js:155</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Создание животного.
+Отвечает за размещение животного в дереве нодов.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onBasketActive" class="method item">
+    <h3 class="name"><code>onBasketActive</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l373"><code>assets\scripts\components\scene\play.js:373</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Корзина перешла в событие активного предвкушения.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onBasketSleep" class="method item">
+    <h3 class="name"><code>onBasketSleep</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l384"><code>assets\scripts\components\scene\play.js:384</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Корзина перешла в режим сна.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onBasketWork" class="method item">
+    <h3 class="name"><code>onBasketWork</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l394"><code>assets\scripts\components\scene\play.js:394</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Корзина перешла в режим работы (Вот вот сбросят животное).</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onCloseBoxFromAnimal" class="method item">
+    <h3 class="name"><code>onCloseBoxFromAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l107"><code>assets\scripts\components\scene\play.js:107</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Бокс с животными закрылся.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onCloseBoxFromCharacteristicsAnimal" class="method item">
+    <h3 class="name"><code>onCloseBoxFromCharacteristicsAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l362"><code>assets\scripts\components\scene\play.js:362</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Бокс характеристик животного закрылся.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onCloseBoxMenuPlay" class="method item">
+    <h3 class="name"><code>onCloseBoxMenuPlay</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l144"><code>assets\scripts\components\scene\play.js:144</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Меню закрылось.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onCloseMenuAnimal" class="method item">
+    <h3 class="name"><code>onCloseMenuAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l326"><code>assets\scripts\components\scene\play.js:326</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Меню животного закрыто.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onDragAndDropAnimal" class="method item">
+    <h3 class="name"><code>onDragAndDropAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l198"><code>assets\scripts\components\scene\play.js:198</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Перетаскивание нового животного.
+Отвечает за перемещение нода животного по карте после создания и производит замеры до различных объектов на карте.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onEndMotionAnimal" class="method item">
+    <h3 class="name"><code>onEndMotionAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l286"><code>assets\scripts\components\scene\play.js:286</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Окончание движения животного.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onFinishMoveCameraToAnimal" class="method item">
+    <h3 class="name"><code>onFinishMoveCameraToAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l438"><code>assets\scripts\components\scene\play.js:438</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Наведение центра камеры на животное завершилось.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onLoad" class="method item">
+    <h3 class="name"><code>onLoad</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l46"><code>assets\scripts\components\scene\play.js:46</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Инициализация конроллера представления.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_onMotionAnimal" class="method item">
+    <h3 class="name"><code>onMotionAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l272"><code>assets\scripts\components\scene\play.js:272</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Движение животного за ведущим.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onOpenBoxFromAnimal" class="method item">
+    <h3 class="name"><code>onOpenBoxFromAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l121"><code>assets\scripts\components\scene\play.js:121</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Бокс с животными открылся.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onOpenBoxFromCharacteristicsAnimal" class="method item">
+    <h3 class="name"><code>onOpenBoxFromCharacteristicsAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l351"><code>assets\scripts\components\scene\play.js:351</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Бокс характристик животного открылся.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onOpenBoxMenuPlay" class="method item">
+    <h3 class="name"><code>onOpenBoxMenuPlay</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l133"><code>assets\scripts\components\scene\play.js:133</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Меню открылось.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onOpenMenuAnimal" class="method item">
+    <h3 class="name"><code>onOpenMenuAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l305"><code>assets\scripts\components\scene\play.js:305</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Меню животного открыто.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onStartDragAndDropAnimal" class="method item">
+    <h3 class="name"><code>onStartDragAndDropAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l184"><code>assets\scripts\components\scene\play.js:184</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Перетаскивание животного началось.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onStartMotionAnimal" class="method item">
+    <h3 class="name"><code>onStartMotionAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l247"><code>assets\scripts\components\scene\play.js:247</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Начало движения животного.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onStopDragAndDropAnimal" class="method item">
+    <h3 class="name"><code>onStopDragAndDropAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l212"><code>assets\scripts\components\scene\play.js:212</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Перетаскивание животного завершилось.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onTouchEndMoveOnMap" class="method item">
+    <h3 class="name"><code>onTouchEndMoveOnMap</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l426"><code>assets\scripts\components\scene\play.js:426</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Событие завершения работы с картой.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onTouchMoveOnMap" class="method item">
+    <h3 class="name"><code>onTouchMoveOnMap</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l416"><code>assets\scripts\components\scene\play.js:416</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Событие движения карты.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onTouchOnMap" class="method item">
+    <h3 class="name"><code>onTouchOnMap</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l405"><code>assets\scripts\components\scene\play.js:405</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Событие начала работы с картой.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onVoiceAnimal" class="method item">
+    <h3 class="name"><code>onVoiceAnimal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>event</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/assets_scripts_components_scene_play.js.html#l341"><code>assets\scripts\components\scene\play.js:341</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Животное издало звук.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">event</code>
+                        <span class="type">cc.Event</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+            </div>
+
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

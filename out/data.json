@@ -1,0 +1,2268 @@
+{
+    "project": {},
+    "files": {
+        "assets\\scripts\\components\\baskets\\basket-animal.js": {
+            "name": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\boxes\\box-samples\\box.js": {
+            "name": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\boxes\\box-characteristics-animal.js": {
+            "name": "assets\\scripts\\components\\boxes\\box-characteristics-animal.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\boxes\\box-create-animal.js": {
+            "name": "assets\\scripts\\components\\boxes\\box-create-animal.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\boxes\\box-menu-play.js": {
+            "name": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\circular-list\\circular-list-actions-animal.js": {
+            "name": "assets\\scripts\\components\\circular-list\\circular-list-actions-animal.js",
+            "modules": {},
+            "classes": {
+                "CircularListActionsAnimal": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\circular-list\\circular-list.js": {
+            "name": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "modules": {},
+            "classes": {
+                "CircularList": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\circular-list\\list.js": {
+            "name": "assets\\scripts\\components\\circular-list\\list.js",
+            "modules": {},
+            "classes": {
+                "List": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\controller\\controller-animal.js": {
+            "name": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\controller\\controller-create-animal.js": {
+            "name": "assets\\scripts\\components\\controller\\controller-create-animal.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\controller\\controller-map.js": {
+            "name": "assets\\scripts\\components\\controller\\controller-map.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\controller\\controller-menu-play.js": {
+            "name": "assets\\scripts\\components\\controller\\controller-menu-play.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js": {
+            "name": "assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "assets\\scripts\\components\\scene\\play.js": {
+            "name": "assets\\scripts\\components\\scene\\play.js",
+            "modules": {},
+            "classes": {
+                "Play": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "CircularListActionsAnimal": {
+            "name": "CircularListActionsAnimal",
+            "shortname": "CircularListActionsAnimal",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "assets\\scripts\\components\\circular-list\\circular-list-actions-animal.js",
+            "line": 3,
+            "description": "Настраивает круглое меню животного",
+            "extends": "CircularList"
+        },
+        "CircularList": {
+            "name": "CircularList",
+            "shortname": "CircularList",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 13,
+            "description": "Выполняет вращениеи размещение элементов по окружности."
+        },
+        "List": {
+            "name": "List",
+            "shortname": "List",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "assets\\scripts\\components\\circular-list\\list.js",
+            "line": 3,
+            "description": "Лист меню животного."
+        },
+        "Play": {
+            "name": "Play",
+            "shortname": "Play",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 21,
+            "description": "Управляет представлнием."
+        }
+    },
+    "elements": {
+        "{number}": {
+            "name": "{number}",
+            "attributes": [],
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 1,
+            "description": "Состояние движения меню (по часовой/против часовой).",
+            "type": "{MoveCircular}",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 1,
+            "description": "Enum состояний корзины.",
+            "typedef": "{Object} StateBasket",
+            "itemtype": "property",
+            "name": "{number} work работает с попавшимся животным.",
+            "type": "Number",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 9,
+            "description": "Типы состояний корзины.",
+            "type": "{StateBasket}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 19,
+            "description": "Осуществляет работу с корзиной,\nАнимации, частицы и прочее.",
+            "type": "{cc.Class}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 43,
+            "description": "Инициализация непосредственно сразу после загрузки компонента.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 50,
+            "description": "Корзина запустилась.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 58,
+            "description": "Выключение корзины.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 66,
+            "description": "Реакция корзины на приближающееся животное.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 75,
+            "description": "Состояние сна включилось.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 84,
+            "description": "Состояние ловли включилось.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 93,
+            "description": "Событие- животное поймано.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 102,
+            "description": "Событие- животное не поймано.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 111,
+            "description": "Работает с прозрачностью этой корзины. Постепенно приближается к прозрачности\nкорзины равной заданному значению за заданое время.",
+            "params": [
+                {
+                    "name": "opacity",
+                    "description": "нужно достич этой прозрачности",
+                    "type": "Number"
+                },
+                {
+                    "name": "time",
+                    "description": "за столько секунд",
+                    "type": "Number"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 130,
+            "description": "Проверяет будет ли жить животное или оно выброшено в корзину.",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "точка нахождения животного",
+                    "type": "cc.Vec2"
+                }
+            ],
+            "return": {
+                "description": "true - если животное будет жить",
+                "type": "Boolean"
+            },
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 149,
+            "description": "Сообщает корзине позицию животного для принятия решения по выбору действия. Корзина меняет свое состояние\nв зависимости от расстояния.",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "точка текущего местонахождения животного",
+                    "type": "cc.Vec2"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\baskets\\basket-animal.js",
+            "line": 174,
+            "description": "Обновляет статус корзины и вызывает соответствующее действие.",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 1,
+            "description": "Enum состояний бокса",
+            "typedef": "{Object} Movement",
+            "itemtype": "property",
+            "name": "{number} toOpen бокс открыт.",
+            "type": "Number",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 8,
+            "description": "Состояние бокса (открыт/закрыт)",
+            "type": "{Movement}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 17,
+            "description": "Enum состояний работы бокса",
+            "typedef": "{Object} TypeBox",
+            "itemtype": "property",
+            "name": "{number} left работа как левы бокс.",
+            "type": "Number",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 26,
+            "description": "Тип бокса",
+            "type": "{{bottom: number, top: number, right: number, left: number}}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 36,
+            "description": "Ядро боксов",
+            "type": "{cc.Class}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 60,
+            "description": "Осуществляет первоначальную настройку",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 73,
+            "description": "Инициализация переменных",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 83,
+            "description": "Действия на страт тача",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 91,
+            "description": "Действия на движение тача",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 102,
+            "description": "Действие на завершение тача",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 112,
+            "description": "Включает блокировку бокса",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 120,
+            "description": "Выключает блокировку бокса",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 128,
+            "description": "Открывает бокс",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 136,
+            "description": "Закрывает бокс",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 144,
+            "description": "Определяет ожидаемое состояние по направлению движения бокса",
+            "params": [
+                {
+                    "name": "delta",
+                    "description": "приращение"
+                }
+            ],
+            "return": {
+                "description": "этот класс",
+                "type": "Box"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 163,
+            "description": "Проверка на выход бокса за пределы интервала в резудьтате выполнения данного приращения. true-когда он не выходит",
+            "params": [
+                {
+                    "name": "delta",
+                    "description": "приращение координаты"
+                },
+                {
+                    "name": "start",
+                    "description": "стартовая координа(координата закрытого бокса)"
+                },
+                {
+                    "name": "end",
+                    "description": "конечная координата(координата открытого бокса)"
+                },
+                {
+                    "name": "current",
+                    "description": "текущаа координата"
+                }
+            ],
+            "return": {
+                "description": "true- если бокс не выходит за пределы",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 176,
+            "description": "Проверка на выход левого и нижнего бокса за пределы интервала в резудьтате выполнения данного приращения",
+            "params": [
+                {
+                    "name": "delta",
+                    "description": "приращение координаты"
+                },
+                {
+                    "name": "start",
+                    "description": "стартовая координа(координата закрытого бокса)"
+                },
+                {
+                    "name": "end",
+                    "description": "конечная координата(координата открытого бокса)"
+                },
+                {
+                    "name": "current",
+                    "description": "текущаа координата"
+                }
+            ],
+            "return": {
+                "description": "true- если бокс не выходит за пределы",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 189,
+            "description": "Проверка на выход верхнего и правого бокса за пределы интервала в резудьтате выполнения данного приращения",
+            "params": [
+                {
+                    "name": "delta",
+                    "description": "приращение координаты"
+                },
+                {
+                    "name": "start",
+                    "description": "стартовая координа(координата закрытого бокса)"
+                },
+                {
+                    "name": "end",
+                    "description": "конечная координата(координата открытого бокса)"
+                },
+                {
+                    "name": "current",
+                    "description": "текущаа координата"
+                }
+            ],
+            "return": {
+                "description": "true- если бокс не выходит за пределы",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 202,
+            "description": "Движение бокса",
+            "params": [
+                {
+                    "name": "delta",
+                    "description": "приращение",
+                    "type": "cc.Vec2"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Box"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 217,
+            "description": "Выполняет авто доводку",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 227,
+            "description": "Выполняет авто довод  бокса до финальной точки назначения",
+            "params": [
+                {
+                    "name": "pos",
+                    "description": "точка назначения"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 239,
+            "description": "Функция сигнализирующая о завершении доводки бокса",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 247,
+            "description": "Проверяет делает ли он это событие а не кто-то другой по ветке нодов до него",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 258,
+            "description": "Возвращает размер бокса относительно пространства на стороне и условий отступов",
+            "params": [
+                {
+                    "name": "space",
+                    "description": "размер боксадо приращения",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "размер бокса",
+                "type": "Number"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 268,
+            "description": "Меняет действие которое необходимо сделать дальше боксу(закрыться или открыться).Публикует событие",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-samples\\box.js",
+            "line": 282,
+            "description": "Работа с прозрачностью бокса. Изменяет прозрачность бокса на основе положения его относительно начальных и конечных координат",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-characteristics-animal.js",
+            "line": 2,
+            "description": "Бокс характеристик не предназначен для управление пользователем",
+            "type": "{Function}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-characteristics-animal.js",
+            "line": 9,
+            "description": "Устанавливает начальные позиции и производит вычисление длинны",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-characteristics-animal.js",
+            "line": 29,
+            "description": "Публикует событие открытие бокса в контроллере",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-characteristics-animal.js",
+            "line": 38,
+            "description": "Публикует событие закрыие бокса в контроллере",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-characteristics-animal.js",
+            "line": 47,
+            "description": "Обновляет прозрачность боксов",
+            "params": [
+                {
+                    "name": "dt",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-create-animal.js",
+            "line": 3,
+            "description": "Бокс списка животных",
+            "type": "{Function}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-create-animal.js",
+            "line": 10,
+            "description": "Устанавливает начальные позиции и производит вычисление длинны",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-create-animal.js",
+            "line": 27,
+            "description": "Публикует событие открытие бокса в контроллере",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-create-animal.js",
+            "line": 36,
+            "description": "Публикует событие закрытие бокса в контроллере",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-create-animal.js",
+            "line": 45,
+            "description": "Обновляет прозрачность боксов",
+            "params": [
+                {
+                    "name": "dt",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 1,
+            "description": "Created by FIRCorp on 29.03.2017.",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 5,
+            "description": "Бокс характеристик не предназначен для управление пользователем",
+            "type": "{Function}",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 12,
+            "description": "Устанавливает начальные позиции и производит вычисление длинны",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 32,
+            "description": "Открывает/закрывает бокс",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 40,
+            "description": "Публикует событие открытие бокса в контроллере",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 49,
+            "description": "Публикует событие закрыие бокса в контроллере",
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\boxes\\box-menu-play.js",
+            "line": 59,
+            "description": "Обновляет прозрачность боксов",
+            "params": [
+                {
+                    "name": "dt",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list-actions-animal.js",
+            "line": 11,
+            "description": "Настройка меню для конкретного животного. Настраивает радиус круга.",
+            "itemtype": "method",
+            "name": "settings",
+            "params": [
+                {
+                    "name": "controllerAnimal",
+                    "description": "контроллер животного.",
+                    "type": "cc.Component"
+                }
+            ],
+            "class": "CircularListActionsAnimal"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 35,
+            "description": "Инициализация меню животного.",
+            "itemtype": "method",
+            "name": "onLoad",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 45,
+            "description": "Обновить позиции кнопок в меню. С учетом радиуса окружности.",
+            "itemtype": "method",
+            "name": "_refreshMenu",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 54,
+            "description": "Распределение кнопок по окружности.",
+            "itemtype": "method",
+            "name": "_placementListsMenu",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 85,
+            "description": "Определение направления вращения и вызывает соответствующий обработчик, передавая значения с\nучетом чувствительности.",
+            "itemtype": "method",
+            "name": "directionRotation",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "дельта изменения по абциссе.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "дельта изменения по ординате.",
+                    "type": "Number"
+                },
+                {
+                    "name": "locX",
+                    "description": "положение тача по абциссе.",
+                    "type": "Number"
+                },
+                {
+                    "name": "locY",
+                    "description": "положение тача по ординате.",
+                    "type": "Number"
+                }
+            ],
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 118,
+            "description": "Работает с появлением элементов.",
+            "itemtype": "method",
+            "name": "_workingVisibleElements",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 134,
+            "description": "Отдает угол меню.",
+            "itemtype": "method",
+            "name": "getAngleMenu",
+            "return": {
+                "description": "угол поворота от 0 до 360.",
+                "type": "Number"
+            },
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 143,
+            "description": "Работает с элементами выключая их и подставляяя за место них другие эелементы.",
+            "itemtype": "method",
+            "name": "_swapElement",
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "угол на котором находится элемент.",
+                    "type": "Number"
+                },
+                {
+                    "name": "element",
+                    "description": "элемент/лист который необходимо заменить на следующий элемент из очереди невидимых элементов.",
+                    "type": "cc.Node"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 168,
+            "description": "Возвращает угол элемента/листа под которым он находится.",
+            "itemtype": "method",
+            "name": "getAngleList",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "нод элемента.",
+                    "type": "cc.Node"
+                },
+                {
+                    "name": "angle",
+                    "description": "угол поворота меню.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "угол листа/элемента меню.",
+                "type": "Number"
+            },
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 185,
+            "description": "Устанавливает состояние движения меню в зависимости от направления поворота.",
+            "itemtype": "method",
+            "name": "_setDirection",
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 199,
+            "description": "Стабилизирует элементы меню по положению к горизонту.",
+            "itemtype": "method",
+            "name": "stabilizationElements",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 209,
+            "description": "Обработчик первой четверти окружности. Распознает движение тача и применяет сответствующее поведение.\nДля обеспечения вращения окружности пользователем.",
+            "itemtype": "method",
+            "name": "_obr1",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "дельта по абциссе.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "дельта по ординате.",
+                    "type": "Number"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 223,
+            "description": "Обработчик второй четверти круга. Распознает движение тача и применяет сответствующее поведение.\nДля обеспечения вращения окружности пользователем.",
+            "itemtype": "method",
+            "name": "_obr2",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "дельта по абциссе.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "дельта по ординате.",
+                    "type": "Number"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 237,
+            "description": "Обработчик третьей четверти круга. Распознает движение тача и применяет сответствующее поведение.\nДля обеспечения вращения окружности пользователем.",
+            "itemtype": "method",
+            "name": "_obr3",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "дельта по абциссе.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "дельта по ординате.",
+                    "type": "Number"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\circular-list.js",
+            "line": 251,
+            "description": "Обработчик четвертой четверти круга. Распознает движение тача и применяет сответствующее поведение.\nДля обеспечения вращения окружности пользователем.",
+            "itemtype": "method",
+            "name": "_obr4",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "дельта по абциссе.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "дельта по ординате.",
+                    "type": "Number"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "CircularList"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\list.js",
+            "line": 17,
+            "description": "Инициализация листа меню животного.",
+            "itemtype": "method",
+            "name": "onLoad",
+            "class": "List"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\list.js",
+            "line": 27,
+            "description": "Обработчик старта нажатия на лист.",
+            "itemtype": "method",
+            "name": "_onTouchStart",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "объект события.",
+                    "type": "cc.Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "List"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\list.js",
+            "line": 38,
+            "description": "Обработчик отпускания тача от листа.",
+            "itemtype": "method",
+            "name": "_onTouchEnd",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "объект события.",
+                    "type": "cc.Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "List"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\list.js",
+            "line": 54,
+            "description": "Публикует событие свзанное с этим листом.",
+            "itemtype": "method",
+            "name": "_publishEvent",
+            "access": "private",
+            "tagname": "",
+            "class": "List"
+        },
+        {
+            "file": "assets\\scripts\\components\\circular-list\\list.js",
+            "line": 67,
+            "description": "Обработчик движения тача.",
+            "itemtype": "method",
+            "name": "_onTouchMove",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "объект события.",
+                    "type": "cc.Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "List"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 1,
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 25,
+            "description": "Настраивает доступные действия плюшки для животного и характеристики",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 33,
+            "description": "Обработчик события начала тача",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 50,
+            "description": "Обработчик события движения тача.",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 69,
+            "description": "Обработчик события завершения тача",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 89,
+            "description": "Проверяет открывается меню или нет. Путем сканирования точки тача на выходза пределы от начапльной точки",
+            "params": [
+                {
+                    "name": "point",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 101,
+            "description": "Изменяет состояние меню",
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 111,
+            "description": "Открытие меню животного",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 122,
+            "description": "Закрыто меню с животными",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 133,
+            "description": "Открытие меню",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 141,
+            "description": "Закрыть меню",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-animal.js",
+            "line": 149,
+            "description": "Сообщает модели до какой точки надо дойти",
+            "params": [
+                {
+                    "name": "point",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-create-animal.js",
+            "line": 4,
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-create-animal.js",
+            "line": 13,
+            "description": "Действия на нажатие по зверюшке после создания зверюшки",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-create-animal.js",
+            "line": 26,
+            "description": "Действия надвижение зажатой зверюшки после создания звербшки",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-create-animal.js",
+            "line": 42,
+            "description": "Действие на завершение нажатия по зверюшке после создания зверюшки",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 1,
+            "description": "Created by FIRCorp on 04.03.2017.",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 30,
+            "description": "Событие пораждающиеся скролом",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие которое ловит скрол"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 40,
+            "description": "Действия на прикосновение к карте",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие которое поймает этот скрипт"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 53,
+            "description": "Действия на движение touch по карте",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие которое поймает этот скрипт"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 64,
+            "description": "Дейстия на откпускание touch от карты",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "событие которое поймает скрол либо этот скрипт"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 80,
+            "description": "Конвентирует точку окна в точку карты",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "точка в окне"
+                }
+            ],
+            "return": {
+                "description": "точка на карте",
+                "type": "Vec2"
+            },
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 91,
+            "description": "Конвертирует точку в координаты окна",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "точка на карте"
+                }
+            ],
+            "return": {
+                "description": "точка в окне",
+                "type": "Vec2"
+            },
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 102,
+            "description": "Возвращает точку карты из системы координат скролла",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "исходная точка"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vec2"
+            },
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 112,
+            "description": "Инвертирует точку",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "исходная точка"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vec2"
+            },
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 123,
+            "description": "Движение камеры внекоторую точку на основе метода движения скролла. С использованием его системы координат",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "точка в которую необходимо перейти"
+                },
+                {
+                    "name": "time",
+                    "description": "время за кторое производится переход"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 132,
+            "description": "Движение карты в некоторую точку на основе actions",
+            "params": [
+                {
+                    "name": "point",
+                    "description": ""
+                },
+                {
+                    "name": "time",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-map.js",
+            "line": 145,
+            "description": "Публикует событие завершения движения камеры до животного и фиксирование его по центру экрана",
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-menu-play.js",
+            "line": 1,
+            "description": "Created by FIRCorp on 31.03.2017.",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-menu-play.js",
+            "line": 7,
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-menu-play.js",
+            "line": 16,
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-menu-play.js",
+            "line": 24,
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\controller\\controller-menu-play.js",
+            "line": 32,
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js",
+            "line": 11,
+            "description": "Создает животное",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js",
+            "line": 21,
+            "description": "Создает префаб в нужном контенте",
+            "see": [
+                "{string} wayToPrefab путь до префаба"
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js",
+            "line": 38,
+            "params": [
+                {
+                    "name": "nodeAnimal",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 46,
+            "description": "Инициализация конроллера представления.",
+            "itemtype": "method",
+            "name": "onLoad",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 82,
+            "description": "Инициализация данных.",
+            "itemtype": "method",
+            "name": "_init",
+            "access": "private",
+            "tagname": "",
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 107,
+            "description": "Бокс с животными закрылся.",
+            "itemtype": "method",
+            "name": "onCloseBoxFromAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 121,
+            "description": "Бокс с животными открылся.",
+            "itemtype": "method",
+            "name": "onOpenBoxFromAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 133,
+            "description": "Меню открылось.",
+            "itemtype": "method",
+            "name": "onOpenBoxMenuPlay",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 144,
+            "description": "Меню закрылось.",
+            "itemtype": "method",
+            "name": "onCloseBoxMenuPlay",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 155,
+            "description": "Создание животного.\nОтвечает за размещение животного в дереве нодов.",
+            "itemtype": "method",
+            "name": "onAnimalCreated",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 184,
+            "description": "Перетаскивание животного началось.",
+            "itemtype": "method",
+            "name": "onStartDragAndDropAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 198,
+            "description": "Перетаскивание нового животного.\nОтвечает за перемещение нода животного по карте после создания и производит замеры до различных объектов на карте.",
+            "itemtype": "method",
+            "name": "onDragAndDropAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 212,
+            "description": "Перетаскивание животного завершилось.",
+            "itemtype": "method",
+            "name": "onStopDragAndDropAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 247,
+            "description": "Начало движения животного.",
+            "itemtype": "method",
+            "name": "onStartMotionAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 272,
+            "description": "Движение животного за ведущим.",
+            "itemtype": "method",
+            "name": "onMotionAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 286,
+            "description": "Окончание движения животного.",
+            "itemtype": "method",
+            "name": "onEndMotionAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 305,
+            "description": "Меню животного открыто.",
+            "itemtype": "method",
+            "name": "onOpenMenuAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 326,
+            "description": "Меню животного закрыто.",
+            "itemtype": "method",
+            "name": "onCloseMenuAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 341,
+            "description": "Животное издало звук.",
+            "itemtype": "method",
+            "name": "onVoiceAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 351,
+            "description": "Бокс характристик животного открылся.",
+            "itemtype": "method",
+            "name": "onOpenBoxFromCharacteristicsAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 362,
+            "description": "Бокс характеристик животного закрылся.",
+            "itemtype": "method",
+            "name": "onCloseBoxFromCharacteristicsAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 373,
+            "description": "Корзина перешла в событие активного предвкушения.",
+            "itemtype": "method",
+            "name": "onBasketActive",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 384,
+            "description": "Корзина перешла в режим сна.",
+            "itemtype": "method",
+            "name": "onBasketSleep",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 394,
+            "description": "Корзина перешла в режим работы (Вот вот сбросят животное).",
+            "itemtype": "method",
+            "name": "onBasketWork",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 405,
+            "description": "Событие начала работы с картой.",
+            "itemtype": "method",
+            "name": "onTouchOnMap",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 416,
+            "description": "Событие движения карты.",
+            "itemtype": "method",
+            "name": "onTouchMoveOnMap",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 426,
+            "description": "Событие завершения работы с картой.",
+            "itemtype": "method",
+            "name": "onTouchEndMoveOnMap",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        },
+        {
+            "file": "assets\\scripts\\components\\scene\\play.js",
+            "line": 438,
+            "description": "Наведение центра камеры на животное завершилось.",
+            "itemtype": "method",
+            "name": "onFinishMoveCameraToAnimal",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "cc.Event"
+                }
+            ],
+            "class": "Play"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: typedef",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:130"
+        },
+        {
+            "message": "unknown tag: typedef",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:1"
+        },
+        {
+            "message": "unknown tag: typedef",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:17"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:144"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:176"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:189"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:202"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:258"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\circular-list\\circular-list.js:134"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:80"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:91"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:102"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:112"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js:38"
+        },
+        {
+            "message": "Missing item type\nТипы состояний корзины.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:9"
+        },
+        {
+            "message": "Missing item type\nОсуществляет работу с корзиной,\nАнимации, частицы и прочее.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:19"
+        },
+        {
+            "message": "Missing item type\nИнициализация непосредственно сразу после загрузки компонента.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:43"
+        },
+        {
+            "message": "Missing item type\nКорзина запустилась.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:50"
+        },
+        {
+            "message": "Missing item type\nВыключение корзины.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:58"
+        },
+        {
+            "message": "Missing item type\nРеакция корзины на приближающееся животное.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:66"
+        },
+        {
+            "message": "Missing item type\nСостояние сна включилось.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:75"
+        },
+        {
+            "message": "Missing item type\nСостояние ловли включилось.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:84"
+        },
+        {
+            "message": "Missing item type\nСобытие- животное поймано.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:93"
+        },
+        {
+            "message": "Missing item type\nСобытие- животное не поймано.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:102"
+        },
+        {
+            "message": "Missing item type\nРаботает с прозрачностью этой корзины. Постепенно приближается к прозрачности\nкорзины равной заданному значению за заданое время.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:111"
+        },
+        {
+            "message": "Missing item type\nПроверяет будет ли жить животное или оно выброшено в корзину.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:130"
+        },
+        {
+            "message": "Missing item type\nСообщает корзине позицию животного для принятия решения по выбору действия. Корзина меняет свое состояние\nв зависимости от расстояния.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:149"
+        },
+        {
+            "message": "Missing item type\nОбновляет статус корзины и вызывает соответствующее действие.",
+            "line": " assets\\scripts\\components\\baskets\\basket-animal.js:174"
+        },
+        {
+            "message": "Missing item type\nСостояние бокса (открыт/закрыт)",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:8"
+        },
+        {
+            "message": "Missing item type\nТип бокса",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:26"
+        },
+        {
+            "message": "Missing item type\nЯдро боксов",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:36"
+        },
+        {
+            "message": "Missing item type\nОсуществляет первоначальную настройку",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:60"
+        },
+        {
+            "message": "Missing item type\nИнициализация переменных",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:73"
+        },
+        {
+            "message": "Missing item type\nДействия на страт тача",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:83"
+        },
+        {
+            "message": "Missing item type\nДействия на движение тача",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:91"
+        },
+        {
+            "message": "Missing item type\nДействие на завершение тача",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:102"
+        },
+        {
+            "message": "Missing item type\nВключает блокировку бокса",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:112"
+        },
+        {
+            "message": "Missing item type\nВыключает блокировку бокса",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:120"
+        },
+        {
+            "message": "Missing item type\nОткрывает бокс",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:128"
+        },
+        {
+            "message": "Missing item type\nЗакрывает бокс",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:136"
+        },
+        {
+            "message": "Missing item type\nОпределяет ожидаемое состояние по направлению движения бокса",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:144"
+        },
+        {
+            "message": "Missing item type\nПроверка на выход бокса за пределы интервала в резудьтате выполнения данного приращения. true-когда он не выходит",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:163"
+        },
+        {
+            "message": "Missing item type\nПроверка на выход левого и нижнего бокса за пределы интервала в резудьтате выполнения данного приращения",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:176"
+        },
+        {
+            "message": "Missing item type\nПроверка на выход верхнего и правого бокса за пределы интервала в резудьтате выполнения данного приращения",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:189"
+        },
+        {
+            "message": "Missing item type\nДвижение бокса",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:202"
+        },
+        {
+            "message": "Missing item type\nВыполняет авто доводку",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:217"
+        },
+        {
+            "message": "Missing item type\nВыполняет авто довод  бокса до финальной точки назначения",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:227"
+        },
+        {
+            "message": "Missing item type\nФункция сигнализирующая о завершении доводки бокса",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:239"
+        },
+        {
+            "message": "Missing item type\nПроверяет делает ли он это событие а не кто-то другой по ветке нодов до него",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:247"
+        },
+        {
+            "message": "Missing item type\nВозвращает размер бокса относительно пространства на стороне и условий отступов",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:258"
+        },
+        {
+            "message": "Missing item type\nМеняет действие которое необходимо сделать дальше боксу(закрыться или открыться).Публикует событие",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:268"
+        },
+        {
+            "message": "Missing item type\nРабота с прозрачностью бокса. Изменяет прозрачность бокса на основе положения его относительно начальных и конечных координат",
+            "line": " assets\\scripts\\components\\boxes\\box-samples\\box.js:282"
+        },
+        {
+            "message": "Missing item type\nБокс характеристик не предназначен для управление пользователем",
+            "line": " assets\\scripts\\components\\boxes\\box-characteristics-animal.js:2"
+        },
+        {
+            "message": "Missing item type\nУстанавливает начальные позиции и производит вычисление длинны",
+            "line": " assets\\scripts\\components\\boxes\\box-characteristics-animal.js:9"
+        },
+        {
+            "message": "Missing item type\nПубликует событие открытие бокса в контроллере",
+            "line": " assets\\scripts\\components\\boxes\\box-characteristics-animal.js:29"
+        },
+        {
+            "message": "Missing item type\nПубликует событие закрыие бокса в контроллере",
+            "line": " assets\\scripts\\components\\boxes\\box-characteristics-animal.js:38"
+        },
+        {
+            "message": "Missing item type\nОбновляет прозрачность боксов",
+            "line": " assets\\scripts\\components\\boxes\\box-characteristics-animal.js:47"
+        },
+        {
+            "message": "Missing item type\nБокс списка животных",
+            "line": " assets\\scripts\\components\\boxes\\box-create-animal.js:3"
+        },
+        {
+            "message": "Missing item type\nУстанавливает начальные позиции и производит вычисление длинны",
+            "line": " assets\\scripts\\components\\boxes\\box-create-animal.js:10"
+        },
+        {
+            "message": "Missing item type\nПубликует событие открытие бокса в контроллере",
+            "line": " assets\\scripts\\components\\boxes\\box-create-animal.js:27"
+        },
+        {
+            "message": "Missing item type\nПубликует событие закрытие бокса в контроллере",
+            "line": " assets\\scripts\\components\\boxes\\box-create-animal.js:36"
+        },
+        {
+            "message": "Missing item type\nОбновляет прозрачность боксов",
+            "line": " assets\\scripts\\components\\boxes\\box-create-animal.js:45"
+        },
+        {
+            "message": "Missing item type\nCreated by FIRCorp on 29.03.2017.",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:1"
+        },
+        {
+            "message": "Missing item type\nБокс характеристик не предназначен для управление пользователем",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:5"
+        },
+        {
+            "message": "Missing item type\nУстанавливает начальные позиции и производит вычисление длинны",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:12"
+        },
+        {
+            "message": "Missing item type\nОткрывает/закрывает бокс",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:32"
+        },
+        {
+            "message": "Missing item type\nПубликует событие открытие бокса в контроллере",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:40"
+        },
+        {
+            "message": "Missing item type\nПубликует событие закрыие бокса в контроллере",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:49"
+        },
+        {
+            "message": "Missing item type\nОбновляет прозрачность боксов",
+            "line": " assets\\scripts\\components\\boxes\\box-menu-play.js:59"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:1"
+        },
+        {
+            "message": "Missing item type\nНастраивает доступные действия плюшки для животного и характеристики",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:25"
+        },
+        {
+            "message": "Missing item type\nОбработчик события начала тача",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:33"
+        },
+        {
+            "message": "Missing item type\nОбработчик события движения тача.",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:50"
+        },
+        {
+            "message": "Missing item type\nОбработчик события завершения тача",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:69"
+        },
+        {
+            "message": "Missing item type\nПроверяет открывается меню или нет. Путем сканирования точки тача на выходза пределы от начапльной точки",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:89"
+        },
+        {
+            "message": "Missing item type\nИзменяет состояние меню",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:101"
+        },
+        {
+            "message": "Missing item type\nОткрытие меню животного",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:111"
+        },
+        {
+            "message": "Missing item type\nЗакрыто меню с животными",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:122"
+        },
+        {
+            "message": "Missing item type\nОткрытие меню",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:133"
+        },
+        {
+            "message": "Missing item type\nЗакрыть меню",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:141"
+        },
+        {
+            "message": "Missing item type\nСообщает модели до какой точки надо дойти",
+            "line": " assets\\scripts\\components\\controller\\controller-animal.js:149"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\controller\\controller-create-animal.js:4"
+        },
+        {
+            "message": "Missing item type\nДействия на нажатие по зверюшке после создания зверюшки",
+            "line": " assets\\scripts\\components\\controller\\controller-create-animal.js:13"
+        },
+        {
+            "message": "Missing item type\nДействия надвижение зажатой зверюшки после создания звербшки",
+            "line": " assets\\scripts\\components\\controller\\controller-create-animal.js:26"
+        },
+        {
+            "message": "Missing item type\nДействие на завершение нажатия по зверюшке после создания зверюшки",
+            "line": " assets\\scripts\\components\\controller\\controller-create-animal.js:42"
+        },
+        {
+            "message": "Missing item type\nCreated by FIRCorp on 04.03.2017.",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:1"
+        },
+        {
+            "message": "Missing item type\nСобытие пораждающиеся скролом",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:30"
+        },
+        {
+            "message": "Missing item type\nДействия на прикосновение к карте",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:40"
+        },
+        {
+            "message": "Missing item type\nДействия на движение touch по карте",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:53"
+        },
+        {
+            "message": "Missing item type\nДейстия на откпускание touch от карты",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:64"
+        },
+        {
+            "message": "Missing item type\nКонвентирует точку окна в точку карты",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:80"
+        },
+        {
+            "message": "Missing item type\nКонвертирует точку в координаты окна",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:91"
+        },
+        {
+            "message": "Missing item type\nВозвращает точку карты из системы координат скролла",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:102"
+        },
+        {
+            "message": "Missing item type\nИнвертирует точку",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:112"
+        },
+        {
+            "message": "Missing item type\nДвижение камеры внекоторую точку на основе метода движения скролла. С использованием его системы координат",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:123"
+        },
+        {
+            "message": "Missing item type\nДвижение карты в некоторую точку на основе actions",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:132"
+        },
+        {
+            "message": "Missing item type\nПубликует событие завершения движения камеры до животного и фиксирование его по центру экрана",
+            "line": " assets\\scripts\\components\\controller\\controller-map.js:145"
+        },
+        {
+            "message": "Missing item type\nCreated by FIRCorp on 31.03.2017.",
+            "line": " assets\\scripts\\components\\controller\\controller-menu-play.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\controller\\controller-menu-play.js:7"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\controller\\controller-menu-play.js:16"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\controller\\controller-menu-play.js:24"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\controller\\controller-menu-play.js:32"
+        },
+        {
+            "message": "Missing item type\nСоздает животное",
+            "line": " assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js:11"
+        },
+        {
+            "message": "Missing item type\nСоздает префаб в нужном контенте",
+            "line": " assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js:21"
+        },
+        {
+            "message": "Missing item type",
+            "line": " assets\\scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js:38"
+        }
+    ]
+}

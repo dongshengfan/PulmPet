@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>assets\scripts\components\factory-animal-prefab\factory-animal-prefab.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
-    <link rel="stylesheet" href="./assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="./assets/css/main.css" id="site_styles">
-    <link rel="icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
     <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -14,7 +14,7 @@
 <div id="doc">
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
-                <h1><img src="./assets/css/logo.png" title="" width="117" height="52"></h1>
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
         </div>
         <div class="yui3-u-1-4 version">
             <em>API Docs for: </em>
@@ -39,14 +39,14 @@
                 
                         <div id="api-tabview-panel">
                             <ul id="api-classes" class="apis classes">
-                                <li><a href="./classes/CircularList.html">CircularList</a></li>
-                                <li><a href="./classes/CircularListActionsAnimal.html">CircularListActionsAnimal</a></li>
-                                <li><a href="./classes/List.html">List</a></li>
-                                <li><a href="./classes/Play.html">Play</a></li>
+                                <li><a href="../classes/CircularList.html">CircularList</a></li>
+                                <li><a href="../classes/CircularListActionsAnimal.html">CircularListActionsAnimal</a></li>
+                                <li><a href="../classes/List.html">List</a></li>
+                                <li><a href="../classes/Play.html">Play</a></li>
                             </ul>
                 
                                 <ul id="api-elements" class="apis elements">
-                                    <li><a href="./elements/{number}.html">&lt;{number}&gt;</a></li>
+                                    <li><a href="../elements/{number}.html">&lt;{number}&gt;</a></li>
                                 </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -83,40 +83,76 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-    <div class="apidocs">
-        <div id="docs-main" class="content">
-            <p>
-            Browse to a module or class using the sidebar to view its API documentation.
-            </p>
+<h1 class="file-heading">File: assets\scripts\components\factory-animal-prefab\factory-animal-prefab.js</h1>
 
-            <h2>Keyboard Shortcuts</h2>
+<div class="file">
+    <pre class="code prettyprint linenums">
+var FactoryAnimalPrefab = cc.Class({
+    extends: cc.Component,
 
-            <ul>
-                <li><p>Press <kbd>s</kbd> to focus the API search box.</p></li>
+    properties: {
+        _targetAnimal: cc.Node,
+        wayToPrefab:&#x27;prefabs/animal/LionSheath&#x27;,
+        wayToModel: &#x27;./model&#x27;,//Путь до модели
+        nameAnimal: &#x27;animal&#x27;,//Имя животного
+    },
 
-                <li><p>Use <kbd>Up</kbd> and <kbd>Down</kbd> to select classes, modules, and search results.</p></li>
+    /**
+     * Создает животное
+     * @param {cc.Event} event
+     */
+    createAnimal(event) {
+      //  cc.log(event);
+       // let pointTouch = event.getStartLocation();
+        this._createPrefab();
+    },
 
-                <li class="mac-only"><p>With the API search box or sidebar focused, use <kbd><span class="cmd">&#x2318;</span>-Left</kbd> or <kbd><span class="cmd">&#x2318;</span>-Right</kbd> to switch sidebar tabs.</p></li>
+    /**
+     * Создает префаб в нужном контенте
+     * @see {string} wayToPrefab путь до префаба
+     */
+    _createPrefab() {
+        cc.loader.loadRes(this.wayToPrefab, (err, prefab) =&gt; {
+            this._targetAnimal = cc.instantiate(prefab);
 
-                <li class="pc-only"><p>With the API search box or sidebar focused, use <kbd>Ctrl+Left</kbd> and <kbd>Ctrl+Right</kbd> to switch sidebar tabs.</p></li>
-            </ul>
-        </div>
-    </div>
+            let myEvent = new cc.Event.EventCustom(&#x27;createAnimal&#x27;, true);
+            myEvent.detail = {
+                animal: this._settingsAnimal(this._targetAnimal),
+                puthToModel:this.puthToModel,
+            };
+            this.node.dispatchEvent(myEvent);
+        });
+    },
 
+    /**
+     *
+     * @param nodeAnimal
+     * @returns {*}
+     * @private
+     */
+    _settingsAnimal(nodeAnimal){
+        nodeAnimal.name=this.nameAnimal;
 
+        return nodeAnimal;
+    },
+});
+
+export { FactoryAnimalPrefab};
+    </pre>
+</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="./assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
-<script src="./assets/js/yui-prettify.js"></script>
-<script src="./assets/../api.js"></script>
-<script src="./assets/js/api-filter.js"></script>
-<script src="./assets/js/api-list.js"></script>
-<script src="./assets/js/api-search.js"></script>
-<script src="./assets/js/apidocs.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
 </body>
 </html>
