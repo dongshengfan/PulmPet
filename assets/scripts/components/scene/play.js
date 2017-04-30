@@ -37,6 +37,7 @@ cc.Class({
         nodeMenuAnimal: cc.Node,//нод меню животного
         nodeMaskCreatedAnimal: cc.Node,//маска для создания животных
 
+
         _targetAnimal: cc.Node,//нод животного в таргете
         _pointTargetAnimal: cc.v2,//точка назначения животного в таргете
         _targetControllerAnimal: cc.Node,//контроллер животного в таргете
@@ -68,6 +69,12 @@ cc.Class({
         this.node.on('closeMenuAnimal', this.onCloseMenuAnimal.bind(this));
 
         this.node.on('voiceAnimal', this.onVoiceAnimal.bind(this));
+        this.node.on('sitAnimal', this.onSitAnimal.bind(this));//сидеть
+        this.node.on('frightenAnimal', this.onFrightenAnimal.bind(this));//напугать
+        this.node.on('arealAnimal', this.onArealAnimal.bind(this));//показать ареал
+        this.node.on('careAnimal', this.onCareAnimal.bind(this));//Забота, гладить
+        this.node.on('lieAnimal', this.onLieAnimal.bind(this));//Лежать,лечь
+        this.node.on('attentionAnimal', this.onAttentionAnimal.bind(this));//Внимание, готовсь
 
         this.node.on('basketActive', this.onBasketActive.bind(this));
         this.node.on('basketSleep', this.onBasketSleep.bind(this));
@@ -128,6 +135,8 @@ cc.Class({
         cc.log('открылся BoxFromAnimal');
         this.nodeMaskCreatedAnimal.active = true;//активировали маску
         this.nodeMaskCreatedAnimal.setPosition(this._centreWindowPoint);
+        if (this._controllerAnimal !== null) this._controllerAnimal.closeMenu();
+
     },
 
     /**
@@ -251,7 +260,7 @@ cc.Class({
      */
     onStartMotionAnimal(event){
         //Закрываю меню иинформацию о животном если переключаюсь на другое животное
-        if (this._targetAnimal != null && this._targetAnimal._model.id != event.detail.controller._model.id) {
+        if (this._targetAnimal !== null && this._targetAnimal._model.id !== event.detail.controller._model.id) {
             this._controllerAnimal.closeMenu();//закрыть меню
         }
 
@@ -345,7 +354,68 @@ cc.Class({
      */
     onVoiceAnimal(event){
         cc.log('животное проявило голос');
+        this._controllerAnimal.runVoice();
+        this._controllerAnimal.closeMenu();
+    },
 
+    /**
+     * Животное село
+     * @param event
+     */
+    onSitAnimal(event){
+        cc.log('животное село');
+        this._controllerAnimal.runSit();
+        this._controllerAnimal.closeMenu();
+    },
+
+    /**
+     * Животное испугалось
+     * @param event
+     */
+    onFrightenAnimal(event){
+        cc.log('животное испугалось');
+        this._controllerAnimal.runFrighten();
+        this._controllerAnimal.closeMenu();
+    },
+
+    /**
+     * ареалы чувств
+     * @param event
+     */
+    onArealAnimal(event){
+        cc.log('животное показало свой ареал');
+        this._controllerAnimal.runAreal();
+        this._controllerAnimal.closeMenu();
+    },
+
+    /**
+     * Животное погладили,пожалели
+     * @param event
+     */
+    onCareAnimal(event){
+        cc.log('животное погладили');
+        this._controllerAnimal.runCare();
+        this._controllerAnimal.closeMenu();
+    },
+
+    /**
+     * Животное легло
+     * @param event
+     */
+    onLieAnimal(event){
+        cc.log('животное легло');
+        this._controllerAnimal.runLie();
+        this._controllerAnimal.closeMenu();
+    },
+
+    /**
+     * Животное приготовилось
+     * @param event
+     */
+    onAttentionAnimal(event){
+        cc.log('животное приготовилось');
+        this._controllerAnimal.runAttention();
+        this._controllerAnimal.closeMenu();
     },
 
     /**
@@ -356,6 +426,36 @@ cc.Class({
     onOpenBoxFromCharacteristicsAnimal(event){
 
         cc.log('открылся BoxFromCharacteristicsAnimal');
+        this._boxCreateAnimal.closeBox();
+        //заполняет характеристики
+        let mass = this._controllerAnimal.getCharacteristics();
+        let content = this._boxCharacteristicsAnimal.content;
+
+        let nodeParam = content.getChildByName('nameAnimal');
+        nodeParam.getComponent(cc.Label).string = mass.name;
+        nodeParam = content.getChildByName('currentState');
+        nodeParam.getComponent(cc.Label).string = mass.currentState;
+        let vr;
+        //чистим предыдущие
+        while (content.children.length > 3) {
+            vr = content.children.pop();
+            vr.parent = null;
+            vr.destroy();
+        }
+        //начинаем заполнять из модели
+        if (mass.param.length != 0) {
+            nodeParam = content.getChildByName('parameter');
+
+            nodeParam.getChildByName('name').getComponent(cc.Label).string = mass.param[0].name;
+            nodeParam.getChildByName('value').getComponent(cc.Label).string = mass.param[0].value.toString() + mass.param[0].unit;
+
+            for (let i = 1; i < mass.param.length; i++) {
+                nodeParam = cc.instantiate(content.getChildByName('parameter'));
+                content.addChild(nodeParam);
+                nodeParam.getChildByName('name').getComponent(cc.Label).string = mass.param[i].name;
+                nodeParam.getChildByName('value').getComponent(cc.Label).string = mass.param[i].value.toString() + mass.param[i].unit;
+            }
+        }
 
     },
 

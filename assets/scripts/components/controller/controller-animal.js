@@ -53,7 +53,7 @@ cc.Class({
      * @private
      */
     _onTouchMoveAnimal(event){
-     //   cc.log(event);
+        //   cc.log(event);
         var delta = event.touch.getDelta();
         if (this._isCheckOnOpenMenu(event.getLocation()) && !this._isOpenMenu) {
             this._isMove = true;
@@ -63,7 +63,7 @@ cc.Class({
             };
             this.node.dispatchEvent(myEvent);
         }
-       event.stopPropagation();
+        event.stopPropagation();
     },
 
     /**
@@ -72,7 +72,7 @@ cc.Class({
      * @private
      */
     _onTouchEndAnimal(event){
-       // cc.log(event);
+        // cc.log(event);
         if (this._isMove) {
             let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
             myEvent.detail = {
@@ -153,4 +153,62 @@ cc.Class({
     moveToPoint(point){
         this._model.moveToPoint(point);
     },
+
+    /**
+     * Подать звук
+     */
+    runVoice(){
+
+    },
+
+    /**
+     * Сесть
+     */
+    runSit(){
+
+    },
+
+    /**
+     * Испугаться
+     */
+    runFrighten(){
+
+    },
+
+    /**
+     * Показать ареалы
+     */
+    runAreal(){
+
+    },
+
+    /**
+     * Поласкаться
+     */
+    runCare(){
+
+    },
+
+    /**
+     * Лечь
+     */
+    runLie(){
+
+    },
+
+    /**
+     * Приготовиться
+     */
+    runAttention(){
+
+    },
+
+    /**
+     * Возвращает массив характеристик у животного
+     * @return {*|any}
+     */
+    getCharacteristics(){
+        return this._model.getCharacteristics();
+    }
+
 });

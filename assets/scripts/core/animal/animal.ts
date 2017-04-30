@@ -2,6 +2,7 @@
  * Created by FIRCorp on 25.02.2017.
  */
 namespace Animals {
+    import array = js.array;
     /**
      * Класс животного
      */
@@ -75,8 +76,41 @@ namespace Animals {
          * Дает команду модели двигаться до точки
          * @param point тока назначения
          */
-        moveToPoint(point:cc.Vec2):void{
+        public moveToPoint(point: cc.Vec2): void {
 
+        }
+
+        /**
+         * Формирует и возвращает массив характеристик
+         * @return {{name: string, currentState: string, param: Array}}
+         */
+        public getCharacteristics(): Object {
+            return {
+                name: 'Животное',
+                currentState: 'Бегу',
+                param: [
+                    {
+                        name: 'Скорость',
+                        value: 89,
+                        unit: 'м/с',
+                    },
+                    {
+                        name: 'Возраст',
+                        value: 12,
+                        unit: 'лет',
+                    },
+                    {
+                        name: 'Вес',
+                        value: 12,
+                        unit: 'кг',
+                    },
+                    {
+                        name: 'Выносливость',
+                        value: 12,
+                        unit: 'ед.',
+                    }
+                ],
+            };
         }
     }
 }
