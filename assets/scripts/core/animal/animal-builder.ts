@@ -81,12 +81,13 @@ namespace Animals {
          * @returns {Animals.Animal}
          */
         create(model: any): Animal {
-            let {systems, scales, communication}=model;
+            let {name, systems, scales, communication}=model;
             this.masScales = [];
             this.masSystems = [];
             let communicator = this.createScales(scales).createSystems(systems).createCommunicator(communication);
             let animal = new Animals.Animal(this.masSystems);
             animal.communicator = communicator;
+            animal.name = name;
             return animal;
         }
     }

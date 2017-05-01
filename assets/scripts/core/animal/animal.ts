@@ -45,6 +45,11 @@ namespace Animals {
             this.muscular = params[Animals.Systems.SystemTypes.muscular];
             this.circulatory = params[Animals.Systems.SystemTypes.circulatory];
             this.navigation = params[Animals.Systems.SystemTypes.navigation];
+            //подписываем системы на этот класс
+
+            this.muscular._linkToAnimal = this;
+            this.circulatory._linkToAnimal = this;
+            this.navigation._linkToAnimal = this;
         }
 
         set muscular(param: Animals.Systems.TypeSystems.Muscular) {
@@ -75,6 +80,19 @@ namespace Animals {
 
         set name(param: string) {
             this._name = param;
+        }
+
+
+        get muscular(): Animals.Systems.TypeSystems.Muscular {
+            return this._muscular;
+        }
+
+        get circulatory(): Animals.Systems.TypeSystems.Circulatory {
+            return this._circulatory;
+        }
+
+        get navigation(): Animals.Systems.TypeSystems.Navigation {
+            return this._navigation;
         }
 
         get id(): number {

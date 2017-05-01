@@ -3,13 +3,19 @@
  */
 namespace Animals.Systems.TypeSystems {
     /**
-     * Класс навигационной системы
+     * Класс навигационной системы. Отвечает за ориентацию животного в пространстве. Поиск пути.
      */
     export class Navigation implements ISystem {
         /**
          * Субъективное состояние системы
          */
         state: Animals.Scales.TypeScales.SystemScale;
+
+        /**
+         * Ссылка на класс животного
+         * @type {Animal}
+         */
+        _linkToAnimal: Animals.Animal;
 
         /**
          * Скорость смекалки/реакции
@@ -42,6 +48,7 @@ namespace Animals.Systems.TypeSystems {
          */
         constructor(scales: any[]) {
             this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.TypeScales.SystemScale([]);
+
             this.speedSavvy = scales[Animals.Scales.ParameterScaleTypes.speedSavvy];
             this.radiusHearing = scales[Animals.Scales.ParameterScaleTypes.radiusHearing];
             this.radiusSmell = scales[Animals.Scales.ParameterScaleTypes.radiusSmell];
@@ -144,6 +151,7 @@ namespace Animals.Systems.TypeSystems {
             this._radiusTouch.change(delta);
             this.analysis();
         }
+
 
         /**
          * Анализирует систему

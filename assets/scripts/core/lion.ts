@@ -3,6 +3,7 @@
  */
 
 let lion: any = {
+    name: 'Лев',
     systems: [
         {
             type: Animals.Systems.SystemTypes.muscular,
@@ -17,6 +18,16 @@ let lion: any = {
             scalesType: [
                 {type: Animals.Scales.ParameterScaleTypes.pressure},
                 {type: Animals.Scales.ParameterScaleTypes.heartbeat}
+            ],
+        },
+        {
+            type: Animals.Systems.SystemTypes.navigation,
+            scalesType: [
+                {type: Animals.Scales.ParameterScaleTypes.speedSavvy},
+                {type: Animals.Scales.ParameterScaleTypes.radiusVision},
+                {type: Animals.Scales.ParameterScaleTypes.radiusSmell},
+                {type: Animals.Scales.ParameterScaleTypes.radiusHearing},
+                {type: Animals.Scales.ParameterScaleTypes.radiusTouch},
             ],
         }
     ],
@@ -64,7 +75,41 @@ let lion: any = {
                 max: 10,
                 responseDelay: 0.1
             }
-        }
+        },
+        {
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.speedSavvy,
+            params: {
+                name: 'Время смекалки',
+                current: 8,
+                min: 0,
+                max: 10,
+                responseDelay: 0.1
+            }
+        },
+        {
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.radiusTouch,
+            params: {
+                name: 'Радиус осязания',
+                current: 9,
+                min: 0,
+                max: 10,
+                responseDelay: 0.1
+            }
+        },
+        {
+            typeScale: Animals.Scales.ScaleTypes.argument,
+            type: Animals.Scales.ParameterScaleTypes.radiusVision,
+            params: {
+                name: 'Радиус зрения',
+                current: 40,
+                min: 0,
+                max: 80,
+                responseDelay: 0.1
+            }
+        },
+
     ],
     communication: [
         {
