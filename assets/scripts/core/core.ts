@@ -1,4 +1,4 @@
-(async function () {
+/*(async function () {
     async function test1() {
         for (let i = 0; i < 1000000000; i++);
         return 11;
@@ -23,4 +23,4 @@
     console.log(res22);
 
     console.log(3);
-})();
+})();*/
