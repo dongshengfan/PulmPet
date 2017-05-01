@@ -37,6 +37,9 @@ cc.Class({
         nodeMenuAnimal: cc.Node,//нод меню животного
         nodeMaskCreatedAnimal: cc.Node,//маска для создания животных
 
+        prefabParametrCharacteristics: cc.Prefab,//префаб характеристики
+
+        colorTextCharacteristics: cc.Color,//цвет текста у характеристик
 
         _targetAnimal: cc.Node,//нод животного в таргете
         _pointTargetAnimal: cc.v2,//точка назначения животного в таргете
@@ -260,7 +263,7 @@ cc.Class({
      */
     onStartMotionAnimal(event){
         //Закрываю меню иинформацию о животном если переключаюсь на другое животное
-        if (this._targetAnimal !== null && this._targetAnimal._model.id !== event.detail.controller._model.id) {
+        if (this._targetAnimal != null && this._targetAnimal._model.id != event.detail.controller._model.id) {
             this._controllerAnimal.closeMenu();//закрыть меню
         }
 
@@ -360,7 +363,8 @@ cc.Class({
 
     /**
      * Животное село
-     * @param event
+     * @method onSitAnimal
+     * @param {cc.Event} event
      */
     onSitAnimal(event){
         cc.log('животное село');
@@ -370,7 +374,8 @@ cc.Class({
 
     /**
      * Животное испугалось
-     * @param event
+     * @method onFrightenAnimal
+     * @param {cc.Event} event
      */
     onFrightenAnimal(event){
         cc.log('животное испугалось');
@@ -380,7 +385,8 @@ cc.Class({
 
     /**
      * ареалы чувств
-     * @param event
+     * @method onArealAnimal
+     * @param {cc.Event} event
      */
     onArealAnimal(event){
         cc.log('животное показало свой ареал');
@@ -390,7 +396,8 @@ cc.Class({
 
     /**
      * Животное погладили,пожалели
-     * @param event
+     * @method onCareAnimal
+     * @param {cc.Event} event
      */
     onCareAnimal(event){
         cc.log('животное погладили');
@@ -400,7 +407,8 @@ cc.Class({
 
     /**
      * Животное легло
-     * @param event
+     * @method onLieAnimal
+     * @param {cc.Event} event
      */
     onLieAnimal(event){
         cc.log('животное легло');
@@ -410,7 +418,8 @@ cc.Class({
 
     /**
      * Животное приготовилось
-     * @param event
+     * @method onAttentionAnimal
+     * @param {cc.Event} event
      */
     onAttentionAnimal(event){
         cc.log('животное приготовилось');
@@ -431,32 +440,40 @@ cc.Class({
         let mass = this._controllerAnimal.getCharacteristics();
         let content = this._boxCharacteristicsAnimal.content;
 
-        let nodeParam = content.getChildByName('nameAnimal');
-        nodeParam.getComponent(cc.Label).string = mass.name;
-        nodeParam = content.getChildByName('currentState');
-        nodeParam.getComponent(cc.Label).string = mass.currentState;
-        let vr;
-        //чистим предыдущие
-        while (content.children.length > 3) {
-            vr = content.children.pop();
-            vr.parent = null;
-            vr.destroy();
-        }
-        //начинаем заполнять из модели
+        let nodeParam;
+        //чистим предыдущие записи
+        content.children.forEach((item) => {
+            item.destroy();
+        });
+
+        //Начинаем заполнение
+        nodeParam = cc.instantiate(this.prefabParametrCharacteristics);
+        nodeParam.removeAllChildren();
+        nodeParam.addComponent(cc.Label).string = mass.name;
+        nodeParam.color = this.colorTextCharacteristics;
+        content.addChild(nodeParam);
+
+        nodeParam = cc.instantiate(this.prefabParametrCharacteristics);
+        nodeParam.removeAllChildren();
+        nodeParam.addComponent(cc.Label).string = mass.currentState;
+        nodeParam.color = this.colorTextCharacteristics;
+        content.addChild(nodeParam);
+
+        let vr;//временная переменная узлов
+        //заполняем характеристики
         if (mass.param.length != 0) {
-            nodeParam = content.getChildByName('parameter');
-
-            nodeParam.getChildByName('name').getComponent(cc.Label).string = mass.param[0].name;
-            nodeParam.getChildByName('value').getComponent(cc.Label).string = mass.param[0].value.toString() + mass.param[0].unit;
-
-            for (let i = 1; i < mass.param.length; i++) {
-                nodeParam = cc.instantiate(content.getChildByName('parameter'));
+            for (let i = 0; i < mass.param.length; i++) {
+                nodeParam = cc.instantiate(this.prefabParametrCharacteristics);
                 content.addChild(nodeParam);
-                nodeParam.getChildByName('name').getComponent(cc.Label).string = mass.param[i].name;
-                nodeParam.getChildByName('value').getComponent(cc.Label).string = mass.param[i].value.toString() + mass.param[i].unit;
+                nodeParam.x = 0;
+                vr = nodeParam.getChildByName('name');
+                vr.getComponent(cc.Label).string = mass.param[i].name;
+                vr.color = this.colorTextCharacteristics;
+                vr = nodeParam.getChildByName('value');
+                vr.getComponent(cc.Label).string = mass.param[i].value.toString() + mass.param[i].unit;
+                vr.color = this.colorTextCharacteristics;
             }
         }
-
     },
 
     /**

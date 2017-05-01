@@ -19,7 +19,7 @@ const StateBasket = {
 /**
  * Осуществляет работу с корзиной,
  * Анимации, частицы и прочее.
- * @type {cc.Class}
+ * @class basket-animal
  */
 cc.Class({
     extends: cc.Component,
@@ -36,19 +36,18 @@ cc.Class({
         time: 1,//время за которое происходит открытие или закрытие
     },
 
-    onLoad(){
-
-    },
 
     /**
      * Инициализация непосредственно сразу после загрузки компонента.
+     * @method start
      */
     start(){
         this._previousStatus = this._stateBasket = StateBasket.active;
     },
 
     /**
-     * Корзина запустилась.
+     * Корзина запустилась. Запускает корзину(включает)
+     * @method on
      */
     on(){
         //this.node.active = true;
@@ -56,7 +55,8 @@ cc.Class({
     },
 
     /**
-     * Выключение корзины.
+     * Выключение корзины.Выключает корзину.
+     * @method off
      */
     off(){
         this.jobWithOpacity(this.opacityOff, this.time);
@@ -65,6 +65,7 @@ cc.Class({
 
     /**
      * Реакция корзины на приближающееся животное.
+     * @method onStatusActiveBasket
      */
     onStatusActiveBasket(){
         let myEvent = new cc.Event.EventCustom('basketActive', true);
@@ -74,6 +75,7 @@ cc.Class({
 
     /**
      * Состояние сна включилось.
+     * @method onStatusSleepBasket
      */
     onStatusSleepBasket(){
         let myEvent = new cc.Event.EventCustom('basketSleep', true);
@@ -83,6 +85,7 @@ cc.Class({
 
     /**
      * Состояние ловли включилось.
+     * @method onStatusWorkBasket
      */
     onStatusWorkBasket(){
         let myEvent = new cc.Event.EventCustom('basketWork', true);
@@ -92,6 +95,7 @@ cc.Class({
 
     /**
      * Событие- животное поймано.
+     * @method onGoodWorkBasket
      */
     onGoodWorkBasket(){
         cc.log('Еа, животное поймано (basket-animal)');
@@ -101,6 +105,7 @@ cc.Class({
 
     /**
      * Событие- животное не поймано.
+     * @method onBadWorkBasket
      */
     onBadWorkBasket(){
         cc.log('Ну вот опять ничего непоймал (basket-animal)');
@@ -111,6 +116,7 @@ cc.Class({
     /**
      * Работает с прозрачностью этой корзины. Постепенно приближается к прозрачности
      * корзины равной заданному значению за заданое время.
+     * @method jobWithOpacity
      * @param {number} opacity нужно достич этой прозрачности
      * @param {number} time за столько секунд
      */
@@ -129,6 +135,7 @@ cc.Class({
 
     /**
      * Проверяет будет ли жить животное или оно выброшено в корзину.
+     * @method isAnimalLife
      * @param {cc.Vec2} point точка нахождения животного
      * @returns {boolean} true - если животное будет жить
      */
@@ -149,6 +156,7 @@ cc.Class({
     /**
      * Сообщает корзине позицию животного для принятия решения по выбору действия. Корзина меняет свое состояние
      * в зависимости от расстояния.
+     * @method setPositionAnimal
      * @param {cc.Vec2} point точка текущего местонахождения животного
      */
     setPositionAnimal(point){
@@ -165,7 +173,10 @@ cc.Class({
             y: (this._rightPointTop.y + this._leftPointBottom.y) / 2
         };
 
-        let sqrtPoint = Math.sqrt((point.x - this._centrePointBasket.x) ** 2 + (point.y - this._centrePointBasket.y) ** 2);
+        let x = (point.x - this._centrePointBasket.x) * (point.x - this._centrePointBasket.x);
+        let y = (point.y - this._centrePointBasket.y) * (point.y - this._centrePointBasket.y);
+        let sqrtPoint = Math.sqrt(x + y);
+
         let isV = sqrtPoint < this.anticipation;
         (isV) ? this._stateBasket = StateBasket.active : this._stateBasket = StateBasket.sleep;
         this._updateStatusBasket();
@@ -173,6 +184,7 @@ cc.Class({
 
     /**
      * Обновляет статус корзины и вызывает соответствующее действие.
+     * @method _updateStatusBasket
      * @private
      */
     _updateStatusBasket(){
