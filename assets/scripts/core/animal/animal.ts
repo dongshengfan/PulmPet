@@ -13,6 +13,11 @@ namespace Animals {
         private _id: number;
 
         /**
+         * Имя животного
+         */
+        private _name: string;
+
+        /**
          * Опорнодвигательная система
          */
         private _muscular: Animals.Systems.TypeSystems.Muscular;
@@ -68,8 +73,16 @@ namespace Animals {
             this._id = param;
         }
 
-        get id() {
+        set name(param: string) {
+            this._name = param;
+        }
+
+        get id(): number {
             return this._id;
+        }
+
+        get name(): string {
+            return this._name;
         }
 
         /**
@@ -85,48 +98,49 @@ namespace Animals {
          * @return {{name: string, currentState: string, param: Array}}
          */
         public getCharacteristics(): Object {
-            return {
-                name: 'Животное',
-                currentState: 'Бегу',
-                param: [
-                    {
-                        name: 'Скорость',
-                        value: 89,
-                        unit: 'м/с',
-                    },
-                    {
-                        name: 'Возраст',
-                        value: 12,
-                        unit: 'лет',
-                    },
-                    {
-                        name: 'Вес',
-                        value: 12,
-                        unit: 'кг',
-                    },
-                    {
-                        name: 'Выносливость',
-                        value: 12,
-                        unit: 'ед.',
-                    },
-                    {
-                        name: 'Система кровообращения',
-                        value: 89,
-                        unit: '%',
-                    },
-                    {
-                        name: 'Система памяти',
-                        value: 59,
-                        unit: '%',
-                    },
-                    {
-                        name: 'Система дыхания',
-                        value: 89,
-                        unit: '%',
-                    }
-                ],
-            };
+            let params: Array<Object> = [
+                {
+                    name: 'Скорость',
+                    value: 89,
+                    unit: 'м/с',
+                },
+                {
+                    name: 'Возраст',
+                    value: 12,
+                    unit: 'лет',
+                },
+                {
+                    name: 'Вес',
+                    value: 12,
+                    unit: 'кг',
+                },
+                {
+                    name: 'Выносливость',
+                    value: 12,
+                    unit: 'ед.',
+                },
+                {
+                    name: 'Система кровообращения',
+                    value: 89,
+                    unit: '%',
+                },
+                {
+                    name: 'Система памяти',
+                    value: 59,
+                    unit: '%',
+                },
+                {
+                    name: 'Система дыхания',
+                    value: 89,
+                    unit: '%',
+                }
+            ];
 
+            return {
+                name: this._name,
+                currentState: 'Бегу',
+                param: params,
+            };
         }
     }
 }
