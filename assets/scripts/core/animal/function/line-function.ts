@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 19.02.2017.
  */
-namespace Animals.Functions.TypeFunctions {
+namespace Animals.Functions {
     /**
      * Линейная функция
      */

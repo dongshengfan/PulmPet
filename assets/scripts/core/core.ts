@@ -1,32 +1,26 @@
-/**
- * Created by FIRCorp on 19.02.2017.
- */
+(async function () {
+    async function test1() {
+        for (let i = 0; i < 1000000000; i++);
+        return 11;
+    }
 
+    async function test2() {
+        for (let i = 0; i < 1000000000; i++);
+        return 22;
+    }
 
-/**
- * Создает цель для движения на карте не являющуюся препятствием
- * @returns {cc.Vec2} координата цели для движения
- */
-/**getNewPointInMap(): cc.Vec2 {
-    let point: any;
-    do {
-        point = _getRandomCoordinat(this._sizeMapPixel.x, this._sizeMapPixel.y);
-        if (!this.isCheсkObstacle(this.convertTiledPos(point))) {
-            break;
-        }
-    } while (true);
-    return point;
-}*/
+    async function test3() {
+        for (let i = 0; i < 100000000000; i++);
+        return 3333;
+    }
 
-function  _getRandomInt(min:any, max:any):any {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
+    let res11 = await test1();
+    console.log(res11);
 
-function  _getRandomCoordinat(maxPosx:any,maxPosy:any):any{
-    return cc.v2(_getRandomInt(0,maxPosx),_getRandomInt(0,maxPosy));
-}
-/*
- _animal.publish({
- behavior: Animals.Communications.Factorys.BehaviorScaleTypes.increase,
- type: Animals.Scales.Factorys.ParameterScaleTypes.speed
- }, 0.8);*/
+    test3().then((res) => {console.log(res)});
+
+    let res22 = await test2();
+    console.log(res22);
+
+    console.log(3);
+})();
