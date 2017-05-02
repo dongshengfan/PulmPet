@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "sources": [
+    "unknown"
+  ],
+  "names": [
+    "BoxMenuPlay",
+    "cc",
+    "Class",
+    "extends",
+    "_settings",
+    "_type",
+    "left",
+    "timeBring",
+    "canvas",
+    "director",
+    "getWinSizeInPixels",
+    "sizeBoxY",
+    "_getSizeBox",
+    "height",
+    "node",
+    "y",
+    "indentRight",
+    "_startPos",
+    "v2",
+    "x",
+    "_endPos",
+    "width",
+    "_amountPix",
+    "Math",
+    "abs",
+    "onLoad",
+    "onClick",
+    "event",
+    "_endSwipe",
+    "publishEventOpen",
+    "myEvent",
+    "Event",
+    "EventCustom",
+    "detail",
+    "dispatchEvent",
+    "publishEventClose",
+    "update",
+    "dt",
+    "_opacityNode"
+  ],
+  "mappings": ";;AAGA;;AACA;;;;AAIA,IAAIA,cAAcC,GAAGC,KAAH,CAAS;AACvBC,qBADuB;;AAGvB;;;;AAIAC,aAPuB,uBAOX;AACR,aAAKC,KAAL,GAAa,aAAQC,IAArB;AACA,aAAKC,SAAL,GAAe,GAAf;AACA,YAAIC,SAASP,GAAGQ,QAAH,CAAYC,kBAAZ,EAAb;AACA,YAAIC,WAAW,KAAKC,WAAL,CAAiBJ,OAAOK,MAAxB,CAAf;AACA,aAAKC,IAAL,CAAUC,CAAV,GAAcJ,WAAW,CAAX,GAAe,KAAKK,WAAlC;AACA,aAAKF,IAAL,CAAUD,MAAV,GAAmBF,QAAnB;AACA,aAAKM,SAAL,GAAiBhB,GAAGiB,EAAH,CAAM,KAAKJ,IAAL,CAAUK,CAAhB,EAAmB,KAAKL,IAAL,CAAUC,CAA7B,CAAjB;AACA,aAAKK,OAAL,GAAenB,GAAGiB,EAAH,CAAM,KAAKJ,IAAL,CAAUK,CAAV,GAAc,KAAKL,IAAL,CAAUO,KAAxB,GAAgC,EAAtC,EAA0C,KAAKP,IAAL,CAAUC,CAApD,CAAf;AACA,aAAKO,UAAL,GAAkBC,KAAKC,GAAL,CAAS,KAAKJ,OAAL,CAAaD,CAAb,GAAiB,KAAKF,SAAL,CAAeE,CAAzC,CAAlB;AACH,KAjBsB;AAmBvBM,UAnBuB,oBAmBf,CAEP,CArBsB;;;AAuBvB;;;;AAIAC,WA3BuB,mBA2BfC,KA3Be,EA2BT;AACV,aAAKC,SAAL;AACH,KA7BsB;;;AA+BvB;;;AAGAC,oBAlCuB,8BAkCL;AACd,YAAIC,UAAU,IAAI7B,GAAG8B,KAAH,CAASC,WAAb,CAAyB,iBAAzB,EAA4C,IAA5C,CAAd;AACAF,gBAAQG,MAAR,GAAiB,EAAjB;AACA,aAAKnB,IAAL,CAAUoB,aAAV,CAAwBJ,OAAxB;AACH,KAtCsB;;;AAwCvB;;;AAGAK,qBA3CuB,+BA2CJ;AACf,YAAIL,UAAU,IAAI7B,GAAG8B,KAAH,CAASC,WAAb,CAAyB,kBAAzB,EAA6C,IAA7C,CAAd;AACAF,gBAAQG,MAAR,GAAiB,EAAjB;AACA,aAAKnB,IAAL,CAAUoB,aAAV,CAAwBJ,OAAxB;AACH,KA/CsB;;;AAkDvB;;;;AAIAM,UAtDuB,kBAsDhBC,EAtDgB,EAsDZ;AACP,aAAKC,YAAL,CAAkB,KAAKxB,IAAL,CAAUK,CAAV,GAAc,KAAKF,SAAL,CAAeE,CAA/C;AACH;AAxDsB,CAAT,CAAlB,C,CARA",
+  "file": "unknown",
+  "sourcesContent": [
+    "/**\r\n * Created by FIRCorp on 29.03.2017.\r\n */\r\nimport { Box, TypeBox } from './box-samples/box';\r\n/**\r\n * Бокс характеристик не предназначен для управление пользователем\r\n * @type {Function}\r\n */\r\nvar BoxMenuPlay = cc.Class({\r\n    extends: Box,\r\n\r\n    /**\r\n     * Устанавливает начальные позиции и производит вычисление длинны\r\n     * @private\r\n     */\r\n    _settings() {\r\n        this._type = TypeBox.left;\r\n        this.timeBring=0.6;\r\n        let canvas = cc.director.getWinSizeInPixels();\r\n        let sizeBoxY = this._getSizeBox(canvas.height);\r\n        this.node.y = sizeBoxY / 2 + this.indentRight;\r\n        this.node.height = sizeBoxY;\r\n        this._startPos = cc.v2(this.node.x, this.node.y);\r\n        this._endPos = cc.v2(this.node.x + this.node.width - 75, this.node.y);\r\n        this._amountPix = Math.abs(this._endPos.x - this._startPos.x);\r\n    },\r\n\r\n    onLoad(){\r\n\r\n    },\r\n\r\n    /**\r\n     * Открывает/закрывает бокс\r\n     * @param event\r\n     */\r\n    onClick(event){\r\n        this._endSwipe();\r\n    },\r\n\r\n    /**\r\n     * Публикует событие открытие бокса в контроллере\r\n     */\r\n    publishEventOpen(){\r\n        let myEvent = new cc.Event.EventCustom('openBoxMenuPlay', true);\r\n        myEvent.detail = {};\r\n        this.node.dispatchEvent(myEvent);\r\n    },\r\n\r\n    /**\r\n     * Публикует событие закрыие бокса в контроллере\r\n     */\r\n    publishEventClose(){\r\n        let myEvent = new cc.Event.EventCustom('closeBoxMenuPlay', true);\r\n        myEvent.detail = {};\r\n        this.node.dispatchEvent(myEvent);\r\n    },\r\n\r\n\r\n    /**\r\n     * Обновляет прозрачность боксов\r\n     * @param {any} dt\r\n     */\r\n    update(dt) {\r\n        this._opacityNode(this.node.x - this._startPos.x);\r\n    },\r\n});"
+  ]
+}

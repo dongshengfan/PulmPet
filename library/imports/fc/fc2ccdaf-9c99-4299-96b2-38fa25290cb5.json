@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "mind_relax",
+    "texture": "c2f925cc-7023-4936-97eb-064ba27663f1",
+    "atlas": "",
+    "rect": [
+      1,
+      0,
+      179,
+      168
+    ],
+    "offset": [
+      0.5,
+      1
+    ],
+    "originalSize": [
+      180,
+      170
+    ]
+  }
+}

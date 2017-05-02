@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "button_scare",
+    "texture": "d7546d2d-e9df-46ca-a6a1-57a4e4a3852f",
+    "atlas": "",
+    "rect": [
+      1,
+      0,
+      125,
+      125
+    ],
+    "offset": [
+      0.5,
+      0
+    ],
+    "originalSize": [
+      126,
+      125
+    ]
+  }
+}

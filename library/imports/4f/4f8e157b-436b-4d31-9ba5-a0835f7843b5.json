@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hyena_front",
+    "texture": "bd7e1184-1e35-4000-b160-7e2ae651a7cf",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      287,
+      291
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      287,
+      291
+    ]
+  }
+}

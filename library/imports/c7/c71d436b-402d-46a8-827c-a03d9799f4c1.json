@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "button_howdy",
+    "texture": "56875ae9-3839-4dc5-826c-16d54940b542",
+    "atlas": "",
+    "rect": [
+      2,
+      0,
+      125,
+      125
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      129,
+      125
+    ]
+  }
+}

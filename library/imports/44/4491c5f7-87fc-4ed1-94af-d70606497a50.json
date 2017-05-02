@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "button_vox",
+    "texture": "1dd9a68b-5c80-409e-b0a2-49ecb815b11c",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      125,
+      125
+    ],
+    "offset": [
+      0.5,
+      -0.5
+    ],
+    "originalSize": [
+      126,
+      126
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "mouse_front",
+    "texture": "272e9ca8-5c43-4a96-ae3e-cc22623b3e26",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      367,
+      317
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      367,
+      317
+    ]
+  }
+}

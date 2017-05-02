@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "good_hands_1",
+    "texture": "079b9bf0-3fa4-4272-9c48-6793da923c5f",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      211,
+      69
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      211,
+      69
+    ]
+  }
+}

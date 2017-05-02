@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "mind_scare",
+    "texture": "0da2324c-aaee-4bae-838b-d09d44501a4d",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      179,
+      168
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      179,
+      168
+    ]
+  }
+}

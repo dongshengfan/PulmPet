@@ -1,0 +1,30 @@
+{
+  "version": 3,
+  "sources": [
+    "unknown"
+  ],
+  "names": [
+    "cc",
+    "Class",
+    "extends",
+    "Component",
+    "onLoad",
+    "node",
+    "on",
+    "Node",
+    "EventType",
+    "TOUCH_START",
+    "onTouchStart",
+    "bind",
+    "TOUCH_MOVE",
+    "onTouchMove",
+    "TOUCH_END",
+    "onTouchEnd",
+    "event"
+  ],
+  "mappings": ";;AAAA;;;AAGAA,GAAGC,KAAH,CAAS;AACLC,aAASF,GAAGG,SADP;;AAGL;;;AAGAC,UANK,oBAMI;AACL,aAAKC,IAAL,CAAUC,EAAV,CAAaN,GAAGO,IAAH,CAAQC,SAAR,CAAkBC,WAA/B,EAA4C,KAAKC,YAAL,CAAkBC,IAAlB,CAAuB,IAAvB,CAA5C;AACA,aAAKN,IAAL,CAAUC,EAAV,CAAaN,GAAGO,IAAH,CAAQC,SAAR,CAAkBI,UAA/B,EAA2C,KAAKC,WAAL,CAAiBF,IAAjB,CAAsB,IAAtB,CAA3C;AACA,aAAKN,IAAL,CAAUC,EAAV,CAAaN,GAAGO,IAAH,CAAQC,SAAR,CAAkBM,SAA/B,EAA0C,KAAKC,UAAL,CAAgBJ,IAAhB,CAAqB,IAArB,CAA1C;AACH,KAVI;;;AAYL;;;;AAIAD,gBAhBK,wBAgBQM,KAhBR,EAgBc,CAElB,CAlBI;;;AAoBL;;;;AAIAH,eAxBK,uBAwBOG,KAxBP,EAwBa,CAEjB,CA1BI;;;AA4BL;;;;AAIAD,cAhCK,sBAgCMC,KAhCN,EAgCY,CAEhB;AAlCI,CAAT",
+  "file": "unknown",
+  "sourcesContent": [
+    "/**\r\n * Created by FIRCorp on 31.03.2017.\r\n */\r\ncc.Class({\r\n    extends: cc.Component,\r\n\r\n    /**\r\n     *\r\n     */\r\n    onLoad() {\r\n        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart.bind(this));\r\n        this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove.bind(this));\r\n        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd.bind(this));\r\n    },\r\n\r\n    /**\r\n     *\r\n     * @param event\r\n     */\r\n    onTouchStart(event){\r\n\r\n    },\r\n\r\n    /**\r\n     *\r\n     * @param event\r\n     */\r\n    onTouchMove(event){\r\n\r\n    },\r\n\r\n    /**\r\n     *\r\n     * @param event\r\n     */\r\n    onTouchEnd(event){\r\n\r\n    },\r\n});\r\n"
+  ]
+}

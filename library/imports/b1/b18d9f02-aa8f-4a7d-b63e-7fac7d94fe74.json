@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "characteristic_left_menu_ribbon",
+    "texture": "35115cb1-fd3d-4a48-afb8-b08dcb621710",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      71,
+      403
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      71,
+      403
+    ]
+  }
+}

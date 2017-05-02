@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "mind_play",
+    "texture": "45fa434b-27d8-4b22-8133-967b42f3019b",
+    "atlas": "",
+    "rect": [
+      1,
+      0,
+      179,
+      168
+    ],
+    "offset": [
+      0.5,
+      0
+    ],
+    "originalSize": [
+      180,
+      168
+    ]
+  }
+}

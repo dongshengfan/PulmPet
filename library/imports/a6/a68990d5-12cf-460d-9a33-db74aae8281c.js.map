@@ -1,0 +1,23 @@
+{
+  "version": 3,
+  "sources": [
+    "unknown"
+  ],
+  "names": [
+    "CircularListActionsAnimal",
+    "cc",
+    "Class",
+    "extends",
+    "settings",
+    "controllerAnimal",
+    "node",
+    "radius",
+    "width",
+    "_refreshMenu"
+  ],
+  "mappings": ";;;;;;;AAAA;;AAEA;;;;;AAKA,IAAIA,4BAA4BC,GAAGC,KAAH,CAAS;AACrCC,uCADqC;;AAGrC;;;;;AAKAC,YARqC,oBAQ5BC,gBAR4B,EAQX;AACtB,YAAIC,OAAOD,iBAAiBC,IAA5B;;AAEA,aAAKC,MAAL,GAAcD,KAAKE,KAAL,GAAa,IAA3B;AACA,YAAI,KAAKD,MAAL,GAAc,GAAlB,EAAuB;AACnB,iBAAKA,MAAL,GAAc,GAAd;AACH,SAFD,MAEO,IAAI,KAAKA,MAAL,GAAc,GAAlB,EAAuB;AAC1B,iBAAKA,MAAL,GAAc,GAAd;AACH;;AAED,aAAKE,YAAL;AACH;AAnBoC,CAAT,CAAhC;;QAsBST,yB,GAAAA,yB",
+  "file": "unknown",
+  "sourcesContent": [
+    "import { CircularList } from './circular-list';\r\n\r\n/**\r\n * Настраивает круглое меню животного\r\n * @class CircularListActionsAnimal\r\n * @extends CircularList\r\n */\r\nvar CircularListActionsAnimal = cc.Class({\r\n    extends: CircularList,\r\n\r\n    /**\r\n     * Настройка меню для конкретного животного. Настраивает радиус круга.\r\n     * @method settings\r\n     * @param {cc.Component} controllerAnimal контроллер животного.\r\n     */\r\n    settings(controllerAnimal){\r\n        let node = controllerAnimal.node;\r\n\r\n        this.radius = node.width * 1.75;\r\n        if (this.radius > 150) {\r\n            this.radius = 150;\r\n        } else if (this.radius < 100) {\r\n            this.radius = 100;\r\n        }\r\n\r\n        this._refreshMenu();\r\n    },\r\n});\r\n\r\nexport { CircularListActionsAnimal };"
+  ]
+}

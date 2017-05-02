@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "mind_food",
+    "texture": "7742a968-b0b6-48e2-b604-b8862dd55296",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      179,
+      168
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      179,
+      168
+    ]
+  }
+}
