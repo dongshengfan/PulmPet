@@ -219,31 +219,6 @@
     "meta": 1493696930015,
     "relativePath": "prefab\\webview.prefab"
   },
-  "7875358f-abb6-4396-8ada-da4a54afb016": {
-    "asset": 1493697516996,
-    "meta": 1493697526040,
-    "relativePath": "scripts\\core\\animal-behaviour"
-  },
-  "e89f6c80-08a6-4999-a8a6-ad6073b4095b": {
-    "asset": 1493697517031,
-    "meta": 1493697526043,
-    "relativePath": "scripts\\core\\animal-behaviour\\state-machine"
-  },
-  "74f50667-95d7-4cdf-bc4c-d7faac645c2b": {
-    "asset": 1493697517045,
-    "meta": 1493697526047,
-    "relativePath": "scripts\\core\\animal-behaviour\\state-machine\\states"
-  },
-  "2e85085a-fecc-4671-86ea-6a4e69fac497": {
-    "asset": 1493697485674,
-    "meta": 1493697517044,
-    "relativePath": "scripts\\core\\animal-behaviour\\state-machine\\states\\algorithmSeachWays"
-  },
-  "7bbd1fc5-1dbe-45a1-ab2e-b8ac60a3de10": {
-    "asset": 1493697485686,
-    "meta": 1493697517052,
-    "relativePath": "scripts\\core\\animal-behaviour\\state-machine\\states\\mapa"
-  },
   "aba66ccb-a92f-477d-9ddc-8bc096bec6df": {
     "asset": 1493697104117,
     "meta": 1493697517872,
@@ -515,8 +490,8 @@
     "relativePath": "scenes"
   },
   "9c1cc2e0-ac25-477e-bcf3-c16b5bc9fc32": {
-    "asset": 1493697544079,
-    "meta": 1493697544124,
+    "asset": 1493697696306,
+    "meta": 1493697696359,
     "relativePath": "scenes\\Play.fire"
   },
   "c6ee7da5-358a-4436-bd42-3331ba730077": {
