@@ -2,7 +2,12 @@
  * Created by FIRCorp on 12.03.2017.
  */
 namespace Animals {
+
+    /**
+     *
+     */
     export class AnimalBuilder {
+
         /**
          *
          */
@@ -17,6 +22,11 @@ namespace Animals {
          *
          */
         masSystems: any[];
+
+        /**
+         *
+         */
+        _animal: Animal;
 
         /**
          *
@@ -77,17 +87,49 @@ namespace Animals {
 
         /**
          *
+         * @param states
+         * @returns {Animals.StateMachine.StateMachine}
+         */
+        createStates(states: any): Animals.StateMachine.StateMachine {
+            let factory = Animals.StateMachine.FactoryState.StateFactory.instance();
+            let paramState: any[] = [];
+            let {state, links}=states;
+            state.forEach((item: any) => {
+                paramState[item.type] = factory.create(item.type, item.name, this._animal, item.isEnd);
+            });
+
+            links.forEach((item: any) => {
+                let massStates: any[] = [];
+                item.link.forEach((state: any) => {
+                    massStates.push(new Animals.StateMachine.Routes.Route(paramState[state.type], (model: Animal, probability: number) => {
+                        if (state.probability > probability) {
+                            return true;
+                        }
+                        return false;
+
+                    }));
+                });
+                paramState[item.type].setRouteEngine(new Animals.StateMachine.Routes.Engines.ProbabilityRouteEngine(massStates));
+            });
+
+            return new Animals.StateMachine.StateMachine(paramState[Animals.StateMachine.FactoryState.TypesState.startLife]);
+        }
+
+        /**
+         *
          * @param model
          * @returns {Animals.Animal}
          */
         create(model: any): Animal {
-            let {systems, scales, communication}=model;
+            let {name, systems, scales, communication, states}=model;
             this.masScales = [];
             this.masSystems = [];
             let communicator = this.createScales(scales).createSystems(systems).createCommunicator(communication);
-            let animal = new Animals.Animal(this.masSystems);
-            animal.communicator = communicator;
-            return animal;
+            this._animal = new Animals.Animal(this.masSystems);
+            this._animal.name = name;
+            this._animal.stateMachine = this.createStates(states);
+            this._animal.communicator = communicator;
+            return this._animal;
         }
     }
 }

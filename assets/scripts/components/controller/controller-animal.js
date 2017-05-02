@@ -27,8 +27,23 @@ cc.Class({
      */
     settings(model){
         this._model = model;
+        cc.log(this.node.children);
+        this.settingCollider(this._model.navigation.radiusVision,this.node.children[0].getComponent(cc.CircleCollider));
+        this.settingCollider(this._model.navigation.radiusHearing,this.node.children[1].getComponent(cc.CircleCollider));
+        this.settingCollider(this._model.navigation.radiusSmell,this.node.children[2].getComponent(cc.CircleCollider));
+        this.settingCollider(this._model.navigation.radiusTouch,this.node.children[3].getComponent(cc.CircleCollider));
+
     },
 
+    /**
+     * Настраивает коллайдеры у животного согласно его модели
+     * @method settingCollider
+     * @param {Animals.Systems.ISystem} system
+     * @param {cc.CircleCollider} component
+     */
+    settingCollider(system,component){
+        system===undefined?component.radius=0:component.radius=system.current;
+    },
 
     /**
      * Обработчик события начала тача
@@ -60,6 +75,7 @@ cc.Class({
             let myEvent = new cc.Event.EventCustom('motionAnimal', true);
             myEvent.detail = {
                 deltaMotion: delta,
+                pointEnd: event.getLocation()
             };
             this.node.dispatchEvent(myEvent);
         }
@@ -72,7 +88,6 @@ cc.Class({
      * @private
      */
     _onTouchEndAnimal(event){
-        // cc.log(event);
         if (this._isMove) {
             let myEvent = new cc.Event.EventCustom('endMotionAnimal', true);
             myEvent.detail = {
@@ -152,6 +167,14 @@ cc.Class({
      */
     moveToPoint(point){
         this._model.moveToPoint(point);
+    },
+
+    /**
+     * Запускает жизнь животного
+     * @method run
+     */
+    run(){
+        this._model.runLife();
     },
 
     /**

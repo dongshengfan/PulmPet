@@ -58,7 +58,7 @@ namespace Animals.Communications {
          * @param param дельта изменения
          */
         publish(pack: any, param: number): void {
-            var links = this._netLinks[pack.type];
+            let links = this._netLinks[pack.type];
             if (links) {
                 links.forEach((link: any) => {
                     let delta = link.fun.calculate(param);

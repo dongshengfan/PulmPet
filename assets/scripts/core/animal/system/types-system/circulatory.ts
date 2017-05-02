@@ -13,6 +13,12 @@ namespace Animals.Systems.TypeSystems {
         state: Animals.Scales.TypeScales.SystemScale;
 
         /**
+         * Ссылка на класс животного
+         * @type {Animal}
+         */
+        _linkToAnimal:Animals.Animal;
+
+        /**
          * Сердцебиение животного
          * @type {ArgumentScale}
          */

@@ -50,16 +50,43 @@ var Animals;
             });
             return communicatorBuild.build();
         };
+        AnimalBuilder.prototype.createStates = function (states) {
+            var _this = this;
+            var factory = Animals.StateMachine.FactoryState.StateFactory.instance();
+            var paramState = [];
+            var state = states.state,
+                links = states.links;
+            state.forEach(function (item) {
+                paramState[item.type] = factory.create(item.type, item.name, _this._animal, item.isEnd);
+            });
+            links.forEach(function (item) {
+                var massStates = [];
+                item.link.forEach(function (state) {
+                    massStates.push(new Animals.StateMachine.Routes.Route(paramState[state.type], function (model, probability) {
+                        if (state.probability > probability) {
+                            return true;
+                        }
+                        return false;
+                    }));
+                });
+                paramState[item.type].setRouteEngine(new Animals.StateMachine.Routes.Engines.ProbabilityRouteEngine(massStates));
+            });
+            return new Animals.StateMachine.StateMachine(paramState[Animals.StateMachine.FactoryState.TypesState.startLife]);
+        };
         AnimalBuilder.prototype.create = function (model) {
-            var systems = model.systems,
+            var name = model.name,
+                systems = model.systems,
                 scales = model.scales,
-                communication = model.communication;
+                communication = model.communication,
+                states = model.states;
             this.masScales = [];
             this.masSystems = [];
             var communicator = this.createScales(scales).createSystems(systems).createCommunicator(communication);
-            var animal = new Animals.Animal(this.masSystems);
-            animal.communicator = communicator;
-            return animal;
+            this._animal = new Animals.Animal(this.masSystems);
+            this._animal.name = name;
+            this._animal.stateMachine = this.createStates(states);
+            this._animal.communicator = communicator;
+            return this._animal;
         };
         return AnimalBuilder;
     }();
@@ -72,8 +99,14 @@ var Animals;
             this.muscular = params[Animals.Systems.SystemTypes.muscular];
             this.circulatory = params[Animals.Systems.SystemTypes.circulatory];
             this.navigation = params[Animals.Systems.SystemTypes.navigation];
+            this.muscular._linkToAnimal = this;
+            this.circulatory._linkToAnimal = this;
+            this.navigation._linkToAnimal = this;
         }
         Object.defineProperty(Animal.prototype, "muscular", {
+            get: function get() {
+                return this._muscular;
+            },
             set: function set(param) {
                 if (param) {
                     this._muscular = param;
@@ -83,6 +116,9 @@ var Animals;
             configurable: true
         });
         Object.defineProperty(Animal.prototype, "circulatory", {
+            get: function get() {
+                return this._circulatory;
+            },
             set: function set(param) {
                 if (param) {
                     this._circulatory = param;
@@ -92,6 +128,9 @@ var Animals;
             configurable: true
         });
         Object.defineProperty(Animal.prototype, "navigation", {
+            get: function get() {
+                return this._navigation;
+            },
             set: function set(param) {
                 if (param) {
                     this._navigation = param;
@@ -101,8 +140,21 @@ var Animals;
             configurable: true
         });
         Object.defineProperty(Animal.prototype, "communicator", {
+            get: function get() {
+                return this._communicator;
+            },
             set: function set(param) {
                 this._communicator = param;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Animal.prototype, "stateMachine", {
+            get: function get() {
+                return this._stateMachine;
+            },
+            set: function set(param) {
+                this._stateMachine = param;
             },
             enumerable: true,
             configurable: true
@@ -117,40 +169,55 @@ var Animals;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(Animal.prototype, "name", {
+            get: function get() {
+                return this._name;
+            },
+            set: function set(param) {
+                this._name = param;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Animal.prototype.moveToPoint = function (point) {};
+        Animal.prototype.runLife = function () {
+            console.log(this);
+            this._stateMachine.run();
+        };
         Animal.prototype.getCharacteristics = function () {
+            var params = [{
+                name: 'Скорость',
+                value: 89,
+                unit: 'м/с'
+            }, {
+                name: 'Возраст',
+                value: 12,
+                unit: 'лет'
+            }, {
+                name: 'Вес',
+                value: 12,
+                unit: 'кг'
+            }, {
+                name: 'Выносливость',
+                value: 12,
+                unit: 'ед.'
+            }, {
+                name: 'Система кровообращения',
+                value: 89,
+                unit: '%'
+            }, {
+                name: 'Система памяти',
+                value: 59,
+                unit: '%'
+            }, {
+                name: 'Система дыхания',
+                value: 89,
+                unit: '%'
+            }];
             return {
-                name: 'Животное',
+                name: this._name,
                 currentState: 'Бегу',
-                param: [{
-                    name: 'Скорость',
-                    value: 89,
-                    unit: 'м/с'
-                }, {
-                    name: 'Возраст',
-                    value: 12,
-                    unit: 'лет'
-                }, {
-                    name: 'Вес',
-                    value: 12,
-                    unit: 'кг'
-                }, {
-                    name: 'Выносливость',
-                    value: 12,
-                    unit: 'ед.'
-                }, {
-                    name: 'Система кровообращения',
-                    value: 89,
-                    unit: '%'
-                }, {
-                    name: 'Система памяти',
-                    value: 59,
-                    unit: '%'
-                }, {
-                    name: 'Система дыхания',
-                    value: 89,
-                    unit: '%'
-                }]
+                param: params
             };
         };
         return Animal;
@@ -562,12 +629,12 @@ var Animals;
                     configurable: true
                 });
                 ArgumentScale.prototype.trigger = function (params) {
-                    var event = Math.sign(params) ? Animals.Communications.BehaviorScaleTypes.increase : Animals.Communications.BehaviorScaleTypes.decrease;
+                    var event = params > 0 ? Animals.Communications.BehaviorScaleTypes.increase : Animals.Communications.BehaviorScaleTypes.decrease;
                     var pack = {
                         behavior: event,
                         type: this._type
                     };
-                    this.communicator.publish(pack, params);
+                    this._communicator.publish(pack, params);
                 };
                 ArgumentScale.prototype.change = function (delta) {
                     var _this = this;
@@ -751,6 +818,17 @@ var Animals;
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(Muscular.prototype, "currentPoint", {
+                    get: function get() {
+                        return this._currentPoint;
+                    },
+                    set: function set(param) {
+                        this._currentPoint.x = param.x;
+                        this._currentPoint.y = param.y;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Muscular.prototype.changeSpeed = function (delta) {
                     this._speed.change(delta);
                     this.analysis();
@@ -872,73 +950,6 @@ var Animals;
         })(TypeSystems = Systems.TypeSystems || (Systems.TypeSystems = {}));
     })(Systems = Animals.Systems || (Animals.Systems = {}));
 })(Animals || (Animals = {}));
-var lion = {
-    systems: [{
-        type: Animals.Systems.SystemTypes.muscular,
-        scalesType: [{ type: Animals.Scales.ParameterScaleTypes.speed }, { type: Animals.Scales.ParameterScaleTypes.speed }, { type: Animals.Scales.ParameterScaleTypes.weight }]
-    }, {
-        type: Animals.Systems.SystemTypes.circulatory,
-        scalesType: [{ type: Animals.Scales.ParameterScaleTypes.pressure }, { type: Animals.Scales.ParameterScaleTypes.heartbeat }]
-    }],
-    scales: [{
-        typeScale: Animals.Scales.ScaleTypes.argument,
-        type: Animals.Scales.ParameterScaleTypes.heartbeat,
-        params: {
-            name: 'Сердцебиение',
-            current: 9,
-            min: 0,
-            max: 100,
-            responseDelay: 0.12
-        }
-    }, {
-        typeScale: Animals.Scales.ScaleTypes.argument,
-        type: Animals.Scales.ParameterScaleTypes.pressure,
-        params: {
-            name: 'Давление',
-            current: 8,
-            min: 0,
-            max: 10,
-            responseDelay: 0.13
-        }
-    }, {
-        typeScale: Animals.Scales.ScaleTypes.argument,
-        type: Animals.Scales.ParameterScaleTypes.speed,
-        params: {
-            name: 'Скорость',
-            current: 9,
-            min: 0,
-            max: 100,
-            responseDelay: 0.12
-        }
-    }, {
-        typeScale: Animals.Scales.ScaleTypes.argument,
-        type: Animals.Scales.ParameterScaleTypes.weight,
-        params: {
-            name: 'Вес',
-            current: 8,
-            min: 0,
-            max: 10,
-            responseDelay: 0.1
-        }
-    }],
-    communication: [{
-        type: Animals.Scales.ParameterScaleTypes.speed,
-        link: [{
-            type: Animals.Scales.ParameterScaleTypes.weight,
-            behavior: Animals.Communications.BehaviorScaleTypes.increase,
-            functions: Animals.Functions.FunctionTypes.line,
-            params: [0.5, 0.18]
-        }]
-    }, {
-        type: Animals.Scales.ParameterScaleTypes.weight,
-        link: [{
-            type: Animals.Scales.ParameterScaleTypes.speed,
-            behavior: Animals.Communications.BehaviorScaleTypes.decrease,
-            functions: Animals.Functions.FunctionTypes.line,
-            params: [0.5, 0.1]
-        }]
-    }]
-};
 var APICore = function () {
     function APICore() {}
     APICore.instance = function () {
@@ -1057,4 +1068,634 @@ var Map;
     }();
     Map_1.Map = Map;
 })(Map || (Map = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine_1) {
+        var StateMachine = function () {
+            function StateMachine(state) {
+                this._state = state;
+            }
+            StateMachine.prototype.run = function () {
+                var _this = this;
+                this._state.run().then(function () {
+                    if (!_this._state.isEndPoint()) {
+                        _this._state = _this._state.getNextState();
+                        _this.run();
+                    }
+                }, function () {
+                    throw new Error('Error in state... (StateMachine)');
+                });
+            };
+            return StateMachine;
+        }();
+        StateMachine_1.StateMachine = StateMachine;
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var States;
+        (function (States) {
+            var State = function () {
+                function State(name, model, routeEngine, isEndPoint) {
+                    if (routeEngine === void 0) {
+                        routeEngine = null;
+                    }
+                    if (isEndPoint === void 0) {
+                        isEndPoint = false;
+                    }
+                    this._name = name;
+                    this._model = model;
+                    this._routeEngine = routeEngine;
+                    this._isEndPoint = isEndPoint;
+                }
+                State.prototype.getName = function () {
+                    return this._name;
+                };
+                State.prototype.getNextState = function () {
+                    if (!this._routeEngine) {
+                        return this;
+                    }
+                    var route = this._routeEngine.getRoute();
+                    return route ? route.getState() : this;
+                };
+                State.prototype.isEndPoint = function () {
+                    return this._isEndPoint;
+                };
+                State.prototype.setRouteEngine = function (routeEngine) {
+                    this._routeEngine = routeEngine;
+                    this._routeEngine.setModel(this._model);
+                };
+                State.prototype.add = function (state) {
+                    throw new Error('Not implemented yet...');
+                };
+                State.prototype.run = function (model) {
+                    throw new Error('Not implemented yet...');
+                };
+                return State;
+            }();
+            States.State = State;
+        })(States = StateMachine.States || (StateMachine.States = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var States;
+        (function (States) {
+            var TypesState;
+            (function (TypesState) {
+                var PatternState = function (_super) {
+                    __extends(PatternState, _super);
+                    function PatternState(name, model, routeEngine, states) {
+                        if (routeEngine === void 0) {
+                            routeEngine = null;
+                        }
+                        if (states === void 0) {
+                            states = [];
+                        }
+                        _super.call(this, name, model, routeEngine);
+                        this._states = states;
+                    }
+                    PatternState.prototype.add = function (state) {
+                        this._states.push(state);
+                    };
+                    PatternState.prototype.run = function (model) {
+                        var state = this._states[0];
+                        while (state) {
+                            this._state = state;
+                            state.run(model);
+                        }
+                    };
+                    PatternState.prototype.getName = function () {
+                        if (!this._state) {
+                            throw new Error('Current state not initialized...');
+                        }
+                        return this._state.getName();
+                    };
+                    return PatternState;
+                }(States.State);
+                TypesState.PatternState = PatternState;
+            })(TypesState = States.TypesState || (States.TypesState = {}));
+        })(States = StateMachine.States || (StateMachine.States = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var States;
+        (function (States) {
+            var TypesState;
+            (function (TypesState) {
+                var PrimitiveState = function (_super) {
+                    __extends(PrimitiveState, _super);
+                    function PrimitiveState(name, model, isEndPoint, routeEngine) {
+                        if (isEndPoint === void 0) {
+                            isEndPoint = false;
+                        }
+                        if (routeEngine === void 0) {
+                            routeEngine = null;
+                        }
+                        _super.call(this, name, model, routeEngine, isEndPoint);
+                    }
+                    PrimitiveState.prototype.run = function () {
+                        throw new Error('No implementation status...');
+                    };
+                    return PrimitiveState;
+                }(States.State);
+                TypesState.PrimitiveState = PrimitiveState;
+            })(TypesState = States.TypesState || (States.TypesState = {}));
+        })(States = StateMachine.States || (StateMachine.States = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var Routes;
+        (function (Routes) {
+            var Engines;
+            (function (Engines) {
+                var RouteEngine = function () {
+                    function RouteEngine(routes, nextEngine) {
+                        if (routes === void 0) {
+                            routes = [];
+                        }
+                        if (nextEngine === void 0) {
+                            nextEngine = null;
+                        }
+                        this._routes = routes;
+                        this._nextEngine = nextEngine;
+                    }
+                    RouteEngine.prototype.add = function (routes) {
+                        (_a = this._routes).push.apply(_a, routes);
+                        var _a;
+                    };
+                    RouteEngine.prototype.getRoute = function () {
+                        throw new Error('Not implemented yet...');
+                    };
+                    RouteEngine.prototype.setNextEngine = function (engine) {
+                        this._nextEngine = engine;
+                    };
+                    RouteEngine.prototype.setModel = function (animal) {
+                        this._model = animal;
+                    };
+                    RouteEngine.prototype._nextRouteEngine = function () {
+                        if (this._nextEngine) {
+                            return this._nextEngine.getRoute();
+                        }
+                        return null;
+                    };
+                    return RouteEngine;
+                }();
+                Engines.RouteEngine = RouteEngine;
+            })(Engines = Routes.Engines || (Routes.Engines = {}));
+        })(Routes = StateMachine.Routes || (StateMachine.Routes = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var Routes;
+        (function (Routes) {
+            var Engines;
+            (function (Engines) {
+                var SimpleRouteEngine = function (_super) {
+                    __extends(SimpleRouteEngine, _super);
+                    function SimpleRouteEngine(routes, nextEngine) {
+                        if (routes === void 0) {
+                            routes = [];
+                        }
+                        if (nextEngine === void 0) {
+                            nextEngine = null;
+                        }
+                        _super.call(this, routes, nextEngine);
+                    }
+                    SimpleRouteEngine.prototype.getRoute = function () {
+                        var _this = this;
+                        var routes = this._routes.filter(function (route) {
+                            return route.isAvailable(_this._model);
+                        });
+                        return routes.length > 0 ? routes[0] : this._nextRouteEngine();
+                    };
+                    return SimpleRouteEngine;
+                }(Engines.RouteEngine);
+                Engines.SimpleRouteEngine = SimpleRouteEngine;
+            })(Engines = Routes.Engines || (Routes.Engines = {}));
+        })(Routes = StateMachine.Routes || (StateMachine.Routes = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var Routes;
+        (function (Routes) {
+            var Engines;
+            (function (Engines) {
+                var ProbabilityRouteEngine = function (_super) {
+                    __extends(ProbabilityRouteEngine, _super);
+                    function ProbabilityRouteEngine(routes, nextEngine) {
+                        if (routes === void 0) {
+                            routes = [];
+                        }
+                        if (nextEngine === void 0) {
+                            nextEngine = null;
+                        }
+                        _super.call(this, routes, nextEngine);
+                    }
+                    ProbabilityRouteEngine.prototype.getRoute = function () {
+                        var _this = this;
+                        var probability = Math.random();
+                        var routes = this._routes.filter(function (route) {
+                            return route.isAvailable(_this._model, probability);
+                        });
+                        return routes.length > 0 ? routes[0] : this._nextRouteEngine();
+                    };
+                    return ProbabilityRouteEngine;
+                }(Engines.RouteEngine);
+                Engines.ProbabilityRouteEngine = ProbabilityRouteEngine;
+            })(Engines = Routes.Engines || (Routes.Engines = {}));
+        })(Routes = StateMachine.Routes || (StateMachine.Routes = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var Routes;
+        (function (Routes) {
+            var Route = function () {
+                function Route(state, availability) {
+                    this._state = state;
+                    this._availability = availability;
+                }
+                Route.prototype.isAvailable = function (model, probability) {
+                    if (probability === void 0) {
+                        probability = 1.0;
+                    }
+                    return this._availability && this._availability(model, probability) ? this._state : null;
+                };
+                Route.prototype.getState = function () {
+                    return this._state;
+                };
+                return Route;
+            }();
+            Routes.Route = Route;
+        })(Routes = StateMachine.Routes || (StateMachine.Routes = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var StatesLib;
+        (function (StatesLib) {
+            var StateDie = function (_super) {
+                __extends(StateDie, _super);
+                function StateDie(name, model, isEndPoint, routeEngine) {
+                    if (isEndPoint === void 0) {
+                        isEndPoint = false;
+                    }
+                    if (routeEngine === void 0) {
+                        routeEngine = null;
+                    }
+                    _super.call(this, name, model, isEndPoint, routeEngine);
+                }
+                StateDie.prototype.run = function () {
+                    var resolveFn, rejectFn;
+                    var promise = new Promise(function (resolve, reject) {
+                        resolveFn = resolve;
+                        rejectFn = reject;
+                    });
+                    console.log('умер');
+                    setTimeout(function () {
+                        resolveFn();
+                    }, 4000);
+                    return promise;
+                };
+                return StateDie;
+            }(Animals.StateMachine.States.TypesState.PrimitiveState);
+            StatesLib.StateDie = StateDie;
+        })(StatesLib = StateMachine.StatesLib || (StateMachine.StatesLib = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var StatesLib;
+        (function (StatesLib) {
+            var StateRun = function (_super) {
+                __extends(StateRun, _super);
+                function StateRun(name, model, isEndPoint, routeEngine) {
+                    if (isEndPoint === void 0) {
+                        isEndPoint = false;
+                    }
+                    if (routeEngine === void 0) {
+                        routeEngine = null;
+                    }
+                    _super.call(this, name, model, isEndPoint, routeEngine);
+                }
+                StateRun.prototype.run = function () {
+                    var resolveFn, rejectFn;
+                    var promise = new Promise(function (resolve, reject) {
+                        resolveFn = resolve;
+                        rejectFn = reject;
+                    });
+                    console.log('бегу');
+                    this._model.muscular.changeSpeed(-0.4);
+                    this._model.muscular.changeWeight(-0.5);
+                    setTimeout(function () {
+                        resolveFn();
+                    }, 4000);
+                    return promise;
+                };
+                return StateRun;
+            }(Animals.StateMachine.States.TypesState.PrimitiveState);
+            StatesLib.StateRun = StateRun;
+        })(StatesLib = StateMachine.StatesLib || (StateMachine.StatesLib = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var StatesLib;
+        (function (StatesLib) {
+            var StateStand = function (_super) {
+                __extends(StateStand, _super);
+                function StateStand(name, model, isEndPoint, routeEngine) {
+                    if (isEndPoint === void 0) {
+                        isEndPoint = false;
+                    }
+                    if (routeEngine === void 0) {
+                        routeEngine = null;
+                    }
+                    _super.call(this, name, model, isEndPoint, routeEngine);
+                }
+                StateStand.prototype.run = function () {
+                    var resolveFn, rejectFn;
+                    var promise = new Promise(function (resolve, reject) {
+                        resolveFn = resolve;
+                        rejectFn = reject;
+                    });
+                    console.log('стою');
+                    this._model.muscular.changeSpeed(0.5);
+                    this._model.muscular.changeWeight(0.7);
+                    setTimeout(function () {
+                        resolveFn();
+                    }, 4000);
+                    return promise;
+                };
+                return StateStand;
+            }(Animals.StateMachine.States.TypesState.PrimitiveState);
+            StatesLib.StateStand = StateStand;
+        })(StatesLib = StateMachine.StatesLib || (StateMachine.StatesLib = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var StatesLib;
+        (function (StatesLib) {
+            var StateStart = function (_super) {
+                __extends(StateStart, _super);
+                function StateStart(name, model, isEndPoint, routeEngine) {
+                    if (isEndPoint === void 0) {
+                        isEndPoint = false;
+                    }
+                    if (routeEngine === void 0) {
+                        routeEngine = null;
+                    }
+                    _super.call(this, name, model, isEndPoint, routeEngine);
+                }
+                StateStart.prototype.run = function () {
+                    var resolveFn, rejectFn;
+                    var promise = new Promise(function (resolve, reject) {
+                        resolveFn = resolve;
+                        rejectFn = reject;
+                    });
+                    console.log('Начал жить');
+                    this._model.muscular.changeSpeed(0.001);
+                    this._model.muscular.changeWeight(0.001);
+                    setTimeout(function () {
+                        resolveFn();
+                    }, 4000);
+                    return promise;
+                };
+                return StateStart;
+            }(Animals.StateMachine.States.TypesState.PrimitiveState);
+            StatesLib.StateStart = StateStart;
+        })(StatesLib = StateMachine.StatesLib || (StateMachine.StatesLib = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var FactoryState;
+        (function (FactoryState) {
+            var StateFactory = function () {
+                function StateFactory() {
+                    this._factories = [];
+                    this._factories[FactoryState.TypesState.startLife] = Animals.StateMachine.StatesLib.StateStart;
+                    this._factories[FactoryState.TypesState.stand] = Animals.StateMachine.StatesLib.StateStand;
+                    this._factories[FactoryState.TypesState.run] = Animals.StateMachine.StatesLib.StateRun;
+                    this._factories[FactoryState.TypesState.die] = Animals.StateMachine.StatesLib.StateDie;
+                }
+                StateFactory.instance = function () {
+                    if (!this._instance) {
+                        this._instance = new StateFactory();
+                    }
+                    return this._instance;
+                };
+                StateFactory.prototype.add = function (type, state) {
+                    this._factories[type] = state;
+                };
+                StateFactory.prototype.create = function (typeState, name, animal, isEnd) {
+                    return new this._factories[typeState](name, animal, isEnd, null);
+                };
+                return StateFactory;
+            }();
+            FactoryState.StateFactory = StateFactory;
+        })(FactoryState = StateMachine.FactoryState || (StateMachine.FactoryState = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var Animals;
+(function (Animals) {
+    var StateMachine;
+    (function (StateMachine) {
+        var FactoryState;
+        (function (FactoryState) {
+            (function (TypesState) {
+                TypesState[TypesState["startLife"] = 1] = "startLife";
+                TypesState[TypesState["stand"] = 2] = "stand";
+                TypesState[TypesState["run"] = 3] = "run";
+                TypesState[TypesState["die"] = 4] = "die";
+            })(FactoryState.TypesState || (FactoryState.TypesState = {}));
+            var TypesState = FactoryState.TypesState;
+        })(FactoryState = StateMachine.FactoryState || (StateMachine.FactoryState = {}));
+    })(StateMachine = Animals.StateMachine || (Animals.StateMachine = {}));
+})(Animals || (Animals = {}));
+var lion = {
+    name: 'Лев',
+    systems: [{
+        type: Animals.Systems.SystemTypes.muscular,
+        scalesType: [{ type: Animals.Scales.ParameterScaleTypes.speed }, { type: Animals.Scales.ParameterScaleTypes.speed }, { type: Animals.Scales.ParameterScaleTypes.weight }]
+    }, {
+        type: Animals.Systems.SystemTypes.circulatory,
+        scalesType: [{ type: Animals.Scales.ParameterScaleTypes.pressure }, { type: Animals.Scales.ParameterScaleTypes.heartbeat }]
+    }, {
+        type: Animals.Systems.SystemTypes.navigation,
+        scalesType: [{ type: Animals.Scales.ParameterScaleTypes.speedSavvy }, { type: Animals.Scales.ParameterScaleTypes.radiusVision }, { type: Animals.Scales.ParameterScaleTypes.radiusSmell }, { type: Animals.Scales.ParameterScaleTypes.radiusHearing }, { type: Animals.Scales.ParameterScaleTypes.radiusTouch }]
+    }],
+    scales: [{
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.heartbeat,
+        params: {
+            name: 'Сердцебиение',
+            current: 9,
+            min: 0,
+            max: 100,
+            responseDelay: 0.12
+        }
+    }, {
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.pressure,
+        params: {
+            name: 'Давление',
+            current: 8,
+            min: 0,
+            max: 10,
+            responseDelay: 0.13
+        }
+    }, {
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.speed,
+        params: {
+            name: 'Скорость',
+            current: 9,
+            min: 0,
+            max: 100,
+            responseDelay: 0.12
+        }
+    }, {
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.weight,
+        params: {
+            name: 'Вес',
+            current: 8,
+            min: 0,
+            max: 10,
+            responseDelay: 0.1
+        }
+    }, {
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.speedSavvy,
+        params: {
+            name: 'Время смекалки',
+            current: 8,
+            min: 0,
+            max: 10,
+            responseDelay: 0.1
+        }
+    }, {
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.radiusTouch,
+        params: {
+            name: 'Радиус осязания',
+            current: 9,
+            min: 0,
+            max: 10,
+            responseDelay: 0.1
+        }
+    }, {
+        typeScale: Animals.Scales.ScaleTypes.argument,
+        type: Animals.Scales.ParameterScaleTypes.radiusVision,
+        params: {
+            name: 'Радиус зрения',
+            current: 40,
+            min: 0,
+            max: 80,
+            responseDelay: 0.1
+        }
+    }],
+    communication: [{
+        type: Animals.Scales.ParameterScaleTypes.speed,
+        link: [{
+            type: Animals.Scales.ParameterScaleTypes.weight,
+            behavior: Animals.Communications.BehaviorScaleTypes.increase,
+            functions: Animals.Functions.FunctionTypes.line,
+            params: [0.5, 0.18]
+        }]
+    }, {
+        type: Animals.Scales.ParameterScaleTypes.weight,
+        link: [{
+            type: Animals.Scales.ParameterScaleTypes.speed,
+            behavior: Animals.Communications.BehaviorScaleTypes.decrease,
+            functions: Animals.Functions.FunctionTypes.line,
+            params: [0.5, 0.1]
+        }]
+    }],
+    states: {
+        state: [{
+            name: 'Старт',
+            type: Animals.StateMachine.FactoryState.TypesState.startLife,
+            isEnd: false
+        }, {
+            name: 'Бегу',
+            type: Animals.StateMachine.FactoryState.TypesState.run,
+            isEnd: false
+        }, {
+            name: 'Стою',
+            type: Animals.StateMachine.FactoryState.TypesState.stand,
+            isEnd: false
+        }, {
+            name: 'Умер',
+            type: Animals.StateMachine.FactoryState.TypesState.die,
+            isEnd: true
+        }],
+        links: [{
+            type: Animals.StateMachine.FactoryState.TypesState.startLife,
+            link: [{
+                type: Animals.StateMachine.FactoryState.TypesState.run,
+                probability: 0.7
+            }, {
+                type: Animals.StateMachine.FactoryState.TypesState.stand,
+                probability: 0.7
+            }, {
+                type: Animals.StateMachine.FactoryState.TypesState.die,
+                probability: 0.01
+            }]
+        }, {
+            type: Animals.StateMachine.FactoryState.TypesState.stand,
+            link: [{
+                type: Animals.StateMachine.FactoryState.TypesState.run,
+                probability: 0.7
+            }, {
+                type: Animals.StateMachine.FactoryState.TypesState.die,
+                probability: 0.01
+            }]
+        }, {
+            type: Animals.StateMachine.FactoryState.TypesState.run,
+            link: [{
+                type: Animals.StateMachine.FactoryState.TypesState.die,
+                probability: 0.6
+            }, {
+                type: Animals.StateMachine.FactoryState.TypesState.stand,
+                probability: 0.9
+            }, {
+                type: Animals.StateMachine.FactoryState.TypesState.run,
+                probability: 0.1
+            }]
+        }]
+    }
+};
 //# sourceMappingURL=build-ts.js.map

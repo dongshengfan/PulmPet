@@ -3,7 +3,7 @@
  */
 namespace Animals.Systems.TypeSystems {
     /**
-     * Класс опорнодвигательной системы
+     * Класс опорнодвигательной системы. Отвечает за передвижение животного.
      */
     export class Muscular implements ISystem {
         /**
@@ -11,6 +11,20 @@ namespace Animals.Systems.TypeSystems {
          * @type {SystemScale}
          */
         state: Animals.Scales.TypeScales.SystemScale;
+
+        /**
+         * Ссылка на класс животного
+         * @type {Animal}
+         */
+        _linkToAnimal: Animals.Animal;
+
+        /**
+         * Точка текущего положения животного
+         */
+        _currentPoint: {
+            x: number,
+            y: number
+        };
 
         /**
          * Скорость движения
@@ -46,12 +60,23 @@ namespace Animals.Systems.TypeSystems {
             }
         }
 
+        //!
+        set currentPoint(param: any) {
+            this._currentPoint.x = param.x;
+            this._currentPoint.y = param.y;
+        }
+
         get speed(): Animals.Scales.TypeScales.ArgumentScale {
             return this._speed;
         }
 
         get weight(): Animals.Scales.TypeScales.ArgumentScale {
             return this._weight;
+        }
+
+        //!
+        get currentPoint(): any {
+            return this._currentPoint;
         }
 
         /**
@@ -71,6 +96,7 @@ namespace Animals.Systems.TypeSystems {
             this._weight.change(delta);
             this.analysis();
         }
+
 
         /**
          * Анализирует систему

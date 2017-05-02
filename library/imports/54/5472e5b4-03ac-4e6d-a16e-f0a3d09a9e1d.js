@@ -244,6 +244,7 @@ cc.Class({
             nodeModel.setPosition(event.detail.point.x, event.detail.point.y); //Устанавливаем позицию на карте
             nodeModel.addComponent('controller-animal'); //Добавляем контроллер телу животного
             nodeModel.getComponent('controller-animal').settings(model); //Настраивам контроллер животного
+            nodeModel.getComponent('controller-animal').run(); //Запускает жизнь животного
             this._controllerBasket.onBadWorkBasket(); //Дать команду корзине(не сейчас)
         } else {
             this._controllerBasket.onGoodWorkBasket(); //Дать команду корзине(работать)
@@ -298,6 +299,9 @@ cc.Class({
         //увеличим поле отклика животного
         this._targetAnimal.node.width = 2000;
         this._targetAnimal.node.height = 2000;
+        var point = this._controllerMap.getPointMap(event.detail.pointEnd); // конвертируем точку окна к точке карты
+        this._pointTargetAnimal = cc.v2(point.x, point.y); // вычисляем точку куда пойдет животное в итоге
+        this._targetAnimal.moveToPoint(this._pointTargetAnimal);
     },
 
 
@@ -578,7 +582,6 @@ cc.Class({
      * @param {cc.Event} event
      */
     onFinishMoveCameraToAnimal: function onFinishMoveCameraToAnimal(event) {
-
         this.nodeMenuAnimal.active = true;
         this.nodeMenuAnimal.setPosition(this._centreWindowPoint.x, this._centreWindowPoint.y);
         this._boxCharacteristicsAnimal.openBox();
