@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 22.02.2017.
  */
-namespace Animals.Communications.Builders {
+namespace Animals.Communications {
     /**
      * Строитель коммуникатора
      */
@@ -22,7 +22,7 @@ namespace Animals.Communications.Builders {
          * Фабрика функций
          * @type {FunctionFactory}
          */
-        private _factoryFunction: Animals.Functions.Factories.FunctionFactory;
+        private _factoryFunction: Animals.Functions.FunctionFactory;
 
         /**
          * Constructor of CommunicatorBuilder
@@ -31,7 +31,7 @@ namespace Animals.Communications.Builders {
         constructor(scales: Animals.Scales.AScale[]) {
             this._scales = scales;
             this._communicator = new Communicator();
-            this._factoryFunction = Animals.Functions.Factories.FunctionFactory.instance();
+            this._factoryFunction = Animals.Functions.FunctionFactory.instance();
         }
 
         /**

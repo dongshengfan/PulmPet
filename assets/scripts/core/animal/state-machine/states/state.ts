@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine.States {
+namespace Animals.StateMachine {
 
     /**
      * Класс состояния
@@ -22,7 +22,7 @@ namespace Animals.StateMachine.States {
         /**
          * Обработчик маршрутов между состояниями
          */
-        _routeEngine: Animals.StateMachine.Routes.Engines.RouteEngine;
+        _routeEngine: Animals.StateMachine.RouteEngine;
 
         /**
          * Флаг заключительного состояния
@@ -36,7 +36,7 @@ namespace Animals.StateMachine.States {
          * @param routeEngine обработчик маршрутов между состояниями
          * @param isEndPoint флаг заключительного состояния
          */
-        constructor(name: string, model: Animal, routeEngine: Animals.StateMachine.Routes.Engines.RouteEngine = null, isEndPoint: boolean = false) {
+        constructor(name: string, model: Animal, routeEngine: Animals.StateMachine.RouteEngine = null, isEndPoint: boolean = false) {
             this._name = name;
             this._model = model;
             this._routeEngine = routeEngine;
@@ -77,7 +77,7 @@ namespace Animals.StateMachine.States {
          * Установка обработчка мартшрутов между состояниями
          * @param routeEngine обработчик маршрутов между состояниями
          */
-        setRouteEngine(routeEngine: Animals.StateMachine.Routes.Engines.RouteEngine) {
+        setRouteEngine(routeEngine: Animals.StateMachine.RouteEngine) {
             this._routeEngine = routeEngine;
             this._routeEngine.setModel(this._model);
         }

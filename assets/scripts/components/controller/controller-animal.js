@@ -1,3 +1,4 @@
+import { APICore }from '../../build/build-ts';
 /**
  *
  */
@@ -15,6 +16,7 @@ cc.Class({
     },
 
     onLoad(){
+        this._api = APICore.instance();
         this._isOpenMenu = false;
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this._onTouchMoveAnimal.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchStartAnimal.bind(this));
@@ -25,8 +27,9 @@ cc.Class({
     /**
      * Настраивает доступные действия плюшки для животного и характеристики
      */
-    settings(model){
-        this._model = model;
+    settings(pack){
+        this._model = this._api.createAnimal(pack.puthToModel, pack.id);//создаем модель животного
+
         cc.log(this.node.children);
         this.settingCollider(this._model.navigation.radiusVision,this.node.children[0].getComponent(cc.CircleCollider));
         this.settingCollider(this._model.navigation.radiusHearing,this.node.children[1].getComponent(cc.CircleCollider));

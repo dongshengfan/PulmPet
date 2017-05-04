@@ -1,4 +1,3 @@
-///<reference path="lion.ts"/>
 
 /**
  * Created by FIRCorp on 12.03.2017.
@@ -31,8 +30,35 @@ class APICore {
      * @param id
      */
     createAnimal(putToModel: any, id: any): Animals.Animal {
+        console.log('API');
+        console.log(putToModel);
         let factory = Animals.AnimalBuilder.instance();
-        let animal = factory.create(lion);
+        let animal:any;
+       /* switch (putToModel){
+            case 'lion':{
+                animal=factory.create(lion);
+                break;
+            }
+            case 'zebra':{
+                animal=factory.create(zebra);
+                break;
+            }
+            case 'mouse':{
+                animal=factory.create(mouse);
+                break;
+            }
+            case 'hyena':{
+                animal=factory.create(hyena);
+                break;
+            }
+            case 'elephant':{
+                animal=factory.create(elephant);
+                break;
+            }
+        }*/
+
+        animal = factory.create(lion);
+        console.log(lion);
         animal.id = id;
         return animal;
     }

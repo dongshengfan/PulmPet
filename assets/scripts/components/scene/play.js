@@ -1,4 +1,5 @@
-import { APICore }from '../../build/build-ts';
+
+
 
 /**
  * Состояние игры.
@@ -95,7 +96,7 @@ cc.Class({
      * @private
      */
     _init(){
-        this._api = APICore.instance();
+
 
         this._stateGame = StatGame.sleep;
 
@@ -233,12 +234,15 @@ cc.Class({
 
         if (this._controllerBasket.isAnimalLife(point)) {
 
-            let model = this._api.createAnimal(this._targetPuthToModel, this.nodeFieldAnimals.children.length);//создаем модель животного
+
             let nodeModel = cc.instantiate(this._targetAnimal.children[0]);//создаем нод животного
             nodeModel.parent = this.nodeFieldAnimals;//Вешаем нод животного на нод со всеми животными
             nodeModel.setPosition(event.detail.point.x, event.detail.point.y);//Устанавливаем позицию на карте
             nodeModel.addComponent('controller-animal');//Добавляем контроллер телу животного
-            nodeModel.getComponent('controller-animal').settings(model);//Настраивам контроллер животного
+            nodeModel.getComponent('controller-animal').settings({
+                puthToModel:this._targetPuthToModel,
+                id:this.nodeFieldAnimals.children.length-1
+            });//Настраивам контроллер животного
             nodeModel.getComponent('controller-animal').run();//Запускает жизнь животного
             this._controllerBasket.onBadWorkBasket();//Дать команду корзине(не сейчас)
 

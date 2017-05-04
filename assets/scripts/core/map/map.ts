@@ -6,7 +6,7 @@
 /**
  * Пространство карты
  */
-namespace Map {
+namespace MapGame {
     /**
      * Класс карты
      */

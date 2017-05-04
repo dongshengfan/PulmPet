@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine.Routes {
+namespace Animals.StateMachine {
 
     /**
      * Класс маршрута
@@ -12,7 +12,7 @@ namespace Animals.StateMachine.Routes {
         /**
          * Следующее состояние для перехода
          */
-        _state: Animals.StateMachine.States.State;
+        _state: Animals.StateMachine.State;
 
         /**
          * Функция, проверяющая возможность перехода в следующее состояние
@@ -24,7 +24,7 @@ namespace Animals.StateMachine.Routes {
          * @param state следующее состояние для перехода
          * @param availability функция, проверяющая возможность перехода в следующее состояние
          */
-        constructor(state: Animals.StateMachine.States.State, availability: any) {
+        constructor(state: Animals.StateMachine.State, availability: any) {
             this._state = state;
             this._availability = availability;
         }
@@ -35,7 +35,7 @@ namespace Animals.StateMachine.Routes {
          * @param probability вероятность перехода для вероятностных маршрутов
          * @returns {Animals.StateMachine.States.State |null}
          */
-        isAvailable(model: Animal, probability: number = 1.0): Animals.StateMachine.States.State|null {
+        isAvailable(model: Animal, probability: number = 1.0): Animals.StateMachine.State|null {
             return (this._availability && this._availability(model, probability)) ? this._state : null;
         }
 
@@ -43,7 +43,7 @@ namespace Animals.StateMachine.Routes {
          * Получение заданного для перехода состояния
          * @returns {Animals.StateMachine.States.State}
          */
-        getState(): Animals.StateMachine.States.State {
+        getState(): Animals.StateMachine.State {
             return this._state;
         }
     }

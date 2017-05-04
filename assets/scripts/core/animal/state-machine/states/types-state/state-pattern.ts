@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine.States.TypesState {
+namespace Animals.StateMachine {
 
     /**
      * Класс простого состояния
@@ -26,7 +26,7 @@ namespace Animals.StateMachine.States.TypesState {
          * @param routeEngine обработчик маршрутов между состояниями
          * @param states включаемые в композит состояния
          */
-        constructor(name: string, model: Animal, routeEngine: Animals.StateMachine.Routes.Engines.RouteEngine = null, states: Array<State> = []) {
+        constructor(name: string, model: Animal, routeEngine: Animals.StateMachine.RouteEngine = null, states: Array<State> = []) {
             super(name, model, routeEngine);
             this._states = states;
         }

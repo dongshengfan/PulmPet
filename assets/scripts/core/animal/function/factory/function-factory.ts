@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
-namespace Animals.Functions.Factories {
+namespace Animals.Functions {
     /**
      * Фабрика функций
      */

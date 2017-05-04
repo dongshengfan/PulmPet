@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine.FactoryState {
+namespace Animals.StateMachine {
 
     /**
      * Фабрика состояний
@@ -24,10 +24,10 @@ namespace Animals.StateMachine.FactoryState {
          */
         constructor() {
             this._factories = [];
-            this._factories[TypesState.startLife] = Animals.StateMachine.StatesLib.StateStart;
-            this._factories[TypesState.stand] = Animals.StateMachine.StatesLib.StateStand;
-            this._factories[TypesState.run] = Animals.StateMachine.StatesLib.StateRun;
-            this._factories[TypesState.die] = Animals.StateMachine.StatesLib.StateDie;
+            this._factories[TypesState.startLife] = Animals.StateMachine.StateStart;
+            this._factories[TypesState.stand] = Animals.StateMachine.StateStand;
+            this._factories[TypesState.run] = Animals.StateMachine.StateRun;
+            this._factories[TypesState.die] = Animals.StateMachine.StateDie;
         }
 
         /**
@@ -46,7 +46,7 @@ namespace Animals.StateMachine.FactoryState {
          * @param type тип состояния
          * @param state конструктор состояния
          */
-        add(type: TypesState, state: Animals.StateMachine.States.State): void {
+        add(type: TypesState, state: Animals.StateMachine.State): void {
             this._factories[type] = state;
         }
 

@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine.Routes.Engines {
+namespace Animals.StateMachine {
 
     /**
      * Инкапсуляция логики выбора маршрута для перехода в следующее состояние.

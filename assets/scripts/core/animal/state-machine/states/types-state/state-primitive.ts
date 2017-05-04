@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine.States.TypesState {
+namespace Animals.StateMachine {
 
     /**
      * Класс простого состояния
@@ -16,7 +16,7 @@ namespace Animals.StateMachine.States.TypesState {
          * @param isEndPoint флаг заключительного состояния
          * @param routeEngine обработчик маршрутов между состояниями
          */
-        constructor(name: string, model: Animal, isEndPoint: boolean = false, routeEngine: Animals.StateMachine.Routes.Engines.RouteEngine = null) {
+        constructor(name: string, model: Animal, isEndPoint: boolean = false, routeEngine: Animals.StateMachine.RouteEngine = null) {
             super(name, model, routeEngine, isEndPoint);
         }
 

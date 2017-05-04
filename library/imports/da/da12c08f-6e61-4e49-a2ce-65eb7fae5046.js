@@ -36,7 +36,7 @@ var FactoryAnimalPrefab = cc.Class({
             var myEvent = new cc.Event.EventCustom('createAnimal', true);
             myEvent.detail = {
                 animal: _this._settingsAnimal(_this._targetAnimal),
-                puthToModel: _this.puthToModel
+                puthToModel: _this.wayToModel
             };
             _this.node.dispatchEvent(myEvent);
         });

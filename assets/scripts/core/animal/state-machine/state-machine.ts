@@ -18,7 +18,7 @@ namespace Animals.StateMachine {
          * Creates an instance of StateMachine.
          * @param state текущее состояние
          */
-        constructor(state: Animals.StateMachine.States.State) {
+        constructor(state: Animals.StateMachine.State) {
             this._state = state;
         }
 
@@ -26,14 +26,22 @@ namespace Animals.StateMachine {
          * Запуск state machine
          */
         run() {
-            this._state.run().then(() => {
-                if (!this._state.isEndPoint()) {
-                    this._state = this._state.getNextState();
-                    this.run();
-                }
-            }, () => {
-                throw new Error('Error in state... (StateMachine)');
-            });
+            this._state.run(this);
+            /*  this._state.run().then(() => {
+             if (!this._state.isEndPoint()) {
+             this._state = this._state.getNextState();
+             this.run();
+             }
+             }, () => {
+             throw new Error('Error in state... (StateMachine)');
+             });*/
+        }
+
+        finishState(){
+            if (!this._state.isEndPoint()) {
+                this._state = this._state.getNextState();
+                this.run();
+            }
         }
     }
 }

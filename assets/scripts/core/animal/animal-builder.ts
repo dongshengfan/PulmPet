@@ -45,7 +45,7 @@ namespace Animals {
          * @returns {Animals.AnimalBuilder}
          */
         createSystems(systems: any[]): AnimalBuilder {
-            let factory = Animals.Systems.Factories.SystemFactory.instance();
+            let factory = Animals.Systems.SystemFactory.instance();
             let mas: any[] = [];
             systems.forEach((item: any) => {
                 mas = [];
@@ -63,7 +63,7 @@ namespace Animals {
          * @returns {Animals.AnimalBuilder}
          */
         createScales(scales: any[]): AnimalBuilder {
-            let factory = Animals.Scales.Factories.ScaleFactory.instance();
+            let factory = Animals.Scales.ScaleFactory.instance();
             scales.forEach((item: any) => {
                 let {typeScale, type, params}=item;
                 params.type = type;
@@ -78,7 +78,7 @@ namespace Animals {
          * @returns {Communicator}
          */
         createCommunicator(communocation: any[]): Animals.Communications.Communicator {
-            let communicatorBuild = new Animals.Communications.Builders.CommunicatorBuilder(this.masScales);
+            let communicatorBuild = new Animals.Communications.CommunicatorBuilder(this.masScales);
             communocation.forEach((item: any) => {
                 communicatorBuild.add(item);
             });
@@ -91,7 +91,7 @@ namespace Animals {
          * @returns {Animals.StateMachine.StateMachine}
          */
         createStates(states: any): Animals.StateMachine.StateMachine {
-            let factory = Animals.StateMachine.FactoryState.StateFactory.instance();
+            let factory = Animals.StateMachine.StateFactory.instance();
             let paramState: any[] = [];
             let {state, links}=states;
             state.forEach((item: any) => {
@@ -101,7 +101,7 @@ namespace Animals {
             links.forEach((item: any) => {
                 let massStates: any[] = [];
                 item.link.forEach((state: any) => {
-                    massStates.push(new Animals.StateMachine.Routes.Route(paramState[state.type], (model: Animal, probability: number) => {
+                    massStates.push(new Animals.StateMachine.Route(paramState[state.type], (model: Animal, probability: number) => {
                         if (state.probability > probability) {
                             return true;
                         }
@@ -109,10 +109,10 @@ namespace Animals {
 
                     }));
                 });
-                paramState[item.type].setRouteEngine(new Animals.StateMachine.Routes.Engines.ProbabilityRouteEngine(massStates));
+                paramState[item.type].setRouteEngine(new Animals.StateMachine.ProbabilityRouteEngine(massStates));
             });
 
-            return new Animals.StateMachine.StateMachine(paramState[Animals.StateMachine.FactoryState.TypesState.startLife]);
+            return new Animals.StateMachine.StateMachine(paramState[Animals.StateMachine.TypesState.startLife]);
         }
 
         /**
@@ -132,4 +132,6 @@ namespace Animals {
             return this._animal;
         }
     }
-}
+}/**
+ * Created by FIRCorp on 04.05.2017.
+ */
