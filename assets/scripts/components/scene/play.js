@@ -54,7 +54,7 @@ cc.Class({
      */
     onLoad(){
         this._init();
-
+       //cd this.p=new Promise((a,b)=>{});
         this.node.on('createAnimal', this.onAnimalCreated.bind(this));
         this.node.on('openBoxFromAnimal', this.onOpenBoxFromAnimal.bind(this));
         this.node.on('closeBoxFromAnimal', this.onCloseBoxFromAnimal.bind(this));

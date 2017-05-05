@@ -490,8 +490,8 @@
     "relativePath": "scenes"
   },
   "9c1cc2e0-ac25-477e-bcf3-c16b5bc9fc32": {
-    "asset": 1493914149431,
-    "meta": 1493914149478,
+    "asset": 1493952491037,
+    "meta": 1493952491074,
     "relativePath": "scenes\\Play.fire"
   },
   "c6ee7da5-358a-4436-bd42-3331ba730077": {
@@ -500,8 +500,8 @@
     "relativePath": "scripts"
   },
   "be92fd5f-ac25-41fc-8079-0ba2aab5120c": {
-    "asset": 1493908881484,
-    "meta": 1493910439663,
+    "asset": 1493914011292,
+    "meta": 1493950604505,
     "relativePath": "scripts\\build"
   },
   "dcc88f76-6d2c-41a0-b628-b2933c336911": {
@@ -610,8 +610,8 @@
     "relativePath": "scripts\\components\\scene"
   },
   "588ceb78-089a-4ffe-8440-7f54aa34d7a0": {
-    "asset": 1493909256671,
-    "meta": 1493910439729,
+    "asset": 1493913382345,
+    "meta": 1493950604520,
     "relativePath": "scripts\\core"
   },
   "d68acb0b-779a-4a3b-86c0-8a20ea9c4600": {
@@ -624,14 +624,9 @@
     "meta": 1493825804232,
     "relativePath": "scripts\\components\\factory-animal-prefab\\factory-animal-prefab.js"
   },
-  "5472e5b4-03ac-4e6d-a16e-f0a3d09a9e1d": {
-    "asset": 1493860536320,
-    "meta": 1493860578933,
-    "relativePath": "scripts\\components\\scene\\play.js"
-  },
   "6439a145-57b9-4a58-be29-2247bdb3b48e": {
-    "asset": 1493906564444,
-    "meta": 1493907452485,
+    "asset": 1493911262656,
+    "meta": 1493950604536,
     "relativePath": "scripts\\core\\animal"
   },
   "69a65310-6082-465f-ba37-4beeb4855811": {
@@ -720,13 +715,13 @@
     "relativePath": "scripts\\core\\animal\\scale\\scale.ts"
   },
   "bb0fb4ae-9d6f-4bb3-bd62-0a523562da97": {
-    "asset": 1493906490481,
-    "meta": 1493906490803,
+    "asset": 1493911824718,
+    "meta": 1493950604536,
     "relativePath": "scripts\\core\\animal\\state-machine"
   },
   "82c397b3-e4c5-4564-9997-bff15675a569": {
-    "asset": 1493910221546,
-    "meta": 1493910439758,
+    "asset": 1493911824769,
+    "meta": 1493950604536,
     "relativePath": "scripts\\core\\animal\\state-machine\\factory"
   },
   "0f5c633b-2180-474e-8c32-5ed01f4fb602": {
@@ -740,7 +735,7 @@
     "relativePath": "scripts\\core\\animal\\state-machine\\routes\\engines"
   },
   "25341b9e-4ad6-4a23-b487-b3c15583ee4f": {
-    "asset": 1493906240517,
+    "asset": 1493911824685,
     "meta": 1493906490480,
     "relativePath": "scripts\\core\\animal\\state-machine\\state-machine.ts"
   },
@@ -750,8 +745,8 @@
     "relativePath": "scripts\\core\\animal\\state-machine\\states"
   },
   "dfa5b19d-e507-48b3-98aa-48151fa07b08": {
-    "asset": 1493910221958,
-    "meta": 1493910439786,
+    "asset": 1493914011513,
+    "meta": 1493950604552,
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection"
   },
   "d886cf40-eff1-4a1a-a64e-ee6d363f4ce6": {
@@ -760,37 +755,37 @@
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\types-state"
   },
   "0a94827d-7537-4c5a-9fbb-4669451a35a0": {
-    "asset": 1493906490634,
-    "meta": 1493906490842,
+    "asset": 1493911262968,
+    "meta": 1493950604552,
     "relativePath": "scripts\\core\\animal\\system"
   },
   "d36d70e7-9cd3-4199-8d36-8a62ff8d9b1c": {
-    "asset": 1493906490577,
-    "meta": 1493906490846,
+    "asset": 1493911262846,
+    "meta": 1493950604552,
     "relativePath": "scripts\\core\\animal\\system\\factory"
   },
   "7de1c518-54dd-4def-998f-3a4580630186": {
-    "asset": 1493904563279,
+    "asset": 1493911262790,
     "meta": 1493906490581,
     "relativePath": "scripts\\core\\animal\\system\\factory\\system-factory.ts"
   },
   "c2f46269-c5a0-4e4c-b405-1b728924aa75": {
-    "asset": 1493906490625,
-    "meta": 1493906490850,
+    "asset": 1493911689143,
+    "meta": 1493950604552,
     "relativePath": "scripts\\core\\animal\\system\\system-collection"
   },
   "16a7f2dd-ba25-493d-ae5d-e82da149190f": {
-    "asset": 1493904504683,
+    "asset": 1493911689044,
     "meta": 1493906490619,
     "relativePath": "scripts\\core\\animal\\system\\system-collection\\circulatory.ts"
   },
   "7a55c643-e8a0-4f51-9e1a-0397db0c9a24": {
-    "asset": 1493904477350,
+    "asset": 1493911689098,
     "meta": 1493906490624,
     "relativePath": "scripts\\core\\animal\\system\\system-collection\\muscular.ts"
   },
   "45010cd8-207a-48cb-ab96-b3fd06a1b14f": {
-    "asset": 1493904516182,
+    "asset": 1493911689001,
     "meta": 1493906490629,
     "relativePath": "scripts\\core\\animal\\system\\system-collection\\navigation.ts"
   },
@@ -800,7 +795,7 @@
     "relativePath": "scripts\\core\\animal\\system\\system-types.ts"
   },
   "8821efe2-45f7-4833-a13f-dea59679b538": {
-    "asset": 1493904388857,
+    "asset": 1493911262884,
     "meta": 1493906490641,
     "relativePath": "scripts\\core\\animal\\system\\system.ts"
   },
@@ -810,17 +805,17 @@
     "relativePath": "scripts\\core\\map"
   },
   "b55093ba-10d4-4b85-940a-43f17051a3f8": {
-    "asset": 1493906490686,
-    "meta": 1493906490864,
+    "asset": 1493910516158,
+    "meta": 1493950604567,
     "relativePath": "scripts\\core\\models"
   },
   "e007f8a0-d473-497a-adf7-295db93cdff2": {
-    "asset": 1493906395034,
+    "asset": 1493910516125,
     "meta": 1493906490690,
     "relativePath": "scripts\\core\\models\\lion.ts"
   },
   "f28b8711-5d35-4515-af35-e8b01d7d4a14": {
-    "asset": 1493906564409,
+    "asset": 1493911262611,
     "meta": 1493906490219,
     "relativePath": "scripts\\core\\animal\\animal-builder.ts"
   },
@@ -855,7 +850,7 @@
     "relativePath": "scripts\\core\\animal\\scale\\scale-collection\\system-scale.ts"
   },
   "7bd68aa5-9871-4a55-aa9f-16f0c7a69dc1": {
-    "asset": 1493910221168,
+    "asset": 1493911824724,
     "meta": 1493906490426,
     "relativePath": "scripts\\core\\animal\\state-machine\\factory\\state-factory.ts"
   },
@@ -885,17 +880,17 @@
     "relativePath": "scripts\\core\\animal\\state-machine\\routes\\route.ts"
   },
   "0bc35088-dd29-481e-8849-49108d45fc6c": {
-    "asset": 1493910221006,
+    "asset": 1493914011478,
     "meta": 1493906490516,
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\die.ts"
   },
   "8fc2d15e-f593-4270-a13e-d9eb9a93bd4c": {
-    "asset": 1493910221368,
+    "asset": 1493914011304,
     "meta": 1493906490522,
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\run.ts"
   },
   "9a5be0af-2122-4b12-a023-aadaff7024cb": {
-    "asset": 1493910221112,
+    "asset": 1493914011416,
     "meta": 1493906490529,
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\stand.ts"
   },
@@ -919,34 +914,49 @@
     "meta": 1493906490678,
     "relativePath": "scripts\\core\\map\\map.ts"
   },
-  "6326917b-2fd7-43e8-b554-edd05bf9ae04": {
-    "asset": 1493910408138,
-    "meta": 1493772975955,
-    "relativePath": "scripts\\tsconfig.json"
-  },
   "0ba0f991-b701-4879-9b0a-39552a666150": {
-    "asset": 1493912072696,
+    "asset": 1493913221810,
     "meta": 1493906490658,
     "relativePath": "scripts\\core\\api-core.ts"
-  },
-  "6242a0c5-4161-4d6c-86a5-807d127129bd": {
-    "asset": 1493913382257,
-    "meta": 1493897968423,
-    "relativePath": "scripts\\core\\core.ts"
   },
   "d78facd8-7055-49f0-844e-e957b6c8c09c": {
     "asset": 1493913853206,
     "meta": 1493906490536,
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\start.ts"
   },
+  "5472e5b4-03ac-4e6d-a16e-f0a3d09a9e1d": {
+    "asset": 1493952047288,
+    "meta": 1493952099138,
+    "relativePath": "scripts\\components\\scene\\play.js"
+  },
+  "6326917b-2fd7-43e8-b554-edd05bf9ae04": {
+    "asset": 1493952152453,
+    "meta": 1493772975955,
+    "relativePath": "scripts\\tsconfig.json"
+  },
+  "901d790d-a071-469e-8fee-6eac399ddeb3": {
+    "asset": 1493952313215,
+    "meta": 1493952313246,
+    "relativePath": "scripts\\build\\build-ts.js___jb_tmp___"
+  },
   "ebea9087-1097-42c4-b304-8fc95a9b873d": {
-    "asset": 1493913984368,
+    "asset": 1493955432137,
     "meta": 1493773182959,
     "relativePath": "scripts\\build\\build-ts.js.map"
   },
   "7d0326fa-4372-4120-8af4-14a788b656ad": {
-    "asset": 1493914011222,
-    "meta": 1493914013917,
+    "asset": 1493955432157,
+    "meta": 1493955667281,
     "relativePath": "scripts\\build\\build-ts.js"
+  },
+  "4736c264-60ce-4d6e-bfb7-b2c9011d8f13": {
+    "asset": 1493955122184,
+    "meta": 1493952704583,
+    "relativePath": "scripts\\build\\README.md"
+  },
+  "6242a0c5-4161-4d6c-86a5-807d127129bd": {
+    "asset": 1493955473005,
+    "meta": 1493897968423,
+    "relativePath": "scripts\\core\\core.ts"
   }
 }

@@ -3,7 +3,7 @@
  */
 /*async function f1(x:any) {
     console.log(x);
-    for (let i = 0; i < 1000000000; i++){
+    for (let i = 0; i < 100; i++){
         x += 1;
     }
     return x;
