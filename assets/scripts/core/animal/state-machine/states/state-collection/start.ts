@@ -17,35 +17,20 @@ namespace Animals.StateMachine {
          * @param routeEngine обработчик маршрутов между состояниями
          */
         constructor(name: string, model: Animal, isEndPoint: boolean = false, routeEngine: Animals.StateMachine.RouteEngine = null) {
-            super(name, model, routeEngine,isEndPoint);
+            super(name, model, routeEngine, isEndPoint);
         }
 
         /**
          * Запуск состояния
-         * @returns any
-         * @param next
+         * @returns {Promise<void>}
          */
-        run(next:any): any {
-            /* let resolveFn: any, rejectFn: any;
-
-             var promise:any = new Promise((resolve, reject) => {
-             resolveFn = resolve;
-             rejectFn = reject;
-             });*/
+        async run(): Promise<void> {
             console.log('Начал жить');
-
             /*this._model.circulatory.changeHeartbeat(0.001);
              this._model.circulatory.changePressure(0.001);*/
             this._model.muscular.changeSpeed(0.001);
             this._model.muscular.changeWeight(0.001);
-            let k=0;
-            for(let i=0;i<10000000;i++){
-                k+=1;
-            }
-            next.finishState();
-            // setTimeout(() => { resolveFn(); }, 4000);
-            //return promise;
-           // setTimeout(() => { next.finishState(); }, 4000)
+            await this.mySleep(2);//Ожидание
         }
     }
 }

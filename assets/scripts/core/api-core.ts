@@ -11,7 +11,6 @@ class APICore {
      */
     static inst: APICore;
 
-
     /**
      *
      * @returns {APICore}
@@ -30,8 +29,6 @@ class APICore {
      * @param id
      */
     createAnimal(putToModel: any, id: any): Animals.Animal {
-        console.log('API');
-        console.log(putToModel);
         let factory = Animals.AnimalBuilder.instance();
         let animal:any;
        /* switch (putToModel){
@@ -58,7 +55,6 @@ class APICore {
         }*/
 
         animal = factory.create(lion);
-        console.log(lion);
         animal.id = id;
         return animal;
     }

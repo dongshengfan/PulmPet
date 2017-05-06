@@ -490,18 +490,18 @@
     "relativePath": "scenes"
   },
   "9c1cc2e0-ac25-477e-bcf3-c16b5bc9fc32": {
-    "asset": 1493952491037,
-    "meta": 1493952491074,
+    "asset": 1494065986489,
+    "meta": 1494065986533,
     "relativePath": "scenes\\Play.fire"
   },
   "c6ee7da5-358a-4436-bd42-3331ba730077": {
-    "asset": 1493910408124,
-    "meta": 1493910437786,
+    "asset": 1493952152553,
+    "meta": 1493973341915,
     "relativePath": "scripts"
   },
   "be92fd5f-ac25-41fc-8079-0ba2aab5120c": {
-    "asset": 1493914011292,
-    "meta": 1493950604505,
+    "asset": 1493999621216,
+    "meta": 1494053839724,
     "relativePath": "scripts\\build"
   },
   "dcc88f76-6d2c-41a0-b628-b2933c336911": {
@@ -605,13 +605,13 @@
     "relativePath": "scripts\\components\\controller\\controller-scroll-box-characteristic.js"
   },
   "d55ccfa6-11c0-4c68-8b8e-7f9d2dddfed0": {
-    "asset": 1493860536383,
-    "meta": 1493860578933,
+    "asset": 1493973341727,
+    "meta": 1493973341931,
     "relativePath": "scripts\\components\\scene"
   },
   "588ceb78-089a-4ffe-8440-7f54aa34d7a0": {
-    "asset": 1493913382345,
-    "meta": 1493950604520,
+    "asset": 1493955473072,
+    "meta": 1493973341933,
     "relativePath": "scripts\\core"
   },
   "d68acb0b-779a-4a3b-86c0-8a20ea9c4600": {
@@ -715,8 +715,8 @@
     "relativePath": "scripts\\core\\animal\\scale\\scale.ts"
   },
   "bb0fb4ae-9d6f-4bb3-bd62-0a523562da97": {
-    "asset": 1493911824718,
-    "meta": 1493950604536,
+    "asset": 1494049276462,
+    "meta": 1494053839731,
     "relativePath": "scripts\\core\\animal\\state-machine"
   },
   "82c397b3-e4c5-4564-9997-bff15675a569": {
@@ -734,19 +734,14 @@
     "meta": 1493910439772,
     "relativePath": "scripts\\core\\animal\\state-machine\\routes\\engines"
   },
-  "25341b9e-4ad6-4a23-b487-b3c15583ee4f": {
-    "asset": 1493911824685,
-    "meta": 1493906490480,
-    "relativePath": "scripts\\core\\animal\\state-machine\\state-machine.ts"
-  },
   "e1ad539d-ee21-4fe8-80f6-4d944ada3417": {
     "asset": 1493910221862,
     "meta": 1493910439779,
     "relativePath": "scripts\\core\\animal\\state-machine\\states"
   },
   "dfa5b19d-e507-48b3-98aa-48151fa07b08": {
-    "asset": 1493914011513,
-    "meta": 1493950604552,
+    "asset": 1493999621128,
+    "meta": 1494053839734,
     "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection"
   },
   "d886cf40-eff1-4a1a-a64e-ee6d363f4ce6": {
@@ -879,26 +874,6 @@
     "meta": 1493906490474,
     "relativePath": "scripts\\core\\animal\\state-machine\\routes\\route.ts"
   },
-  "0bc35088-dd29-481e-8849-49108d45fc6c": {
-    "asset": 1493914011478,
-    "meta": 1493906490516,
-    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\die.ts"
-  },
-  "8fc2d15e-f593-4270-a13e-d9eb9a93bd4c": {
-    "asset": 1493914011304,
-    "meta": 1493906490522,
-    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\run.ts"
-  },
-  "9a5be0af-2122-4b12-a023-aadaff7024cb": {
-    "asset": 1493914011416,
-    "meta": 1493906490529,
-    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\stand.ts"
-  },
-  "e2380178-0a9d-4d9b-85b0-911397a58627": {
-    "asset": 1493910221775,
-    "meta": 1493906490541,
-    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state.ts"
-  },
   "b8bee30c-6346-419c-8df0-4188b0aa2ede": {
     "asset": 1493910221060,
     "meta": 1493906490558,
@@ -914,40 +889,10 @@
     "meta": 1493906490678,
     "relativePath": "scripts\\core\\map\\map.ts"
   },
-  "0ba0f991-b701-4879-9b0a-39552a666150": {
-    "asset": 1493913221810,
-    "meta": 1493906490658,
-    "relativePath": "scripts\\core\\api-core.ts"
-  },
-  "d78facd8-7055-49f0-844e-e957b6c8c09c": {
-    "asset": 1493913853206,
-    "meta": 1493906490536,
-    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\start.ts"
-  },
-  "5472e5b4-03ac-4e6d-a16e-f0a3d09a9e1d": {
-    "asset": 1493952047288,
-    "meta": 1493952099138,
-    "relativePath": "scripts\\components\\scene\\play.js"
-  },
   "6326917b-2fd7-43e8-b554-edd05bf9ae04": {
     "asset": 1493952152453,
     "meta": 1493772975955,
     "relativePath": "scripts\\tsconfig.json"
-  },
-  "901d790d-a071-469e-8fee-6eac399ddeb3": {
-    "asset": 1493952313215,
-    "meta": 1493952313246,
-    "relativePath": "scripts\\build\\build-ts.js___jb_tmp___"
-  },
-  "ebea9087-1097-42c4-b304-8fc95a9b873d": {
-    "asset": 1493955432137,
-    "meta": 1493773182959,
-    "relativePath": "scripts\\build\\build-ts.js.map"
-  },
-  "7d0326fa-4372-4120-8af4-14a788b656ad": {
-    "asset": 1493955432157,
-    "meta": 1493955667281,
-    "relativePath": "scripts\\build\\build-ts.js"
   },
   "4736c264-60ce-4d6e-bfb7-b2c9011d8f13": {
     "asset": 1493955122184,
@@ -958,5 +903,55 @@
     "asset": 1493955473005,
     "meta": 1493897968423,
     "relativePath": "scripts\\core\\core.ts"
+  },
+  "25341b9e-4ad6-4a23-b487-b3c15583ee4f": {
+    "asset": 1494049276329,
+    "meta": 1493906490480,
+    "relativePath": "scripts\\core\\animal\\state-machine\\state-machine.ts"
+  },
+  "d78facd8-7055-49f0-844e-e957b6c8c09c": {
+    "asset": 1494058219543,
+    "meta": 1493906490536,
+    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\start.ts"
+  },
+  "8fc2d15e-f593-4270-a13e-d9eb9a93bd4c": {
+    "asset": 1494058328185,
+    "meta": 1493906490522,
+    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\run.ts"
+  },
+  "0bc35088-dd29-481e-8849-49108d45fc6c": {
+    "asset": 1494065175360,
+    "meta": 1493906490516,
+    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\die.ts"
+  },
+  "9a5be0af-2122-4b12-a023-aadaff7024cb": {
+    "asset": 1494065175170,
+    "meta": 1493906490529,
+    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state-collection\\stand.ts"
+  },
+  "e2380178-0a9d-4d9b-85b0-911397a58627": {
+    "asset": 1494065175275,
+    "meta": 1493906490541,
+    "relativePath": "scripts\\core\\animal\\state-machine\\states\\state.ts"
+  },
+  "5472e5b4-03ac-4e6d-a16e-f0a3d09a9e1d": {
+    "asset": 1494065847614,
+    "meta": 1494065848904,
+    "relativePath": "scripts\\components\\scene\\play.js"
+  },
+  "ebea9087-1097-42c4-b304-8fc95a9b873d": {
+    "asset": 1494065910609,
+    "meta": 1493773182959,
+    "relativePath": "scripts\\build\\build-ts.js.map"
+  },
+  "0ba0f991-b701-4879-9b0a-39552a666150": {
+    "asset": 1494065938538,
+    "meta": 1493906490658,
+    "relativePath": "scripts\\core\\api-core.ts"
+  },
+  "7d0326fa-4372-4120-8af4-14a788b656ad": {
+    "asset": 1494065977690,
+    "meta": 1494065980866,
+    "relativePath": "scripts\\build\\build-ts.js"
   }
 }

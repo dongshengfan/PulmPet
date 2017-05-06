@@ -21,21 +21,16 @@ namespace Animals.StateMachine {
          * @param routeEngine обработчик маршрутов между состояниями
          */
         constructor(name: string, model: Animal, isEndPoint: boolean = false, routeEngine: Animals.StateMachine.RouteEngine = null) {
-            super(name, model, routeEngine,isEndPoint);
+            super(name, model, routeEngine, isEndPoint);
 
         }
 
         /**
          * Запуск состояния
-         * @returns any
+         * @returns {Promise<void>}
          */
-        run(next:any):any {
-
-
+        async run(): Promise<void> {
             console.log('умер');
-            next.finishState();
-
-
         }
     }
 }

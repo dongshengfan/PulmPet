@@ -25,19 +25,8 @@ namespace Animals.StateMachine {
         /**
          * Запуск state machine
          */
-        run() {
-            this._state.run(this);
-            /*  this._state.run().then(() => {
-             if (!this._state.isEndPoint()) {
-             this._state = this._state.getNextState();
-             this.run();
-             }
-             }, () => {
-             throw new Error('Error in state... (StateMachine)');
-             });*/
-        }
-
-        finishState(){
+        async run() {
+            await this._state.run();
             if (!this._state.isEndPoint()) {
                 this._state = this._state.getNextState();
                 this.run();

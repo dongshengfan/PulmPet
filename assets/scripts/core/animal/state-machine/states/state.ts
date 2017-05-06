@@ -97,5 +97,15 @@ namespace Animals.StateMachine {
         run(model: Animal) {
             throw new Error('Not implemented yet...');
         }
+
+        /**
+         * Выполняет бездействие по продолжительности равное s
+         * @param s продолжительность бездействия в секундах
+         * @returns {Promise<T>}
+         */
+        mySleep(s: any) {
+            s *= 1000;
+            return new Promise(resolve => setTimeout(resolve, s));
+        }
     }
 }
