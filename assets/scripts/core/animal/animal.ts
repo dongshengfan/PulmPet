@@ -127,7 +127,7 @@ namespace Animals {
             //console.log(this._stateMachine);
         }
 
-        public runLife() {
+        public runLife(){
             console.log(this);
             this._stateMachine.run();
         }

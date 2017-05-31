@@ -11,5 +11,9 @@ namespace StateMachines {
         stand,
         run,
         die,
+        sleep,
+        go,
+        lies,
+        sit,
     }
 }

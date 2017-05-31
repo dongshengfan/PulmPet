@@ -28,6 +28,10 @@ namespace StateMachines {
             this._factories[TypesState.stand] = StateMachines.States.StateStand;
             this._factories[TypesState.run] = StateMachines.States.StateRun;
             this._factories[TypesState.die] = StateMachines.States.StateDie;
+            this._factories[TypesState.sleep] = StateMachines.States.StateSleep;
+            this._factories[TypesState.go] = StateMachines.States.StateGo;
+            this._factories[TypesState.lies] = StateMachines.States.StateLies;
+            this._factories[TypesState.sit] = StateMachines.States.StateSit;
         }
 
         /**

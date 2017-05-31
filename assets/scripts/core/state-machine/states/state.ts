@@ -103,7 +103,7 @@ namespace StateMachines.States {
          * @param s продолжительность бездействия в секундах
          * @returns {Promise<T>}
          */
-        mySleep(s: any) {
+        mySleep(s: number) {
             s *= 1000;
             return new Promise(resolve => setTimeout(resolve, s));
         }

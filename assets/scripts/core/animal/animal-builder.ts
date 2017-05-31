@@ -88,7 +88,7 @@ namespace Animals {
         /**
          *
          * @param states
-         * @returns {StateMachins.StateMachine}
+         * @returns {StateMachines.StateMachine}
          */
         createStates(states: any): StateMachines.StateMachine {
             let factory = StateMachines.StateFactory.instance();
@@ -112,7 +112,7 @@ namespace Animals {
                 paramState[item.type].setRouteEngine(new StateMachines.Routes.ProbabilityRouteEngine(massStates));
             });
 
-            return new StateMachins.StateMachine(paramState[StateMachines.TypesState.startLife]);
+            return new StateMachines.StateMachine(paramState[StateMachines.TypesState.startLife]);
         }
 
         /**
