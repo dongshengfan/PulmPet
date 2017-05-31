@@ -1,4 +1,4 @@
-import { APICore }from '../../build/build-ts';
+import { Core }from '../../build/build-ts';
 /**
  *
  */
@@ -16,7 +16,7 @@ cc.Class({
     },
 
     onLoad(){
-        this._api = APICore.instance();
+        this._api = Core.instance();
         this._isOpenMenu = false;
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this._onTouchMoveAnimal.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchStartAnimal.bind(this));
@@ -236,5 +236,6 @@ cc.Class({
     getCharacteristics(){
         return this._model.getCharacteristics();
     }
+
 
 });

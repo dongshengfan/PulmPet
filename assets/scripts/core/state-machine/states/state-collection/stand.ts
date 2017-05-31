@@ -1,7 +1,8 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine {
+
+namespace StateMachines.States {
 
     /**
      * Состояние - Стоит на месте
@@ -16,7 +17,7 @@ namespace Animals.StateMachine {
          * @param isEndPoint флаг заключительного состояния
          * @param routeEngine обработчик маршрутов между состояниями
          */
-        constructor(name: string, model: Animal, isEndPoint: boolean = false, routeEngine: Animals.StateMachine.RouteEngine = null) {
+        constructor(name: string, model: Animals.Animal, isEndPoint: boolean = false, routeEngine: StateMachines.Routes.RouteEngine = null) {
             super(name, model, routeEngine, isEndPoint);
         }
 

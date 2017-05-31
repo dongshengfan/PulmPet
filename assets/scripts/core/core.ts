@@ -1,37 +1,60 @@
 /**
- * Created by FIRCorp on 04.05.2017.
+ * Created by FIRCorp on 12.03.2017.
  */
-/*async function f1(x:any) {
-    console.log(x);
-    for (let i = 0; i < 100; i++){
-        x += 1;
+/**
+ * Класс апи
+ */
+class Core {
+    /**
+     *
+     */
+    static inst: Core;
+
+    /**
+     *
+     * @returns {Core}
+     */
+    static instance(): Core {
+        if (!this.inst) {
+            this.inst = new Core();
+        }
+        return this.inst;
     }
-    return x;
+
+    /**
+     *
+     * @returns {Animals.Animal}
+     * @param putToModel
+     * @param id
+     */
+    createAnimal(putToModel: any, id: any): Animals.Animal {
+        let factory = Animals.AnimalBuilder.instance();
+        let animal: any;
+        /* switch (putToModel){
+         case 'lion':{
+         animal=factory.create(lion);
+         break;
+         }
+         case 'zebra':{
+         animal=factory.create(zebra);
+         break;
+         }
+         case 'mouse':{
+         animal=factory.create(mouse);
+         break;
+         }
+         case 'hyena':{
+         animal=factory.create(hyena);
+         break;
+         }
+         case 'elephant':{
+         animal=factory.create(elephant);
+         break;
+         }
+         }*/
+
+        animal = factory.create(lion);
+        animal.id = id;
+        return animal;
+    }
 }
-
-async function f2(x:any) {
-    console.log(x);
-    return x;
-}
-
-async function f3(x:any) {
-    console.log(x);
-    return x;
-}
-
-async function run(c:any) {
-    f1(c + 1).then(()=>{
-        f2(c + 2).then(()=>{
-            let z =  f3(c + 3).then(()=>{
-                console.log('sad');
-            });
-        });
-    });
-
-
-    //console.log(x + y + z);
-}
-
-let y = 0;
-run(y);*/
-

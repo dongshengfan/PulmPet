@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine {
+namespace StateMachines.States {
 
     /**
      * Класс простого состояния
@@ -26,7 +26,7 @@ namespace Animals.StateMachine {
          * @param routeEngine обработчик маршрутов между состояниями
          * @param states включаемые в композит состояния
          */
-        constructor(name: string, model: Animal, routeEngine: Animals.StateMachine.RouteEngine = null, states: Array<State> = []) {
+        constructor(name: string, model: Animals.Animal, routeEngine: StateMachines.Routes.RouteEngine = null, states: Array<State> = []) {
             super(name, model, routeEngine);
             this._states = states;
         }
@@ -43,7 +43,7 @@ namespace Animals.StateMachine {
          * Запуск цепочки состояний
          * @param model модель животного
          */
-        run(model: Animal): void {
+        run(model: Animals.Animal): void {
             let state = this._states[0];
 
             while (state) {

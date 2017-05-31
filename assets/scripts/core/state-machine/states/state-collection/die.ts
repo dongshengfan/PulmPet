@@ -1,31 +1,33 @@
 /**
- * Created by FIRCorp on 02.05.2017.
+ * Created by FIRCorp on 04.05.2017.
  */
-namespace Animals.StateMachine {
+
+namespace StateMachines.States {
 
     /**
-     * Класс простого состояния
-     * @class PrimitiveState
+     * Состояние - Умер
+     * @class StateDie
      */
-    export class PrimitiveState extends State {
+    export class StateDie extends State {
 
         /**
-         * Creates an instance of PrimitiveState.
+         * Creates an instance of StateDie.
          * @param name имя состояния
          * @param model модель животного
          * @param isEndPoint флаг заключительного состояния
          * @param routeEngine обработчик маршрутов между состояниями
          */
-        constructor(name: string, model: Animal, isEndPoint: boolean = false, routeEngine: Animals.StateMachine.RouteEngine = null) {
+        constructor(name: string, model: Animals.Animal, isEndPoint: boolean = false, routeEngine: StateMachines.Routes.RouteEngine = null) {
             super(name, model, routeEngine, isEndPoint);
+
         }
 
         /**
          * Запуск состояния
-         * TODO удалить
+         * @returns {Promise<void>}
          */
-        run() {
-            throw new Error('No implementation status...');
+        async run(): Promise<void> {
+            console.log('умер');
         }
     }
 }

@@ -88,10 +88,10 @@ namespace Animals {
         /**
          *
          * @param states
-         * @returns {Animals.StateMachine.StateMachine}
+         * @returns {StateMachins.StateMachine}
          */
-        createStates(states: any): Animals.StateMachine.StateMachine {
-            let factory = Animals.StateMachine.StateFactory.instance();
+        createStates(states: any): StateMachines.StateMachine {
+            let factory = StateMachines.StateFactory.instance();
             let paramState: any[] = [];
             let {state, links}=states;
             state.forEach((item: any) => {
@@ -101,7 +101,7 @@ namespace Animals {
             links.forEach((item: any) => {
                 let massStates: any[] = [];
                 item.link.forEach((state: any) => {
-                    massStates.push(new Animals.StateMachine.Route(paramState[state.type], (model: Animal, probability: number) => {
+                    massStates.push(new StateMachines.Routes.Route(paramState[state.type], (model: Animal, probability: number) => {
                         if (state.probability > probability) {
                             return true;
                         }
@@ -109,10 +109,10 @@ namespace Animals {
 
                     }));
                 });
-                paramState[item.type].setRouteEngine(new Animals.StateMachine.ProbabilityRouteEngine(massStates));
+                paramState[item.type].setRouteEngine(new StateMachines.Routes.ProbabilityRouteEngine(massStates));
             });
 
-            return new Animals.StateMachine.StateMachine(paramState[Animals.StateMachine.TypesState.startLife]);
+            return new StateMachins.StateMachine(paramState[StateMachines.TypesState.startLife]);
         }
 
         /**
@@ -132,6 +132,4 @@ namespace Animals {
             return this._animal;
         }
     }
-}/**
- * Created by FIRCorp on 04.05.2017.
- */
+}

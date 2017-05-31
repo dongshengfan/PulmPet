@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine {
+namespace StateMachines.Routes {
 
     /**
      * Инкапсуляция логики выбора маршрута для перехода в следующее состояние.
@@ -23,7 +23,7 @@ namespace Animals.StateMachine {
         /**
          * Модель животного-владельца текущей группы
          */
-        _model: Animal;
+        _model: Animals.Animal;
 
         /**
          * Creates an instance of RouteEngine.
@@ -63,7 +63,7 @@ namespace Animals.StateMachine {
          * Установка модели животного
          * @param animal модель животного
          */
-        setModel(animal: Animal) {
+        setModel(animal: Animals.Animal) {
             this._model = animal;
         }
 

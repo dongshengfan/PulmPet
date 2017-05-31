@@ -1,3 +1,4 @@
+    
 /**
  * Created by FIRCorp on 02.05.2017.
  */
@@ -144,70 +145,70 @@ let lion: any = {
     states: {
         state: [
             {
-                name:'Старт',
-                type: Animals.StateMachine.TypesState.startLife,
+                name: 'Старт',
+                type: StateMachines.TypesState.startLife,
                 isEnd: false
             },
             {
-                name:'Бегу',
-                type: Animals.StateMachine.TypesState.run,
+                name: 'Бегу',
+                type: StateMachines.TypesState.run,
                 isEnd: false
             },
             {
-                name:'Стою',
-                type: Animals.StateMachine.TypesState.stand,
+                name: 'Стою',
+                type: StateMachines.TypesState.stand,
                 isEnd: false
             },
             {
-                name:'Умер',
-                type: Animals.StateMachine.TypesState.die,
+                name: 'Умер',
+                type: StateMachines.TypesState.die,
                 isEnd: true
             }
         ],
         links: [
             {
-                type: Animals.StateMachine.TypesState.startLife,
+                type: StateMachines.TypesState.startLife,
                 link: [
                     {
-                        type: Animals.StateMachine.TypesState.run,
+                        type: StateMachines.TypesState.run,
                         probability: 0.7
                     },
                     {
-                        type: Animals.StateMachine.TypesState.stand,
+                        type: StateMachines.TypesState.stand,
                         probability: 0.7
                     },
                     {
-                        type: Animals.StateMachine.TypesState.die,
+                        type: StateMachines.TypesState.die,
                         probability: 0.01
                     }
                 ]
             },
             {
-                type: Animals.StateMachine.TypesState.stand,
+                type: StateMachines.TypesState.stand,
                 link: [
                     {
-                        type: Animals.StateMachine.TypesState.run,
+                        type: StateMachines.TypesState.run,
                         probability: 0.7
                     },
                     {
-                        type: Animals.StateMachine.TypesState.die,
+                        type: StateMachines.TypesState.die,
                         probability: 0.01
                     }
                 ]
             },
             {
-                type: Animals.StateMachine.TypesState.run,
+                type: StateMachines.TypesState.run,
                 link: [
                     {
-                        type: Animals.StateMachine.TypesState.die,
+                        type: StateMachines.TypesState.die,
                         probability: 0.6
                     },
                     {
-                        type: Animals.StateMachine.TypesState.stand,
+                        type: StateMachines.TypesState.stand,
                         probability: 0.9
                     },
                     {
-                        type: Animals.StateMachine.TypesState.run,
+                        type: StateMachines.TypesState.run,
                         probability: 0.1
                     }
                 ]

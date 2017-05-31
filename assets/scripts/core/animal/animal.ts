@@ -2,7 +2,6 @@
  * Created by FIRCorp on 25.02.2017.
  */
 namespace Animals {
-    import array = js.array;
     /**
      * Класс животного
      */
@@ -20,17 +19,17 @@ namespace Animals {
         /**
          * Опорнодвигательная система
          */
-        private _muscular: Animals.Systems.TypeSystems.Muscular;
+        private _muscular: Animals.Systems.Muscular;
 
         /**
          * Кровиностная система
          */
-        private _circulatory: Animals.Systems.TypeSystems.Circulatory;
+        private _circulatory: Animals.Systems.Circulatory;
 
         /**
          * Навигационная система
          */
-        private _navigation: Animals.Systems.TypeSystems.Navigation;
+        private _navigation: Animals.Systems.Navigation;
 
         /**
          * Коммуникатор шкал
@@ -40,7 +39,7 @@ namespace Animals {
         /**
          *
          */
-        private _stateMachine: Animals.StateMachine.StateMachine;
+        private _stateMachine: StateMachines.StateMachine;
 
         /**
          * Constructor of Animal
@@ -57,19 +56,19 @@ namespace Animals {
             this.navigation._linkToAnimal = this;
         }
 
-        set muscular(param: Animals.Systems.TypeSystems.Muscular) {
+        set muscular(param: Animals.Systems.Muscular) {
             if (param) {
                 this._muscular = param;
             }
         }
 
-        set circulatory(param: Animals.Systems.TypeSystems.Circulatory) {
+        set circulatory(param: Animals.Systems.Circulatory) {
             if (param) {
                 this._circulatory = param;
             }
         }
 
-        set navigation(param: Animals.Systems.TypeSystems.Navigation) {
+        set navigation(param: Animals.Systems.Navigation) {
             if (param) {
                 this._navigation = param;
             }
@@ -79,7 +78,7 @@ namespace Animals {
             this._communicator = param;
         }
 
-        set stateMachine(param: Animals.StateMachine.StateMachine) {
+        set stateMachine(param: StateMachines.StateMachine) {
             this._stateMachine = param;
         }
 
@@ -92,15 +91,15 @@ namespace Animals {
         }
 
 
-        get muscular(): Animals.Systems.TypeSystems.Muscular {
+        get muscular(): Animals.Systems.Muscular {
             return this._muscular;
         }
 
-        get circulatory(): Animals.Systems.TypeSystems.Circulatory {
+        get circulatory(): Animals.Systems.Circulatory {
             return this._circulatory;
         }
 
-        get navigation(): Animals.Systems.TypeSystems.Navigation {
+        get navigation(): Animals.Systems.Navigation {
             return this._navigation;
         }
 
@@ -108,7 +107,7 @@ namespace Animals {
             return this._communicator;
         }
 
-        get stateMachine(): Animals.StateMachine.StateMachine {
+        get stateMachine(): StateMachines.StateMachine {
             return this._stateMachine;
         }
 

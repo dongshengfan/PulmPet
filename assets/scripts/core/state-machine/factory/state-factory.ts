@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine {
+namespace StateMachines {
 
     /**
      * Фабрика состояний
@@ -24,10 +24,10 @@ namespace Animals.StateMachine {
          */
         constructor() {
             this._factories = [];
-            this._factories[TypesState.startLife] = Animals.StateMachine.StateStart;
-            this._factories[TypesState.stand] = Animals.StateMachine.StateStand;
-            this._factories[TypesState.run] = Animals.StateMachine.StateRun;
-            this._factories[TypesState.die] = Animals.StateMachine.StateDie;
+            this._factories[TypesState.startLife] = StateMachines.States.StateStart;
+            this._factories[TypesState.stand] = StateMachines.States.StateStand;
+            this._factories[TypesState.run] = StateMachines.States.StateRun;
+            this._factories[TypesState.die] = StateMachines.States.StateDie;
         }
 
         /**
@@ -46,7 +46,7 @@ namespace Animals.StateMachine {
          * @param type тип состояния
          * @param state конструктор состояния
          */
-        add(type: TypesState, state: Animals.StateMachine.State): void {
+        add(type: TypesState, state: StateMachines.States.State): void {
             this._factories[type] = state;
         }
 
@@ -57,7 +57,7 @@ namespace Animals.StateMachine {
          * @param animal модель состояния
          * @param isEnd флаг заключительного состояния
          */
-        create(typeState: TypesState, name: string, animal: Animal, isEnd: boolean) {
+        create(typeState: TypesState, name: string, animal: Animals.Animal, isEnd: boolean) {
             return new this._factories[typeState](name, animal, isEnd, null);
         }
     }

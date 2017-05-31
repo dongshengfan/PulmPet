@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine {
+namespace StateMachines.States {
 
     /**
      * Класс состояния
@@ -17,12 +17,12 @@ namespace Animals.StateMachine {
         /**
          *  Модель животного
          */
-        _model: Animal;
+        _model: Animals.Animal;
 
         /**
          * Обработчик маршрутов между состояниями
          */
-        _routeEngine: Animals.StateMachine.RouteEngine;
+        _routeEngine: StateMachines.Routes.RouteEngine;
 
         /**
          * Флаг заключительного состояния
@@ -36,7 +36,7 @@ namespace Animals.StateMachine {
          * @param routeEngine обработчик маршрутов между состояниями
          * @param isEndPoint флаг заключительного состояния
          */
-        constructor(name: string, model: Animal, routeEngine: Animals.StateMachine.RouteEngine = null, isEndPoint: boolean = false) {
+        constructor(name: string, model: Animals.Animal, routeEngine: StateMachines.Routes.RouteEngine = null, isEndPoint: boolean = false) {
             this._name = name;
             this._model = model;
             this._routeEngine = routeEngine;
@@ -77,7 +77,7 @@ namespace Animals.StateMachine {
          * Установка обработчка мартшрутов между состояниями
          * @param routeEngine обработчик маршрутов между состояниями
          */
-        setRouteEngine(routeEngine: Animals.StateMachine.RouteEngine) {
+        setRouteEngine(routeEngine: StateMachines.Routes.RouteEngine) {
             this._routeEngine = routeEngine;
             this._routeEngine.setModel(this._model);
         }
@@ -94,7 +94,7 @@ namespace Animals.StateMachine {
          * Запуск состояния
          * @param model
          */
-        run(model: Animal) {
+        run(model: Animals.Animal) {
             throw new Error('Not implemented yet...');
         }
 

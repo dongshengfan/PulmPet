@@ -1,14 +1,13 @@
 /**
  * Created by FIRCorp on 02.05.2017.
  */
-namespace Animals.StateMachine {
+namespace StateMachines {
 
     /**
      * Управляющий элемент автомата
      * @class StateMachine
      */
     export class StateMachine {
-
         /**
          * Текущее состояние
          */
@@ -18,7 +17,7 @@ namespace Animals.StateMachine {
          * Creates an instance of StateMachine.
          * @param state текущее состояние
          */
-        constructor(state: Animals.StateMachine.State) {
+        constructor(state: StateMachines.States.State) {
             this._state = state;
         }
 
