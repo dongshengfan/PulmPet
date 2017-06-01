@@ -98,7 +98,13 @@ namespace Animals.Scales {
          * Считает процент прогресса на основе интервала и текущего значения
          */
         getPercentageInScale(): void {
-            this._percent = ((this._current - this._min) * 100) / (this._max - this._min);
+            if (this._current >= this._max) {
+                this._percent = 100;
+            } else if (this._current <= this._min) {
+                this._percent = 0;
+            } else {
+                this._percent = ((this._current - this._min) * 100) / (this._max - this._min);
+            }
         }
 
         /**

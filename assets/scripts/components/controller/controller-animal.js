@@ -11,6 +11,7 @@ cc.Class({
         _maxBiasTouch: 15,//максимальное смещение тача для открытия меню (px)
         _pointTouchForMenu: cc.v2,//точка старта тача по животному
 
+        _timeUpdate: 0.01,
         _isMove: false,//флаг для определения движется ли живоное за пользователем
         _isOpenMenu: false,//флаг для определения открыто ли меню
     },
@@ -29,12 +30,13 @@ cc.Class({
      */
     settings(pack){
         this._model = this._api.createAnimal(pack.puthToModel, pack.id);//создаем модель животного
-
+        this._model.setPointStart(pack.point.x, pack.point.y);
         cc.log(this.node.children);
-        this.settingCollider(this._model.navigation.radiusVision,this.node.children[0].getComponent(cc.CircleCollider));
-        this.settingCollider(this._model.navigation.radiusHearing,this.node.children[1].getComponent(cc.CircleCollider));
-        this.settingCollider(this._model.navigation.radiusSmell,this.node.children[2].getComponent(cc.CircleCollider));
-        this.settingCollider(this._model.navigation.radiusTouch,this.node.children[3].getComponent(cc.CircleCollider));
+        cc.log(this._model);
+        this.settingCollider(this._model.navigation.radiusVision, this.node.children[0].getComponent(cc.CircleCollider));
+        this.settingCollider(this._model.navigation.radiusHearing, this.node.children[1].getComponent(cc.CircleCollider));
+        this.settingCollider(this._model.navigation.radiusSmell, this.node.children[2].getComponent(cc.CircleCollider));
+        this.settingCollider(this._model.navigation.radiusTouch, this.node.children[3].getComponent(cc.CircleCollider));
 
     },
 
@@ -44,8 +46,8 @@ cc.Class({
      * @param {Animals.Systems.ISystem} system
      * @param {cc.CircleCollider} component
      */
-    settingCollider(system,component){
-        system===undefined?component.radius=0:component.radius=system.current;
+    settingCollider(system, component){
+        system === null ? component.radius = 0 : component.radius = system.current;
     },
 
     /**
@@ -229,13 +231,70 @@ cc.Class({
 
     },
 
+
+    goUpdate(pack){
+
+        this._updateCharacteristics(pack);
+        // cc.log(this._rememberPointPack);
+
+
+    },
+
     /**
-     * Возвращает массив характеристик у животного
-     * @return {*|any}
+     * Обновляет характеристики
+     * @param pack
      */
-    getCharacteristics(){
-        return this._model.getCharacteristics();
-    }
+    _updateCharacteristics(pack){
+        this.unschedule(this.callBackOpacity);
+        this.callBackOpacity = () => {
+
+            if (!this._isOpenMenu) {
+                //if (this.node.opacity < 125) this.node.active = false;
+                this.unschedule(this.callBackOpacity);
+            }
+
+            let mass = this._model.getCharacteristics();
+            let nodeParam;
+            let content = pack.content;
+
+            //чистим предыдущие записи
+            content.children.forEach((item) => {
+                item.destroy();
+            });
+
+            //Начинаем заполнение
+            nodeParam = cc.instantiate(pack.prefabParam);
+            nodeParam.removeAllChildren();
+            nodeParam.addComponent(cc.Label).string = mass.name;
+            nodeParam.color = pack.color;
+            content.addChild(nodeParam);
+
+            nodeParam = cc.instantiate(pack.prefabParam);
+            nodeParam.removeAllChildren();
+            nodeParam.addComponent(cc.Label).string = mass.currentState;
+            nodeParam.color = pack.color;
+            content.addChild(nodeParam);
+
+            let vr;//временная переменная узлов
+            //заполняем характеристики
+            if (mass.param.length != 0) {
+                for (let i = 0; i < mass.param.length; i++) {
+                    nodeParam = cc.instantiate(pack.prefabParam);
+                    content.addChild(nodeParam);
+                    nodeParam.x = 0;
+                    vr = nodeParam.getChildByName('name');
+                    vr.getComponent(cc.Label).string = mass.param[i].name;
+                    vr.color = pack.color;
+                    vr = nodeParam.getChildByName('value');
+                    vr.getComponent(cc.Label).string = (mass.param[i].value.toFixed(2)).toString() + mass.param[i].unit;
+                    vr.color = pack.color;
+                }
+            }
+
+
+        };
+        this.schedule(this.callBackOpacity, this._timeUpdate);
+    },
 
 
 });

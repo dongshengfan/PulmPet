@@ -15,8 +15,8 @@ namespace Animals.Scales {
             this._name = params.name || "No name";
             this._min = params.min || 0;
             this._max = params.max || 100;
-            this._current = params.current || this._max;
             this._type = params.type || 0;
+            this._current = params.current || this._max;
             this.getPercentageInScale();
         }
 

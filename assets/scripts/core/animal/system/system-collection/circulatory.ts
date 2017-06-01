@@ -35,6 +35,9 @@ namespace Animals.Systems {
          * @param scales объект шкалл
          */
         constructor(scales: any[]) {
+            this._heartbeat=null;
+            this._pressure=null;
+
             this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.SystemScale([]);
             ;
             this.heartbeat = scales[Animals.Scales.ParameterScaleTypes.heartbeat];
@@ -66,8 +69,10 @@ namespace Animals.Systems {
          * @param delta дельта изменения
          */
         changeHeartbeat(delta: number) {
-            this._heartbeat.change(delta);
-            this.analysis();
+            if(this._heartbeat!=null) {
+                this._heartbeat.change(delta);
+                this.analysis();
+            }
         }
 
         /**
@@ -75,15 +80,20 @@ namespace Animals.Systems {
          * @param delta дельта изменения
          */
         changePressure(delta: number) {
-            this._pressure.change(delta);
-            this.analysis();
+            if(this._pressure!=null) {
+                this._pressure.change(delta);
+                this.analysis();
+            }
         }
 
         /**
          * Анализирует систему
          */
         analysis(): void {
-            this.state.analysis([]);
+            this.state.analysis([
+                this.pressure,
+                this.heartbeat
+            ]);
         }
     }
 }

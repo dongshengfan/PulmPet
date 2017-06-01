@@ -1,7 +1,7 @@
 /**
  * Created by FIRCorp on 04.03.2017.
  */
-
+import { Core }from '../../build/build-ts';
 cc.Class({
     extends: cc.Component,
 
@@ -11,12 +11,13 @@ cc.Class({
         _controllerScrollMap: null,
         _actionMoveMap: null,//действие движения карты
         _maxSizeMapScroll: null,//размер offset скролла. поможет при перемещении камеры от зверюшки к зверюшке
-
+        tield:cc.TiledMap,
         maxBiasTouch: 15,//максимальное смещение тача для определения что карта движется
     },
 
     onLoad() {
-
+        this._api = Core.instance();
+        this._api.createMap(this.tield);
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd.bind(this));

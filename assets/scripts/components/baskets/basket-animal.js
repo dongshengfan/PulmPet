@@ -129,7 +129,7 @@ cc.Class({
                 this.unschedule(this.callBackOpacity);
             }
             (opacity > this.node.opacity) ? this.node.opacity += 1 : this.node.opacity -= 2;
-        }
+        };
         this.schedule(this.callBackOpacity, intevalIncrements);
     },
 

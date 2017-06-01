@@ -179,7 +179,7 @@ let lion: any = {
                     },
                     {
                         type: StateMachines.TypesState.die,
-                        probability: 0.01
+                        probability: 0.1
                     }
                 ]
             },
@@ -192,7 +192,7 @@ let lion: any = {
                     },
                     {
                         type: StateMachines.TypesState.die,
-                        probability: 0.01
+                        probability: 0.1
                     }
                 ]
             },
@@ -201,7 +201,7 @@ let lion: any = {
                 link: [
                     {
                         type: StateMachines.TypesState.die,
-                        probability: 0.6
+                        probability: 0.06
                     },
                     {
                         type: StateMachines.TypesState.stand,

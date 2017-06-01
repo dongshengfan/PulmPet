@@ -30,31 +30,40 @@ class Core {
     createAnimal(putToModel: any, id: any): Animals.Animal {
         let factory = Animals.AnimalBuilder.instance();
         let animal: any;
-        /* switch (putToModel){
-         case 'lion':{
-         animal=factory.create(lion);
-         break;
-         }
-         case 'zebra':{
-         animal=factory.create(zebra);
-         break;
-         }
-         case 'mouse':{
-         animal=factory.create(mouse);
-         break;
-         }
-         case 'hyena':{
-         animal=factory.create(hyena);
-         break;
-         }
-         case 'elephant':{
-         animal=factory.create(elephant);
-         break;
-         }
-         }*/
+        switch (putToModel) {
+            case 'lion2': {
+                animal = factory.create(lion2);
+                break;
+            }
+            case 'lion': {
+                animal = factory.create(lion);
+                break;
+            }
+            case 'zebra': {
+                animal = factory.create(zebra);
+                break;
+            }
+            /* case 'mouse':{
+             animal=factory.create(mouse);
+             break;
+             }
+             case 'hyena':{
+             animal=factory.create(hyena);
+             break;
+             }
+             case 'elephant':{
+             animal=factory.create(elephant);
+             break;
+             }*/
+        }
 
-        animal = factory.create(lion);
+      //  animal = factory.create(lion);
         animal.id = id;
         return animal;
+    }
+
+    createMap(tiled:any){
+        let map:any= MapGame.Map.instance();
+        map.world=tiled;
     }
 }

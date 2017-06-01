@@ -2,6 +2,7 @@
  * Created by FIRCorp on 25.02.2017.
  */
 namespace Animals {
+
     /**
      * Класс животного
      */
@@ -46,6 +47,10 @@ namespace Animals {
          * @param params массив систем
          */
         constructor(params: any[]) {
+            this.navigation = null;
+            this.muscular = null;
+            this.circulatory = null;
+
             this.muscular = params[Animals.Systems.SystemTypes.muscular];
             this.circulatory = params[Animals.Systems.SystemTypes.circulatory];
             this.navigation = params[Animals.Systems.SystemTypes.navigation];
@@ -127,9 +132,24 @@ namespace Animals {
             //console.log(this._stateMachine);
         }
 
-        public runLife(){
+        public runLife() {
             console.log(this);
             this._stateMachine.run();
+        }
+
+        /**
+         * СОпрашивает шкалу сцелью формирования объекта для отображения статистики
+         * @param scale шкала
+         * @param unit именование единиц измерения
+         * @returns {{name: string, value: number, unit: string}}
+         * @private
+         */
+        _getParam(scale: Animals.Scales.AScale, unit: string): any {
+            return {
+                name: scale.name,
+                value: scale.current,
+                unit: unit,
+            }
         }
 
         /**
@@ -137,49 +157,68 @@ namespace Animals {
          * @return {{name: string, currentState: string, param: Array}}
          */
         public getCharacteristics(): Object {
-            let params: Array<Object> = [
-                {
-                    name: 'Скорость',
-                    value: 89,
-                    unit: 'м/с',
-                },
-                {
-                    name: 'Возраст',
-                    value: 12,
-                    unit: 'лет',
-                },
-                {
-                    name: 'Вес',
-                    value: 12,
-                    unit: 'кг',
-                },
-                {
-                    name: 'Выносливость',
-                    value: 12,
-                    unit: 'ед.',
-                },
-                {
-                    name: 'Система кровообращения',
-                    value: 89,
-                    unit: '%',
-                },
-                {
-                    name: 'Система памяти',
-                    value: 59,
-                    unit: '%',
-                },
-                {
-                    name: 'Система дыхания',
-                    value: 89,
-                    unit: '%',
+
+            let params: any = [];
+            if (this.circulatory != null) {
+                if (this.circulatory.heartbeat != null) {
+                    params.push(this._getParam(this.circulatory.heartbeat, 'уд'));
                 }
-            ];
+                if (this.circulatory.pressure != null) {
+                    params.push(this._getParam(this.circulatory.pressure, ''));
+                }
+                if (this.circulatory.state != null) {
+                    params.push(this._getParam(this.circulatory.state, '%'));
+                }
+            }
+            if (this.muscular != null) {
+                if (this.muscular.speed != null) {
+                    params.push(this._getParam(this.muscular.speed, 'm/c'));
+                }
+                if (this.muscular.weight != null) {
+                    params.push(this._getParam(this.muscular.weight, 'kg'));
+                }
+                if (this.muscular.state != null) {
+                    params.push(this._getParam(this.muscular.state, '%'));
+                }
+            }
+            if (this.navigation != null) {
+                if (this.navigation.state != null) {
+                    params.push(this._getParam(this.navigation.state, '%'));
+                }
+                if (this.navigation.radiusVision != null) {
+                    params.push(this._getParam(this.navigation.radiusVision, 'ед'));
+                }
+                if (this.navigation.radiusSmell != null) {
+                    params.push(this._getParam(this.navigation.radiusSmell, 'ед'));
+                }
+                if (this.navigation.radiusTouch != null) {
+                    params.push(this._getParam(this.navigation.radiusTouch, 'ед'));
+                }
+                if (this.navigation.radiusHearing != null) {
+                    params.push(this._getParam(this.navigation.radiusHearing, 'ед'));
+                }
+                if (this.navigation.speedSavvy != null) {
+                    params.push(this._getParam(this.navigation.speedSavvy, 'ед'));
+                }
+            }
 
             return {
                 name: this._name,
-                currentState: 'Бегу',
+                currentState: this.stateMachine._state.getName(),
                 param: params,
             };
+        }
+
+        /**
+         * Устанавливает позицию модели животного
+         * @param x по оси абсцисс
+         * @param y по оси ординат
+         */
+        public setPointStart(x: number, y: number) {
+            if (this.navigation != null) {
+                this.navigation._currentPoint.x = x;
+                this.navigation._currentPoint.y = y;
+            }
         }
     }
 }

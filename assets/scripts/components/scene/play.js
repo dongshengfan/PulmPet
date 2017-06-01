@@ -110,6 +110,7 @@ cc.Class({
         this._controllerBasket = this.nodeBasket.getComponent('basket-animal');
         this._controllerMap = this.nodeMap.getComponent('controller-map');
 
+
     },
 
     /**
@@ -238,9 +239,11 @@ cc.Class({
             nodeModel.addComponent('controller-animal');//Добавляем контроллер телу животного
             nodeModel.getComponent('controller-animal').settings({
                 puthToModel:this._targetPuthToModel,
-                id:this.nodeFieldAnimals.children.length-1
+                id:this.nodeFieldAnimals.children.length-1,
+                point:this._controllerMap.getPointMap(cc.v2(nodeModel.x,nodeModel.y)),
             });//Настраивам контроллер животного
             nodeModel.getComponent('controller-animal').run();//Запускает жизнь животного
+
             this._controllerBasket.onBadWorkBasket();//Дать команду корзине(не сейчас)
 
         } else {
@@ -314,7 +317,7 @@ cc.Class({
         let point = this._controllerMap.getPointMap(event.detail.pointEnd);// конвертируем точку окна к точке карты
         this._pointTargetAnimal = cc.v2(point.x, point.y);// вычисляем точку куда пойдет животное в итоге
         //сообщаем модели точку до которой необходимо ей дойти
-        this._targetAnimal.moveToPoint(this._pointTargetAnimal);
+    //    this._targetAnimal.moveToPoint(this._pointTargetAnimal);
         this.nodeBoxMap.getComponent(cc.ScrollView).enabled = true; // Разблокировали карту
     },
 
@@ -441,43 +444,13 @@ cc.Class({
         cc.log('открылся BoxFromCharacteristicsAnimal');
         this._boxCreateAnimal.closeBox();
         //заполняет характеристики
-        let mass = this._controllerAnimal.getCharacteristics();
-        let content = this._boxCharacteristicsAnimal.content;
+       // let mass = this._controllerAnimal.getCharacteristics();
+        this._controllerAnimal.goUpdate({content:this._boxCharacteristicsAnimal.content,
+            prefabParam:this.prefabParametrCharacteristics,
+            color:this.colorTextCharacteristics});
+       // let content = this._boxCharacteristicsAnimal.content;
 
-        let nodeParam;
-        //чистим предыдущие записи
-        content.children.forEach((item) => {
-            item.destroy();
-        });
 
-        //Начинаем заполнение
-        nodeParam = cc.instantiate(this.prefabParametrCharacteristics);
-        nodeParam.removeAllChildren();
-        nodeParam.addComponent(cc.Label).string = mass.name;
-        nodeParam.color = this.colorTextCharacteristics;
-        content.addChild(nodeParam);
-
-        nodeParam = cc.instantiate(this.prefabParametrCharacteristics);
-        nodeParam.removeAllChildren();
-        nodeParam.addComponent(cc.Label).string = mass.currentState;
-        nodeParam.color = this.colorTextCharacteristics;
-        content.addChild(nodeParam);
-
-        let vr;//временная переменная узлов
-        //заполняем характеристики
-        if (mass.param.length != 0) {
-            for (let i = 0; i < mass.param.length; i++) {
-                nodeParam = cc.instantiate(this.prefabParametrCharacteristics);
-                content.addChild(nodeParam);
-                nodeParam.x = 0;
-                vr = nodeParam.getChildByName('name');
-                vr.getComponent(cc.Label).string = mass.param[i].name;
-                vr.color = this.colorTextCharacteristics;
-                vr = nodeParam.getChildByName('value');
-                vr.getComponent(cc.Label).string = mass.param[i].value.toString() + mass.param[i].unit;
-                vr.color = this.colorTextCharacteristics;
-            }
-        }
     },
 
     /**

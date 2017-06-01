@@ -18,13 +18,6 @@ namespace Animals.Systems {
          */
         _linkToAnimal: Animals.Animal;
 
-        /**
-         * Точка текущего положения животного
-         */
-        _currentPoint: {
-            x: number,
-            y: number
-        };
 
         /**
          * Скорость движения
@@ -43,6 +36,9 @@ namespace Animals.Systems {
          * @param scales объект шкал
          */
         constructor(scales: any[]) {
+            this._speed = null;
+            this._weight = null;
+
             this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.SystemScale([]);
             this.speed = scales[Animals.Scales.ParameterScaleTypes.speed];
             this.weight = scales[Animals.Scales.ParameterScaleTypes.weight];
@@ -60,12 +56,6 @@ namespace Animals.Systems {
             }
         }
 
-        //!
-        set currentPoint(param: any) {
-            this._currentPoint.x = param.x;
-            this._currentPoint.y = param.y;
-        }
-
         get speed(): Animals.Scales.ArgumentScale {
             return this._speed;
         }
@@ -74,18 +64,16 @@ namespace Animals.Systems {
             return this._weight;
         }
 
-        //!
-        get currentPoint(): any {
-            return this._currentPoint;
-        }
 
         /**
          * Изменить скорость на процент
          * @param delta дельта изменения
          */
         changeSpeed(delta: number) {
-            this._speed.change(delta);
-            this.analysis();
+            if (this._speed != null) {
+                this._speed.change(delta);
+                this.analysis();
+            }
         }
 
         /**
@@ -93,8 +81,10 @@ namespace Animals.Systems {
          * @param delta дельта изменения
          */
         changeWeight(delta: number) {
-            this._weight.change(delta);
-            this.analysis();
+            if (this._weight) {
+                this._weight.change(delta);
+                this.analysis();
+            }
         }
 
 
@@ -102,7 +92,10 @@ namespace Animals.Systems {
          * Анализирует систему
          */
         analysis(): void {
-            this.state.analysis([]);
+            this.state.analysis([
+                this.speed,
+                this.weight
+            ]);
         }
     }
 }
