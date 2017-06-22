@@ -1,4 +1,5 @@
 
+
 /**
  * Created by FIRCorp on 02.05.2017.
  */
@@ -117,7 +118,7 @@ let lion: any = {
             type: Animals.Scales.ParameterScaleTypes.speed,
             link: [
                 {
-                    type: Animals.Scales.ParameterScaleTypes.weight,
+                    type: Animals.Scales.ParameterScaleTypes.pressure,
                     behavior: Animals.Communications.BehaviorScaleTypes.increase,
                     functions: Animals.Functions.FunctionTypes.line,
                     params: [
@@ -138,9 +139,87 @@ let lion: any = {
                         0.5,
                         0.1
                     ]
+                },
+                {
+                    type: Animals.Scales.ParameterScaleTypes.pressure,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
+                },
+                {
+                    type: Animals.Scales.ParameterScaleTypes.radiusTouch,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
+                },
+                {
+                    type: Animals.Scales.ParameterScaleTypes.radiusVision,
+                    behavior: Animals.Communications.BehaviorScaleTypes.decrease,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
                 }
             ],
-        }
+        },
+        {
+            type: Animals.Scales.ParameterScaleTypes.heartbeat,
+            link: [
+                {
+                    type: Animals.Scales.ParameterScaleTypes.pressure,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
+                },
+                {
+                    type: Animals.Scales.ParameterScaleTypes.speedSavvy,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
+                }
+            ],
+        },
+        {
+            type: Animals.Scales.ParameterScaleTypes.speedSavvy,
+            link: [
+                {
+                    type: Animals.Scales.ParameterScaleTypes.radiusVision,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
+                }
+            ],
+        },
+        {
+            type: Animals.Scales.ParameterScaleTypes.radiusTouch,
+            link: [
+                {
+                    type: Animals.Scales.ParameterScaleTypes.speed,
+                    behavior: Animals.Communications.BehaviorScaleTypes.increase,
+                    functions: Animals.Functions.FunctionTypes.line,
+                    params: [
+                        0.5,
+                        0.1
+                    ]
+                }
+            ],
+        },
     ],
     states: {
         state: [

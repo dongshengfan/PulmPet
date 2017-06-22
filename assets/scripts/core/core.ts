@@ -31,18 +31,12 @@ class Core {
         let factory = Animals.AnimalBuilder.instance();
         let animal: any;
         switch (putToModel) {
-            case 'lion2': {
-                animal = factory.create(lion2);
-                break;
-            }
+
             case 'lion': {
                 animal = factory.create(lion);
                 break;
             }
-            case 'zebra': {
-                animal = factory.create(zebra);
-                break;
-            }
+
             /* case 'mouse':{
              animal=factory.create(mouse);
              break;

@@ -23,13 +23,13 @@ namespace Animals.Systems {
          * Скорость движения
          * @type {ArgumentScale}
          */
-        protected _speed: Animals.Scales.ArgumentScale;
+        _speed: Animals.Scales.ArgumentScale;
 
         /**
          * Вес животного
          * @type {ArgumentScale}
          */
-        protected _weight: Animals.Scales.ArgumentScale;
+        _weight: Animals.Scales.ArgumentScale;
 
         /**
          * Constructor of Muscular

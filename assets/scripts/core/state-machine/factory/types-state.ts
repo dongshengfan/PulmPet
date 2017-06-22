@@ -14,6 +14,6 @@ namespace StateMachines {
         sleep,
         go,
         lies,
-        sit,
+        sit
     }
 }

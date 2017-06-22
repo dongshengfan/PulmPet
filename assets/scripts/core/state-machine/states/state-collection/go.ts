@@ -4,7 +4,7 @@
 namespace StateMachines.States {
 
     /**
-     * Состояние - идет на месте
+     * Состояние - идет
      * @class StateStand
      */
     export class StateGo extends State {
@@ -26,8 +26,10 @@ namespace StateMachines.States {
          */
         async run(): Promise<void> {
             console.log('иду');
-            this._model.muscular.changeSpeed(0.5);
+           this._model.muscular.changeSpeed(0.5);
             this._model.muscular.changeWeight(0.7);
+            this._model.navigation.changeSpeedSavvy(0.1);
+            this._model.circulatory.changeHeartbeat(-0.3);
             await this.mySleep(2);//Ожидание
         }
     }

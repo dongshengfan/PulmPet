@@ -28,6 +28,8 @@ namespace StateMachines.States {
             console.log('сплю');
             this._model.muscular.changeSpeed(0.5);
             this._model.muscular.changeWeight(0.7);
+            this._model.circulatory.changeHeartbeat(-0.3);
+
             await this.mySleep(2);//Ожидание
         }
     }

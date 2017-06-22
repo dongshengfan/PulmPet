@@ -32,6 +32,7 @@ namespace StateMachines {
             this._factories[TypesState.go] = StateMachines.States.StateGo;
             this._factories[TypesState.lies] = StateMachines.States.StateLies;
             this._factories[TypesState.sit] = StateMachines.States.StateSit;
+
         }
 
         /**
@@ -50,7 +51,7 @@ namespace StateMachines {
          * @param type тип состояния
          * @param state конструктор состояния
          */
-        add(type: TypesState, state: StateMachines.States.State): void {
+        public add(type: TypesState, state: StateMachines.States.State): void {
             this._factories[type] = state;
         }
 
@@ -61,7 +62,7 @@ namespace StateMachines {
          * @param animal модель состояния
          * @param isEnd флаг заключительного состояния
          */
-        create(typeState: TypesState, name: string, animal: Animals.Animal, isEnd: boolean) {
+        public create(typeState: TypesState, name: string, animal: Animals.Animal, isEnd: boolean) {
             return new this._factories[typeState](name, animal, isEnd, null);
         }
     }

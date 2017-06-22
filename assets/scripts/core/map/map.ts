@@ -113,7 +113,7 @@ namespace MapGame {
          * Инициализация всех слоев на карте
          */
         _initializationLayer(): void {
-            this.obstaclesLayer = this._world.getLayer('obstacle');
+            this.obstaclesLayer = this._world.getLayer('obstacles');
             this.waterLayer = this._world.getLayer('water');
             this.treeLayer = this._world.getLayer('tree');
         }

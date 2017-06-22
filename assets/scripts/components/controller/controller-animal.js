@@ -11,7 +11,7 @@ cc.Class({
         _maxBiasTouch: 15,//максимальное смещение тача для открытия меню (px)
         _pointTouchForMenu: cc.v2,//точка старта тача по животному
 
-        _timeUpdate: 0.01,
+        _timeUpdate: 0.5,
         _isMove: false,//флаг для определения движется ли живоное за пользователем
         _isOpenMenu: false,//флаг для определения открыто ли меню
     },
@@ -23,7 +23,6 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchStartAnimal.bind(this));
         this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEndAnimal.bind(this));
     },
-
 
     /**
      * Настраивает доступные действия плюшки для животного и характеристики
@@ -193,14 +192,16 @@ cc.Class({
      * Сесть
      */
     runSit(){
-
+        //реализовать
+        this._model.goStateSit();
     },
 
     /**
      * Испугаться
      */
     runFrighten(){
-
+        //реализовать
+        this._model.goFrighten();
     },
 
     /**
@@ -214,14 +215,16 @@ cc.Class({
      * Поласкаться
      */
     runCare(){
-
+        //реализовать
+        this._model.goCare();
     },
 
     /**
      * Лечь
      */
     runLie(){
-
+        //реализовать
+        this._model.goStateLies();
     },
 
     /**
@@ -231,13 +234,48 @@ cc.Class({
 
     },
 
-
+    /**
+     * Обновляет представление модели
+     * @param pack
+     */
     goUpdate(pack){
+        let mass = this._model.getCharacteristics();
+        let nodeParam;
+        let content = pack.content;
 
+        //чистим предыдущие записи
+        content.children.forEach((item) => {
+            item.destroy();
+        });
+
+        //Начинаем заполнение
+        nodeParam = cc.instantiate(pack.prefabParam);
+        nodeParam.removeAllChildren();
+        nodeParam.addComponent(cc.Label).string = mass.name;
+        nodeParam.color = pack.color;
+        content.addChild(nodeParam);
+        nodeParam = cc.instantiate(pack.prefabParam);
+        nodeParam.removeAllChildren();
+        nodeParam.addComponent(cc.Label).string = mass.currentState;
+        nodeParam.color = pack.color;
+        content.addChild(nodeParam);
+
+        let vr;//временная переменная узлов
+        //заполняем характеристики
+        if (mass.param.length != 0) {
+            for (let i = 0; i < mass.param.length; i++) {
+                nodeParam = cc.instantiate(pack.prefabParam);
+                content.addChild(nodeParam);
+                nodeParam.x = 0;
+                vr = nodeParam.getChildByName('name');
+                vr.getComponent(cc.Label).string = mass.param[i].name;
+                vr.color = pack.color;
+                vr = nodeParam.getChildByName('value');
+                vr.getComponent(cc.Label).string = (mass.param[i].value.toFixed(2)).toString() + mass.param[i].unit;
+                vr.color = pack.color;
+            }
+        }
         this._updateCharacteristics(pack);
-        // cc.log(this._rememberPointPack);
-
-
     },
 
     /**
@@ -249,50 +287,21 @@ cc.Class({
         this.callBackOpacity = () => {
 
             if (!this._isOpenMenu) {
-                //if (this.node.opacity < 125) this.node.active = false;
                 this.unschedule(this.callBackOpacity);
             }
-
             let mass = this._model.getCharacteristics();
-            let nodeParam;
             let content = pack.content;
+            content.children[0].getComponent(cc.Label).string = mass.name;
+            content.children[1].getComponent(cc.Label).string = mass.currentState;
 
-            //чистим предыдущие записи
-            content.children.forEach((item) => {
-                item.destroy();
-            });
-
-            //Начинаем заполнение
-            nodeParam = cc.instantiate(pack.prefabParam);
-            nodeParam.removeAllChildren();
-            nodeParam.addComponent(cc.Label).string = mass.name;
-            nodeParam.color = pack.color;
-            content.addChild(nodeParam);
-
-            nodeParam = cc.instantiate(pack.prefabParam);
-            nodeParam.removeAllChildren();
-            nodeParam.addComponent(cc.Label).string = mass.currentState;
-            nodeParam.color = pack.color;
-            content.addChild(nodeParam);
-
-            let vr;//временная переменная узлов
             //заполняем характеристики
             if (mass.param.length != 0) {
                 for (let i = 0; i < mass.param.length; i++) {
-                    nodeParam = cc.instantiate(pack.prefabParam);
-                    content.addChild(nodeParam);
-                    nodeParam.x = 0;
-                    vr = nodeParam.getChildByName('name');
-                    vr.getComponent(cc.Label).string = mass.param[i].name;
-                    vr.color = pack.color;
-                    vr = nodeParam.getChildByName('value');
-                    vr.getComponent(cc.Label).string = (mass.param[i].value.toFixed(2)).toString() + mass.param[i].unit;
-                    vr.color = pack.color;
+                    content.children[2 + i].children[1].getComponent(cc.Label).string = (mass.param[i].value.toFixed(2)).toString() + mass.param[i].unit;
                 }
             }
-
-
         };
+
         this.schedule(this.callBackOpacity, this._timeUpdate);
     },
 

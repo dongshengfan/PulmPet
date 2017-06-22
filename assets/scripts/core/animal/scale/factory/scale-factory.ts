@@ -8,7 +8,7 @@ namespace Animals.Scales {
     export class ScaleFactory {
         /**
          * Массив различных конструкторов шкал
-         * @type {AScale[]}
+         * @type {Scale[]}
          */
         private _factories: any[];
 
@@ -23,8 +23,9 @@ namespace Animals.Scales {
          */
         constructor() {
             this._factories = [];
-            this._factories[ScaleTypes.system] = Animals.Scales.SystemScale;
-            this._factories[ScaleTypes.argument] = Animals.Scales.ArgumentScale;
+            this._factories[ScaleTypes.system] = SystemScale;
+            this._factories[ScaleTypes.argument] = ArgumentScale;
+
         }
 
         /**
@@ -43,18 +44,18 @@ namespace Animals.Scales {
          * @param type тип шкалы
          * @param system конструктор шкалы
          */
-        add(type: ScaleTypes, system: AScale): void {
+        add(type: ScaleTypes, system: Scale): void {
             this._factories[type] = system;
         }
 
         /**
          * Создание шкалы по типу
-         * @param functionType тип шкалы
+         * @param scaleType тип шкалы
          * @param params параметры шкалы
          * @return {AScale}
          */
-        create(functionType: ScaleTypes, params: any): AScale {
-            return new this._factories[functionType](params);
+        create(scaleType: ScaleTypes, params: any): Scale {
+            return new this._factories[scaleType](params);
         }
     }
 }

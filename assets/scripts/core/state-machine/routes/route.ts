@@ -35,7 +35,7 @@ namespace StateMachines.Routes {
          * @param probability вероятность перехода для вероятностных маршрутов
          * @returns {Animals.StateMachine.States.State |null}
          */
-        isAvailable(model: Animals.Animal, probability: number = 1.0): StateMachines.States.State|null {
+        public isAvailable(model: Animals.Animal, probability: number = 1.0): StateMachines.States.State|null {
             return (this._availability && this._availability(model, probability)) ? this._state : null;
         }
 
@@ -43,7 +43,7 @@ namespace StateMachines.Routes {
          * Получение заданного для перехода состояния
          * @returns {Animals.StateMachine.States.State}
          */
-        getState(): StateMachines.States.State {
+        public getState(): StateMachines.States.State {
             return this._state;
         }
     }

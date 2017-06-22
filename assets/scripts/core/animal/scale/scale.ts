@@ -1,11 +1,12 @@
 /**
  * Created by FIRCorp on 20.02.2017.
  */
+
 namespace Animals.Scales {
     /**
-     * Абстрактный класс шкалы
+     * класс шкалы
      */
-    export abstract class AScale {
+    export class Scale {
         /**
          * Наименование шкалы
          * @type {string}
@@ -40,7 +41,7 @@ namespace Animals.Scales {
          * Тип параметра за который ответственна шкала
          * @type {ParameterScaleTypes}
          */
-        protected _type: Animals.Scales.ParameterScaleTypes;
+        protected _type: ParameterScaleTypes;
 
         set name(param: string) {
             this._name = param;
@@ -66,7 +67,7 @@ namespace Animals.Scales {
             this.getCurrentValueOnScale()
         }
 
-        set type(param: Animals.Scales.ParameterScaleTypes) {
+        set type(param: ParameterScaleTypes) {
             this._type = param;
         }
 
@@ -90,14 +91,14 @@ namespace Animals.Scales {
             return this._percent;
         }
 
-        get type(): Animals.Scales.ParameterScaleTypes {
+        get type(): ParameterScaleTypes {
             return this._type;
         }
 
         /**
          * Считает процент прогресса на основе интервала и текущего значения
          */
-        getPercentageInScale(): void {
+        public getPercentageInScale(): void {
             if (this._current >= this._max) {
                 this._percent = 100;
             } else if (this._current <= this._min) {
@@ -110,7 +111,7 @@ namespace Animals.Scales {
         /**
          * Считает текущее значение по прогрессу и интервалу
          */
-        getCurrentValueOnScale(): void {
+        public getCurrentValueOnScale(): void {
             this._current = (((this._max - this._min) / 100) * this._percent) + this._min;
         }
     }

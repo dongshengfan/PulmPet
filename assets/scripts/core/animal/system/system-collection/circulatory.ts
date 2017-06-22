@@ -16,27 +16,27 @@ namespace Animals.Systems {
          * Ссылка на класс животного
          * @type {Animal}
          */
-        _linkToAnimal:Animals.Animal;
+        _linkToAnimal: Animals.Animal;
 
         /**
          * Сердцебиение животного
          * @type {ArgumentScale}
          */
-        protected _heartbeat: Animals.Scales.ArgumentScale;
+        _heartbeat: Animals.Scales.ArgumentScale;
 
         /**
          * Давление животного
          * @type {ArgumentScale}
          */
-        protected _pressure: Animals.Scales.ArgumentScale;
+        _pressure: Animals.Scales.ArgumentScale;
 
         /**
          * Constructor of Muscular
          * @param scales объект шкалл
          */
         constructor(scales: any[]) {
-            this._heartbeat=null;
-            this._pressure=null;
+            this._heartbeat = null;
+            this._pressure = null;
 
             this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.SystemScale([]);
             ;
@@ -68,8 +68,8 @@ namespace Animals.Systems {
          * Изменить сердцебиение на процент
          * @param delta дельта изменения
          */
-        changeHeartbeat(delta: number) {
-            if(this._heartbeat!=null) {
+        public changeHeartbeat(delta: number) {
+            if (this._heartbeat != null) {
                 this._heartbeat.change(delta);
                 this.analysis();
             }
@@ -79,8 +79,8 @@ namespace Animals.Systems {
          * Изменить давление на процент
          * @param delta дельта изменения
          */
-        changePressure(delta: number) {
-            if(this._pressure!=null) {
+        public changePressure(delta: number) {
+            if (this._pressure != null) {
                 this._pressure.change(delta);
                 this.analysis();
             }
@@ -89,7 +89,7 @@ namespace Animals.Systems {
         /**
          * Анализирует систему
          */
-        analysis(): void {
+        public analysis(): void {
             this.state.analysis([
                 this.pressure,
                 this.heartbeat

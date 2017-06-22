@@ -1,11 +1,15 @@
+///<reference path="../scale.ts"/>
+
 /**
  * Created by FIRCorp on 20.02.2017.
  */
+
 namespace Animals.Scales {
     /**
-     * Шкала аргументов систем (отражает состояние конкретной системы)
+     * Шкала аргументов систем (отражает состояние конкретной характеристики системы)
      */
-    export class ArgumentScale extends AScale {
+
+    export class ArgumentScale extends Scale {
         /**
          * Задержка ответа шкалы в миллисекундах
          * @type {number}
@@ -53,8 +57,8 @@ namespace Animals.Scales {
          * Публикует в сети коммуникатора свое событие с каким-то параметром
          * @param params дельта изменения этой шкалы
          */
-        trigger(params: number): void {
-            let event = (params>0) ? Animals.Communications.BehaviorScaleTypes.increase : Animals.Communications.BehaviorScaleTypes.decrease;
+        public trigger(params: number): void {
+            let event = (params > 0) ? Animals.Communications.BehaviorScaleTypes.increase : Animals.Communications.BehaviorScaleTypes.decrease;
             let pack = {
                 behavior: event,
                 type: this._type
@@ -66,7 +70,7 @@ namespace Animals.Scales {
          * Изменяет процент шкалы на дельту и рассылает свое изменение далее по подписчикам
          * @param delta дельта на которую необходимо изменить процент данной шкалы
          */
-        change(delta: number): void {
+        public change(delta: number): void {
             let rez = this.percent + delta;
             if (rez <= 100 && rez >= 0) {
                 this.percent = rez;

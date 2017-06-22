@@ -16,7 +16,7 @@ namespace Animals.Communications {
          * Массив шкал этого животного
          * @type {AScale[]}
          */
-        private _scales: Animals.Scales.AScale[];
+        private _scales: Animals.Scales.Scale[];
 
         /**
          * Фабрика функций
@@ -26,9 +26,9 @@ namespace Animals.Communications {
 
         /**
          * Constructor of CommunicatorBuilder
-         * @param scales {AScale[]}
+         * @param scales {AScale[]} Массив шкал
          */
-        constructor(scales: Animals.Scales.AScale[]) {
+        constructor(scales: Animals.Scales.Scale[]) {
             this._scales = scales;
             this._communicator = new Communicator();
             this._factoryFunction = Animals.Functions.FunctionFactory.instance();
@@ -39,7 +39,7 @@ namespace Animals.Communications {
          * @param param объект с событием
          * @returns {CommunicatorBuilder}
          */
-        add(param: any): CommunicatorBuilder {
+        public add(param: any): CommunicatorBuilder {
             param.link.forEach((communication: any) => {
                 let {type, behavior, functions, params}=communication;
                 let scale: any = this._scales[type];
@@ -54,7 +54,7 @@ namespace Animals.Communications {
          * Возвращает коммуникатор
          * @returns {Communicator}
          */
-        build(): Communicator {
+        public build(): Communicator {
             return this._communicator;
         }
 

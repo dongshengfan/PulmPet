@@ -33,38 +33,38 @@ namespace Animals.Systems {
         /**
          * Скорость смекалки/реакции
          */
-        protected _speedSavvy: Animals.Scales.ArgumentScale;
+        _speedSavvy: Animals.Scales.ArgumentScale;
 
         /**
          * Радиус зрения
          */
-        protected _radiusVision: Animals.Scales.ArgumentScale;
+        _radiusVision: Animals.Scales.ArgumentScale;
 
         /**
          * Радиус слуха
          */
-        protected _radiusHearing: Animals.Scales.ArgumentScale;
+        _radiusHearing: Animals.Scales.ArgumentScale;
 
         /**
          * Радиус обоняния
          */
-        protected _radiusSmell: Animals.Scales.ArgumentScale;
+        _radiusSmell: Animals.Scales.ArgumentScale;
 
         /**
          * Радиус осязания
          */
-        protected _radiusTouch: Animals.Scales.ArgumentScale;
+        _radiusTouch: Animals.Scales.ArgumentScale;
 
         /**
          * Constructor of Navigation
          * @param scales объект шкалл
          */
         constructor(scales: any[]) {
-            this._speedSavvy=null;
-            this._radiusHearing=null;
-            this._radiusTouch=null;
-            this._radiusSmell=null;
-            this._radiusVision=null;
+            this._speedSavvy = null;
+            this._radiusHearing = null;
+            this._radiusTouch = null;
+            this._radiusSmell = null;
+            this._radiusVision = null;
 
 
             this.state = scales[Animals.Scales.ParameterScaleTypes.state] || new Animals.Scales.SystemScale([]);
@@ -139,7 +139,7 @@ namespace Animals.Systems {
          * Изменить скорость смекалки  на процент
          * @param delta дельта изменения
          */
-        changeSpeedSavvy(delta: number): void {
+        public changeSpeedSavvy(delta: number): void {
             this._speedSavvy.change(delta);
             this.analysis();
         }
@@ -148,7 +148,7 @@ namespace Animals.Systems {
          * Изменить радиус зрения на процент
          * @param delta дельта изменения
          */
-        changeRadiusVision(delta: number): void {
+        public changeRadiusVision(delta: number): void {
             this._radiusVision.change(delta);
             this.analysis();
         }
@@ -157,7 +157,7 @@ namespace Animals.Systems {
          * Изменить радиус слуха на процент
          * @param delta дельта изменения
          */
-        changeRadiusHearing(delta: number): void {
+        public changeRadiusHearing(delta: number): void {
             this._radiusHearing.change(delta);
             this.analysis();
         }
@@ -166,7 +166,7 @@ namespace Animals.Systems {
          * Изменить радиус обоняния на процент
          * @param delta дельта изменения
          */
-        changeRadiusSmell(delta: number): void {
+        public changeRadiusSmell(delta: number): void {
             this._radiusSmell.change(delta);
             this.analysis();
         }
@@ -175,7 +175,7 @@ namespace Animals.Systems {
          * Изменить радиус осязания на процент
          * @param delta дельта изменения
          */
-        changeRadiusTouch(delta: number): void {
+        public changeRadiusTouch(delta: number): void {
             this._radiusTouch.change(delta);
             this.analysis();
         }
@@ -184,7 +184,7 @@ namespace Animals.Systems {
         /**
          * Анализирует систему
          */
-        analysis(): void {
+        public analysis(): void {
             this.state.analysis([
                 this.radiusHearing,
                 this.radiusTouch,
@@ -199,7 +199,7 @@ namespace Animals.Systems {
          * по идеи на вход подаются текущая точка и точка для достижения цели
          * Необходимые значения
          */
-        A(pointEnd: any): any {
+        public A(pointEnd: any): any {
             var tileStart: any = this._map.convertTiledPos(this._currentPoint);//сторонний метод
             var tileEnd: any = this._map.convertTiledPos(pointEnd); //сторонний метод
             //tileEnd=cc.p(13,14);
@@ -233,7 +233,7 @@ namespace Animals.Systems {
         /**
          * конструирует путь до цели
          */
-        foundPuth(puth: any, end: any): any {
+        public foundPuth(puth: any, end: any): any {
             let arr: any = [];
             for (let i = puth.length - 1; i >= 0; i--) {
                 var row: any = puth[i];
@@ -252,7 +252,7 @@ namespace Animals.Systems {
          * Сглаживает путь
          *
          */
-        correctPuth(puth: any): any {
+        public correctPuth(puth: any): any {
             if (puth) {
                 let target: any = 1;
                 var element1: any,
@@ -287,7 +287,7 @@ namespace Animals.Systems {
         /**
          * Возвращает матрицу соседей удовлетворяющих условиям и не числющихся в просмотренных
          */
-        getElementNotInClosedForCurr(closed: any, curr: any): any {
+        public getElementNotInClosedForCurr(closed: any, curr: any): any {
             let arr: any = [];
             let p: any;
             p = cc.p(curr.x, curr.y + 1);
@@ -335,7 +335,7 @@ namespace Animals.Systems {
          * Проверяет находится ли элемент в массиве просмотренных или нет
          * @param {Array<any>} closed
          */
-        checkInMass(closed: any[], element: any): any {
+        public checkInMass(closed: any[], element: any): any {
             return closed.find((item: any) => item.x === element.x && item.y === element.y) ? false : true;
         }
 
@@ -343,7 +343,7 @@ namespace Animals.Systems {
          * Удалаяет указанный элемент из массива
          * @param {Array<any>} mass
          */
-        removeElement(element: any, mass: any[]) {
+        public removeElement(element: any, mass: any[]) {
             var index: any = mass.findIndex((item: any) => element.x === item.x && element.y === item.y);
             mass.splice(index, 1);
             //return index? mass.splice(index,1) : false;
@@ -353,7 +353,7 @@ namespace Animals.Systems {
          * Ищет такой элементкоторый самый близкий к финальной точке
          * @param {Array<any>} mas
          */
-        minF(mas: any, tileEnd: any): any {
+        public minF(mas: any, tileEnd: any): any {
             let min = Number.MAX_VALUE;
             let minItem = null;
             mas.forEach((item: any, i: any) => {
@@ -370,7 +370,7 @@ namespace Animals.Systems {
         /**
          * Эвристическая функция проврки расстояния до назанчения
          */
-        h(start: any, end: any): any {
+        public h(start: any, end: any): any {
 
             return Math.sqrt((end.x - start.x) ** 2 + (end.y - start.y) ** 2);
         }

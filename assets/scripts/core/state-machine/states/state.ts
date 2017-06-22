@@ -92,7 +92,7 @@ namespace StateMachines.States {
 
         /**
          * Запуск состояния
-         * @param model
+         * @param model - модель животного
          */
         run(model: Animals.Animal) {
             throw new Error('Not implemented yet...');

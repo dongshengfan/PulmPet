@@ -3,7 +3,7 @@
  */
 namespace Animals.Communications {
     /**
-     * Класс коммуникатора
+     * Класс коммуникатора. Организует пересылку сообщений между шкалами.
      */
     export class Communicator {
         /**
@@ -33,9 +33,9 @@ namespace Animals.Communications {
 
         /**
          * Настраивает коммуникатор
-         * @param params
+         * @param params - пакет настроек включающий в себя скорость реакции
          */
-        setting(params: any): void {
+        public setting(params: any): void {
             this.sensitivity = params.sensitivity || 0.1;
         }
 
@@ -44,7 +44,7 @@ namespace Animals.Communications {
          * @param event событие
          * @param link подписчик которого регистрируют на событие
          */
-        addLink(event: Animals.Scales.ParameterScaleTypes, link: any): void {
+        public addLink(event: Animals.Scales.ParameterScaleTypes, link: any): void {
             if (this._netLinks[event]) {
                 this._netLinks[event].push(link);
             } else {
@@ -57,7 +57,7 @@ namespace Animals.Communications {
          * @param pack пакет события которое происходит
          * @param param дельта изменения
          */
-        publish(pack: any, param: number): void {
+        public publish(pack: any, param: number): void {
             let links = this._netLinks[pack.type];
             if (links) {
                 links.forEach((link: any) => {

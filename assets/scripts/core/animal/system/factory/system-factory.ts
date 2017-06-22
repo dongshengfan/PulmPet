@@ -41,21 +41,21 @@ namespace Animals.Systems {
 
         /**
          * Добавление нового конструктора системы
-         * @param type тип шкалы
-         * @param system конструктор шкалы
+         * @param type тип системы
+         * @param system конструктор системы
          */
         add(type: SystemTypes, system: ISystem): void {
             this._factories[type] = system;
         }
 
         /**
-         * Создание шкалы по типу
-         * @param functionType тип шкалы
-         * @param params параметры шкалы
+         * Создание системы по типу
+         * @param systemType тип системы
+         * @param params параметры системы
          * @return {AScale}
          */
-        create(functionType: SystemTypes, params: any): ISystem {
-            return new this._factories[functionType](params);
+        create(systemType: SystemTypes, params: any): ISystem {
+            return new this._factories[systemType](params);
         }
     }
 }

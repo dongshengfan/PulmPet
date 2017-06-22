@@ -4,35 +4,35 @@
 namespace Animals {
 
     /**
-     *
+     * Строитель моделей животного
      */
     export class AnimalBuilder {
 
         /**
-         *
+         * экземпляр данного класса
          */
         static inst: AnimalBuilder;
 
         /**
-         *
+         * временный массив шкалл
          */
-        masScales: any[];
+        private masScales: any[];
 
         /**
-         *
+         * Временный массив систем
          */
-        masSystems: any[];
+        private masSystems: any[];
 
         /**
-         *
+         * Животное которое стоится
          */
-        _animal: Animal;
+        private _animal: Animal;
 
         /**
-         *
+         * Инициализирует строителя
          * @returns {AnimalBuilder}
          */
-        static instance() {
+        public static instance() {
             if (!this.inst) {
                 this.inst = new AnimalBuilder();
             }
@@ -40,11 +40,11 @@ namespace Animals {
         }
 
         /**
-         *
-         * @param systems
+         * Создает системы
+         * @param systems массив типов систем
          * @returns {Animals.AnimalBuilder}
          */
-        createSystems(systems: any[]): AnimalBuilder {
+        private createSystems(systems: any[]): AnimalBuilder {
             let factory = Animals.Systems.SystemFactory.instance();
             let mas: any[] = [];
             systems.forEach((item: any) => {
@@ -58,11 +58,11 @@ namespace Animals {
         }
 
         /**
-         *
-         * @param scales
+         * Создает шкалы
+         * @param scales массив типов шкал
          * @returns {Animals.AnimalBuilder}
          */
-        createScales(scales: any[]): AnimalBuilder {
+        private createScales(scales: any[]): AnimalBuilder {
             let factory = Animals.Scales.ScaleFactory.instance();
             scales.forEach((item: any) => {
                 let {typeScale, type, params}=item;
@@ -73,11 +73,11 @@ namespace Animals {
         }
 
         /**
-         *
-         * @param communocation
+         * Создает коммуникатор
+         * @param communocation ммассив настройки коммуникатора
          * @returns {Communicator}
          */
-        createCommunicator(communocation: any[]): Animals.Communications.Communicator {
+        private createCommunicator(communocation: any[]): Animals.Communications.Communicator {
             let communicatorBuild = new Animals.Communications.CommunicatorBuilder(this.masScales);
             communocation.forEach((item: any) => {
                 communicatorBuild.add(item);
@@ -86,11 +86,11 @@ namespace Animals {
         }
 
         /**
-         *
-         * @param states
+         * Создает состояния
+         * @param states массив настройки состояний
          * @returns {StateMachines.StateMachine}
          */
-        createStates(states: any): StateMachines.StateMachine {
+        private createStates(states: any): StateMachines.StateMachine {
             let factory = StateMachines.StateFactory.instance();
             let paramState: any[] = [];
             let {state, links}=states;
@@ -116,11 +116,11 @@ namespace Animals {
         }
 
         /**
-         *
-         * @param model
+         * Создает животное
+         * @param model json настройки будущей модели
          * @returns {Animals.Animal}
          */
-        create(model: any): Animal {
+        public create(model: any): Animal {
             let {name, systems, scales, communication, states}=model;
             this.masScales = [];
             this.masSystems = [];

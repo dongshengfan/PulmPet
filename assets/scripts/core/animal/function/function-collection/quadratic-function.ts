@@ -63,7 +63,7 @@ namespace Animals.Functions {
          * @param param переменная
          * @returns {number} результат
          */
-        calculate(param: number): number {
+        public calculate(param: number): number {
             return this._coefficientA * (param ** 2) + this._coefficientB * param + this._free;
         }
     }

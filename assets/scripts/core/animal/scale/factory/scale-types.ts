@@ -11,7 +11,7 @@ namespace Animals.Scales {
     }
 
     /**
-     * Типы параметра
+     * Виды аргументов
      */
     export enum ParameterScaleTypes{
         state = 1,//Общее состояние
@@ -27,5 +27,6 @@ namespace Animals.Scales {
         radiusHearing,//
         radiusSmell,//
         radiusTouch,//
+        newArg,
     }
 }

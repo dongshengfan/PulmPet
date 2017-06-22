@@ -24,7 +24,7 @@ namespace StateMachines.Routes {
          * Получение следующего маршрута для перехода
          * @returns {Route}
          */
-        getRoute(): Route {
+        public getRoute(): Route {
             let probability = Math.random();
             let routes = this._routes.filter((route) => route.isAvailable(this._model, probability));
             return routes.length > 0 ? routes[0] : this._nextRouteEngine();

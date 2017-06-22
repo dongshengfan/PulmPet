@@ -38,7 +38,7 @@ namespace Animals {
         private _communicator: Animals.Communications.Communicator;
 
         /**
-         *
+         * Машина состояний
          */
         private _stateMachine: StateMachines.StateMachine;
 
@@ -132,19 +132,22 @@ namespace Animals {
             //console.log(this._stateMachine);
         }
 
+        /**
+         * Запускает машину состояний
+         */
         public runLife() {
             console.log(this);
             this._stateMachine.run();
         }
 
         /**
-         * СОпрашивает шкалу сцелью формирования объекта для отображения статистики
+         * Опрашивает шкалу с целью формирования объекта для отображения статистики
          * @param scale шкала
          * @param unit именование единиц измерения
          * @returns {{name: string, value: number, unit: string}}
          * @private
          */
-        _getParam(scale: Animals.Scales.AScale, unit: string): any {
+        private _getParam(scale: Animals.Scales.AScale, unit: string): any {
             return {
                 name: scale.name,
                 value: scale.current,
@@ -159,52 +162,52 @@ namespace Animals {
         public getCharacteristics(): Object {
 
             let params: any = [];
-            if (this.circulatory != null) {
-                if (this.circulatory.heartbeat != null) {
-                    params.push(this._getParam(this.circulatory.heartbeat, 'уд'));
+            if (this._circulatory != null) {
+                if (this._circulatory.heartbeat != null) {
+                    params.push(this._getParam(this._circulatory._heartbeat, 'уд'));
                 }
-                if (this.circulatory.pressure != null) {
-                    params.push(this._getParam(this.circulatory.pressure, ''));
+                if (this._circulatory.pressure != null) {
+                    params.push(this._getParam(this._circulatory._pressure, ''));
                 }
-                if (this.circulatory.state != null) {
-                    params.push(this._getParam(this.circulatory.state, '%'));
-                }
-            }
-            if (this.muscular != null) {
-                if (this.muscular.speed != null) {
-                    params.push(this._getParam(this.muscular.speed, 'm/c'));
-                }
-                if (this.muscular.weight != null) {
-                    params.push(this._getParam(this.muscular.weight, 'kg'));
-                }
-                if (this.muscular.state != null) {
-                    params.push(this._getParam(this.muscular.state, '%'));
+                if (this._circulatory.state != null) {
+                    params.push(this._getParam(this._circulatory.state, '%'));
                 }
             }
-            if (this.navigation != null) {
-                if (this.navigation.state != null) {
-                    params.push(this._getParam(this.navigation.state, '%'));
+            if (this._muscular != null) {
+                if (this._muscular.speed != null) {
+                    params.push(this._getParam(this._muscular._speed, 'm/c'));
                 }
-                if (this.navigation.radiusVision != null) {
-                    params.push(this._getParam(this.navigation.radiusVision, 'ед'));
+                if (this._muscular.weight != null) {
+                    params.push(this._getParam(this._muscular._weight, 'kg'));
                 }
-                if (this.navigation.radiusSmell != null) {
-                    params.push(this._getParam(this.navigation.radiusSmell, 'ед'));
+                if (this._muscular.state != null) {
+                    params.push(this._getParam(this._muscular.state, '%'));
                 }
-                if (this.navigation.radiusTouch != null) {
-                    params.push(this._getParam(this.navigation.radiusTouch, 'ед'));
+            }
+            if (this._navigation != null) {
+                if (this._navigation.state != null) {
+                    params.push(this._getParam(this._navigation.state, '%'));
                 }
-                if (this.navigation.radiusHearing != null) {
-                    params.push(this._getParam(this.navigation.radiusHearing, 'ед'));
+                if (this._navigation.radiusVision != null) {
+                    params.push(this._getParam(this._navigation._radiusVision, 'ед'));
                 }
-                if (this.navigation.speedSavvy != null) {
-                    params.push(this._getParam(this.navigation.speedSavvy, 'ед'));
+                if (this._navigation.radiusSmell != null) {
+                    params.push(this._getParam(this._navigation._radiusSmell, 'ед'));
+                }
+                if (this._navigation.radiusTouch != null) {
+                    params.push(this._getParam(this._navigation._radiusTouch, 'ед'));
+                }
+                if (this._navigation.radiusHearing != null) {
+                    params.push(this._getParam(this._navigation._radiusHearing, 'ед'));
+                }
+                if (this._navigation.speedSavvy != null) {
+                    params.push(this._getParam(this._navigation._speedSavvy, 'ед'));
                 }
             }
 
             return {
                 name: this._name,
-                currentState: this.stateMachine._state.getName(),
+                currentState: this._stateMachine._state.getName(),
                 param: params,
             };
         }
@@ -219,6 +222,34 @@ namespace Animals {
                 this.navigation._currentPoint.x = x;
                 this.navigation._currentPoint.y = y;
             }
+        }
+
+        /**
+         * Устанавливает состояние сидеть
+         */
+        public goStateSit() {
+
+         }
+
+        /**
+         * Устанавливает состояние лежать
+         */
+        public goStateLies() {
+
+         }
+
+        /**
+         * Пугает животное
+         */
+        public goFrighten() {
+            this.circulatory.heartbeat.change(50);
+        }
+
+        /**
+         * Ласкает животное
+         */
+        public goCare() {
+            this.circulatory.heartbeat.change(-50);
         }
     }
 }

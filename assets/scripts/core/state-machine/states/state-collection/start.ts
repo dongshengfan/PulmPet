@@ -27,8 +27,8 @@ namespace StateMachines.States {
          */
         async run(): Promise<void> {
             console.log('Начал жить');
-            /*this._model.circulatory.changeHeartbeat(0.001);
-             this._model.circulatory.changePressure(0.001);*/
+            this._model.circulatory.changeHeartbeat(0.001);
+             this._model.circulatory.changePressure(0.001);
             this._model.muscular.changeSpeed(0.001);
             this._model.muscular.changeWeight(0.001);
             await this.mySleep(2);//Ожидание в 2 секунды

@@ -39,7 +39,7 @@ namespace StateMachines.Routes {
          * Добавление маршрутов в данную группу
          * @param routes новые маршруты
          */
-        add(routes: Array<Route>) {
+        public add(routes: Array<Route>) {
             this._routes.push(...routes);
         }
 
@@ -47,7 +47,7 @@ namespace StateMachines.Routes {
          * Получение следующего маршрута для перехода
          * @returns {Route}
          */
-        getRoute(): Route {
+        public getRoute(): Route {
             throw new Error('Not implemented yet...');
         }
 
@@ -55,7 +55,7 @@ namespace StateMachines.Routes {
          * Установка следующей группы маршрутов для обработки
          * @param engine группа маршрутов
          */
-        setNextEngine(engine: RouteEngine) {
+        public setNextEngine(engine: RouteEngine) {
             this._nextEngine = engine;
         }
 
@@ -63,7 +63,7 @@ namespace StateMachines.Routes {
          * Установка модели животного
          * @param animal модель животного
          */
-        setModel(animal: Animals.Animal) {
+        public setModel(animal: Animals.Animal) {
             this._model = animal;
         }
 
@@ -72,7 +72,7 @@ namespace StateMachines.Routes {
          * @returns {Route|null}
          * @private
          */
-        _nextRouteEngine(): Route|null {
+        public _nextRouteEngine(): Route|null {
             if (this._nextEngine) {
                 return this._nextEngine.getRoute();
             }
