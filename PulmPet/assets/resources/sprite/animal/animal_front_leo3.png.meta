@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "c2bd4cbf-aa66-4d20-be98-280be3ea3086",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "animal_front_leo3": {
+      "ver": "1.0.3",
+      "uuid": "b64c21c0-ecea-4a77-8738-7787a59933c9",
+      "rawTextureUuid": "c2bd4cbf-aa66-4d20-be98-280be3ea3086",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 305,
+      "height": 293,
+      "rawWidth": 306,
+      "rawHeight": 293,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
