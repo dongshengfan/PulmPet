@@ -1,7 +1,6 @@
 /**
  * Created by FIRCorp on 12.03.2017.
  */
-///<reference path="../../../../../../creator.d.ts"/>
 
 namespace Animals.Systems {
     /**
