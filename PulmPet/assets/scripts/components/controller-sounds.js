@@ -22,12 +22,13 @@ cc.Class({
             url: cc.AudioClip
         },
 
-        _audioPool: null,//карта запущенных мелодий
+        _audioPool: [],//карта запущенных мелодий
     },
 
     onLoad () {
         this._audioPool = [];
     },
+
 
     update() {
         for (let i = 0; i < this._audioPool.length; i++) {

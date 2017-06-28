@@ -7,8 +7,10 @@
     "anysdk"
   ],
   "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
   "mergeStartScene": false,
   "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
@@ -18,7 +20,7 @@
   "packageName": "org.FIR.PulmPet",
   "privateKey": "",
   "renderMode": "0",
-  "startScene": "9c1cc2e0-ac25-477e-bcf3-c16b5bc9fc32",
+  "startScene": "94c9daaf-0b32-40c4-a952-f8fd45e80228",
   "title": "PulmPet",
   "webOrientation": "auto"
 }

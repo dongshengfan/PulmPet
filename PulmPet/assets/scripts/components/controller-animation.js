@@ -76,5 +76,4 @@ cc.Class({
     getError(msg){
         throw new Error(msg);
     },
-
 });
