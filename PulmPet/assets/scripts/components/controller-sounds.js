@@ -76,7 +76,22 @@ cc.Class({
                 id = item.id;
             }
         });
-        return id != -1 ? id : this.getError('Can not found id sounds...');
+        return id;
+    },
+
+    /**
+     * Проверяет проигрывается ли эта композиция или нет
+     * @param name имя композиции которую надо проверить
+     * @returns {boolean} true - проигрывается в данный момент
+     */
+    isCheckAudio(name){
+        let id = -1;
+        this._audioPool.forEach((item) => {
+            if (item.name === name) {
+                id = item.id;
+            }
+        });
+        return id != -1;
     },
 
     /**
@@ -113,7 +128,7 @@ cc.Class({
      * Останавливает мелодию по имени
      * @param name {string} имя мелодии
      */
-    stop(name){
+    stopAudio(name){
         let id = this.findId(name);
         if (id != -1) cc.audioEngine.stop(id);
     },

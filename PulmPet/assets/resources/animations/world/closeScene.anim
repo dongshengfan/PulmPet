@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "closeScene",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.16666666666666666,
+  "sample": 60,
+  "speed": 0.15,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "topEyelid": {
+        "props": {
+          "y": [
+            {
+              "frame": 0,
+              "value": 629
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": 313
+            }
+          ]
+        }
+      },
+      "bottomEyelid": {
+        "props": {
+          "y": [
+            {
+              "frame": 0,
+              "value": -628
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": -270
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

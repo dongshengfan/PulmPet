@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "loadContinent",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.3333333333333333,
+  "sample": 60,
+  "speed": 0.08,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "Map/view/content": {
+        "props": {}
+      },
+      "Map/view/content/map": {
+        "props": {}
+      }
+    },
+    "props": {
+      "scaleX": [
+        {
+          "frame": 0,
+          "value": 1
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": 5
+        }
+      ],
+      "scaleY": [
+        {
+          "frame": 0,
+          "value": 1
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": 5
+        }
+      ]
+    }
+  },
+  "events": []
+}

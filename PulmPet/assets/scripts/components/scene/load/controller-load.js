@@ -62,6 +62,7 @@ cc.Class({
         if (this._isComplete) {
             this._controllerAnimation.startAnimationAdditive('endLoad');
             this._controllerSounds.playEffect('testBtn', false);
+            this._controllerSounds.stopAudio('testFonLoad');
             setTimeout(() => {
                 let ls = cc.sys.localStorage;
                 cc.director.loadScene(ls.getItem("nameSceneLoad"));

@@ -86,10 +86,9 @@ cc.Class({
         ls.setItem("nameSceneLoad", 'World');
         //Указываем список ресурсов для загрузки
         let resLoad = [
-            "resources/audio/start-play/testFon.mp3",
-            "resources/audio/start-play/testBtn.mp3",
-            "resources/audio/start-play/testOpenScene.mp3",
-            "resources/sprite/start-play/money.png",
+            "resources/audio/testFon.mp3",
+            "resources/audio/testBtn.mp3",
+            "resources/audio/testOpenScene.mp3",
         ];
         let sObj = JSON.stringify(resLoad);
         ls.setItem('loadRes', sObj);
@@ -99,7 +98,7 @@ cc.Class({
         //Грузим сцену загрузки после проигрывания анимации
         setTimeout(() => {
             //Останавливает проигрывание фона
-            this._controllerSounds.stop('testFon');
+            this._controllerSounds.stopAudio('testFon');
             //Грузит сцену
             cc.director.loadScene("Load");
         }, this._controllerAnimation.getTime('closeScene'));
