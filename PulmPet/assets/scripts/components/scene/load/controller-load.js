@@ -47,8 +47,8 @@ cc.Class({
 
     start(){
         this._controllerAnimation.startAnimationAdditive('startLoad');
-        this._controllerSounds.playMusic('testFonLoad', true);
-        this._controllerSounds.playEffect('testOpenScene', false);
+        this._controllerSounds.playMusic('testLoadFon', true);
+        this._controllerSounds.playEffect('testGlobalOpenScene', false);
         setTimeout(() => {
             cc.loader.load(this._urls, this._progressCallback.bind(this), this._completeCallback.bind(this));
         }, this._controllerAnimation.getTime('startLoad'));
@@ -61,8 +61,8 @@ cc.Class({
         //Проверка на завершение загрузки
         if (this._isComplete) {
             this._controllerAnimation.startAnimationAdditive('endLoad');
-            this._controllerSounds.playEffect('testBtn', false);
-            this._controllerSounds.stopAudio('testFonLoad');
+            this._controllerSounds.playEffect('testLoadBtn', false);
+            this._controllerSounds.stopAudio('testLoadFon');
             setTimeout(() => {
                 let ls = cc.sys.localStorage;
                 cc.director.loadScene(ls.getItem("nameSceneLoad"));
@@ -146,7 +146,7 @@ cc.Class({
             this.msgComplete.textKey = i18n.t("Load/LoadBar/TextLoadComplete");
             this._isComplete = true;
             this._controllerAnimation.startAnimationAdditive('msgComplete');
-            this._controllerSounds.playEffect('testEndLoad', false);
+            this._controllerSounds.playEffect('testLoadEnd', false);
             this.progressBar.node.opacity = 255;
             return;
         }

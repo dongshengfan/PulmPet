@@ -24,17 +24,21 @@ cc.Class({
         this.setDefaultVolumeSounds();
         this.setAmountStarAndMoney(25, 2000);
         //Запуск анимации фона
-        this._controllerAnimation.startAnimationAdditive('playedBackGround');
-        this._controllerSounds.playMusic('testFon', true);
+
+        this._controllerSounds.playMusic('testStartPlayFon', true);
         this._controllerAnimation.startAnimationAdditive('openScene');
-        this._controllerSounds.playEffect('testOpenScene', false);
+        this._controllerAnimation.startAnimationAdditive('playedBackGround');
+        this._controllerSounds.playEffect('testGlobalOpenScene', false);
         this._controllerAnimation.startAnimationAdditive('rotationStar');
         this._controllerAnimation.startAnimationAdditive('rotationMoney');
         //После анимации старт сцены
         setTimeout(() => {
-            this._controllerAnimation.startAnimationAdditive('emergeneceAсhievements');
-            this._controllerSounds.playEffect('testOpenAchivements', false);
-        }, this._controllerAnimation.getTime('openScene'));
+                this._controllerAnimation.startAnimationAdditive('emergeneceAсhievements');
+                this._controllerSounds.playEffect('testStartPlayOpenAchivements', false);
+            },
+            this._controllerAnimation.getTime('openScene')
+        )
+        ;
     },
 
     /**
@@ -63,7 +67,7 @@ cc.Class({
      */
     onClickLeftLeavesSwaying(){
         this._controllerAnimation.startAnimationAdditive('leavesSwayingLeft');
-        this._controllerSounds.playEffect('testLeft', false);
+        this._controllerSounds.playEffect('testStartPlayLeft', false);
     },
 
     /**
@@ -71,7 +75,7 @@ cc.Class({
      */
     onClickRightLeavesSwaying(){
         this._controllerAnimation.startAnimationAdditive('leavesSwayingRight');
-        this._controllerSounds.playEffect('testRight', false);
+        this._controllerSounds.playEffect('testStartPlayRight', false);
     },
 
     /**
@@ -79,16 +83,20 @@ cc.Class({
      */
     loadWorld(){
         //Запускает звук нажатия на плэй
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testStartPlayBtn', false);
         //Подгружает локальный сторедж
         let ls = cc.sys.localStorage;
         //Устанавливаем имя следубющей сцены
         ls.setItem("nameSceneLoad", 'World');
         //Указываем список ресурсов для загрузки
         let resLoad = [
-            "resources/audio/testFon.mp3",
-            "resources/audio/testBtn.mp3",
-            "resources/audio/testOpenScene.mp3",
+            "resources/audio/world/testWorldFon.mp3",
+            "resources/audio/world/testWorldBtn.mp3",
+            "resources/audio/global/testGlobalOpenScene.mp3",
+            "resources/audio/world/testWorldFonAfrica.mp3",
+            "resources/audio/world/testWorldFonAttainment.mp3",
+            "resources/audio/world/testWorldOpenAttainment.mp3",
+            "resources/audio/world/testWorldBox.mp3",
         ];
         let sObj = JSON.stringify(resLoad);
         ls.setItem('loadRes', sObj);
@@ -97,10 +105,12 @@ cc.Class({
         this._controllerAnimation.startAnimationAdditive('closeScene');
         //Грузим сцену загрузки после проигрывания анимации
         setTimeout(() => {
-            //Останавливает проигрывание фона
-            this._controllerSounds.stopAudio('testFon');
-            //Грузит сцену
-            cc.director.loadScene("Load");
-        }, this._controllerAnimation.getTime('closeScene'));
+                this._controllerSounds.stopAll();
+                //Грузит сцену
+                cc.director.loadScene("Load");
+            },
+            this._controllerAnimation.getTime('closeScene')
+        )
+        ;
     },
 });

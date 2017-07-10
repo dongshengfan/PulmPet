@@ -45,8 +45,8 @@ cc.Class({
         this._controllerAnimation.startAnimationAdditive('miniClock');
         this._controllerAnimation.startAnimationAdditive('miniMoney');
 
-        this._controllerSounds.playMusic('testFonWorld', true);
-
+        this._controllerSounds.playMusic('testWorldFon', true);
+        this._controllerSounds.playMusic('testGlobalOpenScene', false);
 
         this.setMoney(100);
         this.setTime(3600000);
@@ -60,10 +60,10 @@ cc.Class({
      */
     onClickWater(){
         if (!this._isLoadContinent) {
-            this._controllerSounds.stopAudio('testFonWorldAfrica');
+            this._controllerSounds.stopAudio('testWorldFonAfrica');
 
-            if (!this._controllerSounds.isCheckAudio('testFonWorld')) {
-                this._controllerSounds.playMusic('testFonWorld', true);
+            if (!this._controllerSounds.isCheckAudio('testWorldFon')) {
+                this._controllerSounds.playMusic('testWorldFon', true);
             }
 
         }
@@ -75,10 +75,10 @@ cc.Class({
      */
     onClickAfrica(event){
         if (!this._isLoadContinent) {
-            this._controllerSounds.stopAudio('testFonWorld');
+            this._controllerSounds.stopAudio('testWorldFon');
 
-            if (!this._controllerSounds.isCheckAudio('testFonWorldAfrica')) {
-                this._controllerSounds.playMusic('testFonWorldAfrica', true);
+            if (!this._controllerSounds.isCheckAudio('testWorldFonAfrica')) {
+                this._controllerSounds.playMusic('testWorldFonAfrica', true);
             }
             this.targetStart.x = event.detail.point.x;
             this.targetStart.y = event.detail.point.y;
@@ -153,9 +153,9 @@ cc.Class({
                 ls.setItem("nameSceneLoad", 'StartPlay');
                 //Указываем список ресурсов для загрузки
                 let resLoad = [
-                    "resources/audio/testFon.mp3",
-                    "resources/audio/testBtn.mp3",
-                    "resources/audio/testOpenScene.mp3",
+                    "resources/audio/world/testWorldFon.mp3",
+                    "resources/audio/world/testWorldBtn.mp3",
+                    "resources/audio/global/testGlobalOpenScene.mp3",
                 ];
                 let sObj = JSON.stringify(resLoad);
                 ls.setItem('loadRes', sObj);
@@ -180,11 +180,11 @@ cc.Class({
             this._controllerAnimation.startAnimationAdditive('openAttainment');
             this.setOffAttainment();
             this._controllerSounds.stopAll();
-            this._controllerSounds.playEffect('testOpenAttainment', false);
-            this._controllerSounds.playMusic('testFonWorldAttainment', true);
+            this._controllerSounds.playEffect('testWorldOpenAttainment', false);
+            this._controllerSounds.playMusic('testWorldFonAttainment', true);
         } else {
             this._controllerSounds.stopAll();
-            this._controllerSounds.playMusic('testFonWorld', true);
+            this._controllerSounds.playMusic('testWorldFon', true);
             //Анимация закрытия
             this._controllerAnimation.startAnimationAdditive('closeAttainment');
         }
@@ -195,7 +195,32 @@ cc.Class({
      * @param event
      */
     onClickSetting(event){
-        this._controllerSounds.playEffect('testBtn', false);
+
+        //Запускает звук нажатия на кнопку
+        this._controllerSounds.playEffect('testWorldBtn', false);
+        //Подгружает локальный сторедж
+        let ls = cc.sys.localStorage;
+        //Устанавливаем имя следубющей сцены
+        ls.setItem("nameSceneLoad", 'Setting');
+        //Указываем список ресурсов для загрузки
+        let resLoad = [
+            "resources/audio/setting/testSettingFon.mp3",
+            "resources/audio/setting/testSettingBtn.mp3",
+            "resources/audio/global/testGlobalOpenScene.mp3",
+            "resources/audio/setting/testSettingCheckEffect.mp3",
+            "resources/audio/setting/testSettingCheckMusic.mp3",
+        ];
+        let sObj = JSON.stringify(resLoad);
+        ls.setItem('loadRes', sObj);
+
+        //Запускаем предзагрузочную анимацию
+        this._controllerAnimation.startAnimationAdditive('closeScene');
+        //Грузим сцену загрузки после проигрывания анимации
+        setTimeout(() => {
+            this._controllerSounds.stopAll();
+            //Грузит сцену
+            cc.director.loadScene("Load");
+        }, this._controllerAnimation.getTime('closeScene'));
     },
 
     /**
@@ -203,7 +228,7 @@ cc.Class({
      * @param event
      */
     onClickCollection(event){
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testWorldBtn', false);
     },
 
     /**
@@ -211,7 +236,7 @@ cc.Class({
      * @param event
      */
     onClickFreePlay(event){
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testWorldBtn', false);
     },
 
     /**
@@ -219,7 +244,7 @@ cc.Class({
      * @param event
      */
     onClickBuilder(event){
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testWorldBtn', false);
     },
 
     /**
@@ -227,7 +252,7 @@ cc.Class({
      * @param event
      */
     onClickShop(event){
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testWorldBtn', false);
     },
 
     /**
@@ -235,7 +260,7 @@ cc.Class({
      * @param event
      */
     onClickPlusMoney(event){
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testWorldBtn', false);
     },
 
 
@@ -317,7 +342,7 @@ cc.Class({
      * Включает уведомление о завершенных акциях
      */
     setOnAttainment(){
-        this._controllerSounds.playEffect('testBtn', false);
+        this._controllerSounds.playEffect('testWorldBtn', false);
         this._controllerAnimation.startAnimationAdditive('completeAttainment');
     },
 

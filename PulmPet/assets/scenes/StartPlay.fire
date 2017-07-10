@@ -150,7 +150,7 @@
     ],
     "_prefab": null,
     "_id": "140b0/qDplD851BAAogTHXE",
-    "_opacity": 0,
+    "_opacity": 197.115,
     "_color": {
       "__type__": "cc.Color",
       "r": 109,
@@ -1555,16 +1555,16 @@
     "_enabled": true,
     "audio": [
       {
-        "__uuid__": "b2d31da4-8246-4e5e-b0c6-5ab141c44cde"
+        "__uuid__": "be306e25-9338-445f-9a4c-6faa17cfc5e1"
       },
       {
-        "__uuid__": "7a2f4477-b9cc-4d14-b87a-ade816344e37"
+        "__uuid__": "0b029e2d-62c9-47ed-8720-e84e9b8899e9"
       },
       {
         "__uuid__": "6c2090f0-00f6-40a9-840a-77b3b7676384"
       },
       {
-        "__uuid__": "d8bc0915-907e-4ffc-93f7-98e2ec1991d2"
+        "__uuid__": "0da80a67-9289-434b-a686-cee1d9b0370e"
       },
       {
         "__uuid__": "fed7a182-0d65-47a2-b35a-6dc97d5b95f2"

@@ -148,6 +148,35 @@ cc.Class({
     },
 
     /**
+     * Приостанавливает определенную мелодию
+     * @param name имя мелодии
+     */
+    pauseAudio(name) {
+        let id = this.findId(name);
+        cc.audioEngine.pause(id);
+    },
+
+    /**
+     * Продолжает музыку
+     * @param name имя музыки
+     */
+    resumeMusic(name) {
+        let id = this.findId(name);
+        cc.audioEngine.resume(id);
+        cc.audioEngine.setVolume(id, this._getVolume(TypeSounds.music));
+    },
+
+    /**
+     * Продолжает эффект
+     * @param name имя эффекта
+     */
+    resumeEffect(name){
+        let id = this.findId(name);
+        cc.audioEngine.resume(id);
+        cc.audioEngine.setVolume(id, this._getVolume(TypeSounds.effect));
+    },
+
+    /**
      * Продолжает все мелодии
      */
     resumeAll () {
