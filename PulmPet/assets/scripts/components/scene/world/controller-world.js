@@ -46,7 +46,7 @@ cc.Class({
         this._controllerAnimation.startAnimationAdditive('miniMoney');
 
         this._controllerSounds.playMusic('testWorldFon', true);
-        this._controllerSounds.playMusic('testGlobalOpenScene', false);
+        this._controllerSounds.playEffect('testGlobalOpenScene', false);
 
         this.setMoney(100);
         this.setTime(3600000);
@@ -139,8 +139,6 @@ cc.Class({
     onStartAreal(event){
         //this.scrollWorld.active = false;
         this.scrollWorld.enabled = false;
-
-        console.log(this.scrollWorld);
         //Устанавливаем состояние контроллера в состояние загрузки континента
         this._isLoadContinent = true;
         //Подгружает локальный сторедж
@@ -252,7 +250,28 @@ cc.Class({
      * @param event
      */
     onClickShop(event){
+        //Запускает звук нажатия на кнопку
         this._controllerSounds.playEffect('testWorldBtn', false);
+        //Подгружает локальный сторедж
+        let ls = cc.sys.localStorage;
+        //Устанавливаем имя следубющей сцены
+        ls.setItem("nameSceneLoad", 'Shop');
+        //Указываем список ресурсов для загрузки
+        let resLoad = [
+            "resources/audio/shop/testShopBtn.mp3",
+            "resources/audio/global/testGlobalOpenScene.mp3",
+        ];
+        let sObj = JSON.stringify(resLoad);
+        ls.setItem('loadRes', sObj);
+
+        //Запускаем предзагрузочную анимацию
+        this._controllerAnimation.startAnimationAdditive('closeScene');
+        //Грузим сцену загрузки после проигрывания анимации
+        setTimeout(() => {
+            this._controllerSounds.stopAll();
+            //Грузит сцену
+            cc.director.loadScene("Load");
+        }, this._controllerAnimation.getTime('closeScene'));
     },
 
     /**

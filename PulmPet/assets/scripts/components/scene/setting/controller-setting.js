@@ -26,6 +26,7 @@ cc.Class({
     start(){
         this._controllerAnimation.startAnimationAdditive('openScene');
         this._controllerSounds.playMusic('testSettingFon', true);
+        this._controllerSounds.playEffect('testGlobalOpenScene', false);
 
         this.settingSlider();
     },
