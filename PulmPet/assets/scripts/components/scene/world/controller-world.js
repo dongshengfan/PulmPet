@@ -282,6 +282,31 @@ cc.Class({
         this._controllerSounds.playEffect('testWorldBtn', false);
     },
 
+    /**
+     * Обработчик события выполненой акции
+     * @param event
+     */
+    onAttainmentSuccessful(event){
+        switch (event) {
+            default : {
+                //Звук выполнения
+                this._controllerSounds.playEffect('testWorldBtn', false);
+
+                let ls = cc.sys.localStorage;
+                //Устанавливаем имя сцены на которую вернуться после вручения
+                ls.setItem("nameSceneLoad", 'World');
+
+                //Запускаем предпокупочную анимацию
+                this._controllerAnimation.startAnimationAdditive('preparationGifts');
+                //Грузим сцену подарков после проигрывания анимации
+                setTimeout(() => {
+
+                    //Грузит сцену
+                    cc.director.loadScene("Gifts");
+                }, this._controllerAnimation.getTime('preparationGifts'));
+            }
+        }
+    },
 
     //--------------------Logic--------------------
 
