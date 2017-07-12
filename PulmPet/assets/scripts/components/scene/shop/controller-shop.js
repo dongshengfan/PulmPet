@@ -165,12 +165,17 @@ cc.Class({
     onPay(){
         //Проверяем средства на счете и если позволяют то пукупаем товар
         if (this.isCheckMoney()) {
+            let ls = cc.sys.localStorage;
+            //Устанавливаем имя сцены на которую вернуться после вручения
+            ls.setItem("nameSceneLoad", 'Shop');
+
             //Звук покупки
             this._controllerSounds.playEffect('testShopPay', false);
             //Запускаем предпокупочную анимацию
             this._controllerAnimation.startAnimationAdditive('preparationGifts');
             //Грузим сцену подарков после проигрывания анимации
             setTimeout(() => {
+                this._controllerSounds.stopAll();
                 //Грузит сцену
                 cc.director.loadScene("Gifts");
             }, this._controllerAnimation.getTime('preparationGifts'));
